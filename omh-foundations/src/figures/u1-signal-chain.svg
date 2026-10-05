@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="476.220472pt" height="130.393701pt" viewBox="0 0 476.220472 130.393701" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 130.393701 
+L 476.220472 130.393701 
+L 476.220472 0 
+L 0 0 
+L 0 130.393701 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.370079 68.031496 
+L 56.409449 68.031496 
+Q 60.944882 68.031496 60.944882 63.496063 
+L 60.944882 30.047244 
+Q 60.944882 25.511811 56.409449 25.511811 
+L 7.370079 25.511811 
+Q 2.834646 25.511811 2.834646 30.047244 
+L 2.834646 63.496063 
+Q 2.834646 68.031496 7.370079 68.031496 
+z
+" clip-path="url(#pd35841a313)" style="fill: #f4f6f8; stroke: #c9d0d8; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 75.685039 68.031496 
+L 124.724409 68.031496 
+Q 129.259843 68.031496 129.259843 63.496063 
+L 129.259843 30.047244 
+Q 129.259843 25.511811 124.724409 25.511811 
+L 75.685039 25.511811 
+Q 71.149606 25.511811 71.149606 30.047244 
+L 71.149606 63.496063 
+Q 71.149606 68.031496 75.685039 68.031496 
+z
+" clip-path="url(#pd35841a313)" style="fill: #e8eff3; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 144 68.031496 
+L 193.03937 68.031496 
+Q 197.574803 68.031496 197.574803 63.496063 
+L 197.574803 30.047244 
+Q 197.574803 25.511811 193.03937 25.511811 
+L 144 25.511811 
+Q 139.464567 25.511811 139.464567 30.047244 
+L 139.464567 63.496063 
+Q 139.464567 68.031496 144 68.031496 
+z
+" clip-path="url(#pd35841a313)" style="fill: #e8eff3; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 212.314961 68.031496 
+L 261.354331 68.031496 
+Q 265.889764 68.031496 265.889764 63.496063 
+L 265.889764 30.047244 
+Q 265.889764 25.511811 261.354331 25.511811 
+L 212.314961 25.511811 
+Q 207.779528 25.511811 207.779528 30.047244 
+L 207.779528 63.496063 
+Q 207.779528 68.031496 212.314961 68.031496 
+z
+" clip-path="url(#pd35841a313)" style="fill: #e8eff3; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 280.629921 68.031496 
+L 329.669291 68.031496 
+Q 334.204724 68.031496 334.204724 63.496063 
+L 334.204724 30.047244 
+Q 334.204724 25.511811 329.669291 25.511811 
+L 280.629921 25.511811 
+Q 276.094488 25.511811 276.094488 30.047244 
+L 276.094488 63.496063 
+Q 276.094488 68.031496 280.629921 68.031496 
+z
+" clip-path="url(#pd35841a313)" style="fill: #003f5c; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 348.944882 68.031496 
+L 397.984252 68.031496 
+Q 402.519685 68.031496 402.519685 63.496063 
+L 402.519685 30.047244 
+Q 402.519685 25.511811 397.984252 25.511811 
+L 348.944882 25.511811 
+Q 344.409449 25.511811 344.409449 30.047244 
+L 344.409449 63.496063 
+Q 344.409449 68.031496 348.944882 68.031496 
+z
+" clip-path="url(#pd35841a313)" style="fill: #e8eff3; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 417.259843 68.031496 
+L 466.299213 68.031496 
+Q 470.834646 68.031496 470.834646 63.496063 
+L 470.834646 30.047244 
+Q 470.834646 25.511811 466.299213 25.511811 
+L 417.259843 25.511811 
+Q 412.724409 25.511811 412.724409 30.047244 
+L 412.724409 63.496063 
+Q 412.724409 68.031496 417.259843 68.031496 
+z
+" clip-path="url(#pd35841a313)" style="fill: #f4f6f8; stroke: #c9d0d8; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 284.88189 124.724409 
+L 325.417323 124.724409 
+Q 329.952756 124.724409 329.952756 120.188976 
+L 329.952756 110.834646 
+Q 329.952756 106.299213 325.417323 106.299213 
+L 284.88189 106.299213 
+Q 280.346457 106.299213 280.346457 110.834646 
+L 280.346457 120.188976 
+Q 280.346457 124.724409 284.88189 124.724409 
+z
+" clip-path="url(#pd35841a313)" style="fill: #fff5e0; stroke: #ffa600; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 600; font-size: 8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="31.889764" y="43.693041" transform="rotate(-0 31.889764 43.693041)">Quantity</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(16.541154 52.071827)">force, heat,</text>
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(20.814654 62.136167)">field, RF</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 600; font-size: 8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="100.204724" y="44.444916" transform="rotate(-0 100.204724 44.444916)">Transducer</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(81.134334 51.853717)">bridge, diode,</text>
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(87.051131 61.980964)">Hall plate</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 600; font-size: 8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="168.519685" y="43.633041" transform="rotate(-0 168.519685 43.633041)">Conditioning</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(152.520357 51.893421)">gain, offset,</text>
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(160.246482 62.657464)">buffer</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 600; font-size: 8px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(220.599646 43.455804)">Anti-alias</text>
+    <text style="font-weight: 600; font-size: 8px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(228.534646 55.695004)">filter</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 600; font-size: 8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffffff" x="305.149606" y="44.284916" transform="rotate(-0 305.149606 44.284916)">ADC</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; fill: #ffffff" transform="translate(289.097684 51.916624)">sample and</text>
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; fill: #ffffff" transform="translate(293.1077 61.921667)">quantise</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 600; font-size: 8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="373.464567" y="43.673041" transform="rotate(-0 373.464567 43.673041)">Digital filter</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(361.832067 51.147311)">average,</text>
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(360.621895 62.617761)">decimate</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 600; font-size: 8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="441.779528" y="44.444916" transform="rotate(-0 441.779528 44.444916)">Value</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(428.146918 52.553421)">with units</text>
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(428.991512 62.617761)">and error</text>
+   </g>
+   <g id="patch_10">
+    <path d="M 60.944882 46.771654 
+Q 66.047244 46.771654 70.031572 46.771654 
+" clip-path="url(#pd35841a313)" style="fill: none; stroke: #1b2430; stroke-linecap: round"/>
+    <path d="M 67.431572 45.471654 
+L 70.031572 46.771654 
+L 67.431572 48.071654 
+z
+" clip-path="url(#pd35841a313)" style="fill: #1b2430; stroke: #1b2430; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 129.259843 46.771654 
+Q 134.362205 46.771654 138.346533 46.771654 
+" clip-path="url(#pd35841a313)" style="fill: none; stroke: #1b2430; stroke-linecap: round"/>
+    <path d="M 135.746533 45.471654 
+L 138.346533 46.771654 
+L 135.746533 48.071654 
+z
+" clip-path="url(#pd35841a313)" style="fill: #1b2430; stroke: #1b2430; stroke-linecap: round"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 197.574803 46.771654 
+Q 202.677165 46.771654 206.661494 46.771654 
+" clip-path="url(#pd35841a313)" style="fill: none; stroke: #1b2430; stroke-linecap: round"/>
+    <path d="M 204.061494 45.471654 
+L 206.661494 46.771654 
+L 204.061494 48.071654 
+z
+" clip-path="url(#pd35841a313)" style="fill: #1b2430; stroke: #1b2430; stroke-linecap: round"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 265.889764 46.771654 
+Q 270.992126 46.771654 274.976454 46.771654 
+" clip-path="url(#pd35841a313)" style="fill: none; stroke: #1b2430; stroke-linecap: round"/>
+    <path d="M 272.376454 45.471654 
+L 274.976454 46.771654 
+L 272.376454 48.071654 
+z
+" clip-path="url(#pd35841a313)" style="fill: #1b2430; stroke: #1b2430; stroke-linecap: round"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 334.204724 46.771654 
+Q 339.307087 46.771654 343.291415 46.771654 
+" clip-path="url(#pd35841a313)" style="fill: none; stroke: #1b2430; stroke-linecap: round"/>
+    <path d="M 340.691415 45.471654 
+L 343.291415 46.771654 
+L 340.691415 48.071654 
+z
+" clip-path="url(#pd35841a313)" style="fill: #1b2430; stroke: #1b2430; stroke-linecap: round"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 402.519685 46.771654 
+Q 407.622047 46.771654 411.606375 46.771654 
+" clip-path="url(#pd35841a313)" style="fill: none; stroke: #1b2430; stroke-linecap: round"/>
+    <path d="M 409.006375 45.471654 
+L 411.606375 46.771654 
+L 409.006375 48.071654 
+z
+" clip-path="url(#pd35841a313)" style="fill: #1b2430; stroke: #1b2430; stroke-linecap: round"/>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 600; font-size: 7.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="305.149606" y="118.053186" transform="rotate(-0 305.149606 118.053186)">reference</text>
+   </g>
+   <g id="patch_16">
+    <path d="M 305.149606 106.299213 
+Q 305.149606 87.165354 305.149606 69.14953 
+" clip-path="url(#pd35841a313)" style="fill: none; stroke: #ffa600; stroke-linecap: round"/>
+    <path d="M 303.949606 71.54953 
+L 305.149606 69.14953 
+L 306.349606 71.54953 
+z
+" clip-path="url(#pd35841a313)" style="fill: #ffa600; stroke: #ffa600; stroke-linecap: round"/>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 6.8px; font-family: 'Source Sans 3'; fill: #ff6361" transform="translate(82.245818 88.876838)">nonlinearity,</text>
+    <text style="font-size: 6.8px; font-family: 'Source Sans 3'; fill: #ff6361" transform="translate(94.281818 99.506131)">drift</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 6.8px; font-family: 'Source Sans 3'; fill: #ff6361" transform="translate(152.035529 88.866744)">offset, gain,</text>
+    <text style="font-size: 6.8px; font-family: 'Source Sans 3'; fill: #ff6361" transform="translate(160.869685 99.404131)">noise</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 6.8px; font-family: 'Source Sans 3'; fill: #ff6361" transform="translate(219.123302 88.876838)">phase delay,</text>
+    <text style="font-size: 6.8px; font-family: 'Source Sans 3'; fill: #ff6361" transform="translate(218.188302 99.465224)">residual alias</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 6.8px; font-family: 'Source Sans 3'; fill: #ff6361" transform="translate(286.228075 88.829557)">quantisation,</text>
+    <text style="font-size: 6.8px; font-family: 'Source Sans 3'; fill: #ff6361" transform="translate(285.542231 98.969037)">reference, INL</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 6.8px; font-family: 'Source Sans 3'; fill: #ff6361" transform="translate(362.398098 88.876838)">latency,</text>
+    <text style="font-size: 6.8px; font-family: 'Source Sans 3'; fill: #ff6361" transform="translate(360.469129 98.744318)">rounding</text>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 700; font-size: 6.8px; font-family: 'Source Sans 3'; text-anchor: start; fill: #ff6361" x="2.834646" y="84.054983" transform="rotate(-0 2.834646 84.054983)">dominant error added</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pd35841a313">
+   <rect x="0" y="0" width="476.220472" height="130.393701"/>
+  </clipPath>
+ </defs>
+</svg>

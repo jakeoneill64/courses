@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="476.220472pt" height="96.377953pt" viewBox="0 0 476.220472 96.377953" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 96.377953 
+L 476.220472 96.377953 
+L 476.220472 0 
+L 0 0 
+L 0 96.377953 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 10.204724 68.031496 
+L 97.511811 68.031496 
+Q 102.047244 68.031496 102.047244 63.496063 
+L 102.047244 30.047244 
+Q 102.047244 25.511811 97.511811 25.511811 
+L 10.204724 25.511811 
+Q 5.669291 25.511811 5.669291 30.047244 
+L 5.669291 63.496063 
+Q 5.669291 68.031496 10.204724 68.031496 
+z
+" clip-path="url(#pa035d2805b)" style="fill: #003f5c; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 140.598425 68.031496 
+L 205.228346 68.031496 
+Q 209.76378 68.031496 209.76378 63.496063 
+L 209.76378 30.047244 
+Q 209.76378 25.511811 205.228346 25.511811 
+L 140.598425 25.511811 
+Q 136.062992 25.511811 136.062992 30.047244 
+L 136.062992 63.496063 
+Q 136.062992 68.031496 140.598425 68.031496 
+z
+" clip-path="url(#pa035d2805b)" style="fill: #fff5e0; stroke: #ffa600; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 242.645669 68.031496 
+L 307.275591 68.031496 
+Q 311.811024 68.031496 311.811024 63.496063 
+L 311.811024 30.047244 
+Q 311.811024 25.511811 307.275591 25.511811 
+L 242.645669 25.511811 
+Q 238.110236 25.511811 238.110236 30.047244 
+L 238.110236 63.496063 
+Q 238.110236 68.031496 242.645669 68.031496 
+z
+" clip-path="url(#pa035d2805b)" style="fill: #fff5e0; stroke: #ffa600; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 356.031496 68.031496 
+L 466.015748 68.031496 
+Q 470.551181 68.031496 470.551181 63.496063 
+L 470.551181 30.047244 
+Q 470.551181 25.511811 466.015748 25.511811 
+L 356.031496 25.511811 
+Q 351.496063 25.511811 351.496063 30.047244 
+L 351.496063 63.496063 
+Q 351.496063 68.031496 356.031496 68.031496 
+z
+" clip-path="url(#pa035d2805b)" style="fill: #58508d; stroke: #58508d; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 600; font-size: 8.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffffff" x="53.858268" y="44.522635" transform="rotate(-0 53.858268 44.522635)">Transmitter</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 6.8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffffff" x="53.858268" y="56.999497" transform="rotate(-0 53.858268 56.999497)">up to +20 dBm</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 600; font-size: 8.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="172.913386" y="44.514307" transform="rotate(-0 172.913386 44.514307)">30 dB</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 6.8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="172.913386" y="56.873591" transform="rotate(-0 172.913386 56.873591)">2 W rating</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 600; font-size: 8.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="274.96063" y="49.616669" transform="rotate(-0 274.96063 49.616669)">10 dB</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 600; font-size: 8.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffffff" x="411.023622" y="43.743635" transform="rotate(-0 411.023622 43.743635)">tinySA Ultra</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 6.8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffffff" x="411.023622" y="57.040403" transform="rotate(-0 411.023622 57.040403)">max safe input from manual</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 102.047244 46.771654 
+Q 119.055118 46.771654 134.944958 46.771654 
+" clip-path="url(#pa035d2805b)" style="fill: none; stroke: #1b2430; stroke-linecap: round"/>
+    <path d="M 131.944958 45.271654 
+L 134.944958 46.771654 
+L 131.944958 48.271654 
+z
+" clip-path="url(#pa035d2805b)" style="fill: #1b2430; stroke: #1b2430; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 209.76378 46.771654 
+Q 223.937008 46.771654 236.992202 46.771654 
+" clip-path="url(#pa035d2805b)" style="fill: none; stroke: #1b2430; stroke-linecap: round"/>
+    <path d="M 233.992202 45.271654 
+L 236.992202 46.771654 
+L 233.992202 48.271654 
+z
+" clip-path="url(#pa035d2805b)" style="fill: #1b2430; stroke: #1b2430; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 311.811024 46.771654 
+Q 331.653543 46.771654 350.378029 46.771654 
+" clip-path="url(#pa035d2805b)" style="fill: none; stroke: #1b2430; stroke-linecap: round"/>
+    <path d="M 347.378029 45.271654 
+L 350.378029 46.771654 
+L 347.378029 48.271654 
+z
+" clip-path="url(#pa035d2805b)" style="fill: #1b2430; stroke: #1b2430; stroke-linecap: round"/>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #5a6472" x="119.055118" y="44.189291" transform="rotate(-0 119.055118 44.189291)">+20 dBm</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #5a6472" x="223.937008" y="44.189291" transform="rotate(-0 223.937008 44.189291)">−10 dBm</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #5a6472" x="331.653543" y="44.189291" transform="rotate(-0 331.653543 44.189291)">−20 dBm</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 600; font-size: 7.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ff6361" x="238.110236" y="88.260068" transform="rotate(-0 238.110236 88.260068)">Check before connecting: transmit power − attenuation ≤ instrument limit − 10 dB margin</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pa035d2805b">
+   <rect x="0" y="-0" width="476.220472" height="96.377953"/>
+  </clipPath>
+ </defs>
+</svg>

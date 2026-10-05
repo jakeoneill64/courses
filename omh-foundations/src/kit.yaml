@@ -1,0 +1,2648 @@
+# Prices are for one unit, as the named seller showed them on the `checked` date. vat: "inc" includes UK VAT, "ex" excludes it (add 20 %), "import" means an overseas seller (import VAT is charged on delivery).
+
+checked: '2026-10-04'
+categories:
+- id: bench
+  name: Bench instruments and tools
+- id: parts
+  name: Components and consumables
+- id: compute
+  name: Computers, FPGA, debug and networking
+- id: ti-mcu
+  name: TI microcontroller boards
+- id: ti-sensor
+  name: Sensors
+- id: ti-power
+  name: TI power
+- id: ti-motor
+  name: TI motor control
+- id: ti-rf
+  name: TI radio, microwave and radar
+- id: rf-test
+  name: RF test equipment and accessories
+- id: drone
+  name: Drone airframe, power and flight electronics
+- id: server
+  name: Server, storage and networking
+items:
+- id: multimeter
+  name: Brymen BM235 true-RMS multimeter
+  maker: Brymen
+  sku: BM235
+  url: https://telonic.co.uk/product/brymen-bm235-professional-multimeter-cat-ii-1kv-cat-iii-600v/
+  price: 87.6
+  currency: GBP
+  vat: inc
+  seller: Telonic Instruments
+  qty: 1
+  unit: 1
+  category: bench
+  optional: false
+  use: Every lab. Its K-type thermocouple input is the course's reference thermometer.
+  notes: Ships with gold-tip leads and a K-type probe. 600 µA range reads to 0.1 µA. Shown as back-order.
+  verified: true
+- id: oscilloscope
+  name: Rigol DHO804 4-channel 12-bit oscilloscope, 70 MHz
+  maker: Rigol
+  sku: DHO804
+  url: https://www.rigol-uk.co.uk/product/rigol-dho804-4ch-12bit-70mhz-1-25gsa-s-usb-powered-digital-oscilloscope/
+  alt_url: https://siglent.co.uk/product/siglent-sds804x-hd-4ch-70mhz-2gsa-s-12-bit-hd-high-resolution-oscilloscope/
+  price: 364.8
+  currency: GBP
+  vat: inc
+  seller: Rigol UK
+  qty: 1
+  unit: 1
+  category: bench
+  optional: false
+  use: Every lab from Chapter 1.1 onwards.
+  notes: '1.25 GSa/s, 25 Mpts, USB and LAN for scripted captures. Back-order of one to two weeks. Alternative: Siglent SDS804X HD, £412.80 inc VAT.'
+  verified: true
+- id: bench-supply
+  name: Siglent SPD1305X programmable linear supply, 30 V 5 A
+  maker: Siglent
+  sku: SPD1305X
+  url: https://telonic.co.uk/product/siglent-spd1305x-0-30v-0-5a-programmable-dc-power-supply/
+  price: 259.2
+  currency: GBP
+  vat: inc
+  seller: Telonic Instruments
+  qty: 1
+  unit: 1
+  category: bench
+  optional: false
+  use: Current-limited power for every first power-on; 24 V for the motor labs.
+  notes: Linear, 4-wire sense, remote control over USB. Needs 4 mm banana leads with crocodile clips.
+  verified: true
+- id: function-generator
+  name: Siglent SDG1032X Plus 2-channel 30 MHz arbitrary waveform generator
+  maker: Siglent
+  sku: SDG1032X Plus
+  url: https://siglent.co.uk/product/siglent-sdg1032x-plus-2ch-30mhz-1gsa-s-function-generator/
+  price: 373.2
+  currency: GBP
+  vat: inc
+  seller: Siglent UK
+  qty: 1
+  unit: 1
+  category: bench
+  optional: false
+  use: Filter, ADC and op-amp labs in Chapter 1.2; loop injection in 1.4.
+  notes: Scriptable over LAN and USB (SCPI), which the Bode-plot lab uses.
+  verified: true
+- id: electronic-load
+  name: Siglent SDL1020X-E programmable DC load, 150 V 30 A 200 W
+  maker: Siglent
+  sku: SDL1020X-E
+  url: https://telonic.co.uk/product/siglent-sdl1020x-e-150v-30a-200w-programmable-dc-electronic-load/
+  price: 444.0
+  currency: GBP
+  vat: inc
+  seller: Telonic Instruments
+  qty: 1
+  unit: 1
+  category: bench
+  optional: false
+  use: Converter efficiency and transients (1.4), battery discharge curves (1.4.4).
+  notes: Battery-test mode with cut-off voltage. Needs 30 A leads and an XT60 pigtail for the LiPo.
+  verified: true
+- id: solder-station
+  name: ATTEN ST-8802 soldering and hot-air rework station
+  maker: ATTEN
+  sku: ST-8802
+  url: https://www.flyingtech.co.uk/product/atten-st-8802-2-in-1-soldering-rework-station/
+  price: 189.9
+  currency: GBP
+  vat: inc
+  seller: Flying Tech
+  qty: 1
+  unit: 1
+  category: bench
+  optional: false
+  use: All soldering; hot air for the SMA rework (3.2.1) and board rework (3.4).
+  notes: '65 W iron with T900 tips and an 800 W hot-air handle with four nozzles, UK mains lead. Only one was in stock: if it has gone, buy the Pinecil
+    below for soldering and add hot air later.'
+  verified: true
+- id: pinecil
+  name: PINE64 Pinecil V2 USB-C soldering iron
+  maker: PINE64
+  sku: Pinecil V2
+  url: https://pine64.com/product/pinecil-smart-mini-portable-soldering-iron/
+  alt_url: https://thepihut.com/products/miniware-ts101-smart-soldering-iron
+  price: 25.99
+  currency: USD
+  vat: import
+  seller: PINE64
+  qty: 1
+  unit: 1
+  category: bench
+  optional: true
+  use: Alternative iron if the ATTEN station is out of stock.
+  notes: 'Needs a 20 V USB-C PD supply (the Raspberry Pi 45 W supply, The Pi Hut, £14.40). UK alternative: Miniware TS101 at The Pi Hut, £57.50.'
+  verified: true
+- id: esd-mat
+  name: iFixit portable anti-static mat with wrist strap
+  maker: iFixit
+  sku: The Pi Hut 102672
+  url: https://thepihut.com/products/ifixit-portable-anti-static-mat
+  price: 28.0
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 1
+  category: bench
+  optional: false
+  use: Handling every board, especially the radar and RF boards.
+  notes: 60 × 60 cm mat, 1.8 m earth cord with 10 mm snap, wrist strap.
+  verified: true
+- id: logic-analyser
+  name: USB logic analyser, 24 MHz, 8 channels (sigrok PulseView)
+  maker: SparkFun
+  sku: TOL-18627
+  url: https://thepihut.com/products/usb-logic-analyzer-24mhz-8-channel
+  price: 26.3
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 1
+  category: bench
+  optional: false
+  use: 'Every bus lab: I²C, SPI, UART, DShot, CRSF.'
+  notes: 'Inputs to 5.25 V. On some units the ground pin beside input 6 is not ground: use another ground pin.'
+  verified: true
+- id: saleae
+  name: Saleae Logic 8
+  maker: Saleae
+  sku: Logic 8
+  url: https://www.saleae.com/products/saleae-logic-8
+  currency: GBP
+  vat: inc
+  seller: Saleae, through Mouser
+  qty: 1
+  unit: 1
+  category: bench
+  optional: true
+  use: A faster analyser with analogue capture, if the budget allows.
+  notes: 100 MS/s digital, 10 MS/s analogue. No GBP price could be confirmed.
+  verified: true
+- id: microscope
+  name: Andonstar AD246S-M HDMI digital microscope with stand, UK plug
+  maker: Andonstar
+  sku: AD246S-M
+  url: https://andonstarmicroscope.com/products/tri-lens-microscope-246sm-249sm
+  price: 199.0
+  currency: USD
+  vat: import
+  seller: Andonstar
+  qty: 1
+  unit: 3
+  category: bench
+  optional: false
+  use: 'Inspecting joints and 0402 parts: the SMA rework (3.2.1) and board bring-up (3.4).'
+  notes: Use lens A (18–720×, 12–320 mm working distance).
+  verified: true
+- id: calipers
+  name: 150 mm digital calipers
+  maker: The Pi Hut
+  sku: '105194'
+  url: https://thepihut.com/products/150mm-composite-electronic-digital-calipers
+  price: 9.5
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 1
+  category: bench
+  optional: false
+  use: Antenna lengths, footprints, mechanical fits.
+  notes: Needs an LR44 cell.
+  verified: true
+- id: tweezers
+  name: iFixit precision tweezers, set of three, ESD-safe
+  maker: iFixit
+  sku: EU145060
+  url: https://thepihut.com/products/ifixit-precision-tweezers-set
+  price: 14.0
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 1
+  category: bench
+  optional: false
+  use: Placing and reworking surface-mount parts.
+  verified: true
+- id: flush-cutters
+  name: iFixit Mandible flush cutters
+  maker: iFixit
+  sku: IF145-548-1
+  url: https://thepihut.com/products/ifixit-mandible-flush-cutters
+  price: 15.0
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 1
+  category: bench
+  optional: false
+  use: Trimming leads and wire.
+  notes: Copper only; do not cut steel.
+  verified: true
+- id: thermal-camera
+  name: Topdon TC001 USB-C thermal camera
+  maker: Topdon
+  sku: TC001
+  url: https://www.topdondiagnostics.co.uk/product-page/tc001-android-thermal-camera
+  price: 258.0
+  currency: GBP
+  vat: inc
+  seller: Topdon UK
+  qty: 1
+  unit: 1
+  category: bench
+  optional: true
+  use: Finding hot spots and shorts; converter and motor thermal checks.
+  notes: 256 × 192, −20 to 550 °C. Needs an Android phone with USB-C or a Windows PC.
+  verified: true
+- id: thermo-logger
+  name: SkyRC TLD001 two-channel K-type temperature logger
+  maker: SkyRC
+  sku: TLD001
+  url: https://www.flyingtech.co.uk/product/skyrc-tld001-thermologger-duo/
+  price: 19.99
+  currency: GBP
+  vat: inc
+  seller: Flying Tech
+  qty: 1
+  unit: 3
+  category: bench
+  optional: true
+  use: Logging motor and ESC temperatures on the thrust stand (3.1).
+  notes: Two probes, −20 to 210 °C, Bluetooth logging to a phone.
+  verified: true
+- id: breadboard
+  name: Full-size 830-point breadboard
+  maker: The Pi Hut
+  sku: '102817'
+  url: https://thepihut.com/products/full-sized-breadboard
+  price: 5.0
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 2
+  unit: 1
+  category: parts
+  optional: false
+  use: Units 1 and 2 circuits.
+  verified: true
+- id: jumpers
+  name: Dupont jumper wire pack, 120 pieces
+  maker: The Pi Hut
+  sku: '102394'
+  url: https://thepihut.com/products/thepihuts-jumper-bumper-pack-120pcs-dupont-wire
+  alt_url: https://thepihut.com/products/jumper-wire-kit-140-piece
+  price: 6.0
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 1
+  category: parts
+  optional: false
+  use: Breadboard and module wiring.
+  notes: 40 each of male-male, male-female and female-female. The 140-piece pre-cut kit (£4.00) makes neater breadboards.
+  verified: true
+- id: resistor-kit
+  name: Metal-film resistor kit, 575 pieces
+  maker: The Pi Hut
+  sku: '102328'
+  url: https://thepihut.com/products/ultimate-resistor-kit
+  price: 6.0
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 1
+  category: parts
+  optional: false
+  use: Units 1 and 2.
+  notes: '16 values from 0 Ω to 1 MΩ. Tolerance not stated: measure any resistor whose value matters.'
+  verified: true
+- id: electrolytic-kit
+  name: Electrolytic capacitor kit, 200 pieces
+  maker: The Pi Hut
+  sku: '104752'
+  url: https://thepihut.com/products/200-piece-ultimate-capacitor-kit
+  price: 6.0
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 1
+  category: parts
+  optional: false
+  use: RC, decoupling and bulk-capacitance labs.
+  notes: 0.1 to 220 µF, 10 to 50 V.
+  verified: true
+- id: ceramic-kit
+  name: Ceramic capacitor pack, 250 pieces
+  maker: DFRobot
+  sku: FIT0118
+  url: https://thepihut.com/products/ceramic-capacitor-pack-250-pcs
+  price: 4.6
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 1
+  category: parts
+  optional: false
+  use: Decoupling (100 nF) and small-value filters.
+  notes: 25 values from 1 pF to 100 nF.
+  verified: true
+- id: solder
+  name: Chip Quik Sn63/Pb37 solder wire, 0.5 mm, 28 g
+  maker: Chip Quik
+  sku: SMDSW.020 1OZ
+  url: https://www.digikey.co.uk/en/products/result?keywords=SMDSW.020%201OZ
+  price: 5.81
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 1
+  category: parts
+  optional: false
+  use: All soldering.
+  notes: Leaded solder is easier to learn on. Work with ventilation and wash your hands afterwards.
+  verified: true
+- id: flux-pen
+  name: Future 315 no-clean flux pen
+  maker: Warton Metals
+  sku: The Pi Hut 106030
+  url: https://thepihut.com/products/flux-pen-future-315-low-residue-no-clean
+  price: 7.8
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 1
+  category: parts
+  optional: false
+  use: Surface-mount work and rework.
+  verified: true
+- id: solder-wick
+  name: Desoldering braid, 1.5 mm × 1.5 m
+  maker: Atten
+  sku: The Pi Hut 104300
+  url: https://thepihut.com/products/solder-wick-1-5mm-wide-and-1-5m-5-feet-long
+  price: 2.6
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 1
+  category: parts
+  optional: false
+  use: Removing solder bridges.
+  notes: Add flux before use.
+  verified: true
+- id: heat-shrink
+  name: Heat-shrink kit, 265 pieces
+  maker: The Pi Hut
+  sku: '104745'
+  url: https://thepihut.com/products/265-piece-ultimate-heat-shrink-kit
+  price: 6.0
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 1
+  category: parts
+  optional: false
+  use: Insulating joints; XT60 solder cups in 1.4.4 and 3.5.
+  notes: 1.5 to 10 mm diameters.
+  verified: true
+- id: fan
+  name: Noctua NF-A8 PWM 80 mm 12 V 4-pin fan
+  maker: Noctua
+  sku: NF-A8 PWM
+  url: https://www.scan.co.uk/products/80mm-noctua-nf-a8-pwm-80mm-premium-quality-fan
+  price: 16.99
+  currency: GBP
+  vat: inc
+  seller: Scan
+  qty: 1
+  unit: 1
+  category: parts
+  optional: false
+  use: The MOSFET switch load (1.1.3), the INA228 load (1.3.3), and the fan-control labs (2.6, 4.3).
+  notes: 12 V, 4-pin PWM with tachometer, 2,200 rpm.
+  verified: true
+- id: shunt-1mohm
+  name: Bourns RSA-50-50 four-terminal current shunt, 1 mΩ, 50 A
+  maker: Bourns (Riedon)
+  sku: RSA-50-50
+  url: https://www.digikey.co.uk/en/products/detail/bourns-inc/RSA-50-50/4967070
+  price: 34.7
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 1
+  category: parts
+  optional: false
+  use: 'High-current measurement with an INA228: the battery lab (1.4.4) and the thrust stand (3.1.1).'
+  notes: Current through the large M4 studs; sense only across the small screws. 2.5 W.
+  verified: true
+- id: pi5
+  name: Raspberry Pi 5, 8 GB
+  maker: Raspberry Pi
+  sku: SC1112
+  url: https://thepihut.com/products/raspberry-pi-5
+  alt_url: https://shop.pimoroni.com/products/raspberry-pi-5
+  price: 168.0
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 1
+  category: compute
+  optional: false
+  use: The lab host from Chapter 1.3 onwards; the Arm node in Units 2 and 4.
+  notes: Memory shortages have raised the price; the 4 GB board (£105.60) is enough for Units 1 and 3 but not Unit 4.
+  verified: true
+- id: pi5-psu
+  name: Raspberry Pi 27 W USB-C power supply, UK plug
+  maker: Raspberry Pi
+  sku: SC1149
+  url: https://thepihut.com/products/raspberry-pi-27w-usb-c-power-supply
+  price: 11.5
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 1
+  category: compute
+  optional: false
+  use: Powering the Pi 5.
+  notes: Select the UK variant.
+  verified: true
+- id: pi5-cooler
+  name: Raspberry Pi Active Cooler for Pi 5
+  maker: Raspberry Pi
+  sku: SC1148
+  url: https://thepihut.com/products/active-cooler-for-raspberry-pi-5
+  price: 4.8
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 1
+  category: compute
+  optional: false
+  use: Keeping the Pi out of thermal throttling during kernel builds.
+  verified: true
+- id: tmp117
+  name: Adafruit TMP117 ±0.1 °C temperature sensor (STEMMA QT)
+  maker: Adafruit
+  sku: ADA4821
+  url: https://thepihut.com/products/adafruit-tmp117-0-1-c-high-accuracy-i2c-temperature-sensor
+  alt_url: https://www.adafruit.com/product/4821
+  price: 11.1
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 2
+  unit: 1
+  category: ti-sensor
+  optional: false
+  use: Drivers and metrology (1.3), firmware (2.6), device-tree overlays (2.7.5), Linux IIO (4.3).
+  notes: 'TI TMP117. Few in stock: alternative SparkFun SEN-15805 at The Pi Hut, £16.30.'
+  verified: true
+- id: hdc3022
+  name: Adafruit HDC3022 temperature and humidity sensor (STEMMA QT)
+  maker: Adafruit
+  sku: ADA5989
+  url: https://thepihut.com/products/adafruit-hdc3021-precision-temperature-humidity-sensor-stemma-qt-qwiic
+  alt_url: https://www.adafruit.com/product/5989
+  price: 8.6
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 1
+  category: ti-sensor
+  optional: false
+  use: Humidity metrology and the salt test (1.3.2).
+  notes: TI HDC3022 behind a PTFE filter. Sold out everywhere on 4 October 2026; DigiKey expected stock in February 2027. If it is still unavailable, buy
+    the SHT45 below.
+  verified: true
+- id: sht45
+  name: Adafruit Sensirion SHT45 temperature and humidity sensor (STEMMA QT)
+  maker: Adafruit
+  sku: ADA5665
+  url: https://shop.pimoroni.com/products/adafruit-sensirion-sht45-precision-temperature-humidity-sensor-stemma-qt-qwiic
+  price: 12.6
+  currency: GBP
+  vat: inc
+  seller: Pimoroni
+  qty: 1
+  unit: 1
+  category: ti-sensor
+  optional: true
+  use: The in-stock alternative to the HDC3022 for Lab 1.3.2.
+  notes: Not a TI part. ±1.0 %RH, ±0.1 °C, I²C at 0x44, CRC-8 on every word like the HDC3022.
+  verified: true
+- id: ina228
+  name: Adafruit INA228 85 V 20-bit power monitor
+  maker: Adafruit
+  sku: '5832'
+  url: https://www.digikey.co.uk/en/products/result?keywords=adafruit%205832
+  alt_url: https://www.adafruit.com/product/5832
+  price: 11.0
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 1
+  category: ti-sensor
+  optional: false
+  use: Power metrology (1.3.3), the battery lab (1.4.4), the thrust stand (3.1.1), Linux hwmon (4.3).
+  notes: TI INA228 with a 15 mΩ shunt on board. For the second board, desolder that shunt and use the Bourns 1 mΩ shunt.
+  verified: true
+- id: tmag5273
+  name: SparkFun TMAG5273 3D Hall-effect sensor (Qwiic)
+  maker: SparkFun
+  sku: SEN-23880
+  url: https://www.digikey.co.uk/en/products/result?keywords=SEN-23880
+  alt_url: https://www.sparkfun.com/sparkfun-linear-3d-hall-effect-sensor-tmag5273-qwiic.html
+  price: 5.52
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 1
+  category: ti-sensor
+  optional: false
+  use: Magnetic angle (1.3.4).
+  notes: Uses the more sensitive TMAG5273A1 (±40 or ±80 mT) at I²C 0x35.
+  verified: true
+- id: ads1115
+  name: Adafruit ADS1115 16-bit ADC (STEMMA QT)
+  maker: Adafruit
+  sku: ADA1085
+  url: https://thepihut.com/products/adafruit-ads1115-16-bit-adc-4-channel-with-programmable-gain-amplifier
+  price: 14.4
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 1
+  category: ti-sensor
+  optional: false
+  use: Sampling, aliasing and quantisation (1.2.3).
+  notes: TI ADS1115.
+  verified: true
+- id: ads1220
+  name: Olimex BB-ADS1220 24-bit ADC breakout
+  maker: Olimex
+  sku: BB-ADS1220
+  url: https://www.digikey.co.uk/en/products/result?keywords=BB-ADS1220
+  alt_url: https://www.olimex.com/Products/Modules/Sensors/BB-ADS1220/
+  price: 13.57
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 1
+  category: ti-sensor
+  optional: false
+  use: The load cell (1.2.4), the thrust stand (3.1.1), and the SPI IIO driver (4.3).
+  notes: TI ADS1220. SPI mode 1 with a DRDY pin. Headers supplied but not soldered.
+  verified: true
+- id: load-cell
+  name: SparkFun 5 kg straight-bar load cell (TAL220B)
+  maker: SparkFun
+  sku: SEN-14729
+  url: https://www.digikey.co.uk/en/products/result?keywords=SEN-14729
+  price: 13.11
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 1
+  category: ti-sensor
+  optional: false
+  use: The load-cell lab (1.2.4), which becomes the thrust stand (3.1.1).
+  notes: Check the thread sizes in SparkFun's datasheet before making the mounting blocks.
+  verified: true
+- id: opt3101
+  name: Pololu OPT3101 three-channel time-of-flight module (no headers)
+  maker: Pololu
+  sku: '3412'
+  url: https://www.digikey.co.uk/en/products/result?keywords=pololu%203412
+  alt_url: https://www.pololu.com/product/3412
+  price: 34.28
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 1
+  category: ti-sensor
+  optional: false
+  use: Optical time of flight (1.3.5).
+  notes: TI OPT3101. I²C at 0x58, 2.5 to 5.5 V, up to 1 m on this module.
+  verified: true
+- id: opt4048
+  name: Adafruit OPT4048 XYZ colour and lux sensor (STEMMA QT)
+  maker: Adafruit
+  sku: ADA6335
+  url: https://thepihut.com/products/adafruit-opt4048-tri-stimulus-xyz-color-and-lux-sensor
+  alt_url: https://www.adafruit.com/product/6335
+  price: 9.3
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 4
+  category: ti-sensor
+  optional: false
+  use: The IIO driver you write in Chapter 4.3 (and the Unit 1 stretch).
+  notes: 'TI OPT4048. Linux has no driver for it. Alternative: SparkFun SEN-22638, £13.00.'
+  verified: true
+- id: tps62933evm
+  name: TPS62933 3 A synchronous buck EVM
+  maker: Texas Instruments
+  sku: TPS62933EVM
+  url: https://www.ti.com/tool/TPS62933EVM
+  alt_url: https://www.digikey.co.uk/en/products/result?keywords=TPS62933EVM
+  price: 49.59
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 1
+  category: ti-power
+  optional: false
+  use: Inside a buck converter (1.4.2).
+  notes: 5.1 to 30 V in, 5 V out at 3 A, 500 kHz. Switch-node and loop-injection test points.
+  verified: true
+- id: tps25947evm
+  name: TPS25947 eFuse EVM
+  maker: Texas Instruments
+  sku: TPS25947EVM
+  url: https://www.ti.com/tool/TPS25947EVM
+  alt_url: https://www.digikey.co.uk/en/products/result?keywords=TPS25947EVM
+  price: 103.04
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 1
+  category: ti-power
+  optional: false
+  use: Inrush, short-circuit and reverse-current protection (1.4.3); the part Board A uses.
+  notes: 2.7 to 23 V, up to 5.5 A, jumper-set current limit.
+  verified: true
+- id: lm74700evm
+  name: LM74700-Q1 ideal-diode controller EVM
+  maker: Texas Instruments
+  sku: LM74700EVM
+  url: https://www.ti.com/tool/LM74700EVM
+  alt_url: https://www.digikey.co.uk/en/products/result?keywords=LM74700EVM
+  price: 51.96
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 1
+  category: ti-power
+  optional: false
+  use: Reverse-polarity protection (1.4.3).
+  notes: Blocks −12 V and reacts within 2 µs.
+  verified: true
+- id: bq4050evm
+  name: BQ4050 1–4S fuel gauge EVM
+  maker: Texas Instruments
+  sku: BQ4050EVM-561
+  url: https://www.ti.com/tool/BQ4050EVM-561
+  alt_url: https://www.digikey.co.uk/en/products/result?keywords=BQ4050EVM-561
+  price: 82.72
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 1
+  category: ti-power
+  optional: true
+  use: 'Stretch in 1.4: gauging the drone pack.'
+  notes: Needs the EV2400 and TI bqStudio on the Windows PC.
+  verified: true
+- id: ev2400
+  name: EV2400 SMBus/I²C gauge interface
+  maker: Texas Instruments
+  sku: EV2400
+  url: https://www.ti.com/tool/EV2400
+  alt_url: https://www.digikey.co.uk/en/products/result?keywords=EV2400
+  price: 194.31
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 1
+  category: ti-power
+  optional: true
+  use: Only with the BQ4050 stretch.
+  verified: true
+- id: tinysa
+  name: tinySA Ultra spectrum analyser (ZS405)
+  maker: tinySA
+  sku: ZS405
+  url: https://www.mirfield-electronics.co.uk/tinysa-ultra-spectrum-an-new/
+  alt_url: https://tinysa.org/wiki/pmwiki.php?n=TinySA4.Specification
+  price: 149.95
+  currency: GBP
+  vat: inc
+  seller: Mirfield Electronics
+  qty: 1
+  unit: 1
+  category: rf-test
+  optional: false
+  use: Spectrum and power measurement from Chapter 1.5 onwards; signal generator for 1.5.4.
+  notes: Plus £7.50 postage. Mirfield is the authorised UK seller; clones are common elsewhere. Input limit +6 dBm absolute, 0 dBm in normal use.
+  verified: true
+- id: litevna
+  name: LiteVNA 64 vector network analyser
+  maker: Zeenko
+  sku: LiteVNA 64
+  url: https://eleshop.eu/catalog/product/view/id/5341/s/litevna-5341/category/543/
+  alt_url: https://www.zeenko.tech/litevna
+  price: 144.59
+  currency: EUR
+  vat: import
+  seller: Eleshop (Netherlands)
+  qty: 1
+  unit: 1
+  category: rf-test
+  optional: false
+  use: S-parameters, antennas and matching (1.5.2, 1.5.3).
+  notes: 50 kHz to 6.3 GHz, so it covers 868 MHz and 2.4 GHz. Ships with cables and an SMA calibration kit. Never connect a transmitter to it.
+  verified: true
+- id: rtl-sdr
+  name: RTL-SDR Blog V4 receiver
+  maker: RTL-SDR Blog
+  sku: RTL-SDR-V4
+  url: https://shop.technofix.uk/rtl-sdr-com-v4-usb-sdr-receiver-1ppm-tcxo-r828d-tuner-rtl2832u
+  price: 46.49
+  currency: GBP
+  vat: inc
+  seller: Technofix
+  qty: 1
+  unit: 1
+  category: rf-test
+  optional: false
+  use: The FM receiver (1.5.5), chirp measurement (3.3.3), packet demodulation (3.2.6).
+  notes: Dongle only, 500 kHz to 1.766 GHz. Technofix is the authorised UK reseller.
+  verified: true
+- id: att-10db
+  name: Mini-Circuits 10 dB attenuator, 2 W, SMA, DC–6 GHz
+  maker: Mini-Circuits
+  sku: VAT-10W2+
+  url: https://www.digikey.co.uk/en/products/result?keywords=VAT-10W2%2B
+  price: 27.76
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 1
+  category: rf-test
+  optional: false
+  use: Protecting instruments; building attenuation chains.
+  verified: true
+- id: att-20db
+  name: Mini-Circuits 20 dB attenuator, 2 W, SMA, DC–6 GHz
+  maker: Mini-Circuits
+  sku: VAT-20W2+
+  url: https://www.digikey.co.uk/en/products/result?keywords=VAT-20W2%2B
+  price: 33.13
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 1
+  category: rf-test
+  optional: false
+  use: As above.
+  verified: true
+- id: att-30db
+  name: Mini-Circuits 30 dB attenuator, 2 W, SMA, DC–6 GHz
+  maker: Mini-Circuits
+  sku: VAT-30W2+
+  url: https://www.digikey.co.uk/en/products/result?keywords=VAT-30W2%2B
+  price: 27.76
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 1
+  category: rf-test
+  optional: false
+  use: The attenuator that always sits on a transmitter's output.
+  verified: true
+- id: att-30db-more
+  name: Mini-Circuits 30 dB attenuator, two more
+  maker: Mini-Circuits
+  sku: VAT-30W2+
+  url: https://www.digikey.co.uk/en/products/result?keywords=VAT-30W2%2B
+  price: 27.76
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 3
+  category: rf-test
+  optional: false
+  use: 'Reaching receiver sensitivity in the packet-error test (3.2.3): up to 120 dB of fixed attenuation with the others.'
+  verified: true
+- id: sma-terminator
+  name: Amphenol SMA 50 Ω termination, to 18 GHz
+  maker: Amphenol RF
+  sku: '132360'
+  url: https://www.digikey.co.uk/en/products/result?keywords=132360%20amphenol
+  price: 3.53
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 3
+  unit: 1
+  category: rf-test
+  optional: false
+  use: VNA calibration checks and unused synthesiser outputs.
+  notes: For a transmitter, fit the 30 dB attenuator first and the terminator after it.
+  verified: true
+- id: sma-cable
+  name: Amphenol SMA to SMA cable, RG316, 12 in
+  maker: Amphenol RF
+  sku: 135101-01-12.00
+  url: https://www.digikey.co.uk/en/products/result?keywords=135101-01-12.00
+  price: 14.7
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 1
+  category: rf-test
+  optional: false
+  use: Connecting instruments, attenuators and boards.
+  notes: Rated to 3 GHz, enough for 868 MHz and 2.4 GHz. The analysers include short cables too.
+  verified: true
+- id: sma-adapter-mm
+  name: Amphenol SMA plug to SMA plug adapter
+  maker: Amphenol RF
+  sku: '132168'
+  url: https://www.digikey.co.uk/en/products/result?keywords=132168
+  price: 7.03
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 1
+  category: rf-test
+  optional: false
+  use: Joining two female ports, such as attenuator to instrument.
+  verified: true
+- id: antenna-868
+  name: Linx 868 MHz half-wave whip antenna, SMA male
+  maker: TE Connectivity Linx
+  sku: ANT-868-CW-HWR-SMA
+  url: https://www.digikey.co.uk/en/products/result?keywords=ANT-868-CW-HWR-SMA
+  price: 9.9
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 1
+  category: rf-test
+  optional: false
+  use: VNA measurements (1.5.2) and the 868 MHz link (3.2).
+  notes: 853–883 MHz, 142 mm. Fits the CC1312R LaunchPad's SMA connector after the rework in Lab 3.2.1.
+  verified: true
+- id: lipo
+  name: Overlander Supersport Pro 5000 mAh 3S 35C LiPo, XT60
+  maker: Overlander
+  sku: 2577 (XT60)
+  url: https://overlander.co.uk/product/5000mah-11-1v-3s-35c-supersport-pro-lipo-battery/
+  price: 45.98
+  currency: GBP
+  vat: inc
+  seller: Overlander
+  qty: 1
+  unit: 1
+  category: drone
+  optional: false
+  use: Characterised in Lab 1.4.4; powers the drone in Chapter 3.5.
+  notes: 11.1 V, 343 g. Choose the XT60 option. Confirm the courier delivers lithium batteries to your address before ordering.
+  verified: true
+- id: charger
+  name: SkyRC S65 65 W AC balance charger
+  maker: SkyRC
+  sku: S65
+  url: https://www.hobbyrc.co.uk/skyrc-s65-65w-6a-ac-balance-charger
+  price: 32.05
+  currency: GBP
+  vat: inc
+  seller: HobbyRC
+  qty: 1
+  unit: 1
+  category: drone
+  optional: false
+  use: Charging and storage-charging the pack.
+  notes: Built-in mains supply, 2–4S, up to 6 A. Charge the 5000 mAh pack at 5 A (1C).
+  verified: true
+- id: lipo-bag
+  name: ToolkitRC LiPo safety bag, large
+  maker: ToolkitRC
+  sku: LiPo Safety Bag (Large)
+  url: https://www.hobbyrc.co.uk/toolkitrc-lipo-safety-bag-large
+  price: 3.9
+  currency: GBP
+  vat: inc
+  seller: HobbyRC
+  qty: 1
+  unit: 1
+  category: drone
+  optional: false
+  use: Charging and storage.
+  notes: Use it on a non-flammable surface. No bag fully contains a LiPo fire.
+  verified: true
+- id: cell-checker
+  name: 1–8S cell checker with low-voltage alarm
+  maker: generic
+  sku: 1-8S Cell Checker
+  url: https://www.hobbyrc.co.uk/1-8s-cell-checker-with-low-voltage-alarm
+  price: 2.6
+  currency: GBP
+  vat: inc
+  seller: HobbyRC
+  qty: 1
+  unit: 1
+  category: drone
+  optional: false
+  use: Per-cell voltages before and after every use.
+  notes: Plugs into the balance lead.
+  verified: true
+- id: xt60-male
+  name: XT60 male connectors, pack of 2
+  maker: generic
+  sku: Black XT60 Male Connectors (2x)
+  url: https://www.hobbyrc.co.uk/black-xt60-male-connectors
+  price: 1.5
+  currency: GBP
+  vat: inc
+  seller: HobbyRC
+  qty: 1
+  unit: 1
+  category: drone
+  optional: false
+  use: Battery leads for the electronic load (1.4.4), the thrust stand and the drone.
+  verified: true
+- id: xt60-female
+  name: XT60 female connectors, pack of 2
+  maker: generic
+  sku: XT60 Female (2x)
+  url: https://www.hobbyrc.co.uk/xt60-female-connectors-2x-female
+  price: 1.5
+  currency: GBP
+  vat: inc
+  seller: HobbyRC
+  qty: 1
+  unit: 1
+  category: drone
+  optional: false
+  use: As above.
+  verified: true
+- id: wire-14awg
+  name: 14 AWG silicone wire, red and black, 0.75 m each
+  maker: HobbyRC
+  sku: 14 AWG Flexible Silicone Wire
+  url: https://www.hobbyrc.co.uk/14-awg-flexible-silicone-wire-black-red-1m
+  price: 2.15
+  currency: GBP
+  vat: inc
+  seller: HobbyRC
+  qty: 2
+  unit: 1
+  category: drone
+  optional: false
+  use: 'High-current leads: the battery lab, the thrust stand and the drone.'
+  verified: true
+- id: ulx3s
+  name: Radiona ULX3S FPGA board, ECP5 85F
+  maker: Radiona
+  sku: ULX3S 85F
+  url: https://www.crowdsupply.com/radiona/ulx3s
+  price: 275.0
+  currency: USD
+  vat: import
+  seller: Crowd Supply
+  qty: 1
+  unit: 2
+  category: compute
+  optional: false
+  use: 'Chapters 2.2 to 2.4: HDL, your CPU, caches and SDRAM.'
+  notes: Plus about $18 shipping. 84k LUTs, 32 MB SDRAM, FT231X USB-JTAG and serial.
+  verified: true
+- id: msp-exp432e401y
+  name: MSP432E401Y LaunchPad (Cortex-M4F, Ethernet)
+  maker: Texas Instruments
+  sku: MSP-EXP432E401Y
+  url: https://www.ti.com/tool/MSP-EXP432E401Y
+  alt_url: https://www.digikey.co.uk/en/products/result?keywords=MSP-EXP432E401Y
+  price: 40.04
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 2
+  category: ti-mcu
+  optional: false
+  use: Bare-metal firmware (2.6); the drone's flight controller (3.5). One stays on the bench.
+  notes: 120 MHz, 1 MB flash, 256 KB SRAM, 10/100 Ethernet MAC and PHY, AES and SHA accelerators, XDS110 debugger with a UART back-channel.
+  verified: true
+- id: lp-mspm0g3507
+  name: MSPM0G3507 LaunchPad (Cortex-M0+)
+  maker: Texas Instruments
+  sku: LP-MSPM0G3507
+  url: https://www.ti.com/tool/LP-MSPM0G3507
+  alt_url: https://www.digikey.co.uk/en/products/result?keywords=LP-MSPM0G3507
+  price: 17.19
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 2
+  category: ti-mcu
+  optional: false
+  use: The second-architecture lab (2.6.7).
+  notes: OpenOCD supports it in git master only. DigiKey showed back-order; order early.
+  verified: true
+- id: emc2101
+  name: Adafruit EMC2101 fan controller and temperature sensor (STEMMA QT)
+  maker: Adafruit
+  sku: ADA4808
+  url: https://shop.pimoroni.com/products/adafruit-emc2101-i2c-pc-fan-controller-and-temperature-sensor-stemma-qt-qwiic
+  alt_url: https://thepihut.com/products/adafruit-emc2101-i2c-pc-fan-controller-and-temperature-sensor
+  price: 5.4
+  currency: GBP
+  vat: inc
+  seller: Pimoroni
+  qty: 1
+  unit: 2
+  category: compute
+  optional: false
+  use: Fan control from firmware (2.6) and from a Linux driver (4.3).
+  notes: 'Microchip EMC2101: PWM output, tachometer input, internal and external-diode temperature.'
+  verified: true
+- id: pi-m2-hat
+  name: Raspberry Pi M.2 HAT+
+  maker: Raspberry Pi
+  sku: SC1166
+  url: https://thepihut.com/products/raspberry-pi-m2-hat-plus
+  price: 11.5
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 2
+  category: compute
+  optional: false
+  use: NVMe on the Pi 5 for the boot chain (2.7) and the second storage node (4.5).
+  notes: PCIe 2.0 ×1, takes 2230 and 2242 drives.
+  verified: true
+- id: pi-ssd
+  name: Raspberry Pi SSD 256 GB, M.2 2230
+  maker: Raspberry Pi
+  sku: SC1439
+  url: https://thepihut.com/products/raspberry-pi-ssd
+  alt_url: https://www.scan.co.uk/products/1tb-kingston-nv3-ssd-m2-2230-pcie-40-x4-nvme-3d-nand-6000mb-s-read-4000mb-s-write
+  price: 57.6
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 2
+  category: compute
+  optional: false
+  use: The Pi's boot and data drive.
+  notes: Out of stock at The Pi Hut, Pimoroni and Rapid in October 2026. Any 2230 or 2242 NVMe drive fits; the in-stock fallback is the Kingston NV3 1 TB
+    2230 at Scan, £219.98.
+  verified: true
+- id: tpm-pi
+  name: LetsTrust TPM 2.0 for Raspberry Pi
+  maker: pi3g
+  sku: The Pi Hut 104062
+  url: https://thepihut.com/products/letstrust-tpm-for-raspberry-pi
+  price: 25.9
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 2
+  category: compute
+  optional: false
+  use: Measured boot and attestation on the Pi (2.7.4, 2.7.5) and in the capstone.
+  notes: Now built with the Infineon SLB 9672 (the successor to the SLB 9670). Pi 5 support is not stated by the seller; check before relying on it, and
+    check clearance over the M.2 HAT+.
+  verified: true
+- id: atecc608
+  name: SparkFun ATECC608A cryptographic co-processor (Qwiic)
+  maker: SparkFun
+  sku: DEV-18077
+  url: https://www.digikey.co.uk/en/products/result?keywords=DEV-18077
+  alt_url: https://thepihut.com/products/adafruit-atecc608-breakout-board-stemma-qt-qwiic-ada4314
+  price: 3.72
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 2
+  category: compute
+  optional: false
+  use: Device identity for the BMC firmware (2.6, 3.4, 4.7).
+  notes: 'Locking its configuration is permanent: experiment on one, keep the other.'
+  verified: true
+- id: debug-probe
+  name: Raspberry Pi Debug Probe (CMSIS-DAP, SWD and UART)
+  maker: Raspberry Pi
+  sku: SC0889
+  url: https://thepihut.com/products/raspberry-pi-debug-probe
+  price: 11.5
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 2
+  category: compute
+  optional: false
+  use: The Pi 5's debug UART (2.7.5); SWD for your own boards (3.4).
+  notes: Works with OpenOCD's cmsis-dap interface.
+  verified: true
+- id: usb-serial
+  name: Waveshare industrial USB-to-TTL converter, FT232RL
+  maker: Waveshare
+  sku: WAV-17939
+  url: https://thepihut.com/products/industrial-usb-to-ttl-converter
+  price: 6.8
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 2
+  unit: 2
+  category: compute
+  optional: false
+  use: Serial consoles for your boards and for logging the drone's UARTs.
+  notes: Set the switch to 3.3 V before connecting.
+  verified: true
+- id: server
+  name: 'Used rack server: Dell PowerEdge R730 (or R630, or Supermicro X11)'
+  maker: Dell
+  sku: PowerEdge R730, Xeon E5-26xx v4, iDRAC8 Enterprise
+  url: https://www.ebay.co.uk/sch/i.html?_nkw=dell+r730+e5-2680+v4+idrac8+enterprise
+  currency: GBP
+  vat: inc
+  seller: eBay UK (choose a UK refurbisher that accepts returns)
+  qty: 1
+  unit: 2
+  category: server
+  optional: false
+  use: x86 bare metal (2.5.3), Secure Boot and measured boot (2.7), kernels, virtualisation and data paths (Unit 4).
+  notes: 'Buy using the Handbook''s server checklist: v4 Xeons, 64 GB or more registered ECC, iDRAC8 Enterprise, an HBA330 or H730 in HBA mode, a TPM header,
+    two power supplies. A 2U R730 is quieter than a 1U R630 and takes full-height cards. No price could be checked.'
+  verified: false
+- id: nic-x520
+  name: Intel X520-DA2 dual-port SFP+ 10 GbE adapter (new)
+  maker: Intel
+  sku: E10G42BTDABLK
+  url: https://www.scan.co.uk/products/2-port-intel-x520-da2-10-gigabit-sfp-ethernet-server-adaptor-optical-pci-express-inc-low-profile-bra
+  price: 69.98
+  currency: GBP
+  vat: inc
+  seller: Scan
+  qty: 1
+  unit: 2
+  category: server
+  optional: false
+  use: PCIe by hand (2.4.4); SR-IOV (4.4); the network data path (4.5).
+  notes: Intel 82599ES. New from Scan avoids the counterfeits common on auction sites. Both brackets included.
+  verified: true
+- id: dac
+  name: Ubiquiti SFP+ passive direct-attach cable, 1 m
+  maker: Ubiquiti
+  sku: UACC-DAC-SFP10-1M
+  url: https://www.scan.co.uk/products/1m-ubiquiti-unifi-direct-attach-cable-10gbps-sfpplus-to-sfpplus-connector
+  alt_url: https://www.scan.co.uk/products/1m-startech-cisco-compatible-sfpplus-ethernet-passive-twinax-direct-attach-cable-10gbe-30awg-100-ohm
+  price: 16.49
+  currency: GBP
+  vat: inc
+  seller: Scan
+  qty: 1
+  unit: 2
+  category: server
+  optional: false
+  use: Looping the X520's two ports together.
+  notes: Pre-order at Scan; the StarTech 1 m cable (£33.49) ships sooner.
+  verified: true
+- id: switch
+  name: TP-Link TL-SG108E 8-port managed gigabit switch
+  maker: TP-Link
+  sku: TL-SG108E
+  url: https://www.scan.co.uk/products/8-port-tp-link-tl-sg108e-easysmart-managed-gigabit-network-switch-8x-10-100-1000mbps-for-soho-networ
+  price: 28.0
+  currency: GBP
+  vat: inc
+  seller: Scan
+  qty: 1
+  unit: 2
+  category: server
+  optional: false
+  use: Lab VLANs for netboot (2.7.6) and the capstone's three networks (4.7).
+  notes: 802.1Q VLANs and port mirroring.
+  verified: true
+- id: launchxl-f280025c
+  name: F280025C LaunchPad (C2000 real-time MCU)
+  maker: Texas Instruments
+  sku: LAUNCHXL-F280025C
+  url: https://www.ti.com/tool/LAUNCHXL-F280025C
+  alt_url: https://www.digikey.co.uk/en/products/result?keywords=LAUNCHXL-F280025C
+  price: 28.51
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 3
+  category: ti-mcu
+  optional: false
+  use: Your own field-oriented motor control (3.1.2, 3.1.3).
+  notes: 100 MHz C28x with FPU and trigonometric unit. Needs Code Composer Studio and TI's C2000 compiler; char is 16 bits.
+  verified: true
+- id: boostxl-drv8323rs
+  name: DRV8323RS three-phase inverter BoosterPack
+  maker: Texas Instruments
+  sku: BOOSTXL-DRV8323RS
+  url: https://www.ti.com/tool/BOOSTXL-DRV8323RS
+  alt_url: https://www.digikey.co.uk/en/products/result?keywords=BOOSTXL-DRV8323RS
+  price: 81.92
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 3
+  category: ti-motor
+  optional: false
+  use: The power stage for your FOC firmware, on the bench motor and then a drone motor.
+  notes: 6 to 54 V, 15 A continuous, 20 A peak, three current-sense amplifiers, SPI-configured gate driver.
+  verified: true
+- id: lvbldcmtr
+  name: 24 V sensorless BLDC lab motor
+  maker: Texas Instruments
+  sku: LVBLDCMTR
+  url: https://www.ti.com/tool/LVBLDCMTR
+  alt_url: https://www.digikey.co.uk/en/products/result?keywords=LVBLDCMTR
+  price: 49.59
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 3
+  category: ti-motor
+  optional: false
+  use: A known motor for bringing up FOC before you try a drone motor.
+  notes: NEMA 17, 24 V, four pole pairs, no Hall sensors or encoder, 3 A maximum. DigiKey had three in stock.
+  verified: true
+- id: cc1312r1
+  name: CC1312R LaunchPad, 868/915 MHz
+  maker: Texas Instruments
+  sku: LAUNCHXL-CC1312R1
+  url: https://www.ti.com/tool/LAUNCHXL-CC1312R1
+  alt_url: https://www.digikey.co.uk/en/products/result?keywords=LAUNCHXL-CC1312R1
+  price: 36.79
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 3
+  category: ti-rf
+  optional: false
+  use: Both ends of the 868 MHz telemetry link (3.2, 3.5).
+  notes: Up to +14 dBm, −110.5 dBm sensitivity at 50 kbps. RF goes to the PCB antenna; moving C36 to C37 routes it to SMA connector J7 (TI SWRA588A section
+    5.3). XDS110 debugger on board.
+  verified: true
+- id: lmx2572evm
+  name: LMX2572 6.4 GHz low-power synthesiser EVM
+  maker: Texas Instruments
+  sku: LMX2572EVM
+  url: https://www.ti.com/tool/LMX2572EVM
+  alt_url: https://www.digikey.co.uk/en/products/result?keywords=LMX2572EVM
+  price: 288.84
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 3
+  category: ti-rf
+  optional: false
+  use: A PLL you program, its spurs and lock time, and a chirp you can measure (3.3).
+  notes: 12.5 MHz to 6.4 GHz with FSK and ramp generation. Kit includes the Reference PRO board (100 MHz reference and USB programming for TICS Pro), two
+    SMA adaptors, USB cable and ribbon. Needs 3.3 V at up to 150 mA into its VCC SMA.
+  verified: true
+- id: sma-banana
+  name: Pasternack SMA male to double banana cable, 3 ft
+  maker: Pasternack
+  sku: PE3W01980-36
+  url: https://www.digikey.co.uk/en/products/result?keywords=SMA%20plug%20to%20banana%20cable
+  price: 54.98
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 3
+  category: rf-test
+  optional: true
+  use: Feeding 3.3 V from the bench supply into the LMX2572EVM's VCC SMA.
+  notes: A spare SMA cable with one end cut and stripped does the same job for nothing.
+  verified: true
+- id: iwrl6432boost
+  name: IWRL6432 low-power 60 GHz radar BoosterPack EVM
+  maker: Texas Instruments
+  sku: IWRL6432BOOST
+  url: https://www.ti.com/tool/IWRL6432BOOST
+  alt_url: https://www.digikey.co.uk/en/products/result?keywords=IWRL6432BOOST
+  price: 130.13
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 3
+  category: ti-rf
+  optional: false
+  use: FMCW radar (3.3.5, 3.3.6) and the drone's radar altimeter (3.5.7).
+  notes: 57–64 GHz, 2 transmit and 3 receive antennas, XDS110 on board, powered from USB. Uses MMWAVE-L-SDK.
+  verified: true
+- id: ftdi-cable
+  name: FTDI USB to SPI/I²C/JTAG cable, 3.3 V (FT232H)
+  maker: FTDI
+  sku: C232HM-DDHSL-0
+  url: https://www.digikey.co.uk/en/products/result?keywords=C232HM-DDHSL-0
+  price: 26.13
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 3
+  category: ti-rf
+  optional: false
+  use: Streaming the radar's raw ADC samples over SPI (3.3.6).
+  notes: The cable TI's MMWAVE-L-SDK names for SPI ADC streaming.
+  verified: true
+- id: windows-pc
+  name: Dell OptiPlex 3070 Micro, i5-9400T, 8 GB, 256 GB NVMe, refurbished, Windows 11 Pro
+  maker: Dell
+  sku: Tier1Online 292-3070-MICRO-i59T
+  url: https://www.tier1online.com/products/dell-optiplex-3070-micro-i5-9400t-2-10ghz-8gb-256gb-nvme
+  price: 189.0
+  currency: GBP
+  vat: inc
+  seller: Tier1Online
+  qty: 1
+  unit: 3
+  category: compute
+  optional: false
+  use: 'TI''s Windows-only tools: SmartRF Studio 7, TICS Pro, UniFlash for mmWave, mmWave Studio, bqStudio.'
+  notes: Choose Windows 11 Pro in the operating-system option. Needs a monitor, keyboard and mouse. Any x86-64 Windows 10 or 11 PC you already own does
+    the same job; Windows on an Apple-silicon Mac does not, because the debug-probe drivers are x86 only.
+  verified: true
+- id: frame
+  name: Tarot FY450 450 mm quadcopter frame with integrated power board
+  maker: Tarot
+  sku: FY450
+  url: https://www.flyingtech.co.uk/product/tarot-firefly-450-quadcopter-frame/
+  price: 20.0
+  currency: GBP
+  vat: inc
+  seller: Flying Tech
+  qty: 1
+  unit: 3
+  category: drone
+  optional: false
+  use: The airframe (3.5) and the one-axis rig (3.1.7).
+  notes: 282 g, glass-fibre plates, 16/19 mm M3 motor holes, takes 10-inch props.
+  verified: true
+- id: motors
+  name: SunnySky X2212-13 980KV II brushless motor
+  maker: SunnySky
+  sku: X2212-13 KV980 II
+  url: https://www.flyingtech.co.uk/product/sunnysky-x2212-13-980kv-ii-2-4s-multirotor-brushless-motor/
+  price: 19.6
+  currency: GBP
+  vat: inc
+  seller: Flying Tech
+  qty: 4
+  unit: 3
+  category: drone
+  optional: false
+  use: Thrust stand and FOC tests (3.1), the drone (3.5).
+  notes: '58 g, 15 A for 30 s. On 3S with a 10-inch prop: 300 g of thrust at 3.0 A, 910 g at 15.5 A (maker''s table). Do not use 4S with 10-inch props:
+    the current exceeds the rating. Check the 16 × 19 mm mounting on arrival.'
+  verified: true
+- id: props
+  name: EPP 10 × 4.5 propellers, CW and CCW pair
+  maker: EPP
+  sku: EPP1045
+  url: https://www.flyingtech.co.uk/product/epp-counter-rotating-propellers/
+  price: 4.2
+  currency: GBP
+  vat: inc
+  seller: Flying Tech
+  qty: 4
+  unit: 3
+  category: drone
+  optional: false
+  use: Two pairs fly; two pairs are spares.
+  notes: Use the 5 mm adapter ring on the SunnySky prop adapter.
+  verified: true
+- id: escs
+  name: Little Bee CloudPhoenix 35 A BLHeli_32 ESC, 3–6S
+  maker: Little Bee
+  sku: CloudPhoenix 35A
+  url: https://www.hobbyrc.co.uk/little-bee-cloudphoenix-35a-esc-blheli32-3-6s
+  price: 19.95
+  currency: GBP
+  vat: inc
+  seller: HobbyRC
+  qty: 4
+  unit: 3
+  category: drone
+  optional: false
+  use: The flying ESCs, driven by your DShot firmware (3.5.1).
+  notes: '35 A continuous, DShot up to 1200, telemetry. No 5 V output: the electronics need their own supply.'
+  verified: true
+- id: bec
+  name: Matek Micro BEC 6–30 V to 5 V, 1.5 A, pack of 3
+  maker: Matek
+  sku: Micro BEC 6-30V
+  url: https://www.hobbyrc.co.uk/matek-micro-bec-5v9v-adjustable
+  price: 6.75
+  currency: GBP
+  vat: inc
+  seller: HobbyRC
+  qty: 1
+  unit: 3
+  category: drone
+  optional: false
+  use: 5 V for the flight electronics until your Board P flies.
+  verified: true
+- id: transmitter
+  name: RadioMaster Pocket transmitter, ExpressLRS 2.4 GHz
+  maker: RadioMaster
+  sku: Pocket ELRS
+  url: https://www.hobbyrc.co.uk/radiomaster-pocket-transmitter-elrs-charcoal
+  price: 71.49
+  currency: GBP
+  vat: inc
+  seller: HobbyRC
+  qty: 1
+  unit: 3
+  category: drone
+  optional: false
+  use: The pilot's control link (3.5.2).
+  notes: Needs two 18650 cells.
+  verified: true
+- id: tx-cells
+  name: RadioMaster 3200 mAh 18650 cells, pair
+  maker: RadioMaster
+  sku: 18650 3200mAh x2
+  url: https://www.hobbyrc.co.uk/radiomaster-3200mah-18650-cells-2pcs
+  price: 11.99
+  currency: GBP
+  vat: inc
+  seller: HobbyRC
+  qty: 1
+  unit: 3
+  category: drone
+  optional: false
+  use: Powering the transmitter.
+  notes: 'Charge inside the transmitter. Unprotected cells only: protected ones do not fit.'
+  verified: true
+- id: receiver
+  name: RadioMaster RP1 V2 ExpressLRS receiver, CRSF output
+  maker: RadioMaster
+  sku: RP1 V2
+  url: https://www.hobbyrc.co.uk/radiomaster-rp1-elrs-receiver
+  price: 18.99
+  currency: GBP
+  vat: inc
+  seller: HobbyRC
+  qty: 1
+  unit: 3
+  category: drone
+  optional: false
+  use: The receiver whose CRSF stream your firmware parses (3.5.2).
+  notes: Update it over Wi-Fi to the transmitter's ExpressLRS major version before binding.
+  verified: true
+- id: imu
+  name: Adafruit LSM6DSOX 6-DoF IMU (SPI or I²C)
+  maker: Adafruit
+  sku: ADA4438
+  url: https://shop.pimoroni.com/products/adafruit-lsm6dsox-6-dof-accelerometer-and-gyroscope-stemma-qt-qwiic
+  price: 11.4
+  currency: GBP
+  vat: inc
+  seller: Pimoroni
+  qty: 2
+  unit: 3
+  category: drone
+  optional: false
+  use: Inertial sensing (3.1.4, 3.1.5) and the flight controller until Board F carries the chip.
+  notes: 'ST LSM6DSOX: gyro to ±2000 dps, accelerometer to ±16 g, up to 6.7 kHz. TI makes no MEMS IMU.'
+  verified: true
+- id: barometer
+  name: SparkFun BMP581 pressure sensor (Qwiic)
+  maker: SparkFun
+  sku: SEN-20170
+  url: https://thepihut.com/products/sparkfun-pressure-sensor-bmp581-qwiic
+  price: 20.1
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 3
+  category: drone
+  optional: false
+  use: Altitude fusion with the radar (3.5.7).
+  notes: Bosch BMP581, ±0.5 hPa. Power from 3.3 V only. Cover it with open-cell foam against prop wash.
+  verified: true
+- id: magnetometer
+  name: Adafruit LIS3MDL triple-axis magnetometer
+  maker: Adafruit
+  sku: ADA4479
+  url: https://thepihut.com/products/adafruit-triple-axis-magnetometer-lis3mdl
+  price: 9.6
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 3
+  category: drone
+  optional: false
+  use: Heading (3.1.6), mounted on a mast away from the power wiring.
+  notes: ST LIS3MDL, magnetoresistive, ±4 to ±16 gauss.
+  verified: true
+- id: gnss
+  name: Matek M10Q-5883 GNSS and compass module
+  maker: Matek
+  sku: M10Q-5883
+  url: https://www.hobbyrc.co.uk/matek-m10q-5883
+  price: 29.1
+  currency: GBP
+  vat: inc
+  seller: HobbyRC
+  qty: 1
+  unit: 3
+  category: drone
+  optional: true
+  use: 'Stretch in 3.5: position logging and position hold.'
+  notes: u-blox M10 on a UART, QMC5883L compass on I²C.
+  verified: true
+- id: test-rig
+  name: AmovLab drone PID tuning rig, up to 450 mm
+  maker: AmovLab
+  sku: PID Test Rig
+  url: https://www.amovlab.top/products/pid-test-rig
+  price: 125.0
+  currency: USD
+  vat: import
+  seller: AmovLab
+  qty: 1
+  unit: 3
+  category: drone
+  optional: true
+  use: Three-axis rig tuning (3.5.5). The one-axis rig you build in 3.1.7 is enough.
+  notes: 'No load limit published: ask the seller whether it takes 1.2 kg before ordering.'
+  verified: true
+- id: standoffs
+  name: Adafruit nylon M3 screw and standoff set, 420 pieces
+  maker: Adafruit
+  sku: ADA4685
+  url: https://thepihut.com/products/black-nylon-screw-and-stand-off-set-m3-thread
+  price: 16.3
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 3
+  category: drone
+  optional: false
+  use: Mounting LaunchPads and boards on the frame and the rig.
+  verified: true
+- id: cable-ties
+  name: Cable ties, 100 × 2.5 mm, pack of 100
+  maker: The Pi Hut
+  sku: '103060'
+  url: https://thepihut.com/products/100mm-black-cable-ties
+  price: 1.5
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 3
+  category: drone
+  optional: false
+  use: Wiring on the frame.
+  verified: true
+- id: foam-tape
+  name: Double-sided foam tape, 12 mm × 10 m
+  maker: The Pi Hut
+  sku: '103426'
+  url: https://thepihut.com/products/double-sided-foam-tape-10m
+  price: 2.5
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 3
+  category: drone
+  optional: false
+  use: Vibration isolation for the flight controller; mounting the receiver.
+  notes: Choose the 12 mm variant.
+  verified: true
+- id: cm5
+  name: Raspberry Pi Compute Module 5, 4 GB RAM, 32 GB eMMC, wireless
+  maker: Raspberry Pi
+  sku: SC1595
+  url: https://thepihut.com/products/raspberry-pi-compute-module-5
+  price: 134.4
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 3
+  category: compute
+  optional: false
+  use: The computer on Board B (3.4.5, 3.4.7) and the Arm node in the capstone.
+  notes: Stock was not shown for this variant. Any CM5 with eMMC works; buy it only once Board B's design has passed review.
+  verified: true
+- id: nvme-consumer
+  name: Kingston NV3 500 GB M.2 2280 NVMe (to be sacrificed)
+  maker: Kingston
+  sku: SNV3S/500G
+  url: https://www.scan.co.uk/products/500gb-kingston-nv3-ssd-m2-2280-pcie-40-x4-nvme-ssd-3d-nand-5000mb-s-read-3000mb-s-write
+  price: 88.99
+  currency: GBP
+  vat: inc
+  seller: Scan
+  qty: 1
+  unit: 4
+  category: server
+  optional: false
+  use: Power-loss and write-amplification experiments in Chapter 4.5.
+  notes: Consumer drive with no power-loss protection, which is the point.
+  verified: true
+- id: m2-adapter
+  name: ICY DOCK EZConvert Ex Pro M.2 NVMe to PCIe ×4 adapter
+  maker: ICY DOCK
+  sku: MB987M2P-1B
+  url: https://www.scan.co.uk/products/icy-dock-ezconvert-ex-pro-mb987m2p-1b-1x-m2-nvme-ssd-to-pcie-30-40-x4-adapter-with-heat-sink-and-pci
+  price: 35.99
+  currency: GBP
+  vat: inc
+  seller: Scan
+  qty: 1
+  unit: 4
+  category: server
+  optional: false
+  use: Fitting the M.2 drive in the server, which has no M.2 slot.
+  verified: true
+- id: nvme-enterprise
+  name: Intel SSD DC P4510 1 TB U.2, used
+  maker: Intel (Solidigm)
+  sku: SSDPE2KX010T8
+  url: https://www.ebay.co.uk/sch/i.html?_nkw=intel+p4510+1tb+u.2
+  currency: GBP
+  vat: inc
+  seller: eBay UK
+  qty: 1
+  unit: 4
+  category: server
+  optional: false
+  use: The drive with power-loss protection for the storage data path (4.5) and the capstone.
+  notes: Ask the seller for a SMART report showing percentage used, power-on hours and media errors. No price could be checked.
+  verified: false
+- id: u2-adapter
+  name: StarTech U.2 to PCIe 3.0 ×4 adapter
+  maker: StarTech.com
+  sku: PEX4SFF8639
+  url: https://www.scan.co.uk/products/startechcom-pex4sff8639-u2-to-pcie-adapter-25-u2-sff-8639-nvme-ssd-to-pci-express-30-x4-no-drivers-r
+  price: 38.99
+  currency: GBP
+  vat: inc
+  seller: Scan
+  qty: 1
+  unit: 4
+  category: server
+  optional: false
+  use: Fitting the U.2 drive in the server.
+  notes: 'Full-height bracket only: needs a full-height slot (R730 or a 2U Supermicro).'
+  verified: true
+- id: lm358p
+  name: LM358P dual op-amp, DIP-8
+  maker: Texas Instruments
+  sku: LM358P
+  url: https://www.digikey.co.uk/en/products/detail/texas-instruments/LM358P/277042
+  alt_url: https://www.ti.com/product/LM358
+  price: 0.24
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 1
+  category: parts
+  optional: false
+  use: 'Op-amp stages lab in Chapter 1.2: gain-bandwidth, slew rate, offset and the output-swing limit on 5 V.'
+  notes: Active; 14,195 in stock; £0.17 each at 10.
+  verified: true
+- id: tlv2372ip
+  name: TLV2372IP rail-to-rail dual op-amp, DIP-8
+  maker: Texas Instruments
+  sku: TLV2372IP
+  url: https://www.digikey.co.uk/en/products/detail/texas-instruments/TLV2372IP/413506
+  alt_url: https://www.ti.com/product/TLV2372
+  price: 1.55
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 1
+  category: parts
+  optional: false
+  use: Rail-to-rail half of the op-amp lab, the second-order filter and the instrumentation-amplifier stretch in Chapter 1.2.
+  notes: Active; 2,181 in stock; £1.141 each at 10.
+  verified: true
+- id: lm4040aiz-2-5
+  name: LM4040AIZ-2.5/NOPB 2.5 V shunt voltage reference, ±0.1 %, TO-92
+  maker: Texas Instruments
+  sku: LM4040AIZ-2.5/NOPB
+  url: https://www.digikey.co.uk/en/products/detail/texas-instruments/LM4040AIZ-2-5-NOPB/182334
+  alt_url: https://www.ti.com/product/LM4040
+  price: 1.85
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 1
+  category: parts
+  optional: false
+  use: The known voltage the ADS1115 and the multimeter measure in the sampling lab, Chapter 1.2.
+  notes: Active; 1,748 in stock; £1.37 each at 10. The A grade (±0.1 %) keeps the reference from being the largest error in the comparison. The D grade
+    LM4040DIZ-2.5/NOPB (±1 %) is £0.49 with 2,718 in stock It is a shunt reference, so it needs a series resistor from the supply; 1 kΩ from 5 V gives about
+    2.5 mA.
+  verified: true
+- id: lm317kcse3
+  name: LM317KCSE3 adjustable linear regulator, 1.5 A, TO-220
+  maker: Texas Instruments
+  sku: LM317KCSE3
+  url: https://www.digikey.co.uk/en/products/detail/texas-instruments/LM317KCSE3/1493969
+  alt_url: https://www.ti.com/product/LM317
+  price: 0.79
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 1
+  category: parts
+  optional: false
+  use: 'Linear versus switching lab in Chapter 1.4: 5.0 V from 12 V at 300 mA.'
+  notes: Active; 946 in stock; £0.573 each at 10. At 12 V in and 300 mA out it dissipates about 2.1 W and gets hot enough to burn with no heatsink.
+  verified: true
+- id: sn74hc00n
+  name: SN74HC00N quad NAND, DIP-14
+  maker: Texas Instruments
+  sku: SN74HC00N
+  url: https://www.digikey.co.uk/en/products/detail/texas-instruments/SN74HC00N/277209
+  alt_url: https://www.ti.com/product/SN74HC00
+  price: 0.57
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 2
+  category: parts
+  optional: false
+  use: The CMOS NAND comparison and the latch in Chapter 2.1.
+  notes: Active; thousands in stock when checked.
+  verified: true
+- id: sn74hc04n
+  name: SN74HC04N hex inverter, DIP-14
+  maker: Texas Instruments
+  sku: SN74HC04N
+  url: https://www.digikey.co.uk/en/products/detail/texas-instruments/SN74HC04N/277212
+  alt_url: https://www.ti.com/product/SN74HC04
+  price: 0.57
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 1
+  category: parts
+  optional: false
+  use: Logic thresholds in Chapter 1.1; inverters in Chapter 2.1.
+  notes: Active; thousands in stock when checked.
+  verified: true
+- id: sn74hc08n
+  name: SN74HC08N quad AND, DIP-14
+  maker: Texas Instruments
+  sku: SN74HC08N
+  url: https://www.digikey.co.uk/en/products/detail/texas-instruments/SN74HC08N/277216
+  alt_url: https://www.ti.com/product/SN74HC08
+  price: 0.58
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 2
+  category: parts
+  optional: false
+  use: The adder in Lab 2.1.2.
+  notes: Active; thousands in stock when checked.
+  verified: true
+- id: sn74hc14n
+  name: SN74HC14N hex Schmitt-trigger inverter, DIP-14
+  maker: Texas Instruments
+  sku: SN74HC14N
+  url: https://www.digikey.co.uk/en/products/detail/texas-instruments/SN74HC14N/277223
+  alt_url: https://www.ti.com/product/SN74HC14
+  price: 0.85
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 4
+  unit: 1
+  category: parts
+  optional: false
+  use: The decoupling oscillator (1.1.4), the cable driver (1.5.1) and debouncing (2.1).
+  notes: Active; thousands in stock when checked.
+  verified: true
+- id: sn74hc32n
+  name: SN74HC32N quad OR, DIP-14
+  maker: Texas Instruments
+  sku: SN74HC32N
+  url: https://www.digikey.co.uk/en/products/detail/texas-instruments/SN74HC32N/277235
+  alt_url: https://www.ti.com/product/SN74HC32
+  price: 0.54
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 2
+  category: parts
+  optional: false
+  use: The adder and the state machine in Chapter 2.1.
+  notes: Active; thousands in stock when checked.
+  verified: true
+- id: sn74hc74n
+  name: SN74HC74N dual D flip-flop, DIP-14
+  maker: Texas Instruments
+  sku: SN74HC74N
+  url: https://www.digikey.co.uk/en/products/detail/texas-instruments/SN74HC74N/277248
+  alt_url: https://www.ti.com/product/SN74HC74
+  price: 0.83
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 2
+  category: parts
+  optional: false
+  use: The setup-time violation and the state machine in Chapter 2.1.
+  notes: Active; thousands in stock when checked.
+  verified: true
+- id: sn74hc86n
+  name: SN74HC86N quad XOR, DIP-14
+  maker: Texas Instruments
+  sku: SN74HC86N
+  url: https://www.digikey.co.uk/en/products/detail/texas-instruments/SN74HC86N/376842
+  alt_url: https://www.ti.com/product/SN74HC86
+  price: 0.83
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 2
+  category: parts
+  optional: false
+  use: The adder in Lab 2.1.2.
+  notes: Active; thousands in stock when checked.
+  verified: true
+- id: csd18534kcs
+  name: CSD18534KCS 60 V N-channel MOSFET, TO-220 (fan switch)
+  maker: Texas Instruments
+  sku: CSD18534KCS
+  url: https://www.digikey.co.uk/en/products/detail/texas-instruments/CSD18534KCS/3674879
+  alt_url: https://www.ti.com/product/CSD18534KCS
+  price: 1.5
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 1
+  category: parts
+  optional: false
+  use: Low-side switch for the 12 V fan in Chapter 1.1, including the turn-off-spike step without a flyback diode.
+  notes: 'Active; 1,511 in stock; £0.955 each at 10. DigiKey lists Vgs(th) at most 2.3 V and Rds(on) at most 9.5 mΩ at a 10 V gate; Rds(on) is not specified
+    at 3.3 V, so measure it in the lab. The Chapter 1.1 MOSFET lab names the IRLZ44N; this TI part takes its place. Fallback: Infineon IRLZ44NPBF, £1.32,
+    43,047 in stock. No quantity was given; two leaves a spare for the spike step.'
+  verified: true
+- id: 2n7000
+  name: 2N7000 60 V N-channel MOSFET, TO-92
+  maker: onsemi
+  sku: 2N7000
+  url: https://www.digikey.co.uk/en/products/detail/onsemi/2N7000/244278
+  price: 0.49
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 5
+  unit: 1
+  category: parts
+  optional: false
+  use: First fan switch in Chapter 1.1; the N-channel half of the discrete CMOS inverter and NAND in Chapter 2.1.
+  notes: Active; 128,151 in stock. Ten cost £3.02 (£0.302 each), 57p more than five. TI makes no TO-92 MOSFET. Rated 200 mA continuous, so check the fan
+    draws less. TO-92 MOSFETs do not share one pin order; check the datasheet before wiring.
+  verified: true
+- id: bs250p
+  name: BS250P 45 V P-channel MOSFET, TO-92
+  maker: Diodes Incorporated
+  sku: BS250P
+  url: https://www.digikey.co.uk/en/products/detail/diodes-incorporated/BS250P/92630
+  price: 1.29
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 5
+  unit: 2
+  category: parts
+  optional: false
+  use: The P-channel half of the discrete CMOS inverter and NAND in Chapter 2.1.
+  notes: 'Status Last Time Buy (DigiKey shows a last-buy date of 06/01/2027) but orderable: 20,051 in stock; £0.816 each at 10. Threshold up to −3.5 V,
+    14 Ω at a −10 V gate. If it has gone, the active replacement with the same 3.5 V maximum threshold is Microchip VP2106N3-G (TO-92, 60 V, 12 Ω), £0.47,
+    4,327 in stock TP0610L is not listed at DigiKey UK. Check its pin order against the 2N7000''s before building the inverter.'
+  verified: true
+- id: 1n5819
+  name: 1N5819 40 V 1 A Schottky diode, DO-41
+  maker: Taiwan Semiconductor
+  sku: 1N5819
+  url: https://www.digikey.co.uk/en/products/detail/taiwan-semiconductor-corporation/1N5819/7357079
+  price: 0.24
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 5
+  unit: 1
+  category: parts
+  optional: false
+  use: Flyback diode across the fan in Chapter 1.1; forward-drop comparison with the ideal-diode EVM in Chapter 1.4.
+  notes: Active; 12,971 in stock; cut tape, sold singly; £0.145 each at 10.
+  verified: true
+- id: 1n4148
+  name: 1N4148 small-signal diode, DO-35
+  maker: onsemi
+  sku: 1N4148
+  url: https://www.digikey.co.uk/en/products/detail/onsemi/1N4148/458603
+  price: 0.044
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 10
+  unit: 1
+  category: parts
+  optional: false
+  use: General small-signal diode in the Unit 1 bench kit.
+  notes: 10-piece price (£0.07 singly). Active; 647,904 in stock; sold loose.
+  verified: true
+- id: 1n4007
+  name: 1N4007 1000 V 1 A rectifier diode, axial
+  maker: Diotec Semiconductor
+  sku: 1N4007
+  url: https://www.digikey.co.uk/en/products/detail/diotec-semiconductor/1N4007/18833652
+  price: 0.1
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 5
+  unit: 1
+  category: parts
+  optional: false
+  use: General rectifier diode in the Unit 1 bench kit.
+  notes: Active; 381,086 in stock; cut tape, sold singly; £0.064 each at 10.
+  verified: true
+- id: led-red-5mm
+  name: 5 mm red LED, diffused
+  maker: Kingbright
+  sku: WP7113ID
+  url: https://www.digikey.co.uk/en/products/detail/kingbright/WP7113ID/1747663
+  price: 0.107
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 10
+  unit: 1
+  category: parts
+  optional: false
+  use: LED and series-resistor lab in Chapter 1.1; adder outputs in Chapter 2.1.
+  notes: 10-piece price (£0.15 singly). Active; 131,049 in stock. DigiKey lists Vf 1.9 V typical at 10 mA, 627 nm peak, 40 mcd; the Kingbright datasheet
+    is linked from the product page.
+  verified: true
+- id: led-green-5mm
+  name: 5 mm green LED, diffused
+  maker: Kingbright
+  sku: WP7113GD
+  url: https://www.digikey.co.uk/en/products/detail/kingbright/WP7113GD/1747662
+  price: 0.113
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 10
+  unit: 1
+  category: parts
+  optional: false
+  use: Indicator LEDs for Chapter 1.1 and the Chapter 2.1 logic labs.
+  notes: 10-piece price (£0.17 singly). Active; 45,121 in stock. DigiKey lists Vf 2.2 V typical at 20 mA, 565 nm peak, 30 mcd; datasheet linked from the
+    product page.
+  verified: true
+- id: dip-switch-8
+  name: 8-position DIP slide switch, through-hole, 2.54 mm
+  maker: CTS Electrocomponents
+  sku: 206-8ST
+  url: https://www.digikey.co.uk/en/products/detail/cts-electrocomponents/206-8ST/20777
+  price: 1.15
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 2
+  category: parts
+  optional: false
+  use: Adder inputs and latch tests in Chapter 2.1.
+  notes: Active; 7,139 in stock. Standard DIP body that straddles the breadboard's centre channel like a chip.
+  verified: true
+- id: tactile-6mm
+  name: 6 × 6 mm tactile push button, through-hole
+  maker: TE Connectivity (Alcoswitch)
+  sku: 1825910-6
+  url: https://www.digikey.co.uk/en/products/detail/te-connectivity-alcoswitch-switches/1825910-6/1632536
+  price: 0.1
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 5
+  unit: 1
+  category: parts
+  optional: false
+  use: Drives the RC charge lab in Chapter 1.1; the hand clock for the state machine in Chapter 2.1.
+  notes: Active; 99,187 in stock; 5 mm tall, 160 gf. The four legs are joined in pairs inside; find which pairs with the meter's continuity mode before
+    wiring.
+  verified: true
+- id: trimmer-10k
+  name: 10 kΩ single-turn cermet trimmer, top adjust, through-hole
+  maker: Bourns
+  sku: 3386P-1-103LF
+  url: https://www.digikey.co.uk/en/products/detail/bourns-inc/3386P-1-103LF/1088523
+  alt_url: https://thepihut.com/products/breadboard-trim-potentiometer?variant=41768099315907
+  price: 1.34
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 3
+  unit: 2
+  category: parts
+  optional: false
+  use: Input sweep for the discrete CMOS inverter and the adjustable delay in the setup-time lab, Chapter 2.1.
+  notes: 'Active; 12,049 in stock; sold singly; £1.12 each at 10. Turn it with a small flat screwdriver. The cheaper 3362P-1-103LF is sold only in tubes
+    of 50. Alternative with a finger knob: The Pi Hut breadboard-friendly trim potentiometer, 10K variant (alt_url, SKU 102831), £0.80 inc VAT, in stock.'
+  verified: true
+- id: res-11k-1pc
+  name: 11 kΩ 1 % 0.25 W metal-film resistor, axial
+  maker: YAGEO
+  sku: MFR-25FBF52-11K
+  url: https://www.digikey.co.uk/en/products/detail/yageo/MFR-25FBF52-11K/13227
+  price: 0.031
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 10
+  unit: 1
+  category: parts
+  optional: false
+  use: Second-order filter lab in Chapter 1.2.
+  notes: 10-piece price (£0.07 singly). Active; 6,477 in stock; ±100 ppm/°C.
+  verified: true
+- id: res-0r1-3w
+  name: 0.1 Ω 1 % 3 W current-sense resistor, axial
+  maker: Ohmite
+  sku: 13FR100E
+  url: https://www.digikey.co.uk/en/products/detail/ohmite/13FR100E/822906
+  price: 3.17
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 1
+  category: parts
+  optional: false
+  use: Inrush and short-circuit captures in the protection lab, Chapter 1.4.
+  notes: Active; 25,754 in stock; £2.137 each at 10. Non-inductive metal element. 100 mV across it means 1 A.
+  verified: true
+- id: res-5r-10w
+  name: 5 Ω 10 W aluminium-housed wirewound resistor
+  maker: Ohmite
+  sku: HS10 5R J
+  url: https://www.digikey.co.uk/en/products/detail/ohmite/HS10-5R-J/5307544
+  price: 5.39
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 1
+  category: parts
+  optional: false
+  use: Known load in series with the INA228 shunt in the power-monitor lab, Chapter 1.3.
+  notes: Active; 110 in stock; £3.69 each at 10. ±5 %, solder-lug terminals. The 10 W rating assumes it is bolted to a heatsink; in free air allow roughly
+    half.
+  verified: true
+- id: cap-1000u-25v
+  name: 1,000 µF 25 V low-ESR aluminium electrolytic capacitor, radial
+  maker: Panasonic
+  sku: EEU-FR1E102
+  url: https://www.digikey.co.uk/en/products/detail/panasonic-industry/EEU-FR1E102/2433558
+  price: 1.05
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 1
+  category: parts
+  optional: false
+  use: The capacitor hot-plugged onto 12 V in the inrush lab, Chapter 1.4.
+  notes: 'Active; 1,533 in stock; £0.671 each at 10. FR series: DigiKey lists 20 mΩ, 2.18 A ripple at 100 kHz, 10,000 h at 105 °C, 10 mm diameter, 5 mm
+    lead spacing. Polarised: the stripe marks the negative lead.'
+  verified: true
+- id: cap-22n-c0g
+  name: 22 nF 50 V ±5 % C0G ceramic capacitor, radial
+  maker: TDK
+  sku: FG24C0G1H223JNT06
+  url: https://www.digikey.co.uk/en/products/detail/tdk-corporation/FG24C0G1H223JNT06/5802942
+  price: 0.43
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 5
+  unit: 1
+  category: parts
+  optional: false
+  use: Second-order filter lab in Chapter 1.2.
+  notes: Active; 11,838 in stock; £0.261 each at 10. 5 mm lead spacing.
+  verified: true
+- id: cap-10n-c0g
+  name: 10 nF 50 V ±5 % C0G ceramic capacitor, radial
+  maker: TDK
+  sku: FG28C0G1H103JNT06
+  url: https://www.digikey.co.uk/en/products/detail/tdk-corporation/FG28C0G1H103JNT06/5803088
+  price: 0.28
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 5
+  unit: 1
+  category: parts
+  optional: false
+  use: Second-order filter lab in Chapter 1.2.
+  notes: Active; 27,075 in stock; £0.167 each at 10. 5 mm lead spacing.
+  verified: true
+- id: qwiic-cable-100mm
+  name: STEMMA QT / Qwiic JST-SH 4-pin cable, 100 mm
+  maker: The Pi Hut
+  sku: '104221'
+  url: https://thepihut.com/products/stemma-qt-qwiic-jst-sh-4-pin-cable-100mm-long
+  price: 1.0
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 5
+  unit: 1
+  category: parts
+  optional: false
+  use: Daisy-chaining the I2C sensor breakouts in Chapter 1.3.
+  notes: In stock. The Pi Hut's own-brand cable, so the SKU is The Pi Hut's; no manufacturer part number. Female JST-SH on both ends; red 3.3 V, black GND,
+    blue SDA, yellow SCL. SparkFun's PRT-14427 was sold out.
+  verified: true
+- id: qwiic-cable-200mm
+  name: STEMMA QT / Qwiic JST-SH 4-pin cable, 200 mm
+  maker: The Pi Hut
+  sku: '104965'
+  url: https://thepihut.com/products/stemma-qt-qwiic-jst-sh-4-pin-cable-200mm-long
+  price: 1.0
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 2
+  unit: 1
+  category: parts
+  optional: false
+  use: Longer I2C runs in Chapter 1.3, such as the magnet rig.
+  notes: In stock. The Pi Hut's own-brand cable; the SKU is The Pi Hut's.
+  verified: true
+- id: qwiic-to-male-header
+  name: STEMMA QT / Qwiic JST-SH 4-pin to male jumper wires, 150 mm
+  maker: The Pi Hut
+  sku: '104964'
+  url: https://thepihut.com/products/stemma-qt-qwiic-jst-sh-4-pin-to-premium-male-headers-cable
+  price: 1.0
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 2
+  unit: 1
+  category: parts
+  optional: false
+  use: Connecting a Qwiic breakout to the breadboard or the logic analyser in Chapter 1.3.
+  notes: In stock. The Pi Hut's own-brand cable; the SKU is The Pi Hut's.
+  verified: true
+- id: magnet-6mm-diametric
+  name: Neodymium disc magnet 6 × 2.5 mm, diametrically magnetised
+  maker: Radial Magnets
+  sku: '8995'
+  url: https://www.digikey.co.uk/en/products/detail/radial-magnets-inc/8995/5126077
+  price: 0.29
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 1
+  category: parts
+  optional: false
+  use: The rotating magnet above the TMAG5273 in the magnetic-angle lab, Chapter 1.3.
+  notes: 'Seller substitution: first4magnets refused the fetch (HTTP 403) and e-Magnets UK had only a 5 × 10 mm diametric rod in packs of 20 (£16.94), so
+    this comes from DigiKey UK with the rest of the order. N35, NiCuNi plated; active; 30,023 in stock; £0.244 each at 10. Keep magnets away from small
+    children.'
+  verified: true
+- id: bnc-cable-10m
+  name: 10 m RG-58 50 Ω coax, BNC plug to BNC plug
+  maker: Amphenol RF
+  sku: 115101-19-M10.0
+  url: https://www.digikey.co.uk/en/products/detail/amphenol-rf/115101-19-M10-0/4865138
+  price: 35.28
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 1
+  category: rf-test
+  optional: false
+  use: The transmission line in the cable-reflections lab, Chapter 1.5.
+  notes: 'Active; 951 in stock. How the four BNC pieces fit: at the near end the Pomona 2630 lead''s BNC jack takes the cable''s plug and its clips go to
+    the driver and ground; at the far end the cable goes into one jack of the tee, the terminator into the other, and the tee''s plug can go to scope channel
+    2. Remove the terminator to see an open end.'
+  verified: true
+- id: bnc-tee
+  name: BNC T adapter, plug to two jacks, 50 Ω
+  maker: Amphenol RF
+  sku: 31-208-RFX
+  url: https://www.digikey.co.uk/en/products/result?keywords=31-208-RFX
+  price: 5.97
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 1
+  category: rf-test
+  optional: false
+  use: Far-end junction in the cable-reflections lab, Chapter 1.5.
+  notes: Active; 432 in stock. The link is DigiKey's part-number search, which lands on this product's page; the page did not expose its numeric product
+    link.
+  verified: true
+- id: bnc-terminator-50r
+  name: 50 Ω BNC end terminator, plug
+  maker: Amphenol RF
+  sku: '202103'
+  url: https://www.digikey.co.uk/en/products/detail/amphenol-rf/202103/1011743
+  price: 2.95
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 1
+  category: rf-test
+  optional: false
+  use: Matched far-end load in the cable-reflections lab, Chapter 1.5.
+  notes: Active; 3,864 in stock. Its plug fits the tee's spare jack, not the cable's plug. A feed-through terminator (jack to plug) such as Pomona 4119-50
+    would also work but costs £52.30.
+  verified: true
+- id: bnc-croc-lead
+  name: BNC jack to two insulated crocodile clips, 127 mm
+  maker: Pomona Electronics
+  sku: '2630'
+  url: https://www.digikey.co.uk/en/products/detail/pomona-electronics/2630/678689
+  price: 15.15
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 1
+  category: rf-test
+  optional: false
+  use: Connects the SN74HC14N driver and its 47 Ω resistor to the near end of the coax in Chapter 1.5.
+  notes: Active; 331 in stock. The BNC end is a jack (female) so it mates directly with the cable's plug; male-ended croc leads would need an extra adapter.
+    The short 5-inch leads keep stray inductance out of the reflection measurement.
+  verified: true
+- id: sma-bulkhead-jack
+  name: SMA jack (female) bulkhead, front-nut panel mount, solder cup
+  maker: Cinch Connectivity Solutions (Johnson)
+  sku: 142-0701-401
+  url: https://www.digikey.co.uk/en/products/detail/cinch-connectivity-solutions-johnson/142-0701-401/35242
+  price: 4.86
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 1
+  category: rf-test
+  optional: false
+  use: Feed point of the quarter-wave antenna built on copper-clad board in Chapter 1.5.
+  notes: Active; 2,876 in stock; £4.14 each at 10. 50 Ω, 18 GHz, nut included. Drill about 6.5 mm for its 1/4-36 thread, and solder the body to the copper
+    round the hole so the ground plane is bonded.
+  verified: true
+- id: copper-clad-6x6
+  name: Copper-clad FR4 board, double-sided, 152 × 152 mm, 1.6 mm
+  maker: MG Chemicals
+  sku: '550'
+  url: https://www.digikey.co.uk/en/products/detail/mg-chemicals/550/559706
+  price: 12.79
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 1
+  category: rf-test
+  optional: false
+  use: Ground plane for the antenna lab in Chapter 1.5, and the low-pass-filter stretch.
+  notes: Active; 156 in stock; £10.51 each at 10. 1 oz copper both sides.
+  verified: true
+- id: copper-wire-solid
+  name: Solid-core hook-up wire, 22 AWG, 7.5 m spool (substitute for 1 mm copper wire)
+  maker: The Pi Hut
+  sku: '104281'
+  url: https://thepihut.com/products/solid-core-wire-spool-25ft-22awg-gray
+  alt_url: https://www.digikey.co.uk/en/products/detail/cnc-tech/600218/4693809
+  price: 2.8
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 1
+  category: rf-test
+  optional: false
+  use: The quarter-wave radiator soldered to the SMA bulkhead in Chapter 1.5.
+  notes: 'Substitution: no small reel of 1 mm (18 AWG) copper wire was found. DigiKey UK''s smallest 18 AWG reels cost over £70 (CNC Tech 600218 magnet
+    wire, 136.6 m, £102.03, alt_url; Alpha Wire 296 SV005 bus wire, 30.5 m, £73.53), and The Pi Hut, Pimoroni and Kunkune stock nothing near 1 mm. This
+    22 AWG (0.64 mm) solid wire, stripped, resonates almost the same; it is just less stiff, so keep the radiator straight. In stock; The Pi Hut''s own
+    brand.'
+  verified: true
+- id: sma-barrel-ff
+  name: SMA female-to-female straight adapter (jack to jack), 50 Ω
+  maker: Amphenol RF
+  sku: '132169'
+  url: https://www.digikey.co.uk/en/products/detail/amphenol-rf/132169/1011919
+  price: 5.87
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 3
+  category: rf-test
+  optional: false
+  use: Joining two male-ended SMA cables or attenuators in the Unit 3 RF set-ups.
+  notes: Active; 11,882 in stock; £4.99 each at 10. DigiKey's attribute table lists both ends as 'SMA Jack, Female Socket', straight, 18 GHz. Amphenol RF's
+    datasheet link returned HTTP 403, so the gender is confirmed from DigiKey's listing rather than the datasheet itself. Do not confuse it with 132168,
+    which is male to male.
+  verified: true
+- id: sma-cable-mm-12in
+  name: SMA male to SMA male cable, RG-316, 305 mm (12 in)
+  maker: TE Connectivity (Linx)
+  sku: CSE-SGAM-305-SGAM
+  url: https://www.digikey.co.uk/en/products/detail/te-connectivity-linx/CSE-SGAM-305-SGAM/14633985
+  alt_url: https://www.digikey.co.uk/en/products/result?keywords=135101-01-12.00
+  price: 6.76
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 3
+  category: rf-test
+  optional: false
+  use: Extra test-port cables for the LiteVNA and tinySA in Unit 3.
+  notes: Active; 6,460 in stock. Standard-polarity SMA plug both ends, 50 Ω, rated to 8 GHz. Cheaper than the Amphenol 135101-01-12.00, which DigiKey UK
+    still shows at £14.70 with 1,168 in stock.
+  verified: true
+- id: enclosure-1590c
+  name: Die-cast aluminium box, 119.5 × 94.0 × 56.5 mm, unpainted
+  maker: Hammond Manufacturing
+  sku: 1590C
+  url: https://www.digikey.co.uk/en/products/detail/hammond-manufacturing/1590C/131018
+  price: 12.95
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 1
+  unit: 3
+  category: rf-test
+  optional: false
+  use: RF isolation box for a LaunchPad running from a power bank in Unit 3.
+  notes: Active; 264 in stock plus 1,214 at the factory. Dimensions are outside; the inside is smaller by the wall thickness, so check that the LaunchPad
+    and power bank fit stacked. The shallower 1590BB (119.6 × 94.0 × 41.9 mm) is £11.03.
+  verified: true
+- id: power-bank-10000
+  name: Compact USB power bank, about 5,000 mAh, no longer than 105 mm, bought locally
+  maker: any
+  sku: local purchase
+  currency: GBP
+  vat: inc
+  seller: a local shop
+  qty: 1
+  unit: 3
+  category: rf-test
+  optional: false
+  use: Powers the transmitting LaunchPad inside the sealed box in Lab 3.2.3.
+  notes: 'Online UK sellers checked would not post lithium power banks to the Isle of Man, and the common 10,000 mAh models are too long for the 1590C box.
+    Buy one locally: no longer than about 105 mm, with a USB-A or USB-C output and, ideally, a low-current mode so it does not switch off under the LaunchPad''s
+    small load.'
+  verified: false
+- id: safety-glasses-en166
+  name: Safety glasses, clear, EN 166 / ANSI Z87+
+  maker: iFixit
+  sku: IF145-556-1
+  url: https://thepihut.com/products/ifixit-safety-glasses-basic
+  alt_url: https://thepihut.com/products/ifixit-safety-glasses-anti-fog
+  price: 4.0
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 2
+  unit: 1
+  category: bench
+  optional: false
+  use: Every soldering, lead-clipping and powered-motor session.
+  notes: 14 left when checked. The listing states 'ANSI z87+/EN166 compliant'; check for the EN 166 mark on the frame on arrival. The anti-fog version IF145-556-2
+    is £8 with 18 in stock.
+  verified: true
+- id: jst-gh-4pin-cable
+  name: JST-GH 4-pin to 4-pin cable, 200 mm
+  maker: Matek Systems
+  sku: Matek Systems JST-GH-4Pin to 4Pin 20cm Cable
+  url: https://www.3dxr.co.uk/products/matek-systems-jst-gh-4pin-to-4pin-20cm-cable
+  alt_url: https://www.unmannedtechshop.co.uk/products/male-jst-gh-1-25-4-pin-connectors-to-jst-gh-1-25-4-pin-connectors-cable-pack-of-5
+  price: 2.0
+  currency: GBP
+  vat: inc
+  seller: 3DXR
+  qty: 5
+  unit: 3
+  category: drone
+  optional: false
+  use: I2C and CAN links between the flight controller and peripherals in Unit 3.
+  notes: '124 in stock; sold singly (£1.67 ex VAT). No manufacturer part number published, so the sku is the listing title. Length is 200 mm, not 150 mm:
+    no 150 mm assembled JST-GH cable was in stock at a UK hobby seller. HobbyRC lists only JST-SH, and Unmanned Tech''s 5-pack of 200 mm cables (£5.49,
+    alt_url) is on backorder. Check with the meter that pin 1 goes to pin 1 before joining two ports.'
+  verified: true
+- id: jst-gh-6pin-cable
+  name: JST-GH 6-pin to 6-pin cable, 200 mm
+  maker: Matek Systems
+  sku: Matek Systems JST-GH-6Pin to 6Pin 20cm Cable
+  url: https://www.3dxr.co.uk/products/matek-systems-jst-gh-6pin-to-6pin-20cm-cable
+  alt_url: https://www.unmannedtechshop.co.uk/products/male-jst-gh-1-25-6-pin-connectors-to-jst-gh-1-25-6-pin-connectors-pack-of-5
+  price: 2.2
+  currency: GBP
+  vat: inc
+  seller: 3DXR
+  qty: 5
+  unit: 3
+  category: drone
+  optional: false
+  use: UART (telemetry and GPS) links on the flight controller in Unit 3.
+  notes: 85 in stock; sold singly (£1.83 ex VAT). No manufacturer part number published, so the sku is the listing title. 200 mm for the same reason as
+    the 4-pin cable; Unmanned Tech's 5-pack is on backorder. Check pin 1 to pin 1 with the meter before use.
+  verified: true
+- id: microsd-64gb
+  name: Raspberry Pi microSD card, 64 GB, A2, with Raspberry Pi OS
+  maker: Raspberry Pi
+  sku: SC1629
+  url: https://thepihut.com/products/noobs-preinstalled-sd-card?variant=31604721287230
+  price: 30.6
+  currency: GBP
+  vat: inc
+  seller: The Pi Hut
+  qty: 1
+  unit: 1
+  category: compute
+  optional: false
+  use: Boot media for the Raspberry Pi 5 until it boots from NVMe in Chapter 2.7.
+  notes: 'Substitution: no SanDisk or Samsung 64 GB A2 U3 card was found at a UK seller whose page could be fetched (The Pi Hut, Pimoroni and Maplin stock
+    none; Amazon, Argos and Scan refused or did not render). The link opens the 64GB variant (SKU SC1629, in stock; the 32GB is sold out). A2 with SDR104
+    and command queueing, which the Pi 5 uses; the page does not state a U3 rating.'
+  verified: true
+- id: cat6-patch-1m
+  name: Cat6 UTP patch cable, RJ45, 1 m
+  maker: Maplin
+  sku: '5055189044449'
+  url: https://www.maplin.co.uk/products/maplin-rj45-cat6-utp-ethernet-lan-cable?variant=55580293661046
+  price: 3.99
+  currency: GBP
+  vat: inc
+  seller: Maplin
+  qty: 5
+  unit: 2
+  category: server
+  optional: false
+  use: 'The lab network from Chapter 2.7: server, Pi, switch, Boards A and B.'
+  notes: Available when checked. Maplin's own brand; the sku is the variant's EAN, and the link opens the 1 m variant. The listing does not say whether
+    the conductors are solid copper or copper-clad aluminium. DigiKey UK's 1 m Cat6 cables were £19 or out of stock, and The Pi Hut sells Cat6A only in
+    2 m (£3).
+  verified: true
+- id: cat6-patch-3m
+  name: Cat6 UTP patch cable, RJ45, 3 m, black
+  maker: Maplin
+  sku: '5026686195712'
+  url: https://www.maplin.co.uk/products/maplin-cat6-rj45-ethernet-cable-black?variant=43411839353053
+  price: 5.49
+  currency: GBP
+  vat: inc
+  seller: Maplin
+  qty: 2
+  unit: 2
+  category: server
+  optional: false
+  use: Longer runs from the bench to the switch and your home router.
+  notes: Available when checked. A different Maplin listing from the 1 m cable, because that one has no 3 m length; the sku is the variant's EAN and the
+    link opens the 3 m variant. 1 Gb/s, 250 MHz UTP; conductor material not stated.
+  verified: true
+- id: hot-air-station
+  name: Hot-air rework station, 700 W, UK plug
+  maker: YIHUA
+  sku: 858D
+  url: https://kunkune.co.uk/shop/hot-air-rework-station/yihua-858d-hot-air-station-smd-bga-rework-station/
+  price: 39.0
+  currency: GBP
+  vat: inc
+  seller: Kunkune
+  qty: 1
+  unit: 3
+  category: bench
+  optional: true
+  use: A cheaper hot-air station if you bought the Pinecil instead of the ATTEN ST-8802.
+  notes: 6 in stock, reduced from £49. UK plug, 220–240 V, 100–500 °C, up to 120 L/min, brushless fan in the handle; 5, 8 and 10 mm nozzles; 12-month guarantee;
+    ships from the UK. Kunkune shows its VAT number but the price is not labelled; UK consumer prices include VAT by law, so treat £39 as VAT-inclusive.
+    The Quick 861DW could not be verified at any UK seller.
+  verified: true
+- id: isopropyl-alcohol-1l
+  name: Isopropyl alcohol, 99 % or stronger, bought locally
+  maker: any
+  sku: local purchase
+  currency: GBP
+  vat: inc
+  seller: a local shop
+  qty: 1
+  unit: 1
+  category: parts
+  optional: false
+  use: Removing flux after soldering and rework.
+  notes: No UK online seller that sells to individuals had a checkable price, and flammable liquids are awkward to post to the Isle of Man. Buy 99 % or
+    stronger isopropyl alcohol locally (electronics, pharmacy or hardware shops), never 70 % rubbing alcohol.
+  verified: false
+- id: ne555p
+  name: NE555P timer, DIP-8
+  maker: Texas Instruments
+  sku: NE555P
+  url: https://www.digikey.co.uk/en/products/detail/texas-instruments/NE555P/277057
+  alt_url: https://www.ti.com/product/NE555
+  price: 0.44
+  currency: GBP
+  vat: ex
+  seller: DigiKey UK
+  qty: 2
+  unit: 1
+  category: parts
+  optional: false
+  use: The 1 kHz astable that drives the MOSFET gate in Lab 1.1.3.
+  notes: Active part.
+  verified: true

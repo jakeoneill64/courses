@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="476.220472pt" height="209.76378pt" viewBox="0 0 476.220472 209.76378" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 209.76378 
+L 476.220472 209.76378 
+L 476.220472 0 
+L 0 0 
+L 0 209.76378 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 13.03937 51.023622 
+L 60.661417 51.023622 
+Q 62.362205 51.023622 62.362205 49.322835 
+L 62.362205 21.543307 
+Q 62.362205 19.84252 60.661417 19.84252 
+L 13.03937 19.84252 
+Q 11.338583 19.84252 11.338583 21.543307 
+L 11.338583 49.322835 
+Q 11.338583 51.023622 13.03937 51.023622 
+z
+" clip-path="url(#p95025e2a24)" style="fill: #58508d; stroke: #58508d; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 66.330709 51.023622 
+L 210.330709 51.023622 
+Q 212.031496 51.023622 212.031496 49.322835 
+L 212.031496 21.543307 
+Q 212.031496 19.84252 210.330709 19.84252 
+L 66.330709 19.84252 
+Q 64.629921 19.84252 64.629921 21.543307 
+L 64.629921 49.322835 
+Q 64.629921 51.023622 66.330709 51.023622 
+z
+" clip-path="url(#p95025e2a24)" style="fill: #e8eff3; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 216 51.023622 
+L 360 51.023622 
+Q 361.700787 51.023622 361.700787 49.322835 
+L 361.700787 21.543307 
+Q 361.700787 19.84252 360 19.84252 
+L 216 19.84252 
+Q 214.299213 19.84252 214.299213 21.543307 
+L 214.299213 49.322835 
+Q 214.299213 51.023622 216 51.023622 
+z
+" clip-path="url(#p95025e2a24)" style="fill: #e8eff3; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 365.669291 51.023622 
+L 447.307087 51.023622 
+Q 449.007874 51.023622 449.007874 49.322835 
+L 449.007874 21.543307 
+Q 449.007874 19.84252 447.307087 19.84252 
+L 365.669291 19.84252 
+Q 363.968504 19.84252 363.968504 21.543307 
+L 363.968504 49.322835 
+Q 363.968504 51.023622 365.669291 51.023622 
+z
+" clip-path="url(#p95025e2a24)" style="fill: #f4f6f8; stroke: #c9d0d8; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 15.874016 124.724409 
+L 216.566929 124.724409 
+Q 221.102362 124.724409 221.102362 120.188976 
+L 221.102362 98.07874 
+Q 221.102362 93.543307 216.566929 93.543307 
+L 15.874016 93.543307 
+Q 11.338583 93.543307 11.338583 98.07874 
+L 11.338583 120.188976 
+Q 11.338583 124.724409 15.874016 124.724409 
+z
+" clip-path="url(#p95025e2a24)" style="fill: #fff5e0; stroke: #ffa600; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 248.314961 124.724409 
+L 460.346457 124.724409 
+Q 464.88189 124.724409 464.88189 120.188976 
+L 464.88189 98.07874 
+Q 464.88189 93.543307 460.346457 93.543307 
+L 248.314961 93.543307 
+Q 243.779528 93.543307 243.779528 98.07874 
+L 243.779528 120.188976 
+Q 243.779528 124.724409 248.314961 124.724409 
+z
+" clip-path="url(#p95025e2a24)" style="fill: #ffa600; stroke: #ffa600; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 15.874016 195.590551 
+L 91.84252 195.590551 
+Q 96.377953 195.590551 96.377953 191.055118 
+L 96.377953 160.440945 
+Q 96.377953 155.905512 91.84252 155.905512 
+L 15.874016 155.905512 
+Q 11.338583 155.905512 11.338583 160.440945 
+L 11.338583 191.055118 
+Q 11.338583 195.590551 15.874016 195.590551 
+z
+" clip-path="url(#p95025e2a24)" style="fill: #e8eff3; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 109.417323 195.590551 
+L 185.385827 195.590551 
+Q 189.92126 195.590551 189.92126 191.055118 
+L 189.92126 160.440945 
+Q 189.92126 155.905512 185.385827 155.905512 
+L 109.417323 155.905512 
+Q 104.88189 155.905512 104.88189 160.440945 
+L 104.88189 191.055118 
+Q 104.88189 195.590551 109.417323 195.590551 
+z
+" clip-path="url(#p95025e2a24)" style="fill: #e8eff3; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 202.96063 195.590551 
+L 278.929134 195.590551 
+Q 283.464567 195.590551 283.464567 191.055118 
+L 283.464567 160.440945 
+Q 283.464567 155.905512 278.929134 155.905512 
+L 202.96063 155.905512 
+Q 198.425197 155.905512 198.425197 160.440945 
+L 198.425197 191.055118 
+Q 198.425197 195.590551 202.96063 195.590551 
+z
+" clip-path="url(#p95025e2a24)" style="fill: #fff0ef; stroke: #ff6361; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 296.503937 195.590551 
+L 372.472441 195.590551 
+Q 377.007874 195.590551 377.007874 191.055118 
+L 377.007874 160.440945 
+Q 377.007874 155.905512 372.472441 155.905512 
+L 296.503937 155.905512 
+Q 291.968504 155.905512 291.968504 160.440945 
+L 291.968504 191.055118 
+Q 291.968504 195.590551 296.503937 195.590551 
+z
+" clip-path="url(#p95025e2a24)" style="fill: #e8eff3; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 390.047244 195.590551 
+L 466.015748 195.590551 
+Q 470.551181 195.590551 470.551181 191.055118 
+L 470.551181 160.440945 
+Q 470.551181 155.905512 466.015748 155.905512 
+L 390.047244 155.905512 
+Q 385.511811 155.905512 385.511811 160.440945 
+L 385.511811 191.055118 
+Q 385.511811 195.590551 390.047244 195.590551 
+z
+" clip-path="url(#p95025e2a24)" style="fill: #e8eff3; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 600; font-size: 7.6px; font-family: 'Source Sans 3'; fill: #ffffff" transform="translate(29.250394 32.275295)">boot</text>
+    <text style="font-weight: 600; font-size: 7.6px; font-family: 'Source Sans 3'; fill: #ffffff" transform="translate(26.332112 43.864535)">loader</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 600; font-size: 7.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="138.330709" y="38.069915" transform="rotate(-0 138.330709 38.069915)">slot A</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 600; font-size: 7.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="288" y="38.069915" transform="rotate(-0 288 38.069915)">slot B</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 600; font-size: 7.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="406.488189" y="38.115633" transform="rotate(-0 406.488189 38.115633)">free</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 600; font-size: 7.4px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="116.220472" y="107.959579" transform="rotate(-0 116.220472 107.959579)">record 0</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 6.4px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="116.220472" y="116.992579" transform="rotate(-0 116.220472 116.992579)">seq 41 · slot A · v1.2 · CRC ok</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 600; font-size: 7.4px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="354.330709" y="107.959579" transform="rotate(-0 354.330709 107.959579)">record 1</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 6.4px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="354.330709" y="116.992579" transform="rotate(-0 354.330709 116.992579)">seq 42 · slot B · v1.3 · CRC ok</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 600; font-size: 6.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="53.858268" y="178.044625" transform="rotate(-0 53.858268 178.044625)">write inactive slot</text>
+   </g>
+   <g id="patch_13">
+    <path d="M 96.377953 175.748031 
+Q 100.629921 175.748031 103.987463 175.748031 
+" clip-path="url(#p95025e2a24)" style="fill: none; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 101.987463 174.748031 
+L 103.987463 175.748031 
+L 101.987463 176.748031 
+z
+" clip-path="url(#p95025e2a24)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 600; font-size: 6.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="147.401575" y="177.450625" transform="rotate(-0 147.401575 177.450625)">hash and verify</text>
+   </g>
+   <g id="patch_14">
+    <path d="M 189.92126 175.748031 
+Q 194.173228 175.748031 197.53077 175.748031 
+" clip-path="url(#p95025e2a24)" style="fill: none; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 195.53077 174.748031 
+L 197.53077 175.748031 
+L 195.53077 176.748031 
+z
+" clip-path="url(#p95025e2a24)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 600; font-size: 6.6px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(207.353976 173.012455)">rewrite the older record</text>
+    <text style="font-weight: 600; font-size: 6.6px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(217.545819 182.476092)">with seq + 1, last</text>
+   </g>
+   <g id="patch_15">
+    <path d="M 283.464567 175.748031 
+Q 287.716535 175.748031 291.074077 175.748031 
+" clip-path="url(#p95025e2a24)" style="fill: none; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 289.074077 174.748031 
+L 291.074077 175.748031 
+L 289.074077 176.748031 
+z
+" clip-path="url(#p95025e2a24)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 600; font-size: 6.6px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(305.969486 173.005752)">reboot: boot newest</text>
+    <text style="font-weight: 600; font-size: 6.6px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(317.750486 183.076795)">valid record</text>
+   </g>
+   <g id="patch_16">
+    <path d="M 377.007874 175.748031 
+Q 381.259843 175.748031 384.617384 175.748031 
+" clip-path="url(#p95025e2a24)" style="fill: none; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 382.617384 174.748031 
+L 384.617384 175.748031 
+L 382.617384 176.748031 
+z
+" clip-path="url(#p95025e2a24)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 600; font-size: 6.6px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(404.856215 172.418455)">confirm healthy,</text>
+    <text style="font-weight: 600; font-size: 6.6px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(395.701293 183.076795)">raise minimum version</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 7.4px; font-family: 'Source Sans 3'; text-anchor: start; fill: #5a6472" x="11.338583" y="13.395551" transform="rotate(-0 11.338583 13.395551)">flash (16 KB erase blocks)</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 6.4px; font-family: 'Source Sans 3'; text-anchor: start; fill: #5a6472" x="90.708661" y="60.52213" transform="rotate(-0 90.708661 60.52213)">header: magic · version · size · SHA-256 · signature</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 7.4px; font-family: 'Source Sans 3'; text-anchor: start; fill: #5a6472" x="11.338583" y="84.61724" transform="rotate(-0 11.338583 84.61724)">EEPROM</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 600; font-size: 6.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffa600" x="354.330709" y="86.659464" transform="rotate(-0 354.330709 86.659464)">highest valid seq wins</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 6.4px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ff6361" x="238.110236" y="147.584252" transform="rotate(-0 238.110236 147.584252)">a power cut before the commit leaves the old record valid; a cut during it leaves a bad CRC</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p95025e2a24">
+   <rect x="0" y="-0" width="476.220472" height="209.76378"/>
+  </clipPath>
+ </defs>
+</svg>

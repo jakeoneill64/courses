@@ -1,0 +1,373 @@
+units:
+- number: 1
+  title: Circuits, Sensors and Signals
+  chapters:
+  - number: '1.1'
+    title: Electricity, components and measurement
+    labs:
+    - number: 1.1.1
+      title: Divider, LED and the meaning of stiffness
+    - number: 1.1.2
+      title: RC charging and a threshold crossing
+    - number: 1.1.3
+      title: The MOSFET as a switch
+    - number: 1.1.4
+      title: Decoupling failure, seen
+  - number: '1.2'
+    title: The analogue signal chain
+    labs:
+    - number: 1.2.1
+      title: Op-amp stages and their limits
+    - number: 1.2.2
+      title: A second-order filter and its Bode plot
+    - number: 1.2.3
+      title: Sampling, aliasing and quantisation with the ADS1115
+    - number: 1.2.4
+      title: A load cell on a 24-bit converter
+  - number: '1.3'
+    title: Sensors with TI silicon
+    labs:
+    - number: 1.3.1
+      title: Bus bring-up and a driver from the datasheet
+    - number: 1.3.2
+      title: Temperature and humidity metrology
+    - number: 1.3.3
+      title: Power metrology with the INA228
+    - number: 1.3.4
+      title: Magnetic angle with the TMAG5273
+    - number: 1.3.5
+      title: Optical time of flight with the OPT3101
+    - number: 1.3.6
+      title: An error budget for the drone's battery current
+  - number: '1.4'
+    title: Power conversion and batteries
+    labs:
+    - number: 1.4.1
+      title: Linear versus switching
+    - number: 1.4.2
+      title: Inside a buck converter
+    - number: 1.4.3
+      title: 'Protection: inrush, short circuit and reverse polarity'
+    - number: 1.4.4
+      title: Characterise the drone battery
+    - number: 1.4.5
+      title: Two power trees
+  - number: '1.5'
+    title: Signals on wires and RF fundamentals
+    labs:
+    - number: 1.5.1
+      title: Reflections on a cable
+    - number: 1.5.2
+      title: The network analyser and S-parameters
+    - number: 1.5.3
+      title: Build and tune an antenna
+    - number: 1.5.4
+      title: The spectrum analyser, safely
+    - number: 1.5.5
+      title: An FM receiver from scratch
+    - number: 1.5.6
+      title: Link budgets for the drone
+- number: 2
+  title: Logic, Processors and Firmware
+  chapters:
+  - number: '2.1'
+    title: Digital logic
+    labs:
+    - number: 2.1.1
+      title: Gates from transistors
+    - number: 2.1.2
+      title: A 4-bit adder in SN74HC logic
+    - number: 2.1.3
+      title: Flip-flops and a setup-time violation
+    - number: 2.1.4
+      title: A finite state machine in gates
+    - number: 2.1.5
+      title: A datapath in Digital
+  - number: '2.2'
+    title: HDL and FPGA
+    labs:
+    - number: 2.2.1
+      title: Toolchain, blink and a timing failure on purpose
+    - number: 2.2.2
+      title: UART transmitter and receiver
+    - number: 2.2.3
+      title: An asynchronous FIFO with a formal proof
+    - number: 2.2.4
+      title: A memory-mapped peripheral
+    - number: 2.2.5
+      title: The register map over SPI
+  - number: '2.3'
+    title: Build a CPU
+    labs:
+    - number: 2.3.1
+      title: Single-cycle RV32I
+    - number: 2.3.2
+      title: A five-stage pipeline
+    - number: 2.3.3
+      title: On the FPGA at speed
+    - number: 2.3.4
+      title: Extensions
+    - number: 2.3.5
+      title: Read three other cores
+  - number: '2.4'
+    title: Memory and interconnect
+    labs:
+    - number: 2.4.1
+      title: Caches on your CPU
+    - number: 2.4.2
+      title: External SDRAM
+    - number: 2.4.3
+      title: Memory experiments on a real machine
+    - number: 2.4.4
+      title: PCIe by hand
+    - number: 2.4.5
+      title: A page-table walker
+  - number: '2.5'
+    title: Privilege and the platform
+    labs:
+    - number: 2.5.1
+      title: M-mode on your CPU
+    - number: 2.5.2
+      title: U-mode and protection on your CPU
+    - number: 2.5.3
+      title: x86-64 bare metal in QEMU and on the server
+    - number: 2.5.4
+      title: Read your server's ACPI and SMBIOS
+  - number: '2.6'
+    title: Bare-metal firmware
+    labs:
+    - number: 2.6.1
+      title: Blink from a blank directory
+    - number: 2.6.2
+      title: Clocks, a proper UART and time
+    - number: 2.6.3
+      title: 'I#super[2]C and SPI masters: sensors, a fan and the FPGA'
+    - number: 2.6.4
+      title: DMA
+    - number: 2.6.5
+      title: Faults and the watchdog
+    - number: 2.6.6
+      title: A signed A/B bootloader
+    - number: 2.6.7
+      title: 'A second core: the Cortex-M0+'
+  - number: '2.7'
+    title: Boot and platform firmware
+    labs:
+    - number: 2.7.1
+      title: A boot sector, then a two-stage loader
+    - number: 2.7.2
+      title: A UEFI loader
+    - number: 2.7.3
+      title: Secure Boot with your own keys
+    - number: 2.7.4
+      title: Measured boot and remote attestation
+    - number: 2.7.5
+      title: Arm boot chain and a device-tree overlay
+    - number: 2.7.6
+      title: Zero-touch netboot
+    - number: 2.7.7
+      title: BMC and Redfish, then OpenBMC
+- number: 3
+  title: Control, Radio and Boards
+  chapters:
+  - number: '3.1'
+    title: Motors, estimation and feedback control
+    labs:
+    - number: 3.1.1
+      title: The thrust stand
+    - number: 3.1.2
+      title: Field-oriented control from scratch
+    - number: 3.1.3
+      title: Your FOC against a commercial ESC
+    - number: 3.1.4
+      title: The IMU and its noise
+    - number: 3.1.5
+      title: Attitude estimation
+    - number: 3.1.6
+      title: Magnetometer calibration and heading
+    - number: 3.1.7
+      title: PID on a one-axis rig
+  - number: '3.2'
+    title: Radio links
+    labs:
+    - number: 3.2.1
+      title: Bring-up and the SMA rework
+    - number: 3.2.2
+      title: A packet radio below the stack
+    - number: 3.2.3
+      title: Sensitivity and the packet-error waterfall
+    - number: 3.2.4
+      title: The telemetry protocol
+    - number: 3.2.5
+      title: Range in the field
+    - number: 3.2.6
+      title: Demodulate your own packets
+  - number: '3.3'
+    title: Microwave synthesis and FMCW radar
+    labs:
+    - number: 3.3.1
+      title: A PLL you program
+    - number: 3.3.2
+      title: Loop dynamics, spurs and lock time
+    - number: 3.3.3
+      title: A chirp you can measure
+    - number: 3.3.4
+      title: FMCW in simulation
+    - number: 3.3.5
+      title: The IWRL6432 as an altimeter
+    - number: 3.3.6
+      title: Raw ADC data
+  - number: '3.4'
+    title: Board design and bring-up
+    labs:
+    - number: 3.4.1
+      title: Specify four boards
+    - number: 3.4.2
+      title: 'Board P: the drone''s power module'
+    - number: 3.4.3
+      title: 'Board F: the flight-controller BoosterPack'
+    - number: 3.4.4
+      title: 'Board A: a BMC-lite on the MSP432E401Y'
+    - number: 3.4.5
+      title: 'Board B: a Compute Module 5 carrier'
+    - number: 3.4.6
+      title: Bring-up of Boards P and F
+    - number: 3.4.7
+      title: Bring-up of Boards A and B
+    - number: 3.4.8
+      title: The respin decision
+  - number: '3.5'
+    title: 'The drone: integration, test and flight'
+    labs:
+    - number: 3.5.1
+      title: DShot over µDMA
+    - number: 3.5.2
+      title: The receiver link
+    - number: 3.5.3
+      title: Flight software and simulation
+    - number: 3.5.4
+      title: Assembly
+    - number: 3.5.5
+      title: Rig tuning
+    - number: 3.5.6
+      title: First hover
+    - number: 3.5.7
+      title: Altitude hold with radar and barometer
+    - number: 3.5.8
+      title: Telemetry and the flight report
+- number: 4
+  title: Systems Software and the Product
+  chapters:
+  - number: '4.1'
+    title: Write a kernel
+    labs:
+    - number: 4.1.1
+      title: Boot, console and exceptions
+    - number: 4.1.2
+      title: Memory
+    - number: 4.1.3
+      title: Time, threads, scheduling and SMP
+    - number: 4.1.4
+      title: User mode
+    - number: 4.1.5
+      title: PCI, NVMe and a filesystem
+    - number: 4.1.6
+      title: Choose one
+  - number: '4.2'
+    title: Linux kernel internals
+    labs:
+    - number: 4.2.1
+      title: Build, boot, break and dump
+    - number: 4.2.2
+      title: A tracing tour
+    - number: 4.2.3
+      title: Modules, from hello to a character device under the sanitisers
+    - number: 4.2.4
+      title: RCU in your module
+    - number: 4.2.5
+      title: Scheduler and memory experiments
+    - number: 4.2.6
+      title: Bisect a change, then a regression on hardware
+    - number: 4.2.7
+      title: The node kernel and the patch process
+  - number: '4.3'
+    title: Linux device drivers
+    labs:
+    - number: 4.3.1
+      title: Mainline TI drivers by overlay
+    - number: 4.3.2
+      title: An upstream-ready IIO driver for the OPT4048
+    - number: 4.3.3
+      title: 'The ADS1220 over SPI: a data-ready trigger and a buffer'
+    - number: 4.3.4
+      title: 'Fan control: a hwmon driver, a thermal zone and PMBus'
+    - number: 4.3.5
+      title: Your FPGA over SPI, through regmap
+    - number: 4.3.6
+      title: PCIe with MSI and DMA in QEMU
+    - number: 4.3.7
+      title: NVMe, in the tree
+    - number: 4.3.8
+      title: The 82599 in the kernel, then in userspace
+  - number: '4.4'
+    title: Virtualisation and hypervisors
+    labs:
+    - number: 4.4.1
+      title: Hello from a guest, through /dev/kvm
+    - number: 4.4.2
+      title: Boot Linux with your own virtio-blk and virtio-net
+    - number: 4.4.3
+      title: Your kernel as a guest, then a passed-through virtual function
+    - number: 4.4.4
+      title: A bare-metal VT-x hypervisor
+    - number: 4.4.5
+      title: Firecracker, Cloud Hypervisor and a VMM API for Compute
+    - number: 4.4.6
+      title: Live migration and the multi-tenant node
+    - number: 4.4.7
+      title: Arm, for comparison
+  - number: '4.5'
+    title: Storage and network data paths
+    labs:
+    - number: 4.5.1
+      title: Measure the local storage path
+    - number: 4.5.2
+      title: SPDK, and a vhost-user disk for your VMM
+    - number: 4.5.3
+      title: Reed-Solomon in C++ at memory bandwidth
+    - number: 4.5.4
+      title: NVMe over Fabrics between two nodes
+    - number: 4.5.5
+      title: 'The network path: kernel, XDP, AF\_XDP and DPDK'
+    - number: 4.5.6
+      title: A Blocks prototype
+  - number: '4.6'
+    title: Product engineering
+    labs:
+    - number: 4.6.1
+      title: The Module Zero specification
+    - number: 4.6.2
+      title: The threat model
+    - number: 4.6.3
+      title: The firmware update architecture
+    - number: 4.6.4
+      title: The manufacturing and test plan
+    - number: 4.6.5
+      title: The compliance plan
+    - number: 4.6.6
+      title: The cost model
+  - number: '4.7'
+    title: 'Capstone: Module Zero'
+    labs:
+    - number: 4.7.1
+      title: 'Week 1: node image and join'
+    - number: 4.7.2
+      title: 'Week 2: quorum and identity'
+    - number: 4.7.3
+      title: 'Week 3: compute'
+    - number: 4.7.4
+      title: 'Week 4: Blocks'
+    - number: 4.7.5
+      title: 'Week 5: updates and management'
+    - number: 4.7.6
+      title: 'Week 6: integration and recording'

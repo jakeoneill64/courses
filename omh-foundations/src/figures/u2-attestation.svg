@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="476.220472pt" height="294.80315pt" viewBox="0 0 476.220472 294.80315" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 294.80315 
+L 476.220472 294.80315 
+L 476.220472 0 
+L 0 0 
+L 0 294.80315 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 65.19685 28.346457 
+L 65.19685 286.299213 
+" clip-path="url(#p3482fc6496)" style="fill: none; stroke-dasharray: 2.7,1.8; stroke-dashoffset: 0; stroke: #c9d0d8; stroke-width: 0.9"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 238.110236 28.346457 
+L 238.110236 286.299213 
+" clip-path="url(#p3482fc6496)" style="fill: none; stroke-dasharray: 2.7,1.8; stroke-dashoffset: 0; stroke: #c9d0d8; stroke-width: 0.9"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 411.023622 28.346457 
+L 411.023622 286.299213 
+" clip-path="url(#p3482fc6496)" style="fill: none; stroke-dasharray: 2.7,1.8; stroke-dashoffset: 0; stroke: #c9d0d8; stroke-width: 0.9"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 5.669291 113.385827 
+L 470.551181 113.385827 
+" clip-path="url(#p3482fc6496)" style="fill: none; stroke-dasharray: 2.4,1.6; stroke-dashoffset: 0; stroke: #ffa600; stroke-width: 0.8"/>
+   </g>
+   <g id="patch_2">
+    <path d="M 10.204724 28.346457 
+L 120.188976 28.346457 
+Q 124.724409 28.346457 124.724409 23.811024 
+L 124.724409 8.787402 
+Q 124.724409 4.251969 120.188976 4.251969 
+L 10.204724 4.251969 
+Q 5.669291 4.251969 5.669291 8.787402 
+L 5.669291 23.811024 
+Q 5.669291 28.346457 10.204724 28.346457 
+z
+" clip-path="url(#p3482fc6496)" style="fill: #003f5c; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 183.11811 28.346457 
+L 293.102362 28.346457 
+Q 297.637795 28.346457 297.637795 23.811024 
+L 297.637795 8.787402 
+Q 297.637795 4.251969 293.102362 4.251969 
+L 183.11811 4.251969 
+Q 178.582677 4.251969 178.582677 8.787402 
+L 178.582677 23.811024 
+Q 178.582677 28.346457 183.11811 28.346457 
+z
+" clip-path="url(#p3482fc6496)" style="fill: #58508d; stroke: #58508d; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 356.031496 28.346457 
+L 466.015748 28.346457 
+Q 470.551181 28.346457 470.551181 23.811024 
+L 470.551181 8.787402 
+Q 470.551181 4.251969 466.015748 4.251969 
+L 356.031496 4.251969 
+Q 351.496063 4.251969 351.496063 8.787402 
+L 351.496063 23.811024 
+Q 351.496063 28.346457 356.031496 28.346457 
+z
+" clip-path="url(#p3482fc6496)" style="fill: #ffa600; stroke: #ffa600; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 600; font-size: 8.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffffff" x="65.19685" y="19.144228" transform="rotate(-0 65.19685 19.144228)">Attester: module + TPM</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 600; font-size: 8.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffffff" x="238.110236" y="18.447228" transform="rotate(-0 238.110236 18.447228)">Verifier: control plane</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 600; font-size: 8.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="411.023622" y="18.312056" transform="rotate(-0 411.023622 18.312056)">Relying party: quorum</text>
+   </g>
+   <g id="patch_5">
+    <path d="M 65.19685 45.354331 
+Q 151.653543 45.354331 237.104006 45.354331 
+" clip-path="url(#p3482fc6496)" style="fill: none; stroke: #1b2430; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 234.304006 43.954331 
+L 237.104006 45.354331 
+L 234.304006 46.754331 
+z
+" clip-path="url(#p3482fc6496)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 238.110236 69.448819 
+Q 151.653543 69.448819 66.203081 69.448819 
+" clip-path="url(#p3482fc6496)" style="fill: none; stroke: #1b2430; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 69.003081 70.848819 
+L 66.203081 69.448819 
+L 69.003081 68.048819 
+z
+" clip-path="url(#p3482fc6496)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 65.19685 93.543307 
+Q 151.653543 93.543307 237.104006 93.543307 
+" clip-path="url(#p3482fc6496)" style="fill: none; stroke: #1b2430; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 234.304006 92.143307 
+L 237.104006 93.543307 
+L 234.304006 94.943307 
+z
+" clip-path="url(#p3482fc6496)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 238.110236 134.645669 
+Q 151.653543 134.645669 66.203081 134.645669 
+" clip-path="url(#p3482fc6496)" style="fill: none; stroke: #1b2430; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 69.003081 136.045669 
+L 66.203081 134.645669 
+L 69.003081 133.245669 
+z
+" clip-path="url(#p3482fc6496)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 65.19685 158.740157 
+Q 151.653543 158.740157 237.104006 158.740157 
+" clip-path="url(#p3482fc6496)" style="fill: none; stroke: #1b2430; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 234.304006 157.340157 
+L 237.104006 158.740157 
+L 234.304006 160.140157 
+z
+" clip-path="url(#p3482fc6496)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 238.110236 182.834646 
+L 260.787402 182.834646 
+L 260.787402 194.173228 
+" clip-path="url(#p3482fc6496)" style="fill: none; stroke: #1b2430; stroke-width: 0.9"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 260.787402 194.173228 
+Q 250.299213 194.173228 240.817254 194.173228 
+" clip-path="url(#p3482fc6496)" style="fill: none; stroke: #1b2430; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 243.817254 195.673228 
+L 240.817254 194.173228 
+L 243.817254 192.673228 
+z
+" clip-path="url(#p3482fc6496)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 238.110236 212.598425 
+Q 324.566929 212.598425 410.017391 212.598425 
+" clip-path="url(#p3482fc6496)" style="fill: none; stroke-dasharray: 2.7,1.8; stroke-dashoffset: 0; stroke: #58508d; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 407.217391 211.198425 
+L 410.017391 212.598425 
+L 407.217391 213.998425 
+z
+" clip-path="url(#p3482fc6496)" style="fill: #58508d; stroke-dasharray: 2.7,1.8; stroke-dashoffset: 0; stroke: #58508d; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 411.023622 236.692913 
+Q 238.110236 236.692913 66.203081 236.692913 
+" clip-path="url(#p3482fc6496)" style="fill: none; stroke-dasharray: 2.7,1.8; stroke-dashoffset: 0; stroke: #58508d; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 69.003081 238.092913 
+L 66.203081 236.692913 
+L 69.003081 235.292913 
+z
+" clip-path="url(#p3482fc6496)" style="fill: #58508d; stroke-dasharray: 2.7,1.8; stroke-dashoffset: 0; stroke: #58508d; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 7.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="151.653543" y="42.492433" transform="rotate(-0 151.653543 42.492433)">EK certificate, AK public key</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 7.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="151.653543" y="66.529921" transform="rotate(-0 151.653543 66.529921)">MakeCredential challenge for the AK</text>
+   </g>
+   <g id="text_6">
+    <text style="font-style: italic; font-size: 6.8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #5a6472" x="151.653543" y="76.544739" transform="rotate(-0 151.653543 76.544739)">decryptable only by that TPM</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 7.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="151.653543" y="91.384409" transform="rotate(-0 151.653543 91.384409)">ActivateCredential: the secret</text>
+   </g>
+   <g id="text_8">
+    <text style="font-style: italic; font-size: 6.8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #5a6472" x="151.653543" y="100.60204" transform="rotate(-0 151.653543 100.60204)">proves the AK lives in a genuine TPM</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Source Sans 3'; text-anchor: start; fill: #ffa600" x="11.338583" y="110.108215" transform="rotate(-0 11.338583 110.108215)">every boot</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 7.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="151.653543" y="131.673334" transform="rotate(-0 151.653543 131.673334)">nonce</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 7.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="151.653543" y="155.851541" transform="rotate(-0 151.653543 155.851541)">quote(PCRs, nonce) signed by AK, plus event log</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 7.6px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1b2430" x="265.03937" y="190.403937" transform="rotate(-0 265.03937 190.403937)">check signature and nonce; replay log; compare reference values</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 7.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="324.566929" y="210.485246" transform="rotate(-0 324.566929 210.485246)">admit or refuse</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 7.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="238.110236" y="233.831016" transform="rotate(-0 238.110236 233.831016)">credentials and disk key, only if admitted</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p3482fc6496">
+   <rect x="0" y="0" width="476.220472" height="294.80315"/>
+  </clipPath>
+ </defs>
+</svg>

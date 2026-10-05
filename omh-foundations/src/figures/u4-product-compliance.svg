@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="476.220472pt" height="215.433071pt" viewBox="0 0 476.220472 215.433071" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 215.433071 
+L 476.220472 215.433071 
+L 476.220472 0 
+L 0 0 
+L 0 215.433071 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 51.023622 192.755906 
+L 51.023622 22.677165 
+" clip-path="url(#p586187f3a3)" style="fill: none; stroke: #e3e7ec; stroke-width: 0.7"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 150.23622 192.755906 
+L 150.23622 22.677165 
+" clip-path="url(#p586187f3a3)" style="fill: none; stroke: #e3e7ec; stroke-width: 0.7"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 249.448819 192.755906 
+L 249.448819 22.677165 
+" clip-path="url(#p586187f3a3)" style="fill: none; stroke: #e3e7ec; stroke-width: 0.7"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 348.661417 192.755906 
+L 348.661417 22.677165 
+" clip-path="url(#p586187f3a3)" style="fill: none; stroke: #e3e7ec; stroke-width: 0.7"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 447.874016 192.755906 
+L 447.874016 22.677165 
+" clip-path="url(#p586187f3a3)" style="fill: none; stroke: #e3e7ec; stroke-width: 0.7"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 324.741668 192.755906 
+L 324.741668 17.007874 
+" clip-path="url(#p586187f3a3)" style="fill: none; stroke-dasharray: 3,2; stroke-dashoffset: 0; stroke: #ffa600"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 51.023622 62.362205 
+L 467.716535 62.362205 
+" clip-path="url(#p586187f3a3)" style="fill: none; stroke: #003f5c; stroke-width: 1.4"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 51.023622 141.732283 
+L 467.716535 141.732283 
+" clip-path="url(#p586187f3a3)" style="fill: none; stroke: #58508d; stroke-width: 1.4"/>
+   </g>
+   <g id="line2d_9">
+    <path d="M 83.28127 62.362205 
+L 83.28127 74.267717 
+" clip-path="url(#p586187f3a3)" style="fill: none; stroke: #003f5c; stroke-width: 0.6"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 125.297535 62.362205 
+L 125.297535 47.055118 
+" clip-path="url(#p586187f3a3)" style="fill: none; stroke: #003f5c; stroke-width: 0.6"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 144.272622 141.732283 
+L 144.272622 156.472441 
+" clip-path="url(#p586187f3a3)" style="fill: none; stroke: #58508d; stroke-width: 0.6"/>
+   </g>
+   <g id="line2d_12">
+    <path d="M 158.118865 141.732283 
+L 158.118865 128.692913 
+" clip-path="url(#p586187f3a3)" style="fill: none; stroke: #58508d; stroke-width: 0.6"/>
+   </g>
+   <g id="line2d_13">
+    <path d="M 207.861072 141.732283 
+L 207.861072 104.314961 
+" clip-path="url(#p586187f3a3)" style="fill: none; stroke: #58508d; stroke-width: 0.6"/>
+   </g>
+   <g id="line2d_14">
+    <path d="M 293.211088 141.732283 
+L 293.211088 156.472441 
+" clip-path="url(#p586187f3a3)" style="fill: none; stroke: #58508d; stroke-width: 0.6"/>
+   </g>
+   <g id="line2d_15">
+    <path d="M 318.218099 141.732283 
+L 318.218099 126.425197 
+" clip-path="url(#p586187f3a3)" style="fill: none; stroke: #58508d; stroke-width: 0.6"/>
+   </g>
+   <g id="line2d_16">
+    <path d="M 442.165894 141.732283 
+L 442.165894 158.740157 
+" clip-path="url(#p586187f3a3)" style="fill: none; stroke: #58508d; stroke-width: 0.6"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 7.4px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #5a6472" x="51.023622" y="205.03765" transform="rotate(-0 51.023622 205.03765)">2024</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 7.4px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #5a6472" x="150.23622" y="205.03765" transform="rotate(-0 150.23622 205.03765)">2025</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 7.4px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #5a6472" x="249.448819" y="205.03765" transform="rotate(-0 249.448819 205.03765)">2026</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 7.4px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #5a6472" x="348.661417" y="205.03765" transform="rotate(-0 348.661417 205.03765)">2027</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 7.4px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #5a6472" x="447.874016" y="205.03765" transform="rotate(-0 447.874016 205.03765)">2028</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 8px; font-family: 'Source Sans 3'; text-anchor: start; fill: #003f5c" x="5.669291" y="64.922205" transform="rotate(-0 5.669291 64.922205)">UK</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 8px; font-family: 'Source Sans 3'; text-anchor: start; fill: #58508d" x="5.669291" y="144.292283" transform="rotate(-0 5.669291 144.292283)">EU</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Source Sans 3'; text-anchor: start; fill: #ffa600" x="327.576313" y="14.297191" transform="rotate(-0 327.576313 14.297191)">today: 5 Oct 2026</text>
+   </g>
+   <g id="patch_2">
+    <path d="M 83.28127 66.047244 
+C 84.258554 66.047244 85.195942 65.658965 85.886986 64.967921 
+C 86.578031 64.276877 86.96631 63.339489 86.96631 62.362205 
+C 86.96631 61.384921 86.578031 60.447532 85.886986 59.756488 
+C 85.195942 59.065444 84.258554 58.677165 83.28127 58.677165 
+C 82.303986 58.677165 81.366598 59.065444 80.675554 59.756488 
+C 79.98451 60.447532 79.596231 61.384921 79.596231 62.362205 
+C 79.596231 63.339489 79.98451 64.276877 80.675554 64.967921 
+C 81.366598 65.658965 82.303986 66.047244 83.28127 66.047244 
+z
+" clip-path="url(#p586187f3a3)" style="fill: #003f5c; stroke: #003f5c; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(64.727208 80.412255)">PSTI in force</text>
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(65.899458 90.451598)">29 Apr 2024</text>
+   </g>
+   <g id="patch_3">
+    <path d="M 125.297535 66.047244 
+C 126.274818 66.047244 127.212207 65.658965 127.903251 64.967921 
+C 128.594295 64.276877 128.982574 63.339489 128.982574 62.362205 
+C 128.982574 61.384921 128.594295 60.447532 127.903251 59.756488 
+C 127.212207 59.065444 126.274818 58.677165 125.297535 58.677165 
+C 124.320251 58.677165 123.382862 59.065444 122.691818 59.756488 
+C 122.000774 60.447532 121.612495 61.384921 121.612495 62.362205 
+C 121.612495 63.339489 122.000774 64.276877 122.691818 64.967921 
+C 123.382862 65.658965 124.320251 66.047244 125.297535 66.047244 
+z
+" clip-path="url(#p586187f3a3)" style="fill: #003f5c; stroke: #003f5c; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(127.565251 34.161299)">GB accepts UKCA or CE</text>
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(127.565251 45.327892)">indefinitely, 1 Oct 2024</text>
+   </g>
+   <g id="patch_4">
+    <path d="M 144.272622 145.417323 
+C 145.249906 145.417323 146.187294 145.029044 146.878338 144.338 
+C 147.569382 143.646956 147.957661 142.709567 147.957661 141.732283 
+C 147.957661 140.755 147.569382 139.817611 146.878338 139.126567 
+C 146.187294 138.435523 145.249906 138.047244 144.272622 138.047244 
+C 143.295338 138.047244 142.357949 138.435523 141.666905 139.126567 
+C 140.975861 139.817611 140.587582 140.755 140.587582 141.732283 
+C 140.587582 142.709567 140.975861 143.646956 141.666905 144.338 
+C 142.357949 145.029044 143.295338 145.417323 144.272622 145.417323 
+z
+" clip-path="url(#p586187f3a3)" style="fill: #58508d; stroke: #58508d; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(126.398622 162.61698)">CRA in force</text>
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(126.455997 173.35101)">10 Dec 2024</text>
+   </g>
+   <g id="patch_5">
+    <path d="M 158.118865 145.417323 
+C 159.096149 145.417323 160.033538 145.029044 160.724582 144.338 
+C 161.415626 143.646956 161.803905 142.709567 161.803905 141.732283 
+C 161.803905 140.755 161.415626 139.817611 160.724582 139.126567 
+C 160.033538 138.435523 159.096149 138.047244 158.118865 138.047244 
+C 157.141581 138.047244 156.204193 138.435523 155.513149 139.126567 
+C 154.822105 139.817611 154.433826 140.755 154.433826 141.732283 
+C 154.433826 142.709567 154.822105 143.646956 155.513149 144.338 
+C 156.204193 145.029044 157.141581 145.417323 158.118865 145.417323 
+z
+" clip-path="url(#p586187f3a3)" style="fill: #58508d; stroke: #58508d; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(160.386582 116.652407)">EN 18031 listed</text>
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(160.386582 127.42975)">30 Jan 2025</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 207.861072 145.417323 
+C 208.838356 145.417323 209.775744 145.029044 210.466788 144.338 
+C 211.157833 143.646956 211.546112 142.709567 211.546112 141.732283 
+C 211.546112 140.755 211.157833 139.817611 210.466788 139.126567 
+C 209.775744 138.435523 208.838356 138.047244 207.861072 138.047244 
+C 206.883788 138.047244 205.9464 138.435523 205.255356 139.126567 
+C 204.564312 139.817611 204.176033 140.755 204.176033 141.732283 
+C 204.176033 142.709567 204.564312 143.646956 205.255356 144.338 
+C 205.9464 145.029044 206.883788 145.417323 207.861072 145.417323 
+z
+" clip-path="url(#p586187f3a3)" style="fill: #58508d; stroke: #58508d; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(210.128789 91.565142)">RED cyber act 2022/30</text>
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(210.128789 102.490422)">applies, 1 Aug 2025</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 293.211088 145.417323 
+C 294.188372 145.417323 295.125761 145.029044 295.816805 144.338 
+C 296.507849 143.646956 296.896128 142.709567 296.896128 141.732283 
+C 296.896128 140.755 296.507849 139.817611 295.816805 139.126567 
+C 295.125761 138.435523 294.188372 138.047244 293.211088 138.047244 
+C 292.233804 138.047244 291.296416 138.435523 290.605372 139.126567 
+C 289.914328 139.817611 289.526049 140.755 289.526049 141.732283 
+C 289.526049 142.709567 289.914328 143.646956 290.605372 144.338 
+C 291.296416 145.029044 292.233804 145.417323 293.211088 145.417323 
+z
+" clip-path="url(#p586187f3a3)" style="fill: #58508d; stroke: #58508d; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(227.892747 162.61698)">CRA rules for notified</text>
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(231.807747 172.98426)">bodies, 11 Jun 2026</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 318.218099 145.417323 
+C 319.195383 145.417323 320.132772 145.029044 320.823816 144.338 
+C 321.51486 143.646956 321.903139 142.709567 321.903139 141.732283 
+C 321.903139 140.755 321.51486 139.817611 320.823816 139.126567 
+C 320.132772 138.435523 319.195383 138.047244 318.218099 138.047244 
+C 317.240816 138.047244 316.303427 138.435523 315.612383 139.126567 
+C 314.921339 139.817611 314.53306 140.755 314.53306 141.732283 
+C 314.53306 142.709567 314.921339 143.646956 315.612383 144.338 
+C 316.303427 145.029044 317.240816 145.417323 318.218099 145.417323 
+z
+" clip-path="url(#p586187f3a3)" style="fill: #58508d; stroke: #58508d; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(250.991758 113.621378)">CRA reporting applies</text>
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(280.186633 124.510658)">11 Sep 2026</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 442.165894 145.417323 
+C 443.143178 145.417323 444.080566 145.029044 444.77161 144.338 
+C 445.462654 143.646956 445.850933 142.709567 445.850933 141.732283 
+C 445.850933 140.755 445.462654 139.817611 444.77161 139.126567 
+C 444.080566 138.435523 443.143178 138.047244 442.165894 138.047244 
+C 441.18861 138.047244 440.251221 138.435523 439.560177 139.126567 
+C 438.869133 139.817611 438.480854 140.755 438.480854 141.732283 
+C 438.480854 142.709567 438.869133 143.646956 439.560177 144.338 
+C 440.251221 145.029044 441.18861 145.417323 442.165894 145.417323 
+z
+" clip-path="url(#p586187f3a3)" style="fill: #58508d; stroke: #58508d; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(384.471677 162.668873)">CRA applies in full;</text>
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(387.971552 173.60484)">2022/30 repealed</text>
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(404.264927 185.07687)">11 Dec 2027</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p586187f3a3">
+   <rect x="0" y="0" width="476.220472" height="215.433071"/>
+  </clipPath>
+ </defs>
+</svg>
