@@ -1,0 +1,18 @@
+$ ./build/bin/u4_particles
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation on, synchronisation validation on
+1000000 particles (31 MB), 50000 cubes to cull, 1280x720, 2 frames in flight
+60 frames: CPU frame time median 2.59 ms
+GPU time per pass, median of 60 frames:
+  simulate        0.304 ms
+  cull            0.017 ms
+  draw            2.243 ms
+  post-process    0.030 ms
+  frame           2.595 ms
+particles: angular momentum kept to 4.3e-06 (largest relative change)
+  sampled orbits within 2.4e-07 of the CPU's
+culling: 14941 of 50000 cubes visible on the GPU, 14941 on the CPU
+  0 disagree (0 of them touching a frustum plane)
+post-process: every pixel within 0 of the CPU's tone map; 65% of pixels lit
+wrote particles.png
+PASS particles, GPU culling and post-processing

@@ -1,0 +1,30 @@
+#version 460
+#extension GL_KHR_shader_subgroup_basic : require
+
+// snippet:begin interface
+layout(local_size_x_id = 0, local_size_y_id = 1) in;
+
+struct Record {
+    uvec2 globalId;
+    uvec2 localId;
+    uvec2 groupId;
+    uint localIndex;
+    uint subgroupId;
+    uint subgroupInvocation;
+    uint subgroupSize;
+};
+
+layout(std430, set = 0, binding = 0) writeonly buffer Records {
+    Record records[];
+};
+// snippet:end interface
+
+// snippet:begin main
+void main() {
+    uvec2 grid = gl_NumWorkGroups.xy * gl_WorkGroupSize.xy;
+    uvec2 id = gl_GlobalInvocationID.xy;
+    records[id.y * grid.x + id.x] = Record(id, gl_LocalInvocationID.xy, gl_WorkGroupID.xy,
+                                           gl_LocalInvocationIndex, gl_SubgroupID,
+                                           gl_SubgroupInvocationID, gl_SubgroupSize);
+}
+// snippet:end main

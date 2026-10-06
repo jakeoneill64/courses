@@ -1,0 +1,12 @@
+$ VKF_VALIDATION=0 ./build/bin/u3_frames --frames 300
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation off, synchronisation validation off
+300 frames: CPU prepares 16384 seeds, GPU runs 8000 steps per pixel of 256x256
+  in flight     ms/frame    CPU work   CPU waits         GPU     checksums
+  1                3.643       1.754       1.768       1.133       300/300
+            19 palettes, each destroyed at most 1 frame(s) after it was replaced
+  2                1.828       1.757       0.000       1.274       300/300
+            19 palettes, each destroyed at most 1 frame(s) after it was replaced
+  3                1.770       1.749       0.000       1.343       300/300
+            19 palettes, each destroyed at most 1 frame(s) after it was replaced
+PASS

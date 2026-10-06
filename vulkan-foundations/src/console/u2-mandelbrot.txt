@@ -1,0 +1,16 @@
+$ VKF_VALIDATION=0 ./build/bin/u2_mandelbrot
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation off, synchronisation validation off
+256 x 256 check grid, at most 1024 iterations
+  c = 0, -1 and -0.125+0.125i stay bounded for all 1024 iterations
+  c = 0.5, 1 and -2+0.5i escape after 7, 4 and 4 iterations
+  the known points: ok
+  iteration counts equal the CPU's for 65428 of 65536 pixels (99.84%)
+
+1024 x 1024 views, at most 1024 iterations; median of 10 runs
+view                                  ms  G iter/s   iterations  lane use
+inside the main cardioid           5.069     211.8   1073741824    100.0%
+seahorse valley (the boundary)     2.867     162.8    466859070     79.7%
+the whole set                      1.106     169.3    187209676     90.8%
+wrote mandelbrot.png and mandelbrot_boundary.png
+PASS mandelbrot: known points and iteration counts match

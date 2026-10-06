@@ -1,0 +1,11 @@
+$ VKF_VALIDATION=0 ./build/bin/u3_queues --repeats 20
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation off, synchronisation validation off
+queues: main family 0, transfer family 2, compute family 1
+upload, exclusive buffer: released by family 2, acquired by family 0, correct
+upload, concurrent buffer: no ownership transfer, correct
+two independent workloads, ms from submit to finish, median of 20
+  workload                one queue     + barrier  two queues   GPU ms: main, compute
+  8 groups x 400000          21.410        21.411      10.983          10.597, 10.701
+  2048 groups x 4000          2.979         3.019       2.763           2.050,  1.796
+PASS

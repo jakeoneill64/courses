@@ -1,0 +1,5 @@
+$ VKF_VALIDATION=0 ./build/bin/u1_commands
+fill, copy and read back 1 MiB: ok
+64 MiB through a staging buffer: 5.63 ms (11.9 GB/s)
+64 MiB written straight into device-local, host-visible memory: 3.94 ms (17.0 GB/s)
+empty command buffer: 19.4 us per submit and wait, 0.43 us each when 200 are batched

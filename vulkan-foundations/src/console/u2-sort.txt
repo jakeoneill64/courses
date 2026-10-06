@@ -1,0 +1,10 @@
+$ VKF_VALIDATION=0 ./build/bin/u2_sort
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation off, synchronisation validation off
+LSD radix sort of 4194304 key-value pairs: 4-bit digits, 8 passes
+2380586 keys repeat an earlier key, so their values test stability
+
+GPU radix sort (median)              3.802 ms   1103.3 M pairs/s
+std::sort, keys only                83.805 ms     50.0 M keys/s
+std::stable_sort, pairs            206.325 ms     20.3 M pairs/s
+PASS sort: the GPU pairs match std::stable_sort exactly

@@ -1,0 +1,33 @@
+#version 460
+#extension GL_GOOGLE_include_directive : require
+
+layout(local_size_x = 256) in;
+
+#include "frame.glsl"
+
+layout(std430, set = 0, binding = 2) readonly buffer Instances {
+    vec4 positionScale[];
+};
+
+layout(std430, set = 0, binding = 3) writeonly buffer Visible {
+    uint visible[];
+};
+
+layout(std430, set = 0, binding = 4) buffer DrawCommand {
+    uint indexCount;
+    uint instanceCount;
+    uint firstIndex;
+    int vertexOffset;
+    uint firstInstance;
+} command;
+
+void main() {
+    uint i = gl_GlobalInvocationID.x;
+    if (i >= frame.instanceCount) return;
+    vec4 s = positionScale[i];
+    float radius = s.w * 1.7320508;
+    for (int p = 0; p < 6; ++p) {
+        if (dot(frame.planes[p].xyz, s.xyz) + frame.planes[p].w < -radius) return;
+    }
+    visible[atomicAdd(command.instanceCount, 1u)] = i;
+}

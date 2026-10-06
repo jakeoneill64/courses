@@ -1,0 +1,30 @@
+#version 460
+
+layout(local_size_x = 16, local_size_y = 16) in;
+layout(constant_id = 0) const int RADIUS = 8;
+const int TILE = 16;
+
+layout(set = 0, binding = 0, rgba32f) uniform restrict readonly image2D source;
+layout(set = 0, binding = 1, rgba32f) uniform restrict writeonly image2D target;
+layout(std430, set = 0, binding = 2) restrict readonly buffer Weights { float weights[]; };
+
+// snippet:begin columns
+shared vec4 column[TILE + 2 * RADIUS][TILE];
+
+void main() {
+    ivec2 size = imageSize(source);
+    ivec2 origin = ivec2(gl_WorkGroupID.xy) * TILE;
+    ivec2 id = ivec2(gl_LocalInvocationID.xy);
+    for (int i = id.y; i < TILE + 2 * RADIUS; i += TILE) {
+        ivec2 p = ivec2(origin.x + id.x, origin.y - RADIUS + i);
+        column[i][id.x] = imageLoad(source, clamp(p, ivec2(0), size - 1));
+    }
+    barrier();
+    vec4 sum = vec4(0.0);
+    for (int k = -RADIUS; k <= RADIUS; ++k) {
+        sum += weights[abs(k)] * column[id.y + RADIUS + k][id.x];
+    }
+    ivec2 p = origin + id;
+    if (all(lessThan(p, size))) imageStore(target, p, sum);
+}
+// snippet:end columns

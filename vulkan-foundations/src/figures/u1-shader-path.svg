@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="476.220472pt" height="119.055118pt" viewBox="0 0 476.220472 119.055118" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 119.055118 
+L 476.220472 119.055118 
+L 476.220472 0 
+L 0 0 
+L 0 119.055118 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 10.204724 56.692913 
+L 86.173228 56.692913 
+Q 90.708661 56.692913 90.708661 52.15748 
+L 90.708661 30.047244 
+Q 90.708661 25.511811 86.173228 25.511811 
+L 10.204724 25.511811 
+Q 5.669291 25.511811 5.669291 30.047244 
+L 5.669291 52.15748 
+Q 5.669291 56.692913 10.204724 56.692913 
+z
+" clip-path="url(#pe78a83df5b)" style="fill: #f4f6f8; stroke: #c9d0d8; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 105.165354 56.692913 
+L 181.133858 56.692913 
+Q 185.669291 56.692913 185.669291 52.15748 
+L 185.669291 30.047244 
+Q 185.669291 25.511811 181.133858 25.511811 
+L 105.165354 25.511811 
+Q 100.629921 25.511811 100.629921 30.047244 
+L 100.629921 52.15748 
+Q 100.629921 56.692913 105.165354 56.692913 
+z
+" clip-path="url(#pe78a83df5b)" style="fill: #fff5e0; stroke: #ffa600; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 200.125984 56.692913 
+L 276.094488 56.692913 
+Q 280.629921 56.692913 280.629921 52.15748 
+L 280.629921 30.047244 
+Q 280.629921 25.511811 276.094488 25.511811 
+L 200.125984 25.511811 
+Q 195.590551 25.511811 195.590551 30.047244 
+L 195.590551 52.15748 
+Q 195.590551 56.692913 200.125984 56.692913 
+z
+" clip-path="url(#pe78a83df5b)" style="fill: #e8eff3; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 295.086614 56.692913 
+L 371.055118 56.692913 
+Q 375.590551 56.692913 375.590551 52.15748 
+L 375.590551 30.047244 
+Q 375.590551 25.511811 371.055118 25.511811 
+L 295.086614 25.511811 
+Q 290.551181 25.511811 290.551181 30.047244 
+L 290.551181 52.15748 
+Q 290.551181 56.692913 295.086614 56.692913 
+z
+" clip-path="url(#pe78a83df5b)" style="fill: #e8eff3; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 390.047244 56.692913 
+L 466.015748 56.692913 
+Q 470.551181 56.692913 470.551181 52.15748 
+L 470.551181 30.047244 
+Q 470.551181 25.511811 466.015748 25.511811 
+L 390.047244 25.511811 
+Q 385.511811 25.511811 385.511811 30.047244 
+L 385.511811 52.15748 
+Q 385.511811 56.692913 390.047244 56.692913 
+z
+" clip-path="url(#pe78a83df5b)" style="fill: #58508d; stroke: #58508d; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 296.503937 107.716535 
+L 372.472441 107.716535 
+Q 377.007874 107.716535 377.007874 103.181102 
+L 377.007874 86.740157 
+Q 377.007874 82.204724 372.472441 82.204724 
+L 296.503937 82.204724 
+Q 291.968504 82.204724 291.968504 86.740157 
+L 291.968504 103.181102 
+Q 291.968504 107.716535 296.503937 107.716535 
+z
+" clip-path="url(#pe78a83df5b)" style="fill: #efeef6; stroke: #58508d; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 391.464567 107.716535 
+L 467.433071 107.716535 
+Q 471.968504 107.716535 471.968504 103.181102 
+L 471.968504 86.740157 
+Q 471.968504 82.204724 467.433071 82.204724 
+L 391.464567 82.204724 
+Q 386.929134 82.204724 386.929134 86.740157 
+L 386.929134 103.181102 
+Q 386.929134 107.716535 391.464567 107.716535 
+z
+" clip-path="url(#pe78a83df5b)" style="fill: #efeef6; stroke: #58508d; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 600; font-size: 7.4px; font-family: 'JetBrains Mono'; text-anchor: middle; fill: #1b2430" x="48.188976" y="39.602599" transform="rotate(-0 48.188976 39.602599)">fill.comp</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 6.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="48.188976" y="49.371989" transform="rotate(-0 48.188976 49.371989)">GLSL source</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 600; font-size: 7.4px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="143.149606" y="39.169583" transform="rotate(-0 143.149606 39.169583)">glslc</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 6.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="143.149606" y="49.508583" transform="rotate(-0 143.149606 49.508583)">at build time</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 600; font-size: 7.4px; font-family: 'JetBrains Mono'; text-anchor: middle; fill: #1b2430" x="238.110236" y="39.602599" transform="rotate(-0 238.110236 39.602599)">fill.comp.spv</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 6.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="238.110236" y="49.508583" transform="rotate(-0 238.110236 49.508583)">SPIR-V words</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 600; font-size: 7.4px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="333.070866" y="39.928083" transform="rotate(-0 333.070866 39.928083)">VkShaderModule</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 6.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="333.070866" y="49.508583" transform="rotate(-0 333.070866 49.508583)">vkCreateShaderModule</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 600; font-size: 7.4px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffffff" x="428.031496" y="39.262083" transform="rotate(-0 428.031496 39.262083)">VkPipeline</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 6.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffffff" x="428.031496" y="48.91038" transform="rotate(-0 428.031496 48.91038)">driver compiles to its ISA</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 91.004168 41.102362 
+Q 95.668992 41.102362 99.439389 41.102362 
+" clip-path="url(#pe78a83df5b)" style="fill: none; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 96.439389 39.602362 
+L 99.439389 41.102362 
+L 96.439389 42.602362 
+z
+" clip-path="url(#pe78a83df5b)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 185.964798 41.102362 
+Q 190.629622 41.102362 194.400019 41.102362 
+" clip-path="url(#pe78a83df5b)" style="fill: none; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 191.400019 39.602362 
+L 194.400019 41.102362 
+L 191.400019 42.602362 
+z
+" clip-path="url(#pe78a83df5b)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 280.925428 41.102362 
+Q 285.590252 41.102362 289.360649 41.102362 
+" clip-path="url(#pe78a83df5b)" style="fill: none; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 286.360649 39.602362 
+L 289.360649 41.102362 
+L 286.360649 42.602362 
+z
+" clip-path="url(#pe78a83df5b)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 375.886057 41.102362 
+Q 380.550882 41.102362 384.321279 41.102362 
+" clip-path="url(#pe78a83df5b)" style="fill: none; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 381.321279 39.602362 
+L 384.321279 41.102362 
+L 381.321279 42.602362 
+z
+" clip-path="url(#pe78a83df5b)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 600; font-size: 7px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="334.488189" y="93.669994" transform="rotate(-0 334.488189 93.669994)">VkPipelineLayout</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 5.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="334.488189" y="101.48268" transform="rotate(-0 334.488189 101.48268)">descriptor sets + push constants</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 600; font-size: 7px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="429.448819" y="93.697884" transform="rotate(-0 429.448819 93.697884)">specialisation</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 5.8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="429.448819" y="102.127883" transform="rotate(-0 429.448819 102.127883)">constants fixed at creation</text>
+   </g>
+   <g id="patch_13">
+    <path d="M 334.766394 82.100398 
+Q 368.504506 69.448606 401.509824 57.071611 
+" clip-path="url(#pe78a83df5b)" style="fill: none; stroke: #58508d; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 398.174152 56.720488 
+L 401.509824 57.071611 
+L 399.227522 59.529475 
+z
+" clip-path="url(#pe78a83df5b)" style="fill: #58508d; stroke: #58508d; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 429.626503 81.9587 
+Q 438.662274 69.447633 447.239826 57.571022 
+" clip-path="url(#pe78a83df5b)" style="fill: none; stroke: #58508d; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 444.267336 59.124824 
+L 447.239826 57.571022 
+L 446.699373 60.881296 
+z
+" clip-path="url(#pe78a83df5b)" style="fill: #58508d; stroke: #58508d; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #5a6472" x="99.212598" y="81.082985" transform="rotate(-0 99.212598 81.082985)">offline: portable, validated with spirv-val</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pe78a83df5b">
+   <rect x="0" y="0" width="476.220472" height="119.055118"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,0 +1,21 @@
+#version 460
+
+// snippet:begin saxpy
+layout(local_size_x_id = 0) in;
+
+layout(push_constant) uniform Push {
+    float a;
+    uint n;
+} push;
+
+layout(std430, set = 0, binding = 0) readonly buffer X { float x[]; };
+layout(std430, set = 0, binding = 1) readonly buffer Y { float y[]; };
+layout(std430, set = 0, binding = 2) writeonly buffer Z { float z[]; };
+
+void main() {
+    uint stride = gl_NumWorkGroups.x * gl_WorkGroupSize.x;
+    for (uint i = gl_GlobalInvocationID.x; i < push.n; i += stride) {
+        z[i] = push.a * x[i] + y[i];
+    }
+}
+// snippet:end saxpy

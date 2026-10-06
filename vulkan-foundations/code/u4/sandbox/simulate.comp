@@ -1,0 +1,38 @@
+#version 460
+
+layout(local_size_x = 256) in;
+
+struct Particle {
+    vec4 position;
+    vec4 velocity;
+};
+
+// snippet:begin state-copies
+// The previous frame's state in, this frame's state out: each frame slot owns one copy.
+layout(std430, set = 0, binding = 1) readonly buffer Previous {
+    Particle previous[];
+};
+
+layout(std430, set = 0, binding = 7) writeonly buffer Next {
+    Particle next[];
+};
+
+layout(push_constant) uniform Simulation {
+    float dt;
+    float strength;
+    float softening;
+    uint count;
+} sim;
+// snippet:end state-copies
+
+void main() {
+    uint i = gl_GlobalInvocationID.x;
+    if (i >= sim.count) return;
+    vec3 r = previous[i].position.xyz;
+    vec3 v = previous[i].velocity.xyz;
+    float d2 = dot(r, r) + sim.softening * sim.softening;
+    vec3 a = -sim.strength * r * inversesqrt(d2 * d2 * d2);
+    v += a * sim.dt;
+    r += v * sim.dt;
+    next[i] = Particle(vec4(r, previous[i].position.w), vec4(v, previous[i].velocity.w));
+}

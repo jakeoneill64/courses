@@ -1,0 +1,19 @@
+#version 460
+
+layout(local_size_x = 256) in;
+
+// snippet:begin counter
+layout(constant_id = 0) const bool ATOMIC = false;
+
+layout(std430, set = 0, binding = 0) buffer Counter {
+    uint counter;
+};
+
+void main() {
+    if (ATOMIC) {
+        atomicAdd(counter, 1u);
+    } else {
+        counter += 1u;
+    }
+}
+// snippet:end counter

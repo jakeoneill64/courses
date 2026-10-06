@@ -1,0 +1,25 @@
+$ ./build/bin/u3_hazards --case image-layout --bug
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation on, synchronisation validation on
+[vulkan error] vkCmdPipelineBarrier2(): WRITE_AFTER_WRITE hazard detected.
+    vkCmdPipelineBarrier2 performs image layout transition on the VkImage 0x...[image],
+    which was previously written by vkCmdDispatch.
+No sufficient synchronization is present to ensure that a layout transition does not
+    conflict with a prior write (VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT) at
+    VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT.
+Hint: Ensure that srcStageMask includes VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT and
+    srcAccessMask includes VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT. The source side of the
+    barrier protects layout transition writes from previous accesses, and the destination
+    side cannot introduce this specific hazard.
+pImageMemoryBarriers[0]: {
+  srcStageMask = VkPipelineStageFlags2(0),
+  srcAccessMask = VkAccessFlags2(0),
+  dstStageMask = VK_PIPELINE_STAGE_2_COPY_BIT,
+  dstAccessMask = VK_ACCESS_2_TRANSFER_READ_BIT,
+}
+
+image-layout     RAW  dispatch writes image, copy reads         bug: empty source scope
+  validation: SYNC-HAZARD-WRITE-AFTER-WRITE
+  results: correct
+error: --bug: 1 detected, 0 undetected
+vkf: the validation layers reported 1 error(s)

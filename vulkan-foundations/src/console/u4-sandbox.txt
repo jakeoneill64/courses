@@ -1,0 +1,21 @@
+$ ./build/bin/u4_sandbox
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation on, synchronisation validation on
+sandbox: 1000000 particles, 50000 cubes, 1280x720, 3 frames in flight
+simulation on an async compute queue, family 1
+120 frames: frame time median 2.59 ms (386 frames per second), mean 2.59 ms
+GPU time per pass, median of 120 frames:
+  update               0.004 ms
+  simulate             0.346 ms  (compute queue)
+  reset command        0.004 ms
+  cull                 0.013 ms
+  draw cubes           0.149 ms
+  draw particles       2.027 ms
+  post-process         0.055 ms
+particles: 1000000 of 1000000 still bound after 120 steps; angular momentum kept to 5.5e-06
+  sampled orbits within 2.5e-07 of the CPU's
+culling, last frame: 14325 cubes visible on the GPU, 14325 on the CPU
+  0 disagree (0 of them touching a frustum plane)
+image: 63% of pixels lit, 23.1% bright (the particle disc)
+wrote sandbox.png
+PASS GPU-driven sandbox

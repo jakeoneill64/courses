@@ -1,0 +1,32 @@
+#version 460
+
+layout(local_size_x_id = 0) in;
+layout(constant_id = 1) const uint ITEMS = 8;
+
+layout(push_constant) uniform Push {
+    uint count;
+} push;
+
+layout(std430, set = 0, binding = 0) restrict readonly buffer Src { float src[]; };
+layout(std430, set = 0, binding = 1) restrict writeonly buffer Dst { float dst[]; };
+
+shared float partial[gl_WorkGroupSize.x];
+
+void main() {
+    uint t = gl_LocalInvocationIndex;
+    // snippet:begin coarse
+    uint first = gl_WorkGroupID.x * gl_WorkGroupSize.x * ITEMS + t;
+    float sum = 0.0;
+    for (uint k = 0; k < ITEMS; ++k) {
+        uint i = first + k * gl_WorkGroupSize.x;
+        if (i < push.count) sum += src[i];
+    }
+    partial[t] = sum;
+    // snippet:end coarse
+    barrier();
+    for (uint stride = gl_WorkGroupSize.x / 2; stride > 0; stride /= 2) {
+        if (t < stride) partial[t] += partial[t + stride];
+        barrier();
+    }
+    if (t == 0) dst[gl_WorkGroupID.x] = partial[0];
+}

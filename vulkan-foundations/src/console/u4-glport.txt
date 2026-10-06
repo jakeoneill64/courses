@@ -1,0 +1,13 @@
+$ ./build/bin/u4_glport
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation on, synchronisation validation on
+OpenGL: 4.1 Metal - 90.5
+10000 draws per frame, 512x512, median of 30 frames after 5 warm-up frames
+                            OpenGL 4.1      Vulkan
+  CPU, draw calls              6.95 ms     16.90 ms
+  CPU, submit                  0.03 ms      2.30 ms
+  frame, to completion         7.60 ms     21.22 ms
+  (the Vulkan times include the validation layers: measure with VKF_VALIDATION=0)
+images: 2 of 262144 pixels (0.00%) differ by more than 2 levels; cubes cover 57%
+wrote glport-gl.png and glport-vk.png
+PASS the OpenGL and Vulkan images agree

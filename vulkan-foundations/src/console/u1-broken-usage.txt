@@ -1,0 +1,12 @@
+$ ./build/bin/u1_broken --bug usage
+bug: usage
+[validation error] vkUpdateDescriptorSets(): pDescriptorWrites[0].pBufferInfo[0].buffer was
+    created with VK_BUFFER_USAGE_2_TRANSFER_DST_BIT, but descriptorType is
+    VK_DESCRIPTOR_TYPE_STORAGE_BUFFER.
+The Vulkan spec states: If descriptorType is VK_DESCRIPTOR_TYPE_STORAGE_BUFFER or
+    VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC, the buffer member of each element of
+    pBufferInfo must have been created with the VK_BUFFER_USAGE_STORAGE_BUFFER_BIT usage
+    flag set (https://docs.vulkan.org/spec/latest/chapters/descriptorsets.html#VUID-VkWriteD
+    escriptorSet-descriptorType-00331)
+validation reported 1 error(s)
+values multiplied by four: yes

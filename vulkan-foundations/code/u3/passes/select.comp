@@ -1,0 +1,26 @@
+#version 460
+
+layout(local_size_x = 256) in;
+
+layout(push_constant) uniform Push {
+    uint count;
+    uint minBlurred;
+    uint maxEdge;
+} push;
+
+layout(std430, set = 0, binding = 0) readonly buffer Blurred { uint blurred[]; };
+layout(std430, set = 0, binding = 1) readonly buffer Edges { uint edges[]; };
+layout(std430, set = 0, binding = 2) buffer Stats {
+    uint selected;
+    uint blurredSum;
+    uint indexXor;
+} stats;
+layout(std430, set = 0, binding = 3) writeonly buffer List { uint list[]; };
+
+void main() {
+    uint i = gl_GlobalInvocationID.x;
+    if (i >= push.count) return;
+    if (blurred[i] > push.minBlurred && edges[i] < push.maxEdge) {
+        list[atomicAdd(stats.selected, 1u)] = i;
+    }
+}

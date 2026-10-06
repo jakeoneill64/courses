@@ -1,0 +1,16 @@
+#version 460
+
+layout(local_size_x = 16, local_size_y = 16) in;
+
+// snippet:begin downscale
+layout(set = 0, binding = 0) uniform sampler2D source;
+layout(set = 0, binding = 1, rgba8) uniform restrict writeonly image2D target;
+
+void main() {
+    ivec2 size = imageSize(target);
+    ivec2 p = ivec2(gl_GlobalInvocationID.xy);
+    if (any(greaterThanEqual(p, size))) return;
+    vec2 uv = (vec2(p) + 0.5) / vec2(size);
+    imageStore(target, p, textureLod(source, uv, 0.0));
+}
+// snippet:end downscale

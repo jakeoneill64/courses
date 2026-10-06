@@ -1,0 +1,12 @@
+$ ./build/bin/u3_bugs
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation on, synchronisation validation on
+missing-visibility  fixed: correct
+wrong-stage         fixed: correct
+layout-mismatch     fixed: correct
+war-reuse           fixed: correct
+  note: every host-visible memory type here is HOST_COHERENT, so flushes and
+  invalidates change nothing on this device, and no validation checks them
+host-coherency      fixed: correct
+semaphore-stage     fixed: correct
+PASS 6 fixed versions

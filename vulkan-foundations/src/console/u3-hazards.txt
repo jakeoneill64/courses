@@ -1,0 +1,13 @@
+$ ./build/bin/u3_hazards
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation on, synchronisation validation on
+compute-compute  RAW  dispatch writes, dispatch reads           ok
+war              WAR  dispatch reads, dispatch writes           ok
+waw              WAW  dispatch writes, dispatch writes          ok
+transfer-compute RAW  copy writes, dispatch reads               ok
+compute-transfer RAW  dispatch writes, copy reads               ok
+compute-indirect RAW  dispatch writes, indirect dispatch reads  ok
+host-device      RAW  host writes, dispatch reads               ok
+device-host      RAW  dispatch writes, host reads               ok
+image-layout     RAW  dispatch writes image, copy reads         ok
+PASS 9 cases

@@ -1,0 +1,22 @@
+#version 460
+
+layout(local_size_x = 32, local_size_y = 8) in;
+const uint TILE = 32;
+
+layout(push_constant) uniform Push {
+    uint n;
+} push;
+
+layout(std430, set = 0, binding = 0) restrict readonly buffer Src { float src[]; };
+layout(std430, set = 0, binding = 1) restrict writeonly buffer Dst { float dst[]; };
+
+// snippet:begin copy
+void main() {
+    uvec2 origin = gl_WorkGroupID.xy * TILE;
+    uint x = origin.x + gl_LocalInvocationID.x;
+    for (uint row = gl_LocalInvocationID.y; row < TILE; row += gl_WorkGroupSize.y) {
+        uint y = origin.y + row;
+        dst[y * push.n + x] = src[y * push.n + x];
+    }
+}
+// snippet:end copy

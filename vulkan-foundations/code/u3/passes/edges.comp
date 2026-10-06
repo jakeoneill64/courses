@@ -1,0 +1,19 @@
+#version 460
+
+layout(local_size_x = 16, local_size_y = 16) in;
+
+layout(set = 0, binding = 0, r32ui) uniform readonly uimage2D field;
+layout(std430, set = 0, binding = 1) writeonly buffer Edges { uint edges[]; };
+
+int fieldAt(ivec2 q) {
+    return int(imageLoad(field, clamp(q, ivec2(0), imageSize(field) - 1)).x);
+}
+
+void main() {
+    ivec2 p = ivec2(gl_GlobalInvocationID.xy);
+    ivec2 extent = imageSize(field);
+    if (p.x >= extent.x || p.y >= extent.y) return;
+    int gx = fieldAt(p + ivec2(1, 0)) - fieldAt(p - ivec2(1, 0));
+    int gy = fieldAt(p + ivec2(0, 1)) - fieldAt(p - ivec2(0, 1));
+    edges[p.y * extent.x + p.x] = uint(abs(gx) + abs(gy));
+}

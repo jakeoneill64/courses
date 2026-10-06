@@ -1,0 +1,14 @@
+$ ./build/bin/u1_pipeline     # first run
+fill.comp.spv: 506 words, magic number 0x07230203
+pipeline cache: cold (0 bytes loaded from u1_pipeline.cache)
+local size  64: pipeline created in 1.15 ms
+local size 128: pipeline created in 0.34 ms
+local size 256: pipeline created in 0.28 ms
+saved 2660 bytes of pipeline cache to u1_pipeline.cache
+$ ./build/bin/u1_pipeline     # second run
+fill.comp.spv: 506 words, magic number 0x07230203
+pipeline cache: warm (2660 bytes loaded from u1_pipeline.cache)
+local size  64: pipeline created in 0.93 ms
+local size 128: pipeline created in 0.31 ms
+local size 256: pipeline created in 0.32 ms
+saved 2660 bytes of pipeline cache to u1_pipeline.cache

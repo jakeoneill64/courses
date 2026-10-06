@@ -1,0 +1,24 @@
+$ ./build/bin/u3_rendergraph --graphics
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation on, synchronisation validation on
+compiled: 3 passes, 3 kept, culled: none
+transient memory: 32 KiB with aliasing, 32 KiB without
+  colour   image     16512 bytes at 0        passes 0-1
+  depth    image     16512 bytes at 16512    passes 0-0
+pass 0 draw
+  image  colour UNDEFINED -> COLOR_ATTACHMENT_OPTIMAL
+    src NONE             NONE
+    dst COLOR_ATTACHMENT_OUTPUT COLOR_ATTACHMENT_READ|COLOR_ATTACHMENT_WRITE
+  image  depth UNDEFINED -> DEPTH_STENCIL_ATTACHMENT_OPTIMAL
+    src NONE             NONE
+    dst EARLY_FRAGMENT_TESTS|LATE_FRAGMENT_TESTS
+        DEPTH_STENCIL_ATTACHMENT_READ|DEPTH_STENCIL_ATTACHMENT_WRITE
+pass 1 copy
+  image  colour COLOR_ATTACHMENT_OPTIMAL -> TRANSFER_SRC_OPTIMAL
+    src COLOR_ATTACHMENT_OUTPUT COLOR_ATTACHMENT_WRITE
+    dst COPY             TRANSFER_READ
+pass 2 host
+  memory pixels
+    src COPY             TRANSFER_WRITE
+    dst HOST             HOST_READ
+PASS: the colour attachment holds the clear colour

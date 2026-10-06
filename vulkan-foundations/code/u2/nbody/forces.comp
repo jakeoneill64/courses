@@ -1,0 +1,31 @@
+#version 460
+
+layout(local_size_x_id = 0) in;
+
+#include "nbody.glsl"
+
+shared vec4 tile[gl_WorkGroupSize.x];
+
+// snippet:begin forces
+void main() {
+    uint count = push.params.count;
+    uint i = particleIndex();
+    vec4 self = i < count ? push.positions.v[i] : vec4(0.0);
+    vec3 acceleration = vec3(0.0);
+    for (uint first = 0; first < count; first += gl_WorkGroupSize.x) {
+        uint j = first + gl_LocalInvocationIndex;
+        tile[gl_LocalInvocationIndex] = j < count ? push.positions.v[j] : vec4(0.0);
+        barrier();
+        for (uint k = 0; k < gl_WorkGroupSize.x; ++k) {
+            vec3 d = tile[k].xyz - self.xyz;
+            float inverse = inversesqrt(dot(d, d) + push.softening2);
+            acceleration += (tile[k].w * inverse * inverse * inverse) * d;
+        }
+        barrier();
+    }
+    if (i < count) {
+        push.accelerations.v[i] = vec4(acceleration, 0.0);
+        push.velocities.v[i].xyz += acceleration * push.halfDt;
+    }
+}
+// snippet:end forces

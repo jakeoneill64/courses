@@ -1,0 +1,16 @@
+$ ./build/bin/u1_devices
+loader supports Vulkan 1.4.363
+validation on, portability enumeration enabled
+device 0: Apple M2 Pro (integrated GPU)
+    Vulkan 1.3.357
+    maxComputeWorkGroupSize 1024 x 1024 x 1024, maxComputeWorkGroupInvocations 1024
+    maxComputeSharedMemorySize 32768 bytes, maxPushConstantsSize 4096 bytes
+    maxStorageBufferRange 4294967295 bytes, maxMemoryAllocationCount 1073741824
+    timestampPeriod 1.00 ns
+    synchronization2 yes, dynamicRendering yes, timelineSemaphore yes, bufferDeviceAddress yes
+    shaderFloat64 no, shaderInt64 yes, pipelineStatisticsQuery no
+    family 0: 1 queue(s) graphics compute transfer, 64 timestamp bits
+    family 1: 1 queue(s) graphics compute transfer, 64 timestamp bits
+    family 2: 1 queue(s) graphics compute transfer, 64 timestamp bits
+    family 3: 1 queue(s) graphics compute transfer, 64 timestamp bits
+created a device on Apple M2 Pro with queue family 0

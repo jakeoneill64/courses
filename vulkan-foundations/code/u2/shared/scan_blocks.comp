@@ -1,0 +1,35 @@
+#version 460
+#extension GL_KHR_shader_subgroup_arithmetic : require
+#extension GL_EXT_control_flow_attributes : require
+
+layout(local_size_x_id = 0) in;
+const uint ITEMS = 4;
+
+#include "scan.glsl"
+
+layout(push_constant) uniform Push {
+    uint count;
+} push;
+
+layout(std430, set = 0, binding = 0) restrict readonly buffer Input { uint inputs[]; };
+layout(std430, set = 0, binding = 1) restrict writeonly buffer Output { uint outputs[]; };
+layout(std430, set = 0, binding = 2) restrict writeonly buffer Sums { uint sums[]; };
+
+// snippet:begin scan-blocks
+void main() {
+    uint first = (gl_WorkGroupID.x * gl_WorkGroupSize.x + scanPosition()) * ITEMS;
+    uint values[ITEMS];
+    uint sum = 0;
+    [[unroll]] for (uint k = 0; k < ITEMS; ++k) {
+        values[k] = first + k < push.count ? inputs[first + k] : 0;
+        sum += values[k];
+    }
+    uint total;
+    uint prefix = workgroupExclusiveAdd(sum, total);
+    [[unroll]] for (uint k = 0; k < ITEMS; ++k) {
+        if (first + k < push.count) outputs[first + k] = prefix;
+        prefix += values[k];
+    }
+    if (gl_LocalInvocationIndex == 0) sums[gl_WorkGroupID.x] = total;
+}
+// snippet:end scan-blocks

@@ -1,0 +1,3 @@
+$ ./build/bin/u1_saxpy
+Apple M2 Pro, n = 1048576
+y = a*x + y, 10 times: largest relative error 0.00e+00 (pass)

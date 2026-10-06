@@ -1,0 +1,11 @@
+$ VKF_VALIDATION=0 ./build/bin/u2_transpose --n 1024 --runs 50
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation off, synchronisation validation off
+1024 x 1024 floats (4 MiB); median of 50 runs after a 25 ms warm-up
+
+kernel                                  ms     GB/s   result
+copy (the bandwidth reference)       0.023    360.8   exact
+naive transpose                      0.047    177.5   exact
+tiled in shared memory               0.027    311.2   exact
+tiled, rows padded to 33 floats      0.024    348.6   exact
+PASS transpose: 4 of 4 results exact

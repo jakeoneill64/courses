@@ -1,0 +1,20 @@
+$ ./build/bin/u3_hazards --case compute-indirect --bug
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation on, synchronisation validation on
+[vulkan error] vkCmdDispatchIndirect(): READ_AFTER_WRITE hazard detected.
+    vkCmdDispatchIndirect reads indirect VkBuffer 0x...[indirect], which was previously
+    written by vkCmdDispatch.
+No sufficient synchronization is present to ensure that a read
+    (VK_ACCESS_2_INDIRECT_COMMAND_READ_BIT) at VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT does
+    not conflict with a prior write (VK_ACCESS_2_SHADER_STORAGE_WRITE_BIT) at
+    VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT.
+Buffer access region: {
+  offset = 0
+  size = 12
+}
+
+compute-indirect RAW  dispatch writes, indirect dispatch reads  bug: no barrier
+  validation: SYNC-HAZARD-READ-AFTER-WRITE
+  results: correct
+error: --bug: 1 detected, 0 undetected
+vkf: the validation layers reported 1 error(s)

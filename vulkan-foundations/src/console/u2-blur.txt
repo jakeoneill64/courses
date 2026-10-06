@@ -1,0 +1,13 @@
+$ VKF_VALIDATION=0 ./build/bin/u2_blur
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation off, synchronisation validation off
+1024 x 1024 rgba32f image, Gaussian radius 8 (17 taps); median of 10 runs
+
+blur                                    ms   Mpixel/s   max error
+separable, two tiled passes          0.483     2173.0     3.0e-07
+  the rows pass alone                0.202     5200.1
+  the columns pass alone             0.183     5718.8
+naive 2D kernel, 289 taps            5.342      196.3     9.5e-07
+bilinear downscale to 384 x 384 through a sampler: max error 0.0041 (tolerance 0.0117)
+wrote blur_input.png, blur_separable.png and blur_downscaled.png
+PASS blur: both blurs and the downscale match the CPU references

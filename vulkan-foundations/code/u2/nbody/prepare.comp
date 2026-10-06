@@ -1,0 +1,30 @@
+#version 460
+#extension GL_EXT_buffer_reference : require
+
+layout(local_size_x = 1) in;
+
+// snippet:begin prepare
+layout(buffer_reference, std430, buffer_reference_align = 4) readonly buffer Params {
+    uint count;
+};
+layout(buffer_reference, std430, buffer_reference_align = 4) writeonly buffer Dispatch {
+    uint x;
+    uint y;
+    uint z;
+};
+
+layout(push_constant) uniform Push {
+    Params params;
+    Dispatch dispatch;
+    uint localSize;
+    uint maxGroupsX;
+} push;
+
+void main() {
+    uint groups = (push.params.count + push.localSize - 1) / push.localSize;
+    uint x = min(groups, push.maxGroupsX);
+    push.dispatch.x = x;
+    push.dispatch.y = x == 0 ? 0 : (groups + x - 1) / x;
+    push.dispatch.z = 1;
+}
+// snippet:end prepare

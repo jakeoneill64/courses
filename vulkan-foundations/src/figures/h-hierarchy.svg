@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="482.05137pt" height="187.086614pt" viewBox="0 0 482.05137 187.086614" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 187.086614 
+L 482.05137 187.086614 
+L 482.05137 0 
+L 0 0 
+L 0 187.086614 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 200.125984 34.015748 
+L 276.094488 34.015748 
+Q 280.629921 34.015748 280.629921 29.480315 
+L 280.629921 11.622047 
+Q 280.629921 7.086614 276.094488 7.086614 
+L 200.125984 7.086614 
+Q 195.590551 7.086614 195.590551 11.622047 
+L 195.590551 29.480315 
+Q 195.590551 34.015748 200.125984 34.015748 
+z
+" clip-path="url(#pa8e3e899e4)" style="fill: #58508d; stroke: #58508d; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 168.944882 68.031496 
+L 307.275591 68.031496 
+Q 311.811024 68.031496 311.811024 63.496063 
+L 311.811024 45.637795 
+Q 311.811024 41.102362 307.275591 41.102362 
+L 168.944882 41.102362 
+Q 164.409449 41.102362 164.409449 45.637795 
+L 164.409449 63.496063 
+Q 164.409449 68.031496 168.944882 68.031496 
+z
+" clip-path="url(#pa8e3e899e4)" style="fill: #efeef6; stroke: #58508d; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 137.76378 102.047244 
+L 338.456693 102.047244 
+Q 342.992126 102.047244 342.992126 97.511811 
+L 342.992126 79.653543 
+Q 342.992126 75.11811 338.456693 75.11811 
+L 137.76378 75.11811 
+Q 133.228346 75.11811 133.228346 79.653543 
+L 133.228346 97.511811 
+Q 133.228346 102.047244 137.76378 102.047244 
+z
+" clip-path="url(#pa8e3e899e4)" style="fill: #f4f6f8; stroke: #c9d0d8; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 103.748031 136.062992 
+L 372.472441 136.062992 
+Q 377.007874 136.062992 377.007874 131.527559 
+L 377.007874 113.669291 
+Q 377.007874 109.133858 372.472441 109.133858 
+L 103.748031 109.133858 
+Q 99.212598 109.133858 99.212598 113.669291 
+L 99.212598 131.527559 
+Q 99.212598 136.062992 103.748031 136.062992 
+z
+" clip-path="url(#pa8e3e899e4)" style="fill: #fff0ef; stroke: #ff6361; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 69.732283 170.07874 
+L 406.488189 170.07874 
+Q 411.023622 170.07874 411.023622 165.543307 
+L 411.023622 147.685039 
+Q 411.023622 143.149606 406.488189 143.149606 
+L 69.732283 143.149606 
+Q 65.19685 143.149606 65.19685 147.685039 
+L 65.19685 165.543307 
+Q 65.19685 170.07874 69.732283 170.07874 
+z
+" clip-path="url(#pa8e3e899e4)" style="fill: #ffffff; stroke: #5a6472; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 600; font-size: 7.4px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffffff" x="238.110236" y="19.136154" transform="rotate(-0 238.110236 19.136154)">Registers</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffffff" x="238.110236" y="27.437008" transform="rotate(-0 238.110236 27.437008)">per invocation; the fastest storage</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 600; font-size: 7.4px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="238.110236" y="53.199886" transform="rotate(-0 238.110236 53.199886)">Shared memory and L1</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="238.110236" y="61.509943" transform="rotate(-0 238.110236 61.509943)">per compute unit; tens to a few hundred KiB</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 600; font-size: 7.4px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="238.110236" y="87.918634" transform="rotate(-0 238.110236 87.918634)">L2 cache</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="238.110236" y="95.630691" transform="rotate(-0 238.110236 95.630691)">whole GPU; a few MiB to tens of MiB</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 600; font-size: 7.4px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="238.110236" y="121.275898" transform="rotate(-0 238.110236 121.275898)">VRAM or unified memory</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="238.110236" y="129.484252" transform="rotate(-0 238.110236 129.484252)">gigabytes; hundreds of GB/s to over 1 TB/s</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 600; font-size: 7.4px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="238.110236" y="155.09913" transform="rotate(-0 238.110236 155.09913)">System RAM across PCIe</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="238.110236" y="163.545" transform="rotate(-0 238.110236 163.545)">discrete GPUs only; tens of GB/s</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 436.535433 17.007874 
+Q 436.535433 90.708661 436.535433 163.626825 
+" clip-path="url(#pa8e3e899e4)" style="fill: none; stroke: #5a6472; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 437.735433 161.226825 
+L 436.535433 163.626825 
+L 435.335433 161.226825 
+z
+" clip-path="url(#pa8e3e899e4)" style="fill: #5a6472; stroke: #5a6472; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 6.4px; font-family: 'Source Sans 3'; fill: #5a6472" transform="translate(445.03937 87.390481)">larger, slower,</text>
+    <text style="font-size: 6.4px; font-family: 'Source Sans 3'; fill: #5a6472" transform="translate(445.03937 97.236341)">farther away</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pa8e3e899e4">
+   <rect x="0" y="-0" width="476.220472" height="187.086614"/>
+  </clipPath>
+ </defs>
+</svg>

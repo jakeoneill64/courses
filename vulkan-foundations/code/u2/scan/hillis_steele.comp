@@ -1,0 +1,29 @@
+#version 460
+
+layout(local_size_x_id = 0) in;
+
+layout(push_constant) uniform Push {
+    uint count;
+} push;
+
+layout(std430, set = 0, binding = 0) restrict readonly buffer Input { uint inputs[]; };
+layout(std430, set = 0, binding = 1) restrict writeonly buffer Output { uint outputs[]; };
+
+// snippet:begin hillis-steele
+shared uint buffers[2][gl_WorkGroupSize.x];
+
+void main() {
+    uint t = gl_LocalInvocationIndex;
+    uint current = 0;
+    buffers[current][t] = t < push.count ? inputs[t] : 0;
+    barrier();
+    for (uint offset = 1; offset < gl_WorkGroupSize.x; offset *= 2) {
+        uint value = buffers[current][t];
+        if (t >= offset) value += buffers[current][t - offset];
+        buffers[1 - current][t] = value;
+        current = 1 - current;
+        barrier();
+    }
+    if (t < push.count) outputs[t] = t > 0 ? buffers[current][t - 1] : 0;
+}
+// snippet:end hillis-steele

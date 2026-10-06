@@ -1,0 +1,13 @@
+$ ./build/bin/u3_bugs --bug layout-mismatch
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation on, synchronisation validation on
+bug layout-mismatch: a copy from an image left in GENERAL
+[vulkan error] vkCmdCopyImageToBuffer(): srcImage Cannot use VkImage 0x...[image] (layer 0,
+    mip 0) with specific layout VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL that doesn't match the
+    previous known layout VK_IMAGE_LAYOUT_GENERAL.
+The Vulkan spec states: srcImageLayout must specify the layout of the image subresources of
+    srcImage specified in pRegions at the time this command is executed on a VkDevice
+  core validation: VUID-vkCmdCopyImageToBuffer-srcImageLayout-00189
+  results: correct on this device
+error: --bug layout-mismatch detected by core validation
+vkf: the validation layers reported 1 error(s)

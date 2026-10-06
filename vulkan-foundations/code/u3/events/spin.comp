@@ -1,0 +1,18 @@
+#version 460
+
+layout(local_size_x = 64) in;
+
+layout(push_constant) uniform Push {
+    uint steps;
+} push;
+
+layout(std430, set = 0, binding = 0) readonly buffer Seeds { uint seeds[]; };
+layout(std430, set = 0, binding = 1) writeonly buffer Results { uint results[]; };
+
+// Each step needs the last, so the work is latency-bound and leaves most of the GPU idle.
+void main() {
+    uint i = gl_GlobalInvocationID.x;
+    uint x = seeds[i];
+    for (uint s = 0u; s < push.steps; ++s) x = x * 1664525u + 1013904223u;
+    results[i] = x;
+}

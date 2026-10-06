@@ -1,0 +1,22 @@
+#version 460
+
+layout(local_size_x = 256) in;
+layout(constant_id = 0) const bool USE_BARRIER = false;
+
+layout(std430, set = 0, binding = 0) restrict readonly buffer Values { uint values[]; };
+layout(std430, set = 0, binding = 1) restrict writeonly buffer Sums { uint sums[]; };
+
+// snippet:begin tree
+shared uint partial[gl_WorkGroupSize.x];
+
+void main() {
+    uint t = gl_LocalInvocationIndex;
+    partial[t] = values[gl_GlobalInvocationID.x];
+    if (USE_BARRIER) barrier();
+    for (uint stride = gl_WorkGroupSize.x / 2; stride > 0; stride /= 2) {
+        if (t < stride) partial[t] += partial[t + stride];
+        if (USE_BARRIER) barrier();
+    }
+    if (t == 0) sums[gl_WorkGroupID.x] = partial[0];
+}
+// snippet:end tree

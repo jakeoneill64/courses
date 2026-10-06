@@ -1,0 +1,10 @@
+$ VKF_VALIDATION=0 ./build/bin/u2_scan
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation off, synchronisation validation off
+Hillis-Steele scan of 1024 values in one workgroup: exact
+
+exclusive scan of 4194304 values; median of 10 runs
+block scan                      levels       ms     GB/s   result
+Blelloch, blocks of 512              3    0.341     98.4   exact
+subgroups, blocks of 1024            3    0.272    123.4   exact
+PASS scan: 3 of 3 scans exact

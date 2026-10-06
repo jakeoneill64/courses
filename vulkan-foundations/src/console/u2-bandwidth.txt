@@ -1,0 +1,35 @@
+$ VKF_VALIDATION=0 ./build/bin/u2_bandwidth
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation off, synchronisation validation off
+copies of 128 MiB; median of 10 runs
+copy                              ms     GB/s   result
+vkCmdCopyBuffer                1.408    190.7   exact
+shader, float loads            1.424    188.5   exact
+shader, vec4 loads             1.434    187.2   exact
+
+strided reads of 64 MiB: neighbouring invocations read floats a stride apart
+stride        ms     GB/s   result
+     1     0.814    164.9   exact
+     2     1.057    126.9   exact
+     4     1.754     76.5   exact
+     8     3.190     42.1   exact
+    16     6.057     22.2   exact
+    32     5.946     22.6   exact
+
+roofline: 16777216 floats, each read, put through k FMAs and written
+     k  FLOP/byte        ms   GFLOP/s     GB/s   result
+     1       0.25     0.716      46.9    187.4   exact
+     2       0.50     0.718      93.4    186.9   exact
+     4       1.00     0.719     186.7    186.7   exact
+     8       2.00     0.739     363.1    181.5   exact
+    16       4.00     0.721     744.3    186.1   exact
+    32       8.00     0.720    1492.3    186.5   exact
+    64      16.00     0.743    2891.4    180.7   exact
+   128      32.00     0.735    5840.7    182.5   exact
+   256      64.00     1.397    6148.0     96.1   exact
+   512     128.00     2.773    6196.0     48.4   exact
+  1024     256.00     5.528    6215.5     24.3   exact
+
+measured peaks: 190.7 GB/s (best copy), 6215.5 GFLOP/s (best roofline point)
+ridge point: 32.6 FLOP/byte
+PASS bandwidth: 20 of 20 results verified

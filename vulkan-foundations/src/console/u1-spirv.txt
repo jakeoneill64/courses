@@ -1,0 +1,38 @@
+$ glslc --target-env=vulkan1.3 -O fill.comp -o fill.spv
+$ spirv-val --target-env vulkan1.3 fill.spv
+$ spirv-dis fill.spv
+; SPIR-V
+; Version: 1.6
+; Generator: Google Shaderc over Glslang; 11
+; Bound: 50
+; Schema: 0
+               OpCapability Shader
+          %1 = OpExtInstImport "GLSL.std.450"
+               OpMemoryModel Logical GLSL450
+               OpEntryPoint GLCompute %4 "main" %gl_GlobalInvocationID %21 %35
+               OpExecutionModeId %4 LocalSizeId %7 %uint_1 %uint_1
+               OpDecorate %7 SpecId 0
+               OpDecorate %gl_GlobalInvocationID BuiltIn GlobalInvocationId
+               ...
+               OpDecorate %35 Binding 0
+               OpDecorate %35 DescriptorSet 0
+               ...
+          %4 = OpFunction %void None %3
+               ...
+         %16 = OpAccessChain %_ptr_Input_uint %gl_GlobalInvocationID %uint_0
+         %17 = OpLoad %uint %16
+         %25 = OpAccessChain %_ptr_PushConstant_uint %21 %int_1
+         %26 = OpLoad %uint %25
+         %28 = OpUGreaterThanEqual %bool %17 %26
+               OpSelectionMerge %30 None
+               OpBranchConditional %28 %29 %30
+         %29 = OpLabel
+               OpBranch %48
+         %30 = OpLabel
+         %38 = OpAccessChain %_ptr_PushConstant_uint %21 %int_0
+         %39 = OpLoad %uint %38
+         %42 = OpIMul %uint %17 %uint_2654435761
+         %43 = OpBitwiseXor %uint %39 %42
+         %45 = OpAccessChain %_ptr_StorageBuffer_uint %35 %int_0 %17
+               OpStore %45 %43
+               ...

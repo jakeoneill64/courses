@@ -1,0 +1,18 @@
+$ VKF_VALIDATION=0 ./build/bin/u2_raytrace --benchmark
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation off, synchronisation validation off
+scene: 2 spheres, 6 quads and 5120 triangles in a BVH of 6109 nodes, depth 14
+check 1: primary rays at 128 x 72 against a double-precision CPU reference
+  9216 agree (largest distance difference 1.2e-05), 0 at edges or ties, 0 wrong
+check 2: BVH and brute force agree on 9216 of 9216 primary rays (0 exact ties)
+check 3: white furnace, albedo 0.5 and emission 0.5, at most 16 bounces, 64 samples
+  mean radiance 1.00083, expected 0.99998, standard error 3.9e-04: ok
+
+640 x 360, 8 samples per configuration
+configuration                         ms/pass     rays/pass    Mrays/s
+BVH, 8 x 8, full paths                  1.540        624366      405.1
+BVH, 16 x 16, full paths                2.032        624366      295.3
+BVH, 64 x 1, full paths                 1.648        624366      378.8
+BVH, 8 x 8, primary rays only           0.185        230400     1235.1
+brute force, 8 x 8, full paths        149.336        624366        4.2
+PASS raytrace: primary hits, BVH and furnace checks hold

@@ -1,0 +1,13 @@
+$ ./build/bin/u4_triangle --render-pass
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation on, synchronisation validation on
+triangle: 640x480 VK_FORMAT_R8G8B8A8_UNORM, wrote triangle.png
+  inside: 68678 pixels, 0 more than 2 from the interpolated colour (largest 0)
+  outside: 236090 pixels, 0 differ from the background
+triangle with VkRenderPass and VkFramebuffer: identical to dynamic rendering
+cube: 640x480, depth VK_FORMAT_D32_SFLOAT, wrote cube.png
+  centre (320, 240) is (128, 128, 255), face +z of the cube: as expected
+  corners: background
+  ray cast: 18771 sampled pixels compared, 0 differ (429 near edges skipped)
+  depth order: 5422 of them see the wall behind the cube, 0 show the wall
+PASS triangle and depth-tested cube

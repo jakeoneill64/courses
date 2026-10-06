@@ -1,0 +1,10 @@
+$ ./build/bin/u1_broken --bug leak
+bug: leak
+[validation error] vkDestroyDevice(): VkDevice 0x8eed7c018 has 2 leaked objects that have
+    not been destroyed.
+VkDeviceMemory 0x30000000003, VkBuffer 0x20000000002[values].
+The Vulkan spec states: All child objects created on device that can be destroyed or freed
+    must have been destroyed or freed prior to destroying device (https://docs.vulkan.org/sp
+    ec/latest/chapters/devsandqueues.html#VUID-vkDestroyDevice-device-05137)
+validation reported 1 error(s)
+values multiplied by four: yes

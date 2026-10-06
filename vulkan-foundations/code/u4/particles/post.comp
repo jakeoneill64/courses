@@ -1,0 +1,24 @@
+#version 460
+
+layout(local_size_x = 16, local_size_y = 16) in;
+
+// snippet:begin post
+layout(set = 0, binding = 0, rgba16f) uniform readonly image2D hdrImage;
+layout(set = 0, binding = 1, rgba8) uniform writeonly image2D displayImage;
+
+layout(push_constant) uniform Post {
+    float exposure;
+} post;
+
+vec3 encodeSrgb(vec3 c) {
+    vec3 curve = 1.055 * pow(c, vec3(1.0 / 2.4)) - 0.055;
+    return mix(c * 12.92, curve, greaterThan(c, vec3(0.0031308)));
+}
+
+void main() {
+    ivec2 p = ivec2(gl_GlobalInvocationID.xy);
+    if (any(greaterThanEqual(p, imageSize(displayImage)))) return;
+    vec3 hdr = imageLoad(hdrImage, p).rgb * post.exposure;
+    imageStore(displayImage, p, vec4(encodeSrgb(hdr / (1.0 + hdr)), 1.0));
+}
+// snippet:end post

@@ -1,0 +1,13 @@
+$ ./build/bin/u1_commands            # with the barrier after vkCmdFillBuffer removed
+[validation error] vkCmdCopyBuffer(): READ_AFTER_WRITE hazard detected. vkCmdCopyBuffer
+reads VkBuffer 0x30000000003, which was previously written by vkCmdFillBuffer. No
+sufficient synchronization is present to ensure that a read (VK_ACCESS_2_TRANSFER_READ_BIT)
+at VK_PIPELINE_STAGE_2_COPY_BIT does not conflict with a prior write
+(VK_ACCESS_2_TRANSFER_WRITE_BIT) at VK_PIPELINE_STAGE_2_CLEAR_BIT.
+Buffer copy region 0: {
+  offset = 0,
+  size = 1048576
+}
+fill, copy and read back 1 MiB: ok
+...
+validation reported 1 error(s)

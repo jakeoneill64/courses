@@ -1,0 +1,9 @@
+$ ./build/bin/u4_spin
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation on, synchronisation validation on
+surface: window, VK_FORMAT_B8G8R8A8_SRGB, VK_COLOR_SPACE_SRGB_NONLINEAR_KHR
+swapchain 1600x1200: 3 images, VK_PRESENT_MODE_FIFO_KHR, 2 frames in flight
+240 frames in 2.01 s: frame time median 8.04 ms (min 7.39, mean 8.33, max 9.49)
+  median wait: frame slot 0.042 ms, acquire 0.024 ms, submit and present 7.777 ms
+final image 1600x1200: centre shows the cube, corners show the background
+PASS 240 frames presented, 0 swapchain recreation(s)

@@ -1,0 +1,28 @@
+#version 460
+
+layout(local_size_x = 32, local_size_y = 8) in;
+const uint TILE = 32;
+
+layout(push_constant) uniform Push {
+    uint n;
+} push;
+
+layout(std430, set = 0, binding = 0) restrict readonly buffer Src { float src[]; };
+layout(std430, set = 0, binding = 1) restrict writeonly buffer Dst { float dst[]; };
+
+// snippet:begin tiled
+layout(constant_id = 0) const uint PAD = 0;
+shared float tile[TILE][TILE + PAD];
+
+void main() {
+    uvec2 origin = gl_WorkGroupID.xy * TILE;
+    uvec2 id = gl_LocalInvocationID.xy;
+    for (uint row = id.y; row < TILE; row += gl_WorkGroupSize.y) {
+        tile[row][id.x] = src[(origin.y + row) * push.n + origin.x + id.x];
+    }
+    barrier();
+    for (uint row = id.y; row < TILE; row += gl_WorkGroupSize.y) {
+        dst[(origin.x + row) * push.n + origin.y + id.x] = tile[id.x][row];
+    }
+}
+// snippet:end tiled

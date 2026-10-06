@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="476.220472pt" height="113.385827pt" viewBox="0 0 476.220472 113.385827" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 113.385827 
+L 476.220472 113.385827 
+L 476.220472 0 
+L 0 0 
+L 0 113.385827 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 7.937008 56.692913 
+L 60.094488 56.692913 
+Q 62.362205 56.692913 62.362205 54.425197 
+L 62.362205 36.283465 
+Q 62.362205 34.015748 60.094488 34.015748 
+L 7.937008 34.015748 
+Q 5.669291 34.015748 5.669291 36.283465 
+L 5.669291 54.425197 
+Q 5.669291 56.692913 7.937008 56.692913 
+z
+" clip-path="url(#pcd00e66cae)" style="fill: #003f5c; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 92.976378 56.692913 
+L 145.133858 56.692913 
+Q 147.401575 56.692913 147.401575 54.425197 
+L 147.401575 36.283465 
+Q 147.401575 34.015748 145.133858 34.015748 
+L 92.976378 34.015748 
+Q 90.708661 34.015748 90.708661 36.283465 
+L 90.708661 54.425197 
+Q 90.708661 56.692913 92.976378 56.692913 
+z
+" clip-path="url(#pcd00e66cae)" style="fill: #fff0ef; stroke: #ff6361; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 166.677165 56.692913 
+L 218.834646 56.692913 
+Q 221.102362 56.692913 221.102362 54.425197 
+L 221.102362 36.283465 
+Q 221.102362 34.015748 218.834646 34.015748 
+L 166.677165 34.015748 
+Q 164.409449 34.015748 164.409449 36.283465 
+L 164.409449 54.425197 
+Q 164.409449 56.692913 166.677165 56.692913 
+z
+" clip-path="url(#pcd00e66cae)" style="fill: #e8eff3; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 251.716535 56.692913 
+L 303.874016 56.692913 
+Q 306.141732 56.692913 306.141732 54.425197 
+L 306.141732 36.283465 
+Q 306.141732 34.015748 303.874016 34.015748 
+L 251.716535 34.015748 
+Q 249.448819 34.015748 249.448819 36.283465 
+L 249.448819 54.425197 
+Q 249.448819 56.692913 251.716535 56.692913 
+z
+" clip-path="url(#pcd00e66cae)" style="fill: #ff6361; stroke: #ff6361; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 325.417323 56.692913 
+L 377.574803 56.692913 
+Q 379.84252 56.692913 379.84252 54.425197 
+L 379.84252 36.283465 
+Q 379.84252 34.015748 377.574803 34.015748 
+L 325.417323 34.015748 
+Q 323.149606 34.015748 323.149606 36.283465 
+L 323.149606 54.425197 
+Q 323.149606 56.692913 325.417323 56.692913 
+z
+" clip-path="url(#pcd00e66cae)" style="fill: #003f5c; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 410.456693 56.692913 
+L 462.614173 56.692913 
+Q 464.88189 56.692913 464.88189 54.425197 
+L 464.88189 36.283465 
+Q 464.88189 34.015748 462.614173 34.015748 
+L 410.456693 34.015748 
+Q 408.188976 34.015748 408.188976 36.283465 
+L 408.188976 54.425197 
+Q 408.188976 56.692913 410.456693 56.692913 
+z
+" clip-path="url(#pcd00e66cae)" style="fill: #ff6361; stroke: #ff6361; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 600; font-size: 7px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffffff" x="34.015748" y="47.790112" transform="rotate(-0 34.015748 47.790112)">write</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 600; font-size: 7px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="119.055118" y="47.783003" transform="rotate(-0 119.055118 47.783003)">read</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 63.779528 45.354331 
+Q 76.535433 45.354331 88.396911 45.354331 
+" clip-path="url(#pcd00e66cae)" style="fill: none; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 85.996911 44.154331 
+L 88.396911 45.354331 
+L 85.996911 46.554331 
+z
+" clip-path="url(#pcd00e66cae)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 600; font-size: 7px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="192.755906" y="47.783003" transform="rotate(-0 192.755906 47.783003)">read</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 600; font-size: 7px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffffff" x="277.795276" y="47.790112" transform="rotate(-0 277.795276 47.790112)">write</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 222.519685 45.354331 
+Q 235.275591 45.354331 247.137069 45.354331 
+" clip-path="url(#pcd00e66cae)" style="fill: none; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 244.737069 44.154331 
+L 247.137069 45.354331 
+L 244.737069 46.554331 
+z
+" clip-path="url(#pcd00e66cae)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 600; font-size: 7px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffffff" x="351.496063" y="47.790112" transform="rotate(-0 351.496063 47.790112)">write</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 600; font-size: 7px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffffff" x="436.535433" y="47.790112" transform="rotate(-0 436.535433 47.790112)">write</text>
+   </g>
+   <g id="patch_10">
+    <path d="M 381.259843 45.354331 
+Q 394.015748 45.354331 405.877226 45.354331 
+" clip-path="url(#pcd00e66cae)" style="fill: none; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 403.477226 44.154331 
+L 405.877226 45.354331 
+L 403.477226 46.554331 
+z
+" clip-path="url(#pcd00e66cae)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Source Sans 3'; text-anchor: start; fill: #003f5c" x="5.669291" y="13.339958" transform="rotate(-0 5.669291 13.339958)">Read after write (RAW)</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 6px; font-family: 'Source Sans 3'; fill: #5a6472" transform="translate(41.927621 76.895379)">the read must see the write:</text>
+    <text style="font-size: 6px; font-family: 'Source Sans 3'; fill: #5a6472" transform="translate(31.524183 85.453685)">execution and memory dependency</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Source Sans 3'; text-anchor: start; fill: #003f5c" x="164.409449" y="13.339958" transform="rotate(-0 164.409449 13.339958)">Write after read (WAR)</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 6px; font-family: 'Source Sans 3'; fill: #5a6472" transform="translate(204.251841 76.931472)">the read must finish first:</text>
+    <text style="font-size: 6px; font-family: 'Source Sans 3'; fill: #5a6472" transform="translate(200.854809 85.453685)">execution dependency only</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Source Sans 3'; text-anchor: start; fill: #003f5c" x="323.149606" y="13.339958" transform="rotate(-0 323.149606 13.339958)">Write after write (WAW)</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 6px; font-family: 'Source Sans 3'; fill: #5a6472" transform="translate(354.312623 76.895379)">the second write must land last:</text>
+    <text style="font-size: 6px; font-family: 'Source Sans 3'; fill: #5a6472" transform="translate(349.004498 85.453685)">execution and memory dependency</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pcd00e66cae">
+   <rect x="0" y="0" width="476.220472" height="113.385827"/>
+  </clipPath>
+ </defs>
+</svg>

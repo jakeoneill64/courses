@@ -1,0 +1,17 @@
+#version 460
+#include "../shared/scramble.glsl"
+
+layout(local_size_x = 16, local_size_y = 16) in;
+
+layout(push_constant) uniform Push {
+    uint seed;
+} push;
+
+layout(set = 0, binding = 0, r32ui) uniform writeonly uimage2D target;
+
+void main() {
+    ivec2 p = ivec2(gl_GlobalInvocationID.xy);
+    ivec2 extent = imageSize(target);
+    if (p.x >= extent.x || p.y >= extent.y) return;
+    imageStore(target, p, uvec4(scramble(uint(p.y * extent.x + p.x) ^ push.seed)));
+}

@@ -1,0 +1,60 @@
+#version 460
+
+layout(local_size_x_id = 0) in;
+
+layout(push_constant) uniform Push {
+    uint count;
+} push;
+
+layout(std430, set = 0, binding = 0) restrict readonly buffer Input { uint inputs[]; };
+layout(std430, set = 0, binding = 1) restrict writeonly buffer Output { uint outputs[]; };
+layout(std430, set = 0, binding = 2) restrict writeonly buffer Sums { uint sums[]; };
+
+const uint N = 2 * gl_WorkGroupSize.x;
+shared uint tree[N];
+
+void main() {
+    uint t = gl_LocalInvocationIndex;
+    uint first = gl_WorkGroupID.x * N;
+    for (uint i = t; i < N; i += gl_WorkGroupSize.x) {
+        tree[i] = first + i < push.count ? inputs[first + i] : 0;
+    }
+
+    // snippet:begin up-sweep
+    uint spacing = 1;
+    for (uint pairs = N / 2; pairs > 0; pairs /= 2) {
+        barrier();
+        if (t < pairs) {
+            uint left = spacing * (2 * t + 1) - 1;
+            uint right = spacing * (2 * t + 2) - 1;
+            tree[right] += tree[left];
+        }
+        spacing *= 2;
+    }
+    // snippet:end up-sweep
+
+    barrier();
+    if (t == 0) {
+        sums[gl_WorkGroupID.x] = tree[N - 1];
+        tree[N - 1] = 0;
+    }
+
+    // snippet:begin down-sweep
+    for (uint pairs = 1; pairs < N; pairs *= 2) {
+        spacing /= 2;
+        barrier();
+        if (t < pairs) {
+            uint left = spacing * (2 * t + 1) - 1;
+            uint right = spacing * (2 * t + 2) - 1;
+            uint leftValue = tree[left];
+            tree[left] = tree[right];
+            tree[right] += leftValue;
+        }
+    }
+    // snippet:end down-sweep
+
+    barrier();
+    for (uint i = t; i < N; i += gl_WorkGroupSize.x) {
+        if (first + i < push.count) outputs[first + i] = tree[i];
+    }
+}

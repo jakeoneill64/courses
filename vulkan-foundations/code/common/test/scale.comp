@@ -1,0 +1,18 @@
+#version 460
+
+layout(local_size_x_id = 0) in;
+layout(constant_id = 1) const float addend = 0.0;
+
+layout(push_constant) uniform Push {
+    float factor;
+    uint count;
+} push;
+
+layout(std430, set = 0, binding = 0) readonly buffer Input { float values[]; } src;
+layout(std430, set = 0, binding = 1) writeonly buffer Output { float values[]; } dst;
+
+void main() {
+    uint i = gl_GlobalInvocationID.x;
+    if (i >= push.count) return;
+    dst.values[i] = src.values[i] * push.factor + addend;
+}

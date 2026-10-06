@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="476.220472pt" height="209.76378pt" viewBox="0 0 476.220472 209.76378" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 209.76378 
+L 476.220472 209.76378 
+L 476.220472 0 
+L 0 0 
+L 0 209.76378 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 15.874016 51.023622 
+L 216.566929 51.023622 
+Q 221.102362 51.023622 221.102362 46.488189 
+L 221.102362 30.047244 
+Q 221.102362 25.511811 216.566929 25.511811 
+L 15.874016 25.511811 
+Q 11.338583 25.511811 11.338583 30.047244 
+L 11.338583 46.488189 
+Q 11.338583 51.023622 15.874016 51.023622 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #e8eff3; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 15.874016 170.07874 
+L 216.566929 170.07874 
+Q 221.102362 170.07874 221.102362 165.543307 
+L 221.102362 66.897638 
+Q 221.102362 62.362205 216.566929 62.362205 
+L 15.874016 62.362205 
+Q 11.338583 62.362205 11.338583 66.897638 
+L 11.338583 165.543307 
+Q 11.338583 170.07874 15.874016 170.07874 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #003f5c; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 15.874016 201.259843 
+L 216.566929 201.259843 
+Q 221.102362 201.259843 221.102362 196.724409 
+L 221.102362 185.952756 
+Q 221.102362 181.417323 216.566929 181.417323 
+L 15.874016 181.417323 
+Q 11.338583 181.417323 11.338583 185.952756 
+L 11.338583 196.724409 
+Q 11.338583 201.259843 15.874016 201.259843 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #f4f6f8; stroke: #c9d0d8; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 259.653543 104.88189 
+L 460.346457 104.88189 
+Q 464.88189 104.88189 464.88189 100.346457 
+L 464.88189 30.047244 
+Q 464.88189 25.511811 460.346457 25.511811 
+L 259.653543 25.511811 
+Q 255.11811 25.511811 255.11811 30.047244 
+L 255.11811 100.346457 
+Q 255.11811 104.88189 259.653543 104.88189 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #fff0ef; stroke: #ff6361; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 316.346457 130.393701 
+L 403.653543 130.393701 
+Q 408.188976 130.393701 408.188976 125.858268 
+L 408.188976 116.503937 
+Q 408.188976 111.968504 403.653543 111.968504 
+L 316.346457 111.968504 
+Q 311.811024 111.968504 311.811024 116.503937 
+L 311.811024 125.858268 
+Q 311.811024 130.393701 316.346457 130.393701 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #ffffff; stroke-dasharray: 2.7,1.8; stroke-dashoffset: 0; stroke: #5a6472; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 259.653543 167.244094 
+L 460.346457 167.244094 
+Q 464.88189 167.244094 464.88189 162.708661 
+L 464.88189 149.102362 
+Q 464.88189 144.566929 460.346457 144.566929 
+L 259.653543 144.566929 
+Q 255.11811 144.566929 255.11811 149.102362 
+L 255.11811 162.708661 
+Q 255.11811 167.244094 259.653543 167.244094 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #ff6361; stroke: #ff6361; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 259.653543 201.259843 
+L 460.346457 201.259843 
+Q 464.88189 201.259843 464.88189 196.724409 
+L 464.88189 185.952756 
+Q 464.88189 181.417323 460.346457 181.417323 
+L 259.653543 181.417323 
+Q 255.11811 181.417323 255.11811 185.952756 
+L 255.11811 196.724409 
+Q 255.11811 201.259843 259.653543 201.259843 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #f4f6f8; stroke: #c9d0d8; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 600; font-size: 7.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="116.220472" y="36.867018" transform="rotate(-0 116.220472 36.867018)">Your program</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 6.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="116.220472" y="45.540079" transform="rotate(-0 116.220472 45.540079)">calls into one current context</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 600; font-size: 7.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="116.220472" y="193.692645" transform="rotate(-0 116.220472 193.692645)">GPU</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 116.220472 51.023622 
+Q 116.220472 56.267717 116.220472 60.729187 
+" clip-path="url(#pb1e97b9747)" style="fill: none; stroke: #5a6472; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 117.420472 58.329187 
+L 116.220472 60.729187 
+L 115.020472 58.329187 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #5a6472; stroke: #5a6472; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 116.220472 170.07874 
+Q 116.220472 175.322835 116.220472 179.784305 
+" clip-path="url(#pb1e97b9747)" style="fill: none; stroke: #5a6472; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 117.420472 177.384305 
+L 116.220472 179.784305 
+L 115.020472 177.384305 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #5a6472; stroke: #5a6472; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 600; font-size: 6.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="360" y="120.538485" transform="rotate(-0 360 120.538485)">validation layer</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 5.4px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="360" y="126.224157" transform="rotate(-0 360 126.224157)">development only</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 600; font-size: 7.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffffff" x="360" y="158.410887" transform="rotate(-0 360 158.410887)">The Vulkan driver: a thin translation</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 600; font-size: 7.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="360" y="193.692645" transform="rotate(-0 360 193.692645)">GPU</text>
+   </g>
+   <g id="patch_11">
+    <path d="M 360 104.88189 
+Q 360 108 360 110.335486 
+" clip-path="url(#pb1e97b9747)" style="fill: none; stroke: #5a6472; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 361.2 107.935486 
+L 360 110.335486 
+L 358.8 107.935486 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #5a6472; stroke: #5a6472; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 360 130.393701 
+Q 360 137.055118 360 142.933912 
+" clip-path="url(#pb1e97b9747)" style="fill: none; stroke: #5a6472; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 361.2 140.533912 
+L 360 142.933912 
+L 358.8 140.533912 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #5a6472; stroke: #5a6472; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 360 167.244094 
+Q 360 173.905512 360 179.784305 
+" clip-path="url(#pb1e97b9747)" style="fill: none; stroke: #5a6472; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 361.2 177.384305 
+L 360 179.784305 
+L 358.8 177.384305 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #5a6472; stroke: #5a6472; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 8.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #003f5c" x="116.220472" y="13.402583" transform="rotate(-0 116.220472 13.402583)">OpenGL</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 8.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ff6361" x="360" y="14.30088" transform="rotate(-0 360 14.30088)">Vulkan</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffffff" x="116.220472" y="74.385199" transform="rotate(-0 116.220472 74.385199)">The OpenGL driver</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 6.4px; font-family: 'Source Sans 3'; text-anchor: start; fill: #ffffff" x="22.677165" y="89.458016" transform="rotate(-0 22.677165 89.458016)">tracks every object's state and validates every call</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 6.4px; font-family: 'Source Sans 3'; text-anchor: start; fill: #ffffff" x="22.677165" y="105.876461" transform="rotate(-0 22.677165 105.876461)">compiles GLSL, sometimes again when state changes</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 6.4px; font-family: 'Source Sans 3'; text-anchor: start; fill: #ffffff" x="22.677165" y="122.365406" transform="rotate(-0 22.677165 122.365406)">chooses where memory lives and moves it</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 6.4px; font-family: 'Source Sans 3'; text-anchor: start; fill: #ffffff" x="22.677165" y="139.47535" transform="rotate(-0 22.677165 139.47535)">finds hazards and inserts barriers</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 6.4px; font-family: 'Source Sans 3'; text-anchor: start; fill: #ffffff" x="22.677165" y="155.372295" transform="rotate(-0 22.677165 155.372295)">decides when to submit, on one thread</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 7.8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="360" y="37.153336" transform="rotate(-0 360 37.153336)">Your program</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 6.4px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1b2430" x="266.456693" y="52.607622" transform="rotate(-0 266.456693 52.607622)">creates objects and allocates memory</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 6.4px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1b2430" x="266.456693" y="66.85785" transform="rotate(-0 266.456693 66.85785)">compiles SPIR-V into pipelines, ahead of time</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 6.4px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1b2430" x="266.456693" y="80.992579" transform="rotate(-0 266.456693 80.992579)">records barriers between dependent work</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 6.4px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1b2430" x="266.456693" y="95.152807" transform="rotate(-0 266.456693 95.152807)">records on any thread, submits when it chooses</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pb1e97b9747">
+   <rect x="0" y="-0" width="476.220472" height="209.76378"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,0 +1,11 @@
+$ ./build/bin/u3_queues --shared-queue
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation on, synchronisation validation on
+queues: main family 0, transfer family 0 (shared), compute family 0 (shared)
+upload, exclusive buffer: one family, so no ownership transfer, correct
+upload, concurrent buffer: needs two families; skipped
+two independent workloads, ms from submit to finish, median of 10
+  workload                one queue     + barrier  two queues   GPU ms: main, compute
+  8 groups x 400000          21.453        21.439      21.494          10.595, 10.590
+  2048 groups x 4000          3.028         3.016       3.018           1.187,  1.218
+PASS

@@ -1,0 +1,15 @@
+#version 460
+
+layout(local_size_x_id = 0, local_size_y_id = 1) in;
+
+#include "scene.glsl"
+#include "trace.glsl"
+
+// snippet:begin debug
+void main() {
+    uvec2 p = gl_GlobalInvocationID.xy;
+    if (p.x >= scene.width || p.y >= scene.height) return;
+    Hit hit = closestHit(cameraRay(vec2(p) + 0.5, vec2(0.0)));
+    hits[p.y * scene.width + p.x] = DebugHit(hit.t, hit.id);
+}
+// snippet:end debug

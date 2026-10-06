@@ -1,0 +1,21 @@
+#version 460
+
+layout(local_size_x = 1) in;
+
+layout(push_constant) uniform Push {
+    uint items;
+} push;
+
+// snippet:begin args
+layout(std430, set = 0, binding = 0) writeonly buffer Args {
+    uint groupsX;
+    uint groupsY;
+    uint groupsZ;
+};
+
+void main() {
+    groupsX = (push.items + 255u) / 256u;
+    groupsY = 1u;
+    groupsZ = 1u;
+}
+// snippet:end args

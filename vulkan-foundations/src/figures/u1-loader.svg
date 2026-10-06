@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="476.220472pt" height="209.76378pt" viewBox="0 0 476.220472 209.76378" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 209.76378 
+L 476.220472 209.76378 
+L 476.220472 0 
+L 0 0 
+L 0 209.76378 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 129.259843 34.015748 
+L 346.96063 34.015748 
+Q 351.496063 34.015748 351.496063 29.480315 
+L 351.496063 13.03937 
+Q 351.496063 8.503937 346.96063 8.503937 
+L 129.259843 8.503937 
+Q 124.724409 8.503937 124.724409 13.03937 
+L 124.724409 29.480315 
+Q 124.724409 34.015748 129.259843 34.015748 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #003f5c; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 129.259843 79.370079 
+L 346.96063 79.370079 
+Q 351.496063 79.370079 351.496063 74.834646 
+L 351.496063 58.393701 
+Q 351.496063 53.858268 346.96063 53.858268 
+L 129.259843 53.858268 
+Q 124.724409 53.858268 124.724409 58.393701 
+L 124.724409 74.834646 
+Q 124.724409 79.370079 129.259843 79.370079 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #e8eff3; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 129.259843 124.724409 
+L 346.96063 124.724409 
+Q 351.496063 124.724409 351.496063 120.188976 
+L 351.496063 103.748031 
+Q 351.496063 99.212598 346.96063 99.212598 
+L 129.259843 99.212598 
+Q 124.724409 99.212598 124.724409 103.748031 
+L 124.724409 120.188976 
+Q 124.724409 124.724409 129.259843 124.724409 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #fff5e0; stroke-dasharray: 2.7,1.8; stroke-dashoffset: 0; stroke: #ffa600; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 15.874016 175.748031 
+L 103.181102 175.748031 
+Q 107.716535 175.748031 107.716535 171.212598 
+L 107.716535 154.771654 
+Q 107.716535 150.23622 103.181102 150.23622 
+L 15.874016 150.23622 
+Q 11.338583 150.23622 11.338583 154.771654 
+L 11.338583 171.212598 
+Q 11.338583 175.748031 15.874016 175.748031 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #efeef6; stroke: #58508d; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 27.212598 206.929134 
+L 91.84252 206.929134 
+Q 96.377953 206.929134 96.377953 202.393701 
+L 96.377953 193.03937 
+Q 96.377953 188.503937 91.84252 188.503937 
+L 27.212598 188.503937 
+Q 22.677165 188.503937 22.677165 193.03937 
+L 22.677165 202.393701 
+Q 22.677165 206.929134 27.212598 206.929134 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #f4f6f8; stroke: #c9d0d8; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 134.929134 175.748031 
+L 222.23622 175.748031 
+Q 226.771654 175.748031 226.771654 171.212598 
+L 226.771654 154.771654 
+Q 226.771654 150.23622 222.23622 150.23622 
+L 134.929134 150.23622 
+Q 130.393701 150.23622 130.393701 154.771654 
+L 130.393701 171.212598 
+Q 130.393701 175.748031 134.929134 175.748031 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #efeef6; stroke: #58508d; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 146.267717 206.929134 
+L 210.897638 206.929134 
+Q 215.433071 206.929134 215.433071 202.393701 
+L 215.433071 193.03937 
+Q 215.433071 188.503937 210.897638 188.503937 
+L 146.267717 188.503937 
+Q 141.732283 188.503937 141.732283 193.03937 
+L 141.732283 202.393701 
+Q 141.732283 206.929134 146.267717 206.929134 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #f4f6f8; stroke: #c9d0d8; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 253.984252 175.748031 
+L 341.291339 175.748031 
+Q 345.826772 175.748031 345.826772 171.212598 
+L 345.826772 154.771654 
+Q 345.826772 150.23622 341.291339 150.23622 
+L 253.984252 150.23622 
+Q 249.448819 150.23622 249.448819 154.771654 
+L 249.448819 171.212598 
+Q 249.448819 175.748031 253.984252 175.748031 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #efeef6; stroke: #58508d; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 265.322835 206.929134 
+L 329.952756 206.929134 
+Q 334.488189 206.929134 334.488189 202.393701 
+L 334.488189 193.03937 
+Q 334.488189 188.503937 329.952756 188.503937 
+L 265.322835 188.503937 
+Q 260.787402 188.503937 260.787402 193.03937 
+L 260.787402 202.393701 
+Q 260.787402 206.929134 265.322835 206.929134 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #f4f6f8; stroke: #c9d0d8; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 373.03937 175.748031 
+L 460.346457 175.748031 
+Q 464.88189 175.748031 464.88189 171.212598 
+L 464.88189 154.771654 
+Q 464.88189 150.23622 460.346457 150.23622 
+L 373.03937 150.23622 
+Q 368.503937 150.23622 368.503937 154.771654 
+L 368.503937 171.212598 
+Q 368.503937 175.748031 373.03937 175.748031 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #f8eef4; stroke: #bc5090; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 384.377953 206.929134 
+L 449.007874 206.929134 
+Q 453.543307 206.929134 453.543307 202.393701 
+L 453.543307 193.03937 
+Q 453.543307 188.503937 449.007874 188.503937 
+L 384.377953 188.503937 
+Q 379.84252 188.503937 379.84252 193.03937 
+L 379.84252 202.393701 
+Q 379.84252 206.929134 384.377953 206.929134 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #f4f6f8; stroke: #c9d0d8; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 600; font-size: 8.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffffff" x="238.110236" y="20.305441" transform="rotate(-0 238.110236 20.305441)">Your application</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 6.8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffffff" x="238.110236" y="28.086111" transform="rotate(-0 238.110236 28.086111)">calls vkCreateInstance, vkCmdDispatch, ...</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 600; font-size: 8.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="238.110236" y="66.501857" transform="rotate(-0 238.110236 66.501857)">Vulkan loader</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 7.1px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="238.110236" y="73.544785" transform="rotate(-0 238.110236 73.544785)">libvulkan, vulkan-1.dll: finds layers and drivers</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 600; font-size: 8.5px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="238.110236" y="111.350837" transform="rotate(-0 238.110236 111.350837)">VK_LAYER_KHRONOS_validation</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 7.1px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="238.110236" y="118.845866" transform="rotate(-0 238.110236 118.845866)">optional: checks every call against the specification</text>
+   </g>
+   <g id="patch_13">
+    <path d="M 238.110236 34.514718 
+Q 238.110236 43.938559 238.110236 52.244366 
+" clip-path="url(#pb1e97b9747)" style="fill: none; stroke: #1b2430; stroke-linecap: round"/>
+    <path d="M 239.610236 49.244366 
+L 238.110236 52.244366 
+L 236.610236 49.244366 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #1b2430; stroke: #1b2430; stroke-linecap: round"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 238.110236 79.869048 
+Q 238.110236 89.29289 238.110236 97.598697 
+" clip-path="url(#pb1e97b9747)" style="fill: none; stroke: #1b2430; stroke-linecap: round"/>
+    <path d="M 239.610236 94.598697 
+L 238.110236 97.598697 
+L 236.610236 94.598697 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #1b2430; stroke: #1b2430; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 600; font-size: 8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="59.527559" y="162.546959" transform="rotate(-0 59.527559 162.546959)">NVIDIA</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="59.527559" y="169.704785" transform="rotate(-0 59.527559 169.704785)">nvoglv / libnvidia</text>
+   </g>
+   <g id="patch_15">
+    <path d="M 237.617019 124.794869 
+Q 148.820934 137.480024 60.910286 150.038688 
+" clip-path="url(#pb1e97b9747)" style="fill: none; stroke: #5a6472; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 64.092267 151.099348 
+L 60.910286 150.038688 
+L 63.668003 148.1295 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #5a6472; stroke: #5a6472; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="59.527559" y="200.07791" transform="rotate(-0 59.527559 200.07791)">NVIDIA GPU</text>
+   </g>
+   <g id="patch_16">
+    <path d="M 59.527559 176.050112 
+Q 59.527559 182.126521 59.527559 187.420305 
+" clip-path="url(#pb1e97b9747)" style="fill: none; stroke: #5a6472; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 61.027559 184.420305 
+L 59.527559 187.420305 
+L 58.027559 184.420305 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #5a6472; stroke: #5a6472; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 600; font-size: 8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="178.582677" y="162.546959" transform="rotate(-0 178.582677 162.546959)">AMD</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="178.582677" y="169.916191" transform="rotate(-0 178.582677 169.916191)">amdvlk / RADV</text>
+   </g>
+   <g id="patch_17">
+    <path d="M 237.64881 124.922163 
+Q 208.344668 137.481081 179.862635 149.687667 
+" clip-path="url(#pb1e97b9747)" style="fill: none; stroke: #5a6472; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 183.210949 149.884627 
+L 179.862635 149.687667 
+L 182.029191 147.127192 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #5a6472; stroke: #5a6472; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="178.582677" y="200.07791" transform="rotate(-0 178.582677 200.07791)">AMD GPU</text>
+   </g>
+   <g id="patch_18">
+    <path d="M 178.582677 176.050112 
+Q 178.582677 182.126521 178.582677 187.420305 
+" clip-path="url(#pb1e97b9747)" style="fill: none; stroke: #5a6472; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 180.082677 184.420305 
+L 178.582677 187.420305 
+L 177.082677 184.420305 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #5a6472; stroke: #5a6472; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 600; font-size: 8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="297.637795" y="162.706334" transform="rotate(-0 297.637795 162.706334)">Intel</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="297.637795" y="170.259082" transform="rotate(-0 297.637795 170.259082)">ANV</text>
+   </g>
+   <g id="patch_19">
+    <path d="M 238.571662 124.922163 
+Q 267.875804 137.481081 296.357838 149.687667 
+" clip-path="url(#pb1e97b9747)" style="fill: none; stroke: #5a6472; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 294.191282 147.127192 
+L 296.357838 149.687667 
+L 293.009524 149.884627 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #5a6472; stroke: #5a6472; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="297.637795" y="200.236535" transform="rotate(-0 297.637795 200.236535)">Intel GPU</text>
+   </g>
+   <g id="patch_20">
+    <path d="M 297.637795 176.050112 
+Q 297.637795 182.126521 297.637795 187.420305 
+" clip-path="url(#pb1e97b9747)" style="fill: none; stroke: #5a6472; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 299.137795 184.420305 
+L 297.637795 187.420305 
+L 296.137795 184.420305 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #5a6472; stroke: #5a6472; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 600; font-size: 8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="416.692913" y="162.706334" transform="rotate(-0 416.692913 162.706334)">MoltenVK</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="416.692913" y="170.404488" transform="rotate(-0 416.692913 170.404488)">Vulkan on Metal</text>
+   </g>
+   <g id="patch_21">
+    <path d="M 238.603453 124.794869 
+Q 327.399538 137.480024 415.310186 150.038688 
+" clip-path="url(#pb1e97b9747)" style="fill: none; stroke: #5a6472; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 412.55247 148.1295 
+L 415.310186 150.038688 
+L 412.128206 151.099348 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #5a6472; stroke: #5a6472; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 7.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="416.692913" y="199.541848" transform="rotate(-0 416.692913 199.541848)">Apple GPU</text>
+   </g>
+   <g id="patch_22">
+    <path d="M 416.692913 176.050112 
+Q 416.692913 182.126521 416.692913 187.420305 
+" clip-path="url(#pb1e97b9747)" style="fill: none; stroke: #5a6472; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 418.192913 184.420305 
+L 416.692913 187.420305 
+L 415.192913 184.420305 
+z
+" clip-path="url(#pb1e97b9747)" style="fill: #5a6472; stroke: #5a6472; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; fill: #5a6472" transform="translate(357.165354 102.926839)">layers sit between</text>
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; fill: #5a6472" transform="translate(357.165354 113.641383)">the loader and drivers</text>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 600; font-size: 6.8px; font-family: 'Source Sans 3'; text-anchor: start; fill: #5a6472" x="17.007874" y="140.788357" transform="rotate(-0 17.007874 140.788357)">installable client drivers (ICDs)</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pb1e97b9747">
+   <rect x="0" y="-0" width="476.220472" height="209.76378"/>
+  </clipPath>
+ </defs>
+</svg>

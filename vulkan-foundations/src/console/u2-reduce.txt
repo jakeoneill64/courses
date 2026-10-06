@@ -1,0 +1,13 @@
+$ VKF_VALIDATION=0 ./build/bin/u2_reduce
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation off, synchronisation validation off
+sum of 16777216 floats (64 MiB), local size 512; median of 10 runs
+double-precision CPU sum 8389282.968
+
+variant                          passes       ms     GB/s   relative error
+interleaved addressing                3    0.964     69.6   1.2e-07 ok
+sequential addressing                 3    0.795     84.4   3.8e-09 ok
+subgroupAdd, 1 per invocation         3    0.750     89.5   1.2e-07 ok
+8 elements per invocation             2    0.379    177.1   3.8e-09 ok
+subgroupAdd, 8 per invocation         2    0.379    177.3   3.8e-09 ok
+PASS reduce: 5 of 5 sums within 1e-05 of the CPU sum

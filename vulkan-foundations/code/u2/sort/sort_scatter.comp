@@ -1,0 +1,80 @@
+#version 460
+#extension GL_KHR_shader_subgroup_arithmetic : require
+#extension GL_EXT_control_flow_attributes : require
+
+layout(local_size_x_id = 0) in;
+
+#include "sort.glsl"
+#include "../shared/scan.glsl"
+
+layout(std430, set = 0, binding = 0) restrict readonly buffer KeysIn { uint keysIn[]; };
+layout(std430, set = 0, binding = 1) restrict readonly buffer ValuesIn { uint valuesIn[]; };
+layout(std430, set = 0, binding = 2) restrict writeonly buffer KeysOut { uint keysOut[]; };
+layout(std430, set = 0, binding = 3) restrict writeonly buffer ValuesOut { uint valuesOut[]; };
+layout(std430, set = 0, binding = 4) restrict readonly buffer Counts { uint counts[]; };
+layout(std430, set = 0, binding = 5) restrict readonly buffer Offsets { uint offsets[]; };
+
+const uint BLOCK = gl_WorkGroupSize.x * ITEMS;
+shared uint sortedKeys[BLOCK];
+shared uint sortedValues[BLOCK];
+shared uint digitStart[BUCKETS];
+
+void main() {
+    uint blockStart = gl_WorkGroupID.x * BLOCK;
+    uint position = scanPosition() * ITEMS;
+    uint key[ITEMS];
+    uint value[ITEMS];
+    [[unroll]] for (uint k = 0; k < ITEMS; ++k) {
+        uint i = blockStart + position + k;
+        key[k] = i < push.count ? keysIn[i] : 0xFFFFFFFFu;
+        value[k] = i < push.count ? valuesIn[i] : 0;
+    }
+
+    // snippet:begin split
+    for (uint bit = 0; bit < DIGIT_BITS; ++bit) {
+        uint flag[ITEMS];
+        uint ones = 0;
+        [[unroll]] for (uint k = 0; k < ITEMS; ++k) {
+            flag[k] = bitfieldExtract(key[k], int(push.shift + bit), 1);
+            ones += flag[k];
+        }
+        uint totalOnes;
+        uint onesBefore = workgroupExclusiveAdd(ones, totalOnes);
+        uint zeros = BLOCK - totalOnes;
+        [[unroll]] for (uint k = 0; k < ITEMS; ++k) {
+            uint slot = position + k;
+            uint target = flag[k] == 1 ? zeros + onesBefore : slot - onesBefore;
+            onesBefore += flag[k];
+            sortedKeys[target] = key[k];
+            sortedValues[target] = value[k];
+        }
+        barrier();
+        [[unroll]] for (uint k = 0; k < ITEMS; ++k) {
+            key[k] = sortedKeys[position + k];
+            value[k] = sortedValues[position + k];
+        }
+        barrier();
+    }
+    // snippet:end split
+
+    // snippet:begin scatter
+    if (gl_LocalInvocationIndex == 0) {
+        uint sum = 0;
+        for (uint d = 0; d < BUCKETS; ++d) {
+            digitStart[d] = sum;
+            sum += counts[d * push.blocks + gl_WorkGroupID.x];
+        }
+    }
+    barrier();
+    for (uint k = 0; k < ITEMS; ++k) {
+        uint slot = k * gl_WorkGroupSize.x + gl_LocalInvocationIndex;
+        if (blockStart + slot >= push.count) continue;
+        uint sortedKey = sortedKeys[slot];
+        uint digit = digitOf(sortedKey);
+        uint blockOffset = offsets[digit * push.blocks + gl_WorkGroupID.x];
+        uint target = blockOffset + slot - digitStart[digit];
+        keysOut[target] = sortedKey;
+        valuesOut[target] = sortedValues[slot];
+    }
+    // snippet:end scatter
+}

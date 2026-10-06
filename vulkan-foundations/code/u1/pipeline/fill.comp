@@ -1,0 +1,22 @@
+#version 460
+
+// snippet:begin interface
+layout(local_size_x_id = 0) in;
+
+layout(push_constant) uniform Push {
+    uint seed;
+    uint count;
+} push;
+
+layout(std430, set = 0, binding = 0) writeonly buffer Output {
+    uint values[];
+};
+// snippet:end interface
+
+// snippet:begin main
+void main() {
+    uint i = gl_GlobalInvocationID.x;
+    if (i >= push.count) return;
+    values[i] = push.seed ^ (i * 2654435761u);
+}
+// snippet:end main

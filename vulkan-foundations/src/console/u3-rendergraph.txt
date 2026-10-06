@@ -1,0 +1,40 @@
+$ ./build/bin/u3_rendergraph --dot ../src/console/u3-rendergraph.dot
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation on, synchronisation validation on
+by hand: 9 passes, 7 vkCmdPipelineBarrier2 calls, results match the CPU
+graph without aliasing: the same barriers as by hand at every pass
+compiled: 10 passes, 9 kept, culled: debug-copy
+transient memory: 4096 KiB with aliasing, 5120 KiB without
+  field    image   1048576 bytes at 128      passes 1-3
+  blurred  buffer  1048576 bytes at 1048832  passes 2-6
+  edges    buffer  1048576 bytes at 2097408  passes 3-4
+  mask     image   1048576 bytes at 128      passes 4-7, reuses field
+  stats    buffer       16 bytes at 0        passes 0-7
+  list     buffer  1048576 bytes at 3145984  passes 4-6
+  command  buffer       12 bytes at 2097408  passes 5-6, reuses edges
+pass 0 clear-stats
+pass 1 generate
+  image  field UNDEFINED -> GENERAL
+    src NONE             NONE
+    dst COMPUTE_SHADER   SHADER_STORAGE_WRITE
+...
+pass 4 select
+  memory blurred, edges
+    src COMPUTE_SHADER   SHADER_STORAGE_WRITE
+    dst COMPUTE_SHADER   SHADER_STORAGE_READ
+  memory stats
+    src CLEAR            TRANSFER_WRITE
+    dst COMPUTE_SHADER   SHADER_STORAGE_READ|SHADER_STORAGE_WRITE
+  image  mask (memory of field) UNDEFINED -> GENERAL
+    src COMPUTE_SHADER   SHADER_STORAGE_WRITE
+    dst COMPUTE_SHADER   SHADER_STORAGE_WRITE
+pass 5 command
+  memory stats, command (memory of edges)
+    src COMPUTE_SHADER   SHADER_STORAGE_WRITE
+    dst COMPUTE_SHADER   SHADER_STORAGE_READ|SHADER_STORAGE_WRITE
+...
+wrote ../src/console/u3-rendergraph.dot
+GPU ms per pass, median of 10: clear-stats 0.012, generate 0.016, blur 0.074, edges 0.005,
+  select 0.031, command 0.005, score 0.029, readback 0.025, host 0.005
+CPU ms per execution (record, submit, wait), median of 10: 1.096
+PASS: 11 executions match the CPU (24174 cells selected)

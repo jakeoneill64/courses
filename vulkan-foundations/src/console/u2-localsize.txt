@@ -1,0 +1,14 @@
+$ VKF_VALIDATION=0 ./build/bin/u2_localsize
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation off, synchronisation validation off
+SAXPY over 16777216 floats (192 MiB moved per run); an FMA chain of 512 per float
+median of 10 runs after a 25 ms warm-up
+
+local size   SAXPY ms     GB/s   FMA chain ms    GFLOP/s   results
+        32      1.068    188.4          2.746     6256.9   ok
+        64      1.063    189.3          2.671     6430.9   ok
+       128      1.060    189.9          2.693     6379.8   ok
+       256      1.059    190.2          2.694     6378.1   ok
+       512      1.062    189.6          2.697     6370.8   ok
+      1024      1.063    189.3          2.698     6367.1   ok
+PASS localsize: 6 of 6 local sizes verified

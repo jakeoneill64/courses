@@ -1,0 +1,19 @@
+#version 460
+
+layout(local_size_x = 64) in;
+
+layout(std430, set = 0, binding = 0) readonly buffer List { uint list[]; };
+layout(std430, set = 0, binding = 1) readonly buffer Blurred { uint blurred[]; };
+layout(std430, set = 0, binding = 2) buffer Stats {
+    uint selected;
+    uint blurredSum;
+    uint indexXor;
+} stats;
+
+void main() {
+    uint k = gl_GlobalInvocationID.x;
+    if (k >= stats.selected) return;
+    uint i = list[k];
+    atomicAdd(stats.blurredSum, blurred[i]);
+    atomicXor(stats.indexXor, i);
+}

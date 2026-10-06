@@ -1,0 +1,15 @@
+$ ./build/bin/u4_textured --no-bindless
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation on, synchronisation validation on
+textures: 4 x 256x256 VK_FORMAT_R8G8B8A8_SRGB, 9 mip levels blitted on the GPU
+  checker's 1x1 level: (188, 188, 188); averaging sRGB bytes gives 128
+  every level matches the CPU's linear-light box filter within 1
+sampler: trilinear with 16x anisotropic filtering
+descriptors: a fixed array of 4 sampled images and one sampler
+8 frames, 2 in flight, frame uniform buffers used: 0 1 0 1 0 1 0 1
+wrote textured.png and, sampling level 0 only, textured-no-mips.png
+  cube faces show textures 0 1 2 3: as drawn
+  far ground, rows 90-142: mean 187.0, deviation 12.4
+  near ground, rows 435-599: mean 132.2, deviation 123.3
+  far ground with level 0 only: mean 129.7, deviation 125.6
+PASS textured meshes with mipmaps and fixed-array textures

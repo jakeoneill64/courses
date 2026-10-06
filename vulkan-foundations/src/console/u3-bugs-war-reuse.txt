@@ -1,0 +1,21 @@
+$ ./build/bin/u3_bugs --bug war-reuse
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation on, synchronisation validation on
+bug war-reuse: a buffer overwritten while the last dispatch may read it
+[vulkan error] vkCmdCopyBuffer(): WRITE_AFTER_READ hazard detected. vkCmdCopyBuffer writes
+    to VkBuffer 0x...[a], which was previously read by vkCmdDispatch.
+No sufficient synchronization is present to ensure that a write
+    (VK_ACCESS_2_TRANSFER_WRITE_BIT) at VK_PIPELINE_STAGE_2_COPY_BIT does not conflict with
+    a prior read (VK_ACCESS_2_SHADER_STORAGE_READ_BIT) at
+    VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT.
+Hint: An execution dependency is sufficient to prevent this hazard.
+Buffer copy region 0: {
+  offset = 0,
+  size = 262144
+}
+
+...
+  synchronisation validation: SYNC-HAZARD-WRITE-AFTER-READ
+  results: wrong
+error: --bug war-reuse detected by synchronisation validation
+vkf: the validation layers reported 3 error(s)

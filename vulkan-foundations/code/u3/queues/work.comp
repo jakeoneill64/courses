@@ -1,0 +1,16 @@
+#version 460
+
+layout(local_size_x = 64) in;
+
+layout(push_constant) uniform Push {
+    uint steps;
+} push;
+
+layout(std430, set = 0, binding = 0) writeonly buffer Results { uint results[]; };
+
+// Each step needs the last, so a few workgroups keep only part of the GPU busy.
+void main() {
+    uint x = gl_GlobalInvocationID.x * 7u + 1u;
+    for (uint s = 0u; s < push.steps; ++s) x = x * 1664525u + 1013904223u;
+    results[gl_GlobalInvocationID.x] = x;
+}

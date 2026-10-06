@@ -1,0 +1,10 @@
+$ VKF_VALIDATION=0 ./build/bin/u3_rendergraph --repeats 50 --async
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation off, synchronisation validation off
+by hand: 9 passes, 7 vkCmdPipelineBarrier2 calls, results match the CPU
+graph without aliasing: the same barriers as by hand at every pass
+...
+GPU ms per pass, median of 50: clear-stats 0.013, generate 0.011, blur 0.042, edges 0.083,
+  select 0.112, command 0.004, score 0.016, readback 0.014, host 0.004
+CPU ms per execution (record, submit, wait), median of 50: 1.213
+PASS: 51 executions match the CPU (24174 cells selected)

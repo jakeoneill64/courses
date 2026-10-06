@@ -1,0 +1,19 @@
+$ VKF_VALIDATION=0 ./build/bin/u4_scaling --draws 100000 --repeat 9 --pipelines 32 --fresh
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation off, synchronisation validation off
+multithreaded recording: 100000 draws into 1024x1024, median of 9 frames
+  threads   record ms   speed-up   submit ms   image
+        1        3.49       1.00       11.78   matches the CPU painting
+        2        3.78       0.92       11.50   matches the CPU painting
+        4        1.03       3.39       11.24   matches the CPU painting
+        8        0.76       4.59       11.52   matches the CPU painting
+pipeline cache: 32 pipeline variants, specialised differently from any earlier run
+  no cache                        214.0 ms
+  empty cache, new variants       174.0 ms
+  the same cache, same variants     2.6 ms
+  cache from disk, new variants   172.4 ms
+  wrote 4465 bytes to pipeline-cache.bin; its header matches this device
+memory budget (VK_EXT_memory_budget):
+  before: heap 0 (device local), 32.0 GiB: budget 24.96 GiB, in use 0.009 GiB
+  with 256 MB more: heap 0 (device local), 32.0 GiB: budget 24.96 GiB, in use 0.259 GiB
+PASS multithreaded recording and pipeline caches

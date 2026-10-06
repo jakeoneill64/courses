@@ -1,0 +1,8 @@
+if(NOT TARGET glfw)
+  message(STATUS "u4: GLFW 3.3 or later was not found, so the windowed projects are skipped")
+  return()
+endif()
+add_library(u4_present STATIC display.cpp swapchain.cpp frames.cpp presenter.cpp)
+target_include_directories(u4_present PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(u4_present PUBLIC vkf glfw)
+vkf_warnings(u4_present)

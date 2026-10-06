@@ -1,0 +1,24 @@
+#version 460
+
+layout(local_size_x = 16, local_size_y = 16) in;
+layout(constant_id = 0) const int RADIUS = 8;
+
+layout(set = 0, binding = 0, rgba32f) uniform restrict readonly image2D source;
+layout(set = 0, binding = 1, rgba32f) uniform restrict writeonly image2D target;
+layout(std430, set = 0, binding = 2) restrict readonly buffer Weights { float weights[]; };
+
+// snippet:begin naive
+void main() {
+    ivec2 size = imageSize(source);
+    ivec2 p = ivec2(gl_GlobalInvocationID.xy);
+    if (any(greaterThanEqual(p, size))) return;
+    vec4 sum = vec4(0.0);
+    for (int dy = -RADIUS; dy <= RADIUS; ++dy) {
+        for (int dx = -RADIUS; dx <= RADIUS; ++dx) {
+            ivec2 q = clamp(p + ivec2(dx, dy), ivec2(0), size - 1);
+            sum += weights[abs(dx)] * weights[abs(dy)] * imageLoad(source, q);
+        }
+    }
+    imageStore(target, p, sum);
+}
+// snippet:end naive

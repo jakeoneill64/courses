@@ -1,0 +1,19 @@
+$ VKF_VALIDATION=0 ./build/bin/u2_tune
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation off, synchronisation validation off
+subgroup size control: requiredSubgroupSizeStages lacks the compute stage,
+so every variant runs at the driver's subgroup size
+built 30 pipelines in 68.0 ms with an empty pipeline cache, and in 1.6 ms
+from the 5816 bytes that cache then held
+
+GB/s by local size (columns) and elements per invocation (rows)
+           64     128     256     512    1024
+    1    88.2    88.4    88.9    89.1   159.6
+    2   168.0   166.4   162.5   162.8   180.1
+    4   190.4   187.9   184.4   176.9   177.6
+    8   185.9   184.9   174.1   175.3   181.8
+   16   182.9   176.2   174.4   178.5   180.9
+   32   176.3   166.4   174.6   178.6   181.7
+
+fastest: local size 64, 4 elements per invocation: 0.352 ms (190.4 GB/s)
+PASS tune: 30 of 30 variants verified

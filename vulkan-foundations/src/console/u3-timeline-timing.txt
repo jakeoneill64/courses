@@ -1,0 +1,9 @@
+$ VKF_VALIDATION=0 ./build/bin/u3_timeline --items 2000
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation off, synchronisation validation off
+timeline: 3 slots, 2000 items of 65536 values, each submitted before its input
+  2000 of 2000 correct in 331.0 ms (6043 items per second)
+fences: 3 slots, 2000 items, one fence per submission
+  2000 of 2000 correct in 262.1 ms (7631 items per second)
+binary semaphore: the second submission read the first's output: correct
+PASS

@@ -1,0 +1,33 @@
+$ ./build/bin/u4_sandbox --plan
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation on, synchronisation validation on
+compiled: 7 passes, 7 kept, culled: none
+transient memory: 11264 KiB with aliasing, 11264 KiB without
+  frame params buffer      164 bytes at 0        passes 0-5
+  hdr      image   7536640 bytes at 256      passes 4-6
+  depth    image   3997696 bytes at 7536896  passes 4-5
+batch 0 on the main queue: update reset command cull draw cubes
+batch 1 on the compute queue: simulate
+batch 2 on the main queue: draw particles post-process; waits for batch 1 at
+    VERTEX_ATTRIBUTE_INPUT
+pass 0 update
+pass 1 simulate
+  memory previous particles, particles
+    src COMPUTE_SHADER   SHADER_STORAGE_WRITE
+    dst COMPUTE_SHADER   SHADER_STORAGE_READ|SHADER_STORAGE_WRITE
+...
+pass 4 draw cubes
+  memory draw command
+    src COMPUTE_SHADER   SHADER_STORAGE_WRITE
+    dst DRAW_INDIRECT    INDIRECT_COMMAND_READ
+...
+pass 5 draw particles
+  memory hdr
+    src COLOR_ATTACHMENT_OUTPUT COLOR_ATTACHMENT_WRITE
+    dst COLOR_ATTACHMENT_OUTPUT COLOR_ATTACHMENT_READ|COLOR_ATTACHMENT_WRITE
+pass 6 post-process
+  image  hdr COLOR_ATTACHMENT_OPTIMAL -> GENERAL
+    src COLOR_ATTACHMENT_OUTPUT COLOR_ATTACHMENT_WRITE
+    dst COMPUTE_SHADER   SHADER_STORAGE_READ
+...
+PASS GPU-driven sandbox

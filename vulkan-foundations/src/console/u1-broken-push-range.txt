@@ -1,0 +1,13 @@
+$ ./build/bin/u1_broken --bug push-range
+bug: push-range
+[validation error] vkCmdPushConstants(): is called with
+  stageFlags (VK_SHADER_STAGE_COMPUTE_BIT), offset (0), size (8)
+but VkPipelineLayout 0x70000000007 doesn't have any valid VkPushConstantRange:
+  stageFlags (VK_SHADER_STAGE_COMPUTE_BIT), offset (0), size (4) [invalid because outside
+    the range]
+The Vulkan spec states: For each byte in the range specified by offset and size and for each
+    shader stage in stageFlags, there must be a push constant range in layout that includes
+    that byte and that stage (https://docs.vulkan.org/spec/latest/chapters/descriptorsets.ht
+    ml#VUID-vkCmdPushConstants-offset-01795)
+validation reported 1 error(s)
+values multiplied by four: yes

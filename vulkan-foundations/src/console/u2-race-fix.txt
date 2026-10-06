@@ -1,0 +1,8 @@
+$ ./build/bin/u2_race --fix
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation on, synchronisation validation on
+race 1: 1048576 invocations add 1 to one counter with atomicAdd
+  expected 1048576, observed 1048576 (0.0% of the additions lost)
+race 2: 4096 workgroups each sum 256 values in shared memory with barrier()
+  wrong sums in 0 of 4096 workgroups (0.0%)
+PASS race --fix: the synchronised kernels give exact results

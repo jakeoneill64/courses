@@ -1,0 +1,18 @@
+$ VKF_VALIDATION=0 ./build/bin/u3_passes --repeats 50
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation off, synchronisation validation off
+pipeline: 512x512 field, 7 passes, 7 vkCmdPipelineBarrier2 calls
+  GPU: 24174 cells selected, blurred sum 36600280, index xor 0x00027d33
+  CPU: 24174 cells selected, blurred sum 36600280, index xor 0x00027d33
+  GPU time 0.246 ms, median of 50 runs
+cost: 256 dispatches of 16384 elements, GPU time, median of 50 runs
+  sequence    barrier between dispatches             barriers    GPU ms us/dispatch
+  chain       COMPUTE write -> COMPUTE read/write         255     5.331       20.82
+  chain       ALL_COMMANDS -> ALL_COMMANDS                255     5.363       20.95
+  independent none                                          0     0.819        3.20
+  independent COMPUTE write -> COMPUTE read/write         255     5.434       21.23
+  independent ALL_COMMANDS -> ALL_COMMANDS                255     5.771       22.54
+  (a) precise, only where needed: 6.150 ms
+  (b) full barrier after every dispatch: 11.134 ms
+  (c) independent set, no barriers vs precise ones: 0.819 vs 5.434 ms
+PASS

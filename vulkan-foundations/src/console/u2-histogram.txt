@@ -1,0 +1,11 @@
+$ VKF_VALIDATION=0 ./build/bin/u2_histogram
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation off, synchronisation validation off
+64 MiB of bytes, 256 bins, 4096 workgroups; median of 10 runs
+
+input          kernel                       ms     GB/s   bins
+uniform        global atomics            5.012     13.4   exact
+uniform        shared, then global       0.374    179.6   exact
+all identical  global atomics           57.835      1.2   exact
+all identical  shared, then global       1.588     42.3   exact
+PASS histogram: 4 of 4 histograms exact

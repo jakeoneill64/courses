@@ -1,0 +1,9 @@
+$ VKF_VALIDATION=0 ./build/bin/u2_nbody
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation off, synchronisation validation off
+16384 particles in a Plummer sphere; 200 leapfrog steps of 0.01
+indirect dispatch from a GPU-side count: 64 x 1 x 1 workgroups of 256
+2.008 ms per step, 133.7 billion interactions per second
+total energy -0.1544414 at the start, -0.1544415 at the end
+relative energy drift 2.45e-07 (limit 1e-04)
+PASS nbody: energy conserved to 2.4e-07

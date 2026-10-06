@@ -1,0 +1,15 @@
+#version 460
+
+layout(local_size_x_id = 0) in;
+
+#include "nbody.glsl"
+
+// snippet:begin drift
+void main() {
+    uint i = particleIndex();
+    if (i >= push.params.count) return;
+    vec3 velocity = push.velocities.v[i].xyz + push.accelerations.v[i].xyz * push.halfDt;
+    push.velocities.v[i].xyz = velocity;
+    push.positions.v[i].xyz += velocity * push.dt;
+}
+// snippet:end drift

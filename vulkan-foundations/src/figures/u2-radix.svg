@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="476.220472pt" height="204.094488pt" viewBox="0 0 476.220472 204.094488" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 204.094488 
+L 476.220472 204.094488 
+L 476.220472 0 
+L 0 0 
+L 0 204.094488 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 11.338583 107.716535 
+L 39.685039 107.716535 
+L 39.685039 90.708661 
+L 11.338583 90.708661 
+z
+" clip-path="url(#p51437f2e53)" style="fill: #efeef6; stroke: #58508d; stroke-width: 0.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 41.385827 107.716535 
+L 69.732283 107.716535 
+L 69.732283 90.708661 
+L 41.385827 90.708661 
+z
+" clip-path="url(#p51437f2e53)" style="fill: #efeef6; stroke: #58508d; stroke-width: 0.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 71.433071 107.716535 
+L 99.779528 107.716535 
+L 99.779528 90.708661 
+L 71.433071 90.708661 
+z
+" clip-path="url(#p51437f2e53)" style="fill: #efeef6; stroke: #58508d; stroke-width: 0.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 101.480315 107.716535 
+L 129.826772 107.716535 
+L 129.826772 90.708661 
+L 101.480315 90.708661 
+z
+" clip-path="url(#p51437f2e53)" style="fill: #efeef6; stroke: #58508d; stroke-width: 0.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 131.527559 107.716535 
+L 159.874016 107.716535 
+L 159.874016 90.708661 
+L 131.527559 90.708661 
+z
+" clip-path="url(#p51437f2e53)" style="fill: #efeef6; stroke: #58508d; stroke-width: 0.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 161.574803 107.716535 
+L 189.92126 107.716535 
+L 189.92126 90.708661 
+L 161.574803 90.708661 
+z
+" clip-path="url(#p51437f2e53)" style="fill: #efeef6; stroke: #58508d; stroke-width: 0.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 191.622047 107.716535 
+L 219.968504 107.716535 
+L 219.968504 90.708661 
+L 191.622047 90.708661 
+z
+" clip-path="url(#p51437f2e53)" style="fill: #efeef6; stroke: #58508d; stroke-width: 0.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 221.669291 107.716535 
+L 250.015748 107.716535 
+L 250.015748 90.708661 
+L 221.669291 90.708661 
+z
+" clip-path="url(#p51437f2e53)" style="fill: #efeef6; stroke: #58508d; stroke-width: 0.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 251.716535 107.716535 
+L 280.062992 107.716535 
+L 280.062992 90.708661 
+L 251.716535 90.708661 
+z
+" clip-path="url(#p51437f2e53)" style="fill: #efeef6; stroke: #58508d; stroke-width: 0.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 13.606299 62.362205 
+L 94.110236 62.362205 
+Q 96.377953 62.362205 96.377953 60.094488 
+L 96.377953 36.283465 
+Q 96.377953 34.015748 94.110236 34.015748 
+L 13.606299 34.015748 
+Q 11.338583 34.015748 11.338583 36.283465 
+L 11.338583 60.094488 
+Q 11.338583 62.362205 13.606299 62.362205 
+z
+" clip-path="url(#p51437f2e53)" style="fill: #e8eff3; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 109.984252 62.362205 
+L 190.488189 62.362205 
+Q 192.755906 62.362205 192.755906 60.094488 
+L 192.755906 36.283465 
+Q 192.755906 34.015748 190.488189 34.015748 
+L 109.984252 34.015748 
+Q 107.716535 34.015748 107.716535 36.283465 
+L 107.716535 60.094488 
+Q 107.716535 62.362205 109.984252 62.362205 
+z
+" clip-path="url(#p51437f2e53)" style="fill: #e8eff3; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 206.362205 62.362205 
+L 286.866142 62.362205 
+Q 289.133858 62.362205 289.133858 60.094488 
+L 289.133858 36.283465 
+Q 289.133858 34.015748 286.866142 34.015748 
+L 206.362205 34.015748 
+Q 204.094488 34.015748 204.094488 36.283465 
+L 204.094488 60.094488 
+Q 204.094488 62.362205 206.362205 62.362205 
+z
+" clip-path="url(#p51437f2e53)" style="fill: #e8eff3; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 13.606299 153.070866 
+L 281.19685 153.070866 
+Q 283.464567 153.070866 283.464567 150.80315 
+L 283.464567 132.661417 
+Q 283.464567 130.393701 281.19685 130.393701 
+L 13.606299 130.393701 
+Q 11.338583 130.393701 11.338583 132.661417 
+L 11.338583 150.80315 
+Q 11.338583 153.070866 13.606299 153.070866 
+z
+" clip-path="url(#p51437f2e53)" style="fill: #58508d; stroke: #58508d; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 13.606299 198.425197 
+L 281.19685 198.425197 
+Q 283.464567 198.425197 283.464567 196.15748 
+L 283.464567 175.181102 
+Q 283.464567 172.913386 281.19685 172.913386 
+L 13.606299 172.913386 
+Q 11.338583 172.913386 11.338583 175.181102 
+L 11.338583 196.15748 
+Q 11.338583 198.425197 13.606299 198.425197 
+z
+" clip-path="url(#p51437f2e53)" style="fill: #fff0ef; stroke: #ff6361; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="53.858268" y="49.888476" transform="rotate(-0 53.858268 49.888476)">block 0 of keys</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="150.23622" y="49.888476" transform="rotate(-0 150.23622 49.888476)">block 1 of keys</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 6.6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="246.614173" y="49.888476" transform="rotate(-0 246.614173 49.888476)">block 2 of keys</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 6.2px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #ffffff" x="147.401575" y="143.282283" transform="rotate(-0 147.401575 143.282283)">exclusive scan of the counts: where each block's keys of each digit start</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 6px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(49.589387 182.558498)">scatter: sort the block by digit in shared memory, stably, then write each key to</text>
+    <text style="font-size: 6px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(69.462981 191.707898)">its digit's start plus its rank among that digit's keys in the block</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Source Sans 3'; text-anchor: start; fill: #003f5c" x="5.669291" y="13.181895" transform="rotate(-0 5.669291 13.181895)">One pass of the LSD radix sort, for a 4-bit digit</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 6.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(311.811024 44.97449)">count: each workgroup counts its block's</text>
+    <text style="font-size: 6.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(311.811024 54.42887)">keys by digit, into shared memory</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 5.4px; font-family: 'JetBrains Mono'; text-anchor: middle; fill: #1b2430" x="25.511811" y="101.183598" transform="rotate(-0 25.511811 101.183598)">d0b0</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 5.4px; font-family: 'JetBrains Mono'; text-anchor: middle; fill: #1b2430" x="55.559055" y="101.183598" transform="rotate(-0 55.559055 101.183598)">d0b1</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 5.4px; font-family: 'JetBrains Mono'; text-anchor: middle; fill: #1b2430" x="85.606299" y="101.183598" transform="rotate(-0 85.606299 101.183598)">d0b2</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 5.4px; font-family: 'JetBrains Mono'; text-anchor: middle; fill: #1b2430" x="115.653543" y="101.183598" transform="rotate(-0 115.653543 101.183598)">d1b0</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 5.4px; font-family: 'JetBrains Mono'; text-anchor: middle; fill: #1b2430" x="145.700787" y="101.156598" transform="rotate(-0 145.700787 101.156598)">d1b1</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 5.4px; font-family: 'JetBrains Mono'; text-anchor: middle; fill: #1b2430" x="175.748031" y="101.183598" transform="rotate(-0 175.748031 101.183598)">d1b2</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 5.4px; font-family: 'JetBrains Mono'; text-anchor: middle; fill: #1b2430" x="205.795276" y="101.183598" transform="rotate(-0 205.795276 101.183598)">d2b0</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 5.4px; font-family: 'JetBrains Mono'; text-anchor: middle; fill: #1b2430" x="235.84252" y="101.183598" transform="rotate(-0 235.84252 101.183598)">d2b1</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 5.4px; font-family: 'JetBrains Mono'; text-anchor: middle; fill: #1b2430" x="265.889764" y="101.183598" transform="rotate(-0 265.889764 101.183598)">d2b2</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 7px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1b2430" x="284.598425" y="99.569708" transform="rotate(-0 284.598425 99.569708)">...</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 6.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(311.811024 95.998112)">counts, digit-major: every block's count</text>
+    <text style="font-size: 6.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(311.811024 105.489788)">of digit 0, then of digit 1, and so on</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 6.2px; font-family: 'Source Sans 3'; text-anchor: start; fill: #1b2430" x="311.811024" y="143.328783" transform="rotate(-0 311.811024 143.328783)">a multi-level scan, as for any other array</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 6.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(311.811024 182.622398)">stable within a block, blocks in order:</text>
+    <text style="font-size: 6.2px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(311.811024 191.968278)">the whole pass is stable</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p51437f2e53">
+   <rect x="0" y="-0" width="476.220472" height="204.094488"/>
+  </clipPath>
+ </defs>
+</svg>

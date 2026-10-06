@@ -1,0 +1,16 @@
+$ ./build/bin/u1_broken --bug unbound
+bug: unbound
+[validation error] vkCmdDispatch(): The VkPipeline 0x90000000009[double the values]
+    statically uses descriptor set 0, but because a descriptor was never bound, the
+    VkPipelineLayouts are not compatible.
+If using a descriptor, make sure to call one of vkCmdBindDescriptorSets,
+    vkCmdPushDescriptorSet, vkCmdSetDescriptorBufferOffset, etc for
+    VK_PIPELINE_BIND_POINT_COMPUTE.
+The Vulkan spec states: If a a bound shader was created with a pipeline layout and
+    statically uses a set n, a descriptor set must have been bound to n at the same pipeline
+    bind point, with layouts compatible for set n with the layout(s) used to create the
+    shader, as described in Pipeline Layout Compatibility (https://docs.vulkan.org/spec/late
+    st/chapters/dispatch.html#VUID-vkCmdDispatch-None-08600)
+[validation error] vkCmdDispatch(): The VkPipeline 0x90000000009[double the values]
+...
+zsh: segmentation fault  ./build/bin/u1_broken --bug unbound

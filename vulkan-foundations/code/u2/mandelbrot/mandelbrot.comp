@@ -1,0 +1,45 @@
+#version 460
+#extension GL_KHR_shader_subgroup_basic : require
+
+layout(local_size_x = 16, local_size_y = 16) in;
+
+layout(push_constant) uniform Push {
+    vec2 centre;
+    float spacing;
+    uint maxIterations;
+} push;
+
+layout(set = 0, binding = 0, rgba8) uniform restrict writeonly image2D picture;
+layout(std430, set = 0, binding = 1) restrict writeonly buffer Counts { uint counts[]; };
+layout(std430, set = 0, binding = 2) restrict writeonly buffer Subgroups { uint subgroups[]; };
+
+// snippet:begin colour
+vec3 palette(float t) {
+    return 0.5 + 0.5 * cos(6.2831853 * (t + vec3(0.0, 0.15, 0.3)));
+}
+
+vec4 colour(uint n, vec2 z) {
+    if (n == push.maxIterations) return vec4(0.0, 0.0, 0.0, 1.0);
+    float mu = float(n) + 1.0 - log2(log2(length(z)));
+    return vec4(palette(0.03 * mu), 1.0);
+}
+// snippet:end colour
+
+// snippet:begin iterate
+void main() {
+    ivec2 size = imageSize(picture);
+    ivec2 p = ivec2(gl_GlobalInvocationID.xy);
+    if (any(greaterThanEqual(p, size))) return;
+    vec2 c = push.centre + vec2(p - size / 2) * push.spacing;
+    vec2 z = vec2(0.0);
+    uint n = 0;
+    while (n < push.maxIterations && dot(z, z) <= 256.0) {
+        z = vec2(z.x * z.x - z.y * z.y, 2.0 * z.x * z.y) + c;
+        ++n;
+    }
+    imageStore(picture, p, colour(n, z));
+    uint index = p.y * size.x + p.x;
+    counts[index] = n;
+    subgroups[index] = gl_SubgroupID;
+}
+// snippet:end iterate

@@ -1,0 +1,8 @@
+$ VKF_VALIDATION=0 ./build/bin/u3_events --repeats 20
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation off, synchronisation validation off
+A: 256 threads, 100000 steps; B: independent, 200000 steps; C: reads A's output
+  barrier where the set goes (B waits for A)      10.607 ms
+  barrier where the wait goes (C waits for B)     10.602 ms
+  split barrier with an event (C waits for A)      8.095 ms
+PASS: every variant matches the CPU (GPU time, median of 20 runs)

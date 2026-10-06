@@ -1,0 +1,19 @@
+$ ./build/bin/u1_broken --bug descriptor-type
+bug: descriptor-type
+[validation error] vkUpdateDescriptorSets(): pDescriptorWrites[0].descriptorType
+    (VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER) is different from pBindings[0].descriptorType
+    (VK_DESCRIPTOR_TYPE_STORAGE_BUFFER) of VkDescriptorSetLayout 0x40000000004.
+The VkDescriptorSetLayout was used to allocate VkDescriptorSet 0x60000000006
+The Vulkan spec states: descriptorType must match the type of dstBinding within dstSet (http
+    s://docs.vulkan.org/spec/latest/chapters/descriptorsets.html#VUID-VkWriteDescriptorSet-d
+    escriptorType-00319)
+[validation error] vkUpdateDescriptorSets(): pDescriptorWrites[0].pBufferInfo[0].buffer was
+    created with VK_BUFFER_USAGE_2_STORAGE_BUFFER_BIT, but descriptorType is
+    VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER.
+The Vulkan spec states: If descriptorType is VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER or
+    VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC, the buffer member of each element of
+    pBufferInfo must have been created with the VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT usage
+    flag set (https://docs.vulkan.org/spec/latest/chapters/descriptorsets.html#VUID-VkWriteD
+    escriptorSet-descriptorType-00330)
+validation reported 2 error(s)
+values multiplied by four: yes

@@ -1,0 +1,27 @@
+#version 460
+
+layout(local_size_x_id = 0, local_size_y_id = 1) in;
+
+#include "scene.glsl"
+#include "trace.glsl"
+
+shared uint groupRays;
+
+// snippet:begin accumulate
+void main() {
+    uvec2 p = gl_GlobalInvocationID.xy;
+    if (gl_LocalInvocationIndex == 0) groupRays = 0;
+    barrier();
+    uint rays = 0;
+    if (p.x < scene.width && p.y < scene.height) {
+        seedRandom(p.y * scene.width + p.x, push.pass);
+        vec2 jitter = vec2(random(), random());
+        vec3 radiance = tracePath(cameraRay(vec2(p) + jitter, randomInDisk()), rays);
+        vec4 sum = push.pass == 0 ? vec4(0.0) : imageLoad(accumulation, ivec2(p));
+        imageStore(accumulation, ivec2(p), sum + vec4(radiance, 1.0));
+    }
+    atomicAdd(groupRays, rays);
+    barrier();
+    if (gl_LocalInvocationIndex == 0) atomicAdd(rayCounts[push.pass], groupRays);
+}
+// snippet:end accumulate

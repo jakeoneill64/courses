@@ -1,0 +1,9 @@
+$ ./build/bin/u3_bugs --bug host-coherency
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation on, synchronisation validation on
+bug host-coherency: mapped memory used without flush or invalidate
+  note: every host-visible memory type here is HOST_COHERENT, so flushes and
+  invalidates change nothing on this device, and no validation checks them
+  validation: nothing reported
+  results: correct on this device
+error: --bug host-coherency detected by nothing on this device

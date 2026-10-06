@@ -1,0 +1,7 @@
+$ ./build/bin/u3_hazards --case device-host --bug
+vkf: Apple M2 Pro (integrated GPU), Vulkan 1.3.357, MoltenVK 1.4.2
+vkf: validation on, synchronisation validation on
+device-host      RAW  dispatch writes, host reads               bug: no barrier
+  validation: nothing (host accesses are not tracked)
+  results: correct
+error: --bug: 0 detected, 1 undetected

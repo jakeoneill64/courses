@@ -1,0 +1,319 @@
+units:
+- number: 1
+  title: The Explicit API
+  chapters:
+  - number: '1.1'
+    title: Instances, devices and queues
+    labs:
+    - number: 1.1.1
+      title: Read your machine
+    - number: 1.1.2
+      title: Break the instance on purpose
+    - number: 1.1.3
+      title: Read more of the feature chain
+    - number: 1.1.4
+      title: Ask for something the device lacks
+  - number: '1.2'
+    title: Memory, buffers and images
+    labs:
+    - number: 1.2.1
+      title: Map your machine's memory
+    - number: 1.2.2
+      title: Round trips and coherence
+    - number: 1.2.3
+      title: A thousand buffers in one allocation
+    - number: 1.2.4
+      title: Survey formats and image memory
+  - number: '1.3'
+    title: Commands and submission
+    labs:
+    - number: 1.3.1
+      title: Fill, update, copy and read back
+    - number: 1.3.2
+      title: Remove each barrier in turn
+    - number: 1.3.3
+      title: Staging against direct writes
+    - number: 1.3.4
+      title: What a submission costs
+  - number: '1.4'
+    title: Shaders, SPIR-V and pipelines
+    labs:
+    - number: 1.4.1
+      title: Compile, validate, disassemble
+    - number: 1.4.2
+      title: Break the pipeline on purpose
+    - number: 1.4.3
+      title: Two specialisation constants
+    - number: 1.4.4
+      title: Warm and cold caches
+  - number: '1.5'
+    title: Descriptors and your first dispatch
+    labs:
+    - number: 1.5.1
+      title: SAXPY end to end
+    - number: 1.5.2
+      title: Vector addition
+    - number: 1.5.3
+      title: Ping-pong between two sets
+    - number: 1.5.4
+      title: '`std430` by hand'
+  - number: '1.6'
+    title: Validation, debugging and a helper layer
+    labs:
+    - number: 1.6.1
+      title: Read six broken programs
+    - number: 1.6.2
+      title: Print from a shader
+    - number: 1.6.3
+      title: Capture a dispatch
+    - number: 1.6.4
+      title: Your own RAII layer
+- number: 2
+  title: Compute Shaders
+  chapters:
+  - number: '2.1'
+    title: The compute execution model
+    labs:
+    - number: 2.1.1
+      title: Map a dispatch
+    - number: 2.1.2
+      title: Three dimensions
+    - number: 2.1.3
+      title: Sweep the local size on your GPU
+    - number: 2.1.4
+      title: Exceed the limits
+  - number: '2.2'
+    title: Memory in shaders
+    labs:
+    - number: 2.2.1
+      title: Transpose at four sizes
+    - number: 2.2.2
+      title: Read your bank conflicts
+    - number: 2.2.3
+      title: Histograms under contention
+    - number: 2.2.4
+      title: Races, observed and fixed
+  - number: '2.3'
+    title: Parallel patterns
+    labs:
+    - number: 2.3.1
+      title: Reduce at the bandwidth limit
+    - number: 2.3.2
+      title: A scan by hand, then in code
+    - number: 2.3.3
+      title: Compaction that returns indices
+    - number: 2.3.4
+      title: Sort with eight-bit digits
+  - number: '2.4'
+    title: Images and image processing
+    labs:
+    - number: 2.4.1
+      title: Blur at several radii
+    - number: 2.4.2
+      title: Two taps per fetch
+    - number: 2.4.3
+      title: Blur into 8-bit storage
+    - number: 2.4.4
+      title: Divergence and the shape of the workgroup
+  - number: '2.5'
+    title: Measuring and tuning
+    labs:
+    - number: 2.5.1
+      title: Your GPU's roofline
+    - number: 2.5.2
+      title: Timestamps by hand
+    - number: 2.5.3
+      title: Tune on your GPU
+    - number: 2.5.4
+      title: Look inside with a profiler
+  - number: '2.6'
+    title: Dispatch at scale
+    labs:
+    - number: 2.6.1
+      title: Run, scale and check
+    - number: 2.6.2
+      title: Without tiling
+    - number: 2.6.3
+      title: Grow and shrink on the GPU
+    - number: 2.6.4
+      title: Addresses in data
+  - number: '2.7'
+    title: A ray tracer in a compute shader
+    labs:
+    - number: 2.7.1
+      title: Watch it converge
+    - number: 2.7.2
+      title: Break it on purpose
+    - number: 2.7.3
+      title: Size the stack
+    - number: 2.7.4
+      title: Measure the divergence
+- number: 3
+  title: Synchronisation
+  chapters:
+  - number: '3.1'
+    title: Why synchronisation is your job
+    labs:
+    - number: 3.1.1
+      title: Run the catalogue
+    - number: 3.1.2
+      title: Try to make a hazard show
+    - number: 3.1.3
+      title: Write the barriers yourself
+  - number: '3.2'
+    title: The dependency model
+    labs:
+    - number: 3.2.1
+      title: Barriers for a table of scenarios
+    - number: 3.2.2
+      title: Too narrow and too wide
+    - number: 3.2.3
+      title: Split a dependency into a chain
+    - number: 3.2.4
+      title: Layouts by hand
+  - number: '3.3'
+    title: Pipeline barriers in practice
+    labs:
+    - number: 3.3.1
+      title: Justify every barrier
+    - number: 3.3.2
+      title: Measure barriers on your GPU
+    - number: 3.3.3
+      title: Independent work across a barrier
+    - number: 3.3.4
+      title: Batch and unbatch
+  - number: '3.4'
+    title: Fences, semaphores and events
+    labs:
+    - number: 3.4.1
+      title: Two timelines
+    - number: 3.4.2
+      title: Wait before signal
+    - number: 3.4.3
+      title: Where events pay
+    - number: 3.4.4
+      title: What idling costs
+  - number: '3.5'
+    title: Queues and async compute
+    labs:
+    - number: 3.5.1
+      title: Map your queues
+    - number: 3.5.2
+      title: Hand over an image
+    - number: 3.5.3
+      title: Find the overlap
+    - number: 3.5.4
+      title: Break the transfer
+  - number: '3.6'
+    title: Frames in flight
+    labs:
+    - number: 3.6.1
+      title: Who limits the frame
+    - number: 3.6.2
+      title: Break the ring
+    - number: 3.6.3
+      title: Destroy too soon
+    - number: 3.6.4
+      title: Measure the latency
+  - number: '3.7'
+    title: Finding synchronisation bugs
+    labs:
+    - number: 3.7.1
+      title: Fix them blind
+    - number: 3.7.2
+      title: An atomic blind spot
+    - number: 3.7.3
+      title: From report to barrier
+    - number: 3.7.4
+      title: A second opinion
+  - number: '3.8'
+    title: Render graphs
+    labs:
+    - number: 3.8.1
+      title: Add a pass
+    - number: 3.8.2
+      title: Memory to spare
+    - number: 3.8.3
+      title: From one frame to the next
+    - number: 3.8.4
+      title: Schedule for overlap
+- number: 4
+  title: Rendering and the Whole Frame
+  chapters:
+  - number: '4.1'
+    title: The graphics pipeline
+    labs:
+    - number: 4.1.1
+      title: Read the triangle's pixels
+    - number: 4.1.2
+      title: State you can change
+    - number: 4.1.3
+      title: Break the depth test
+    - number: 4.1.4
+      title: Render passes and dynamic rendering
+  - number: '4.2'
+    title: Presentation
+    labs:
+    - number: 4.2.1
+      title: In a window and headless
+    - number: 4.2.2
+      title: Present modes, image counts and latency
+    - number: 4.2.3
+      title: Break the semaphores
+    - number: 4.2.4
+      title: Resize without stalling
+  - number: '4.3'
+    title: Drawing with data
+    labs:
+    - number: 4.3.1
+      title: The scene with and without its features
+    - number: 4.3.2
+      title: Mipmaps in the wrong colour space
+    - number: 4.3.3
+      title: Anisotropy and level of detail
+    - number: 4.3.4
+      title: A larger table
+  - number: '4.4'
+    title: Compute meets graphics
+    labs:
+    - number: 4.4.1
+      title: Run and time the frame
+    - number: 4.4.2
+      title: Remove each barrier
+    - number: 4.4.3
+      title: Cull more finely
+    - number: 4.4.4
+      title: Exposure and the HDR image
+  - number: '4.5'
+    title: From OpenGL to Vulkan
+    labs:
+    - number: 4.5.1
+      title: Measure both APIs
+    - number: 4.5.2
+      title: Instancing in both
+    - number: 4.5.3
+      title: Clip space without the matrix
+    - number: 4.5.4
+      title: Port a compute frame
+  - number: '4.6'
+    title: Scaling up
+    labs:
+    - number: 4.6.1
+      title: Scale the recording
+    - number: 4.6.2
+      title: Warm across runs
+    - number: 4.6.3
+      title: Account for memory
+    - number: 4.6.4
+      title: Profile a frame
+  - number: '4.7'
+    title: 'Capstone: a GPU-driven sandbox'
+    labs:
+    - number: 4.7.1
+      title: Run it every way
+    - number: 4.7.2
+      title: Move the cull
+    - number: 4.7.3
+      title: A glow pass
+    - number: 4.7.4
+      title: The final project

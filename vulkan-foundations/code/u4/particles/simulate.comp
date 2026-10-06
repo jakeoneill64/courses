@@ -1,0 +1,35 @@
+#version 460
+
+layout(local_size_x = 256) in;
+
+struct Particle {
+    vec4 position;
+    vec4 velocity;
+};
+
+layout(std430, set = 0, binding = 0) buffer Particles {
+    Particle particles[];
+};
+
+layout(push_constant) uniform Simulation {
+    float dt;
+    float strength;
+    float softening;
+    uint count;
+} sim;
+
+// snippet:begin integrate
+// The force is parallel to r, so each particle's angular momentum r x v is conserved.
+void main() {
+    uint i = gl_GlobalInvocationID.x;
+    if (i >= sim.count) return;
+    vec3 r = particles[i].position.xyz;
+    vec3 v = particles[i].velocity.xyz;
+    float d2 = dot(r, r) + sim.softening * sim.softening;
+    vec3 a = -sim.strength * r * inversesqrt(d2 * d2 * d2);
+    v += a * sim.dt;
+    r += v * sim.dt;
+    particles[i].position.xyz = r;
+    particles[i].velocity.xyz = v;
+}
+// snippet:end integrate

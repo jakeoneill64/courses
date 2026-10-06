@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="476.220472pt" height="181.417323pt" viewBox="0 0 476.220472 181.417323" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 181.417323 
+L 476.220472 181.417323 
+L 476.220472 0 
+L 0 0 
+L 0 181.417323 
+z
+" style="fill: none"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 89.291339 119.055118 
+L 89.291339 17.007874 
+" clip-path="url(#pf55771fcb5)" style="fill: none; stroke: #ffa600; stroke-width: 1.4"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 185.669291 119.055118 
+L 185.669291 17.007874 
+" clip-path="url(#pf55771fcb5)" style="fill: none; stroke: #ffa600; stroke-width: 1.4"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 282.047244 119.055118 
+L 282.047244 17.007874 
+" clip-path="url(#pf55771fcb5)" style="fill: none; stroke: #ffa600; stroke-width: 1.4"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 378.425197 119.055118 
+L 378.425197 17.007874 
+" clip-path="url(#pf55771fcb5)" style="fill: none; stroke: #ffa600; stroke-width: 1.4"/>
+   </g>
+   <g id="patch_2">
+    <path d="M 10.204724 73.700787 
+L 72 73.700787 
+Q 76.535433 73.700787 76.535433 69.165354 
+L 76.535433 44.220472 
+Q 76.535433 39.685039 72 39.685039 
+L 10.204724 39.685039 
+Q 5.669291 39.685039 5.669291 44.220472 
+L 5.669291 69.165354 
+Q 5.669291 73.700787 10.204724 73.700787 
+z
+" clip-path="url(#pf55771fcb5)" style="fill: #fff0ef; stroke: #ff6361; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 106.582677 73.700787 
+L 168.377953 73.700787 
+Q 172.913386 73.700787 172.913386 69.165354 
+L 172.913386 44.220472 
+Q 172.913386 39.685039 168.377953 39.685039 
+L 106.582677 39.685039 
+Q 102.047244 39.685039 102.047244 44.220472 
+L 102.047244 69.165354 
+Q 102.047244 73.700787 106.582677 73.700787 
+z
+" clip-path="url(#pf55771fcb5)" style="fill: #fff0ef; stroke: #ff6361; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 202.96063 73.700787 
+L 264.755906 73.700787 
+Q 269.291339 73.700787 269.291339 69.165354 
+L 269.291339 44.220472 
+Q 269.291339 39.685039 264.755906 39.685039 
+L 202.96063 39.685039 
+Q 198.425197 39.685039 198.425197 44.220472 
+L 198.425197 69.165354 
+Q 198.425197 73.700787 202.96063 73.700787 
+z
+" clip-path="url(#pf55771fcb5)" style="fill: #efeef6; stroke: #58508d; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 299.338583 73.700787 
+L 361.133858 73.700787 
+Q 365.669291 73.700787 365.669291 69.165354 
+L 365.669291 44.220472 
+Q 365.669291 39.685039 361.133858 39.685039 
+L 299.338583 39.685039 
+Q 294.80315 39.685039 294.80315 44.220472 
+L 294.80315 69.165354 
+Q 294.80315 73.700787 299.338583 73.700787 
+z
+" clip-path="url(#pf55771fcb5)" style="fill: #fff0ef; stroke: #ff6361; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 395.716535 73.700787 
+L 457.511811 73.700787 
+Q 462.047244 73.700787 462.047244 69.165354 
+L 462.047244 44.220472 
+Q 462.047244 39.685039 457.511811 39.685039 
+L 395.716535 39.685039 
+Q 391.181102 39.685039 391.181102 44.220472 
+L 391.181102 69.165354 
+Q 391.181102 73.700787 395.716535 73.700787 
+z
+" clip-path="url(#pf55771fcb5)" style="fill: #e8eff3; stroke: #003f5c; stroke-width: 0.9; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 600; font-size: 7px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="41.102362" y="55.046805" transform="rotate(-0 41.102362 55.046805)">simulate</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 5.8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="41.102362" y="64.763454" transform="rotate(-0 41.102362 64.763454)">compute</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 77.385827 56.692913 
+Q 89.291339 56.692913 100.52603 56.692913 
+" clip-path="url(#pf55771fcb5)" style="fill: none; stroke: #1b2430; stroke-width: 0.6; stroke-linecap: round"/>
+    <path d="M 98.52603 55.692913 
+L 100.52603 56.692913 
+L 98.52603 57.692913 
+z
+" clip-path="url(#pf55771fcb5)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 600; font-size: 7px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="137.480315" y="55.039695" transform="rotate(-0 137.480315 55.039695)">cull</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 5.8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="137.480315" y="64.763454" transform="rotate(-0 137.480315 64.763454)">compute</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 173.76378 56.692913 
+Q 185.669291 56.692913 196.903983 56.692913 
+" clip-path="url(#pf55771fcb5)" style="fill: none; stroke: #1b2430; stroke-width: 0.6; stroke-linecap: round"/>
+    <path d="M 194.903983 55.692913 
+L 196.903983 56.692913 
+L 194.903983 57.692913 
+z
+" clip-path="url(#pf55771fcb5)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 600; font-size: 7px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="233.858268" y="55.039695" transform="rotate(-0 233.858268 55.039695)">draw</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 5.8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="233.858268" y="64.911172" transform="rotate(-0 233.858268 64.911172)">graphics</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 270.141732 56.692913 
+Q 282.047244 56.692913 293.281936 56.692913 
+" clip-path="url(#pf55771fcb5)" style="fill: none; stroke: #1b2430; stroke-width: 0.6; stroke-linecap: round"/>
+    <path d="M 291.281936 55.692913 
+L 293.281936 56.692913 
+L 291.281936 57.692913 
+z
+" clip-path="url(#pf55771fcb5)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 600; font-size: 7px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="330.23622" y="54.189305" transform="rotate(-0 330.23622 54.189305)">post-process</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 5.8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="330.23622" y="64.763454" transform="rotate(-0 330.23622 64.763454)">compute</text>
+   </g>
+   <g id="patch_10">
+    <path d="M 366.519685 56.692913 
+Q 378.425197 56.692913 389.659888 56.692913 
+" clip-path="url(#pf55771fcb5)" style="fill: none; stroke: #1b2430; stroke-width: 0.6; stroke-linecap: round"/>
+    <path d="M 387.659888 55.692913 
+L 389.659888 56.692913 
+L 387.659888 57.692913 
+z
+" clip-path="url(#pf55771fcb5)" style="fill: #1b2430; stroke: #1b2430; stroke-width: 0.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 600; font-size: 7px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="426.614173" y="54.381805" transform="rotate(-0 426.614173 54.381805)">blit or copy</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 5.8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="426.614173" y="65.560954" transform="rotate(-0 426.614173 65.560954)">transfer</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 5.8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="41.102362" y="95.013698" transform="rotate(-0 41.102362 95.013698)">writes particles</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 5.8px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(116.812377 90.692988)">writes visible list,</text>
+    <text style="font-size: 5.8px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(118.507518 99.995517)">draw command</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 5.8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="233.858268" y="94.906307" transform="rotate(-0 233.858268 94.906307)">writes HDR image</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 5.8px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #1b2430" x="330.23622" y="94.958416" transform="rotate(-0 330.23622 94.958416)">writes display image</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 5.8px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(402.473939 90.591488)">writes swapchain or</text>
+    <text style="font-size: 5.8px; font-family: 'Source Sans 3'; fill: #1b2430" transform="translate(415.385736 99.995517)">readback</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 5.4px; font-family: 'Source Sans 3'; fill: #ffa600" transform="translate(69.425245 139.448522)">COMPUTE write →</text>
+    <text style="font-size: 5.4px; font-family: 'Source Sans 3'; fill: #ffa600" transform="translate(58.190714 147.280513)">VERTEX_ATTRIBUTE_INPUT</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 5.4px; font-family: 'Source Sans 3'; fill: #ffa600" transform="translate(165.803198 135.331292)">COMPUTE write →</text>
+    <text style="font-size: 5.4px; font-family: 'Source Sans 3'; fill: #ffa600" transform="translate(161.938823 143.314737)">DRAW_INDIRECT and</text>
+    <text style="font-size: 5.4px; font-family: 'Source Sans 3'; fill: #ffa600" transform="translate(159.718916 151.549197)">VERTEX_SHADER reads</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 5.4px; font-family: 'Source Sans 3'; fill: #ffa600" transform="translate(248.931744 135.031761)">COLOR_ATTACHMENT write →</text>
+    <text style="font-size: 5.4px; font-family: 'Source Sans 3'; fill: #ffa600" transform="translate(256.721244 143.090299)">COMPUTE read; layout</text>
+    <text style="font-size: 5.4px; font-family: 'Source Sans 3'; fill: #ffa600" transform="translate(268.603775 151.737775)">to GENERAL</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 5.4px; font-family: 'Source Sans 3'; fill: #ffa600" transform="translate(358.559103 139.448522)">COMPUTE write →</text>
+    <text style="font-size: 5.4px; font-family: 'Source Sans 3'; fill: #ffa600" transform="translate(358.235525 147.739513)">BLIT or COPY read</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 6px; font-family: 'Source Sans 3'; text-anchor: middle; fill: #5a6472" x="238.110236" y="175.887896" transform="rotate(-0 238.110236 175.887896)">The four barriers between passes, all on one queue; the next frame's simulation also waits for this frame's vertex reads.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pf55771fcb5">
+   <rect x="0" y="-0" width="476.220472" height="181.417323"/>
+  </clipPath>
+ </defs>
+</svg>
