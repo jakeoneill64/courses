@@ -1,0 +1,7 @@
+$ uv run -m u1.deep
+30 hidden layers of 256 units on MNIST, AdamW at lr 0.001, 2 epochs, seed 0
+network                 grad norm, layer 1  layer 30  loss at 100  val accuracy
+plain, default init               2.22e-12  7.33e-03        2.302        11.06%
+plain, He init                    1.25e-01  1.13e-01        0.974        40.74%
+post-norm                         2.93e-01  6.29e-01        1.026        63.40%
+pre-norm residual                 3.12e-01  1.66e-01        0.254        96.60%

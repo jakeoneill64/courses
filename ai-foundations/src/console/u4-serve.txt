@@ -1,0 +1,12 @@
+$ uv run -m u4.serve
+48 chat requests at 2 per second, up to 128 tokens each, SmolLM2-360M-Instruct in float16:
+policy                       tokens/s  TTFT mean  TTFT p90  ms/token  makespan
+one at a time                      46     40.34s    76.85s      21.4    116.7s
+static batches of 16              158      2.07s     3.57s      32.2     33.9s
+continuous batching, 16           176      0.06s     0.08s      33.9     30.5s
+batched and one-at-a-time greedy decoding agree on 8/8 prompts in float16, 8/8 in float32
+speculative decoding in float32: SmolLM2-1.7B-Instruct drafted by SmolLM2-135M-Instruct
+  target alone:  19.3 tokens/s
+  k = 2:  26.5 tokens/s (1.37x), 80% of drafted tokens accepted, output identical
+  k = 4:  25.3 tokens/s (1.31x), 67% of drafted tokens accepted, output identical
+  k = 6:  24.4 tokens/s (1.26x), 59% of drafted tokens accepted, output identical

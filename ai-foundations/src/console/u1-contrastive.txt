@@ -1,0 +1,24 @@
+$ uv run -m u1.contrastive
+linear probe on an untrained encoder: 51.72%
+epoch  1  InfoNCE loss 4.862     65 s
+epoch  2  InfoNCE loss 4.228    128 s
+epoch  3  InfoNCE loss 3.922    191 s
+epoch  4  InfoNCE loss 3.772    254 s
+epoch  5  InfoNCE loss 3.741    316 s
+epoch  6  InfoNCE loss 3.565    379 s
+epoch  7  InfoNCE loss 3.609    442 s
+epoch  8  InfoNCE loss 3.489    505 s
+epoch  9  InfoNCE loss 3.400    568 s
+epoch 10  InfoNCE loss 3.469    631 s
+epoch 11  InfoNCE loss 3.413    694 s
+epoch 12  InfoNCE loss 3.385    756 s
+epoch 13  InfoNCE loss 3.304    819 s
+epoch 14  InfoNCE loss 3.270    882 s
+epoch 15  InfoNCE loss 3.289    945 s
+epoch 16  InfoNCE loss 3.223   1008 s
+epoch 17  InfoNCE loss 3.219   1071 s
+epoch 18  InfoNCE loss 3.148   1134 s
+epoch 19  InfoNCE loss 3.166   1197 s
+epoch 20  InfoNCE loss 3.214   1260 s
+linear probe on the contrastive encoder: 75.20%
+linear probe on Chapter 1.8's supervised encoder: 91.97%

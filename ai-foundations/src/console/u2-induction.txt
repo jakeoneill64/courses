@@ -1,0 +1,12 @@
+$ uv run -m u2.induction
+128 short stories, each naming an invented character three times, e.g.:
+  'Once upon a time, there was a little girl named Elgenals. Elgenals liked to'
+loss on the name's second and third tokens, at each mention: 11.58, 5.77, 5.47 nats
+strongest induction heads, attention from the name's second mention to the token
+that followed its first mention's first token:
+  layer 7, head 1: 0.90
+  layer 7, head 0: 0.89
+  layer 7, head 3: 0.74
+  layer 4, head 6: 0.74
+second mention with those 4 heads switched off: 12.94 nats; with 4 other heads off: 5.68
+for contrast, 100 random tokens repeated: 11.66 nats on the first copy, 11.31 on the second

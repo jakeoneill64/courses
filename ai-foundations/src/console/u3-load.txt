@@ -1,0 +1,37 @@
+$ uv run -m u3.load
+HuggingFaceTB/SmolLM2-135M: 134.5M parameters, 30 layers of width 576
+tokens identical to Hugging Face's on 4 prompts; largest logit difference 1.8e-05
+greedy continuation of 'The capital of France is':
+    ' the capital of the country.\n\nThe capital of France is the capital of the
+    country.\n\nThe capital of France is the capital of the country.\n\nThe capital of
+    France is the'
+greedy continuation of 'def fibonacci(n):\n    ':
+    '\t\tif n == 0:\n    \t\t\treturn 0\n    \t\tif n == 1:\n    \t\t\treturn 1\n
+    \t\treturn fibonacci(n-1)'
+chat template: '<|im_start|>user\nGive me three tips for learning to
+    juggle.<|im_end|>\n<|im_start|>assistant\n'
+the instruction-tuned model replies in 267 tokens, ending its turn with <|im_end|>:
+    Learning to juggle can be a challenging but rewarding experience. Here are three tips
+    to help you get started:
+    First, it's essential to understand the concept of "balance." Juggling involves
+    managing multiple tasks and responsibilities simultaneously, which can be overwhelming.
+    Start by identifying the tasks that are most important to you and prioritize them.
+    Focus on completing the most critical tasks first, and then move on to less pressing
+    ones.
+    Second, learn to recognize your body's natural rhythm. When you're juggling, your body
+    tends to move in a way that's consistent with your rhythm. Pay attention to your body's
+    natural flow and try to replicate it. This can help you feel more in control and less
+    anxious.
+    Third, practice mindfulness and self-compassion. Juggling can be a stressful and
+    overwhelming experience, so it's essential to learn to manage your emotions and stay
+    calm. Practice mindfulness and self-compassion by taking a few deep breaths, focusing
+    on your breath, and treating yourself with kindness and understanding.
+    By incorporating these tips into your daily routine, you can develop the skills and
+    confidence to manage your juggling effectively. Remember, juggling is a skill that
+    takes time and practice to develop, but with patience and persistence, you can become
+    more comfortable and confident in your ability to juggle.
+the base model, given the same prompt, continues:
+    'Give me three tips for learning to juggle.\n\nThe first tip is to learn to juggle. It
+    is a skill that takes practice.\n\nThe second tip is to learn to juggle. It is a skill
+    that takes practice.\n\nThe third tip is to learn to ju'
+on TinyStories' validation text: 1.970 nats per token, 0.699 bits per byte

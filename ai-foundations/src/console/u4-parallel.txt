@@ -1,0 +1,13 @@
+$ uv run -m u4.parallel
+all-reduce of 4 MiB, 4 processes: ring   34.3 ms, gloo   17.5 ms, difference 9.5e-07
+all-reduce of 64 MiB, 4 processes: ring  341.1 ms, gloo  256.5 ms, difference 1.9e-06
+data parallel, 4 processes, 20 steps: parameters within 3.3e-05 of one process
+ZeRO stage 1: Adam's state 1,666 KiB per process, not 6,665 KiB; parameters within 3.4e-05
+tensor-parallel SwiGLU across 4 processes: largest difference from the whole layer 2.1e-07
+pipeline of two stages, 64 sequences split into micro-batches:
+  micro-batches      ms  speed-up  idle in theory
+              1     179     1.00x             50%
+              2     123     1.45x             33%
+              4      90     1.98x             20%
+              8      97     1.84x             11%
+             16      94     1.90x              6%

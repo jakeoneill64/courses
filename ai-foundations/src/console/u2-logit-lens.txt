@@ -1,0 +1,14 @@
+$ uv run -m u2.logit_lens
+prompt: 'Once upon a time, there was a little girl named Lily. She loved to play with her'
+top three next tokens read from the residual stream after each layer:
+  embedding  ' her' 1.00, ' she' 0.00, ' hers' 0.00
+  layer 1    ' mom' 0.43, ' friends' 0.34, ' friend' 0.08
+  layer 2    ' mom' 0.51, ' friends' 0.19, ' friend' 0.12
+  layer 3    ' mom' 0.55, ' friends' 0.14, ' friend' 0.10
+  layer 4    ' mom' 0.64, ' friends' 0.10, ' friend' 0.05
+  layer 5    ' friends' 0.45, ' mom' 0.15, ' family' 0.06
+  layer 6    ' friends' 0.38, ' toy' 0.10, ' mom' 0.09
+  layer 7    ' toy' 0.45, ' friends' 0.14, ' mom' 0.12
+  layer 8    ' toys' 0.45, ' toy' 0.19, ' friends' 0.06
+validation loss of the lens at each depth: 41.81, 5.79, 5.11, 4.36, 3.96, 3.26, 2.75, 1.79,
+    1.30

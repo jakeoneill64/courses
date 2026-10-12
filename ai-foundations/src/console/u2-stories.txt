@@ -1,0 +1,32 @@
+$ uv run -m u2.stories
+after     8M tokens (loss 2.24): were pushed and Sam. They liked to make things for hands
+    and toys. One day, they found a big box. They wondered what was inside. They did not
+    know what was inside the box. They pushed a button and it broke. They pulled it in. The
+    box broke, and it broke into p...
+after    33M tokens (loss 1.70): One day, a boy named Tim found a big hiding place. He was
+    very excited. He was hungry. He wanted to find out why it was empty. Tim went to his
+    friend, Sam. "Sam, I found a big, yummy worm. I found it outside," he said. "Wow,
+    that's a big, yummy worm. But I can...
+after   131M tokens (loss 1.40): One day, a boy named Tim found a big hiding spot under his
+    bed. He was very happy and wanted to play. But, when he looked around, he saw that it
+    was dark outside. Tim felt uncomfortable because it was gloomy outside. He called out,
+    "Boom, where is the sun?" To...
+after   300M tokens (loss 1.21): One day, a boy named Tim found a big hiding place. He was
+    very excited. He wanted to show his mom. But, when he got there, it was very noisy.
+    There was a big dog outside. The big dog was his pet. Tim was scared. The dog barked
+    and Tim felt sad. He wanted him t...
+Tom and his sister found a map in the attic. It had a big X on it. They decided to follow
+the map and see what was down the hill. They walked and walked until they saw the X. They
+walked and walked until they reached a big hole. Tom looked inside and saw something shiny.
+He reached his hand inside and saw a red liquid. It was a sparkly key. He showed it to his
+sister. "Look, I found a treasure!" he said. "Wow, Tom, that's amazing!" she said. "What is
+that?" Tom looked at the key and smiled. He took out a small piece of paper. He showed it to
+his sister. "Look, I found a treasure!" he said. He put the key in the lock and turned it.
+The key clicked shut. Tom and his sister pulled it. The lock opened. There was a loud click.
+"Yay, we unlocked the door, Tom! We are so lucky!" he said. Tom and his sister were very
+excited. They put the key back in the hole and ran to the porch. They wanted to show their
+mom and dad their treasure. They were very happy.
+The little robot was afraid of the dark. It did not want to play much. It wanted to go home.
+The robot said, "No, I don't want to go. I want to stay here." The little robot was sad. It
+did not understand why the dark was so scary. But it could not leave the little robot. The
+robot went home, still scared. The end.

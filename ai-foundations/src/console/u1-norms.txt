@@ -1,0 +1,4 @@
+$ uv run -m u1.norms
+BatchNorm  matches torch.nn: largest difference 9.1e-14
+LayerNorm  matches torch.nn: largest difference 5.7e-14
+RMSNorm    matches torch.nn: largest difference 0.0e+00

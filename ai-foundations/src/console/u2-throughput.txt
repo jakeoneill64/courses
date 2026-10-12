@@ -1,0 +1,7 @@
+$ uv run -m u2.throughput
+Chapter 2.5's model, batch 32 x 512 tokens, on mps:
+precision mode        tokens/s  TFLOP/s  of peak
+float32   eager          9,364     1.68      25%
+float32   compiled      18,107     3.25      48%
+float16   compiled      19,046     3.42      50%
+bfloat16  compiled      12,428     2.23      33%

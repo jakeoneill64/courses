@@ -1,0 +1,62 @@
+{
+ "rows": [
+  {
+   "strategy": "greedy",
+   "logp": -0.5248892704645792,
+   "repetition": 0.05982905982905984,
+   "distinct": NaN
+  },
+  {
+   "strategy": "beam search, width 4",
+   "logp": -0.4049477815628052,
+   "repetition": 0.06837606837606836,
+   "distinct": NaN
+  },
+  {
+   "strategy": "temperature 0.7",
+   "logp": -0.8475621568395736,
+   "repetition": 0.008547008547008544,
+   "distinct": 0.8614718614718615
+  },
+  {
+   "strategy": "temperature 1.0",
+   "logp": -1.8449383656183878,
+   "repetition": 0.004273504273504258,
+   "distinct": 0.9449152542372882
+  },
+  {
+   "strategy": "temperature 1.5",
+   "logp": -7.069071920712789,
+   "repetition": 0.0,
+   "distinct": 1.0
+  },
+  {
+   "strategy": "top-k 40",
+   "logp": -1.3082027355829875,
+   "repetition": 0.010683760683760674,
+   "distinct": 0.9364406779661016
+  },
+  {
+   "strategy": "top-p 0.9",
+   "logp": -1.009450358986108,
+   "repetition": 0.004273504273504286,
+   "distinct": 0.9171974522292994
+  },
+  {
+   "strategy": "min-p 0.1",
+   "logp": -0.8718915383021036,
+   "repetition": 0.014957264957264987,
+   "distinct": 0.8961864406779662
+  }
+ ],
+ "examples": {
+  "greedy": " Spot. Spot loved to play outside. One day, Spot saw a big, red ball. He wanted to play with the ball, so he ran to the ball.\nSpot played with the ball all day. He was very happy. But then, something unexpected happened. The ball went too fast and hit a big, red ball. Spot was sad because he could not play with the ball.\nSpot's friend, a little girl named Lily, saw Spot was sad. She had an idea. She went to the ball and pushed it. The ball went very fast! Spot was so happy",
+  "beam search, width 4": " Spot. Spot loved to play with his ball. One day, Spot saw a big ball in the yard. He wanted to play with the ball, so he ran to the ball.\nSpot played with the ball all day long. He was very happy. But then, something unexpected happened. The ball started to grow bigger and bigger! Spot was scared. He did not know what to do.\nThen, something unexpected happened. The big ball grew bigger and bigger! Spot was not scared anymore. He played with the big ball all day long. At the end of the day, Spot was",
+  "temperature 0.7": " Spot. Spot was a curious dog. He loved to play with his best friend, a little girl named Lily.\nOne day, Lily and Spot went to the park. They saw a big dog. Lily was scared of the dog. She didn't want to make him go away. Spot was too shy to ask for help.\nSpot ran very fast to find Lily. They walked and watched the big dog. When they got to the end of the day, the dog was not so scary anymore. They were both happy to be friends.",
+  "temperature 1.0": " Spot. Spot was a curious dog. He loved to play with his best friend, a little girl named Lily.\nBlue, Lily loved to play with Spot. They would run, jump, and fetch their toys. One day, sometimes, Blue's ball went near the rail. Lily got scared because she always ran for fun.\nSpot ran Tim to get his ball back. Sue saw a tiny flame in the rail. She talked to Blue and said, \"Don't be scared, Spot. It's just poisonly.\" But Blue did not hurt, and the flame went down. Sue",
+  "temperature 1.5": " buckes. He was curious and wanted underground all to himself. Thank his dust were melted. patchs balls jumped into their games.\nMira wandered Tom night pull a vase, doing a secret CowRuby Only gas pays sh rushing upon't stingers If we keep their fing7ated sneezing Suddenly, Lilaaf liveMoo for peace! Bad marks inside Tim ruining loving cutting people's$oring dancing a tiny cleaned drop of sport.\nLucy begated meet cont gear Gippy spreadandy and delivering her toys to safety for peacely started playing all lies down to the sunlight. After a few catches politely",
+  "top-k 40": " Spot. Spot was a nervous little dog. He did not like big dogs. His mom thought he was a good dog, but Spot did not listen.\nOne day, Spot saw a big dog. The dog was nice and wanted to play. If Spot's mom said, if he got scared. Spot was scared for the big dog. He barked and barked at the big dog. The dog ran away fast, but Spot's mom stopped him from running.\nSpot's mom saw him running away. She ran to them and helped him find a way to get away from his fear. Spot",
+  "top-p 0.9": " Spot. Spot was a curious dog. He loved to play with his best friend, a little girl named Lily.\nOne day, Lily and Spot went to the park. They saw a big dog. Lily saw Spot and said, \"I hate that dog, Spot!\" Lily smiled and said, \"That is just for dogs!\"\nSpot wagged his tail and wagged his tail. He played with Lily and the dog. They had lots of fun playing together. Spot was happy to have a new friend. They played until the sun went down.\nWhen the sun went down, Lily said,",
+  "min-p 0.1": " Spot. Spot was a very happy dog. He loved to play in the mud and make mud all over. One day, Spot's mommy said, \"Spot, you need to play a new game. You need to be clean and clean.\"\nSpot went to his mommy and asked, \"Can I play with you?\" His mommy said, \"Yes, you can play, but be clean and shiny. It is very dirty. You need a bath.\"\nSpot took a bath and washed himself. He felt warm and nice. He was clean and shiny. He said, \"Now, let"
+ }
+}

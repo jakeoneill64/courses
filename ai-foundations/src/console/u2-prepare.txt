@@ -1,0 +1,6 @@
+$ uv run -m u2.prepare
+tokeniser: 59,732 distinct chunks, 8192 tokens in 23 s
+train: 2,228 MB of text -> 536.2M tokens (4.15 bytes per token) in 25 s
+valid: 23 MB of text -> 5.4M tokens (4.16 bytes per token) in 2 s
+the first complete validation story begins: 'Once upon a time, in a warm and sunny place,
+    there was a big pit. A little boy named Tom liked to play near the pit.'

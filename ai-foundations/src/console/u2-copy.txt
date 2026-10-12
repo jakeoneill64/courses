@@ -1,0 +1,12 @@
+$ uv run -m u2.copy_task
+step  500  loss on the repeated half 0.002
+step 1000  loss on the repeated half 0.001
+step 1500  loss on the repeated half 0.000
+step 2000  loss on the repeated half 0.000
+step 2500  loss on the repeated half 0.000
+step 3000  loss on the repeated half 0.000
+copying accuracy on the repeated half: 100.00% (chance is 1.6%)
+head 0: in the repeated half, the strongest attention is 15 positions back for 16 of 16
+    positions, with mean weight 0.98
+head 1: in the repeated half, the strongest attention is 15 positions back for 16 of 16
+    positions, with mean weight 0.98

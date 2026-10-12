@@ -1,0 +1,6 @@
+$ uv run -m u1.valley
+quadratic valley with condition number 50, rotated 30 degrees
+  gradient descent, lr 0.039       272 steps to loss < 1e-8
+  momentum, lr 0.061, mu 0.57       54 steps to loss < 1e-8
+  RMSProp, lr 0.01                 877 steps to loss < 1e-8
+  Adam, lr 0.1                     294 steps to loss < 1e-8

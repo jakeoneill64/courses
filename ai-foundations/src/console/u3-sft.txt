@@ -1,0 +1,46 @@
+$ uv run -m u3.sft
+9,856 conversations, 7.0M tokens, of which 5.5M are the assistant's and carry the loss
+held-out loss on assistant tokens before fine-tuning: 1.626
+step   200/442  loss 1.455   2300 s
+step   400/442  loss 1.392   4387 s
+step   442/442  loss 1.480   4799 s
+held-out loss on assistant tokens after fine-tuning: 1.343
+the official SmolLM2-135M-Instruct on the same text: 1.050
+user: What is the boiling point of water at sea level?
+  base:     'What is the boiling point of water at sea level?100°C\nWhat is the boiling
+    point of water at 100°C?100°C\nWhat is the boiling point of water at 100°C?100°C\nWhat
+    is the boiling point of water at 100°C?10'
+  yours:    'At sea level, water boils at 212 degrees Fahrenheit (100 degrees Celsius).
+    This is the temperature at which water becomes a liquid state, meaning it can flow and
+    change its state from a solid to a liq'
+  official: 'At sea level, the boiling point of water is approximately 100°C (212°F). This
+    is because the atmospheric pressure at sea level is much lower than at other
+    elevations, and the molecules in the water ar'
+user: Write a haiku about autumn leaves.
+  base:     'Write a haiku about a person who is a hero.\n\nH. 100\n\nH. 101\n\nH.
+    102\n\nH. 103\n\nH. 104\n\nH. 105\n\nH. 106\n\nH. 107\n\nH.'
+  yours:    'The leaves of autumn are soft and soft,\nTheir softness is like a gentle
+    breeze.\nThe leaves are soft and soft,\nAnd the breeze is soft and soft.\n\nThe leaves
+    are soft and soft,\nAnd the breeze is soft and'
+  official: "The leaves whisper secrets in the wind,\nA gentle caress of autumn's gentle
+    breeze.\nThe colors blend, the colors blend,\nA symphony of colors that never
+    ceases.\n\nThis haiku captures the essence of autum"
+user: Explain in two sentences why the sky is blue.
+  base:     'Explain in two sentences why the sky is blue.\nExplain in two sentences why
+    the sky is blue.\nExplain in two sentences why the sky is blue.\nExplain in two
+    sentences why the sky is blue.\nExplain in two s'
+  yours:    "The sky is blue because of the way light interacts with the atmosphere. When
+    sunlight reaches the Earth's atmosphere, it is scattered in all directions by tiny
+    particles, including water droplets and "
+  official: "The sky is blue because the amount of blue light that reaches our eyes is
+    equal to the amount of blue light that is absorbed by the atmosphere. When sunlight
+    enters the Earth's atmosphere, it contains"
+user: Give me a Python function that reverses a string.
+  base:     'Give me a Python function that reverses a string.\n\n##
+    1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1'
+  yours:    "Here's a Python function that reverses a string:\n\n```python\ndef
+    reverse_string(s):\n    return ''.join(reversed(s))\n```\n\nThis function takes a
+    string as input and returns a new string that is the rever"
+  official: "Here's a Python function that reverses a string:\n\n```python\ndef
+    reverse_string(s):\n    return s[::-1]\n```\n\nThis function uses Python's slice
+    notation to create a new string that is the reverse of the "

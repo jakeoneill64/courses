@@ -1,0 +1,13 @@
+$ uv run -m u4.kernels_metal
+matrix product           n = 1024     n = 2048     n = 4096   (GFLOP/s)
+naive                         386          444          430
+tiled                         699          720          733
+register-blocked            1,448        1,762        1,787
+PyTorch (MPS)               3,560        5,256        5,545
+softmax over 4,096 rows of 8,192: yours 130 GB/s, PyTorch's 112 GB/s
+causal attention, 8 heads of 64: milliseconds
+  length  materialised  flash, yours  PyTorch SDPA   scores held
+     512           1.3           3.3           0.4          8 MiB
+    1024           2.3           8.1           0.6         32 MiB
+    2048           7.6          25.5           1.7        128 MiB
+    4096          30.3          92.5           5.9        512 MiB

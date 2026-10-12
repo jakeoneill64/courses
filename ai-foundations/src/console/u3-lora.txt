@@ -1,0 +1,15 @@
+$ uv run -m u3.lora
+SmolLM2-135M: 4.88M trainable parameters (3.50% of the model); frozen weights take 513 MiB
+step   200/442  loss 1.482   1942 s
+step   400/442  loss 1.425   3936 s
+step   442/442  loss 1.512   4331 s
+held-out loss 1.626 -> 1.376; 9.91 s per step; peak memory while training 10.55 GiB
+user: What is the boiling point of water at sea level?
+  assistant: 'The boiling point of water at sea level is 212 degrees Fahrenheit (100
+    degrees Celsius). This is the temperature at which water becomes a liquid at sea level.
+    The boiling point of water is a critical '
+user: Write a haiku about autumn leaves.
+  assistant: 'The leaves of autumn are a sight to behold, their soft, silvery hues dancing
+    in the breeze. The crisp air, crisp air, the crisp air, the crisp air, the crisp air,
+    the crisp air, the crisp air, the cri'
+after merging the adapters into the weights: held-out loss 1.376

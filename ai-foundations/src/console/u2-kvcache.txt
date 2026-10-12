@@ -1,0 +1,10 @@
+$ uv run -m u2.kvcache
+greedy generation of 508 tokens; identical output with and without the cache
+  mps  without the cache    4.79 s; first 50 tokens   5.2 ms each, last 50  14.0 ms
+  mps  with the cache       3.60 s; first 50 tokens   5.6 ms each, last 50   6.4 ms
+  cpu  without the cache   13.64 s; first 50 tokens   9.4 ms each, last 50  39.5 ms
+  cpu  with the cache       2.46 s; first 50 tokens   4.2 ms each, last 50   4.7 ms
+KV-cache size for one sequence:
+  this model, 512 tokens, float32                             8.0 MiB
+  SmolLM2-1.7B, 8,192 tokens, bfloat16                    1,536.0 MiB
+  a 70B model with 8 KV heads, 128K tokens, bfloat16     40,960.0 MiB

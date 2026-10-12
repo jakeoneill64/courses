@@ -1,0 +1,13 @@
+$ uv run -m u3.grpo
+before: solves 64.5% of 200 held-out problems, 81 tokens per reply
+step  10  mean reward 0.263  reply length    96    490 s
+step  20  mean reward 0.325  reply length    93    908 s
+step  30  mean reward 0.314  reply length    86   1316 s
+step  40  mean reward 0.330  reply length    82   1638 s
+step  50  mean reward 0.486  reply length    79   1957 s
+step  60  mean reward 0.500  reply length    72   2265 s
+step  70  mean reward 0.517  reply length    72   2543 s
+step  80  mean reward 0.537  reply length    72   2801 s
+step  90  mean reward 0.559  reply length    67   3061 s
+step 100  mean reward 0.531  reply length    73   3326 s
+after:  solves 74.0% of the held-out problems, 58 tokens per reply

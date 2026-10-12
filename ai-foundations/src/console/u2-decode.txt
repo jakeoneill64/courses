@@ -1,0 +1,28 @@
+$ uv run -m u2.decode
+prompt: 'Once upon a time, there was a little dog named'; 10 continuations of up to 120
+    tokens each
+strategy               log-prob/token  repeated 4-grams  distinct 3-grams
+greedy                         -0.477              6.0%        one output
+beam search, width 4           -0.298              0.0%        one output
+temperature 0.7                -0.666              1.1%             82.3%
+temperature 1.0                -1.222              1.3%             89.5%
+temperature 1.5                -7.226              0.0%             99.1%
+top-k 40                       -1.043              0.4%             89.6%
+top-p 0.9                      -0.785              0.9%             86.1%
+min-p 0.1                      -0.647              1.3%             81.1%
+greedy: ...Spot. Spot loved to play with his ball. One day, Spot saw a big cat. The cat was
+    very rude. Spot wanted to play with the cat, but the cat did not want to play. Spot had
+    an idea. He would play with the cat and his ball. He would throw the ball and the cat
+    would run to catch it. Spot was very happy. H
+beam search, width 4: ...Spot. Spot loved to run and play all day. One day, Spot saw a big
+    ball in the yard. He wanted to play with it, but it was too high for him to reach. Spot
+    saw his friend, Cat, and asked, "Can you help me get the ball?" Cat said, "Yes, I can
+    help you!" Cat climbed up the tree and got the ball for Spot
+temperature 1.5: ...Bow pushed openatways case and a cared friend hiding in theBella's
+    Nobody arrive. Finally, the mailed nothingicted out until it turned to call
+    boardriedplasher permission before the check expectation. In a few moments smelledfic
+    gonna�lyAlright someone crashing!' Dodo names sirAliceEw chefs nose and
+min-p 0.1: ...Spot. Spot loved to play and run around all day. One day, Spot saw a big,
+    scary cat. The cat wanted to catch Spot. Spot knew he had to escape. He ran very fast
+    to a tree. He hid behind the tree. The cat looked up and saw Spot. The cat was scared,
+    but it had an idea. The cat jumped and caught Spot! T

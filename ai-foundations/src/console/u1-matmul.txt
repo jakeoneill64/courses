@@ -1,0 +1,23 @@
+$ uv run -m u1.matmul
+Python loops               n=64          6.795 ms       0.1 GFLOP/s
+NumPy outer products       n=64          0.175 ms       3.0 GFLOP/s
+NumPy a @ b (BLAS)         n=64          0.002 ms     306.8 GFLOP/s
+PyTorch on mps             n=64          0.480 ms       1.1 GFLOP/s
+Python loops               n=128        55.486 ms       0.1 GFLOP/s
+NumPy outer products       n=128         1.043 ms       4.0 GFLOP/s
+NumPy a @ b (BLAS)         n=128         0.005 ms     783.3 GFLOP/s
+PyTorch on mps             n=128         0.504 ms       8.3 GFLOP/s
+NumPy outer products       n=256         5.560 ms       6.0 GFLOP/s
+NumPy a @ b (BLAS)         n=256         0.029 ms    1146.3 GFLOP/s
+PyTorch on mps             n=256         0.504 ms      66.6 GFLOP/s
+NumPy outer products       n=512        38.247 ms       7.0 GFLOP/s
+NumPy a @ b (BLAS)         n=512         0.205 ms    1309.0 GFLOP/s
+PyTorch on mps             n=512         0.686 ms     391.3 GFLOP/s
+NumPy outer products       n=1024      317.339 ms       6.8 GFLOP/s
+NumPy a @ b (BLAS)         n=1024        0.794 ms    2705.0 GFLOP/s
+PyTorch on mps             n=1024        1.079 ms    1990.5 GFLOP/s
+NumPy outer products       n=2048     2538.482 ms       6.8 GFLOP/s
+NumPy a @ b (BLAS)         n=2048        8.768 ms    1959.4 GFLOP/s
+PyTorch on mps             n=2048        3.307 ms    5195.1 GFLOP/s
+NumPy a @ b (BLAS)         n=4096       63.149 ms    2176.4 GFLOP/s
+PyTorch on mps             n=4096       24.753 ms    5552.4 GFLOP/s

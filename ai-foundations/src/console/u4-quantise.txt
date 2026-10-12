@@ -1,0 +1,10 @@
+$ uv run -m u4.quantise
+tinystories-28m: 23.6M parameters in its block matrices; validation loss 1.2138 in float32
+weights                        bits/weight  block MiB     loss   change
+float32                              32.00       90.0   1.2138  +0.0000
+int8, one scale per row               8.05       22.6   1.2138  -0.0001
+int4, groups of 128                   4.25       12.0   1.2315  +0.0177
+int4, groups of 32                    5.00       14.1   1.2256  +0.0117
+int3, groups of 32                    4.00       11.2   1.2802  +0.0664
+int4 GPTQ, groups of 128              4.25       12.0   1.2235  +0.0096
+KV cache in int8, one scale per head and position: second-half loss 1.1555 -> 1.1555

@@ -1,0 +1,15 @@
+$ uv run -m u4.roofline
+mps: copying 256 MiB runs at 175 GB/s; a 4096 x 4096 product at 5,528 GFLOP/s
+ridge point: 32 FLOP per byte
+one layer of the Chapter 2.5 model, batch 32 x 512 tokens, float32:
+operation              GFLOP      MB  FLOP/B      ms  GFLOP/s   GB/s   bound
+q, k, v projection     17.18     103   167.2    3.27     5253     31   compute,  95% of it
+attention (SDPA)        8.59     134    64.0    3.26     2638     41   compute,  48% of it
+output projection       8.59      68   126.0    1.77     4860     39   compute,  88% of it
+gate and up            47.24     224   211.0    8.54     5532     26   compute, 100% of it
+SiLU(gate) * up         0.14     277     0.5    2.71       51    102   memory,  59% of it
+down projection        23.62     129   183.5    4.35     5428     30   compute,  98% of it
+RMSNorm                 0.03      67     0.5    1.05       32     64   memory,  37% of it
+residual add            0.01     101     0.1    0.61       14    165   memory,  94% of it
+logits                137.44     587   234.1   25.06     5485     23   compute,  99% of it
+cross-entropy           0.67     537     1.2   12.03       56     45   memory,  26% of it

@@ -1,0 +1,7 @@
+$ uv run -m u1.init
+initialisation                 layer 1    layer 10    layer 30
+std 0.01, ReLU                   0.132    7.97e-09    8.24e-25
+std 0.1, ReLU                     1.32        79.7    8.24e+05
+Xavier 1/sqrt(n), ReLU           0.585      0.0227    1.89e-05
+He sqrt(2/n), ReLU               0.827       0.725        0.62
+Xavier 1/sqrt(n), tanh           0.629       0.224       0.127

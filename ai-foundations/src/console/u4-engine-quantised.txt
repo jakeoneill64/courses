@@ -1,0 +1,12 @@
+$ uv run -m u4.engine_bench --weights f32 i8 q4 --threads 1 8 --check
+tokens per second generating 200 tokens, by threads, on the CPU:
+model            weights     MiB      1      8   logit difference
+tinystories-28m  f32         106    414    761   1.0e-05
+tinystories-28m  i8           43    437    941   1.2e-05
+tinystories-28m  q4           33    354   1540   1.1e-05
+SmolLM2-135M     f32         516     83    132   6.3e-05
+SmolLM2-135M     i8          240     90    236   6.5e-05
+SmolLM2-135M     q4          191     73    232   5.1e-05
+SmolLM2-360M     f32        1383     32     62   7.7e-05
+SmolLM2-360M     i8          529     35    131   5.1e-05
+SmolLM2-360M     q4          399     28    145   5.0e-05

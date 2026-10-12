@@ -1,0 +1,112 @@
+[
+ {
+  "method": "Python loops",
+  "n": 64,
+  "gflops": 0.0771564907601567
+ },
+ {
+  "method": "NumPy outer products",
+  "n": 64,
+  "gflops": 2.9994964889370803
+ },
+ {
+  "method": "NumPy a @ b (BLAS)",
+  "n": 64,
+  "gflops": 306.7807974094674
+ },
+ {
+  "method": "PyTorch on mps",
+  "n": 64,
+  "gflops": 1.091792430721676
+ },
+ {
+  "method": "Python loops",
+  "n": 128,
+  "gflops": 0.07559165965671931
+ },
+ {
+  "method": "NumPy outer products",
+  "n": 128,
+  "gflops": 4.020582657895184
+ },
+ {
+  "method": "NumPy a @ b (BLAS)",
+  "n": 128,
+  "gflops": 783.3230545067222
+ },
+ {
+  "method": "PyTorch on mps",
+  "n": 128,
+  "gflops": 8.320999814088031
+ },
+ {
+  "method": "NumPy outer products",
+  "n": 256,
+  "gflops": 6.034834118212741
+ },
+ {
+  "method": "NumPy a @ b (BLAS)",
+  "n": 256,
+  "gflops": 1146.3372301412235
+ },
+ {
+  "method": "PyTorch on mps",
+  "n": 256,
+  "gflops": 66.58992831864792
+ },
+ {
+  "method": "NumPy outer products",
+  "n": 512,
+  "gflops": 7.018409778513934
+ },
+ {
+  "method": "NumPy a @ b (BLAS)",
+  "n": 512,
+  "gflops": 1309.038964138885
+ },
+ {
+  "method": "PyTorch on mps",
+  "n": 512,
+  "gflops": 391.32928691164
+ },
+ {
+  "method": "NumPy outer products",
+  "n": 1024,
+  "gflops": 6.767158665633502
+ },
+ {
+  "method": "NumPy a @ b (BLAS)",
+  "n": 1024,
+  "gflops": 2704.993646902744
+ },
+ {
+  "method": "PyTorch on mps",
+  "n": 1024,
+  "gflops": 1990.4842052547983
+ },
+ {
+  "method": "NumPy outer products",
+  "n": 2048,
+  "gflops": 6.767772701943858
+ },
+ {
+  "method": "NumPy a @ b (BLAS)",
+  "n": 2048,
+  "gflops": 1959.4062444720496
+ },
+ {
+  "method": "PyTorch on mps",
+  "n": 2048,
+  "gflops": 5195.132439303241
+ },
+ {
+  "method": "NumPy a @ b (BLAS)",
+  "n": 4096,
+  "gflops": 2176.4383375072803
+ },
+ {
+  "method": "PyTorch on mps",
+  "n": 4096,
+  "gflops": 5552.387968716253
+ }
+]

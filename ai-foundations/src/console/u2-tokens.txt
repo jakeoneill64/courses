@@ -1,0 +1,31 @@
+$ uv run -m u2.tokens
+'Once upon a time'
+  TinyStories 8,192:  4 tokens  Once|·upon|·a|·time
+  SmolLM2 49,152:     4 tokens  Once|·upon|·a|·time
+'Tom had 1234567 apples.'
+  TinyStories 8,192: 12 tokens  Tom|·had|·|1|2|3|4|5|6|7|·apples|.
+  SmolLM2 49,152:    12 tokens  Tom|·had|·|1|2|3|4|5|6|7|·apples|.
+'hello Hello HELLO'
+  TinyStories 8,192:  8 tokens  hello|·He|llo|·H|E|L|L|O
+  SmolLM2 49,152:     5 tokens  hello|·Hello|·H|EL|LO
+'strawberry'
+  TinyStories 8,192:  4 tokens  st|ra|w|berry
+  SmolLM2 49,152:     3 tokens  st|raw|berry
+'Supercalifragilistic'
+  TinyStories 8,192:  9 tokens  S|up|erc|al|if|rag|il|ist|ic
+  SmolLM2 49,152:     6 tokens  Super|cal|if|rag|il|istic
+'日本語'
+  TinyStories 8,192:  9 tokens  <e6>|<97>|<a5>|<e6>|<9c>|<ac>|<e8>|<aa>|<9e>
+  SmolLM2 49,152:     6 tokens  <e697>|<a5>|本|<e8>|<aa>|<9e>
+'🙂'
+  TinyStories 8,192:  4 tokens  <f0>|<9f>|<99>|<82>
+  SmolLM2 49,152:     2 tokens  <f09f>|<9982>
+'def f(x):\n    return x'
+  TinyStories 8,192: 11 tokens  de|f|·f|(|x|)|:|\n·|··|·return|·x
+  SmolLM2 49,152:     8 tokens  def|·f|(|x|):|\n···|·return|·x
+'the end. '
+  TinyStories 8,192:  4 tokens  the|·end|.|·
+  SmolLM2 49,152:     4 tokens  the|·end|.|·
+'the end.'
+  TinyStories 8,192:  3 tokens  the|·end|.
+  SmolLM2 49,152:     3 tokens  the|·end|.

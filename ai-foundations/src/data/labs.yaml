@@ -1,0 +1,365 @@
+units:
+- number: 1
+  title: Learning Machines
+  chapters:
+  - number: '1.1'
+    title: Tensors and what they cost
+    labs:
+    - number: 1.1.1
+      title: Strides by hand
+    - number: 1.1.2
+      title: Broadcasting drills
+    - number: 1.1.3
+      title: What a temporary costs
+    - number: 1.1.4
+      title: Your machine's ladder
+  - number: '1.2'
+    title: Gradients by machine
+    labs:
+    - number: 1.2.1
+      title: XOR with a scalar engine
+    - number: 1.2.2
+      title: A new operation
+    - number: 1.2.3
+      title: Break it on purpose
+    - number: 1.2.4
+      title: What a gradient costs
+  - number: '1.3'
+    title: Models as probability
+    labs:
+    - number: 1.3.1
+      title: When the noise varies
+    - number: 1.3.2
+      title: Two classes, two ways
+    - number: 1.3.3
+      title: Stable everywhere
+    - number: 1.3.4
+      title: Reading the weights
+  - number: '1.4'
+    title: Optimisers
+    labs:
+    - number: 1.4.1
+      title: The edge of stability
+    - number: 1.4.2
+      title: Tuning momentum
+    - number: 1.4.3
+      title: SGD against Adam on MNIST
+    - number: 1.4.4
+      title: Range test and schedule
+  - number: '1.5'
+    title: Neural networks
+    labs:
+    - number: 1.5.1
+      title: Predicting the scale
+    - number: 1.5.2
+      title: Width and depth
+    - number: 1.5.3
+      title: When the GPU wins
+    - number: 1.5.4
+      title: Inside the network
+  - number: '1.6'
+    title: Generalisation
+    labs:
+    - number: 1.6.1
+      title: Learning curves
+    - number: 1.6.2
+      title: Tuning without leaking
+    - number: 1.6.3
+      title: Memorising noise
+    - number: 1.6.4
+      title: What moves the peak
+  - number: '1.7'
+    title: Training deep networks
+    labs:
+    - number: 1.7.1
+      title: Depth, measured
+    - number: 1.7.2
+      title: Taming post-norm
+    - number: 1.7.3
+      title: Three mystery runs
+    - number: 1.7.4
+      title: A training monitor
+  - number: '1.8'
+    title: Representations
+    labs:
+    - number: 1.8.1
+      title: What augmentation buys
+    - number: 1.8.2
+      title: Fast to 93%
+    - number: 1.8.3
+      title: Which views matter
+    - number: 1.8.4
+      title: Few labels
+- number: 2
+  title: Language Models
+  chapters:
+  - number: '2.1'
+    title: Tokenisation
+    labs:
+    - number: 2.1.1
+      title: BPE by hand
+    - number: 2.1.2
+      title: Choosing a vocabulary size
+    - number: 2.1.3
+      title: A tokeniser for code
+    - number: 2.1.4
+      title: Tokens and letters
+  - number: '2.2'
+    title: Next-token prediction
+    labs:
+    - number: 2.2.1
+      title: Perplexity by hand
+    - number: 2.2.2
+      title: Smoothing compared
+    - number: 2.2.3
+      title: Data and order
+    - number: 2.2.4
+      title: Context length
+  - number: '2.3'
+    title: Attention
+    labs:
+    - number: 2.3.1
+      title: Attention by hand
+    - number: 2.3.2
+      title: One layer against two
+    - number: 2.3.3
+      title: Without the scale
+    - number: 2.3.4
+      title: The quadratic cost
+  - number: '2.4'
+    title: The transformer
+    labs:
+    - number: 2.4.1
+      title: Shapes everywhere
+    - number: 2.4.2
+      title: Ablations at small scale
+    - number: 2.4.3
+      title: Fewer key-value heads
+    - number: 2.4.4
+      title: Count SmolLM2 by hand
+  - number: '2.5'
+    title: Pretraining
+    labs:
+    - number: 2.5.1
+      title: Your run
+    - number: 2.5.2
+      title: A learning-rate sweep
+    - number: 2.5.3
+      title: What keeps it stable
+    - number: 2.5.4
+      title: Accumulation, checked
+  - number: '2.6'
+    title: Scaling laws
+    labs:
+    - number: 2.6.1
+      title: The three-term law
+    - number: 2.6.2
+      title: Counting parameters
+    - number: 2.6.3
+      title: Smaller and longer
+    - number: 2.6.4
+      title: One learning rate for all
+  - number: '2.7'
+    title: Decoding
+    labs:
+    - number: 2.7.1
+      title: A repetition penalty
+    - number: 2.7.2
+      title: Temperature and truncation
+    - number: 2.7.3
+      title: The width of the beam
+    - number: 2.7.4
+      title: Many samples at once
+  - number: '2.8'
+    title: Inside the model
+    labs:
+    - number: 2.8.1
+      title: Previous-token heads
+    - number: 2.8.2
+      title: When they form
+    - number: 2.8.3
+      title: A tuned lens
+    - number: 2.8.4
+      title: Steering by a direction
+- number: 3
+  title: From Base Model to Assistant
+  chapters:
+  - number: '3.1'
+    title: Open weights
+    labs:
+    - number: 3.1.1
+      title: Inside a checkpoint
+    - number: 3.1.2
+      title: A bigger model
+    - number: 3.1.3
+      title: Templates matter
+    - number: 3.1.4
+      title: Generalist against specialist
+  - number: '3.2'
+    title: Supervised fine-tuning
+    labs:
+    - number: 3.2.1
+      title: Seeing the mask
+    - number: 3.2.2
+      title: Without the mask
+    - number: 3.2.3
+      title: How much and how fast
+    - number: 3.2.4
+      title: Your own style
+  - number: '3.3'
+    title: LoRA
+    labs:
+    - number: 3.3.1
+      title: The rank
+    - number: 3.3.2
+      title: Where to adapt
+    - number: 3.3.3
+      title: Memory, by hand and measured
+    - number: 3.3.4
+      title: Two adapters, one model
+  - number: '3.4'
+    title: Preferences
+    labs:
+    - number: 3.4.1
+      title: Bradley–Terry by hand
+    - number: 3.4.2
+      title: What the reward model likes
+    - number: 3.4.3
+      title: The role of β
+    - number: 3.4.4
+      title: DPO without fine-tuning first
+  - number: '3.5'
+    title: Reinforcement learning with verifiable rewards
+    labs:
+    - number: 3.5.1
+      title: Policy gradients on a bandit
+    - number: 3.5.2
+      title: Group size
+    - number: 3.5.3
+      title: pass\@k
+    - number: 3.5.4
+      title: Hacking the checker
+  - number: '3.6'
+    title: Evaluation
+    labs:
+    - number: 3.6.1
+      title: The prompt matters
+    - number: 3.6.2
+      title: How many questions?
+    - number: 3.6.3
+      title: Calibrating the judge
+    - number: 3.6.4
+      title: Contamination by paraphrase
+  - number: '3.7'
+    title: Retrieval
+    labs:
+    - number: 3.7.1
+      title: BM25's parameters
+    - number: 3.7.2
+      title: Harder negatives
+    - number: 3.7.3
+      title: HNSW's trade-offs
+    - number: 3.7.4
+      title: Where answers are lost
+  - number: '3.8'
+    title: Tools and agents
+    labs:
+    - number: 3.8.1
+      title: A richer schema
+    - number: 3.8.2
+      title: A new tool
+    - number: 3.8.3
+      title: Reading failures
+    - number: 3.8.4
+      title: Attacks and defences
+- number: 4
+  title: Making It Fast
+  chapters:
+  - number: '4.1'
+    title: The machine
+    labs:
+    - number: 4.1.1
+      title: Bandwidth and the caches
+    - number: 4.1.2
+      title: The shape of a product
+    - number: 4.1.3
+      title: Fusion by hand
+    - number: 4.1.4
+      title: Another machine on paper
+  - number: '4.2'
+    title: Profiling and memory
+    labs:
+    - number: 4.2.1
+      title: A profile of your own
+    - number: 4.2.2
+      title: Predict, then measure
+    - number: 4.2.3
+      title: Selective checkpointing
+    - number: 4.2.4
+      title: The biggest batch
+  - number: '4.3'
+    title: Numerics
+    labs:
+    - number: 4.3.1
+      title: Where a sum stalls
+    - number: 4.3.2
+      title: Training in float16
+    - number: 4.3.3
+      title: Norms in low precision
+    - number: 4.3.4
+      title: fp8 with finer scales
+  - number: '4.4'
+    title: Kernels
+    labs:
+    - number: 4.4.1
+      title: Tile sizes
+    - number: 4.4.2
+      title: A one-pass softmax
+    - number: 4.4.3
+      title: A faster flash kernel
+    - number: 4.4.4
+      title: The other track
+  - number: '4.5'
+    title: Parallel training
+    labs:
+    - number: 4.5.1
+      title: The cost of an all-reduce
+    - number: 4.5.2
+      title: Overlapping communication
+    - number: 4.5.3
+      title: ZeRO stage 2
+    - number: 4.5.4
+      title: Tensor-parallel attention
+  - number: '4.6'
+    title: An inference engine in C++
+    labs:
+    - number: 4.6.1
+      title: Your model, in C++
+    - number: 4.6.2
+      title: Batched prefill
+    - number: 4.6.3
+      title: Against the bound
+    - number: 4.6.4
+      title: Long contexts
+  - number: '4.7'
+    title: Quantisation
+    labs:
+    - number: 4.7.1
+      title: The bits curve
+    - number: 4.7.2
+      title: Outliers
+    - number: 4.7.3
+      title: GPTQ, examined
+    - number: 4.7.4
+      title: Faster 4-bit kernels
+  - number: '4.8'
+    title: Serving
+    labs:
+    - number: 4.8.1
+      title: Load and latency
+    - number: 4.8.2
+      title: Blocks on demand
+    - number: 4.8.3
+      title: Prefix caching
+    - number: 4.8.4
+      title: Speculative sampling

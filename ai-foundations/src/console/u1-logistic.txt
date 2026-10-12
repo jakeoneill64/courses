@@ -1,0 +1,8 @@
+$ uv run -m u1.logistic
+epoch 1  validation accuracy 90.64%
+epoch 2  validation accuracy 91.34%
+epoch 3  validation accuracy 90.26%
+epoch 4  validation accuracy 91.10%
+epoch 5  validation accuracy 91.36%
+test accuracy 91.87%; most common mistakes: 9 read as 4 (54), 8 read as 5 (51), 5 read as 3
+    (37)

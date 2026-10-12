@@ -1,0 +1,41 @@
+#version 460
+
+// snippet:begin blocked
+const uint TILE = 16, BLOCK = 64, WORK = 4;
+layout(local_size_x = 16, local_size_y = 16) in;
+layout(std430, binding = 0) readonly buffer A { float a[]; };
+layout(std430, binding = 1) readonly buffer B { float b[]; };
+layout(std430, binding = 2) writeonly buffer C { float c[]; };
+layout(push_constant) uniform Sizes { uint n, k, m; };
+shared float ta[BLOCK][TILE];
+shared float tb[TILE][BLOCK];
+
+void main() {
+    uvec2 group = gl_WorkGroupID.xy, local = gl_LocalInvocationID.xy;
+    float acc[WORK][WORK];
+    for (uint i = 0; i < WORK; ++i)
+        for (uint j = 0; j < WORK; ++j) acc[i][j] = 0.0;
+    uint linear = gl_LocalInvocationIndex;
+    for (uint start = 0; start < k; start += TILE) {
+        for (uint i = linear; i < BLOCK * TILE; i += 256) {
+            uint r = i / TILE, p = i % TILE, gr = group.y * BLOCK + r;
+            ta[r][p] = gr < n && start + p < k ? a[gr * k + start + p] : 0.0;
+            uint q = i / BLOCK, col = i % BLOCK, gc = group.x * BLOCK + col;
+            tb[q][col] = gc < m && start + q < k ? b[(start + q) * m + gc] : 0.0;
+        }
+        barrier();
+        for (uint p = 0; p < TILE; ++p) {
+            float av[WORK], bv[WORK];
+            for (uint i = 0; i < WORK; ++i) av[i] = ta[local.y * WORK + i][p];
+            for (uint j = 0; j < WORK; ++j) bv[j] = tb[p][local.x * WORK + j];
+            for (uint i = 0; i < WORK; ++i)
+                for (uint j = 0; j < WORK; ++j) acc[i][j] = fma(av[i], bv[j], acc[i][j]);
+        }
+        barrier();
+    }
+    uint row0 = group.y * BLOCK + local.y * WORK, col0 = group.x * BLOCK + local.x * WORK;
+    for (uint i = 0; i < WORK; ++i)
+        for (uint j = 0; j < WORK; ++j)
+            if (row0 + i < n && col0 + j < m) c[(row0 + i) * m + col0 + j] = acc[i][j];
+}
+// snippet:end blocked

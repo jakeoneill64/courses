@@ -1,0 +1,7 @@
+$ uv run -m u1.regression
+                                w1      w2      w3       b
+true                        2.0000 -1.0000  0.5000  0.3000
+least squares               1.9550 -1.0481  0.5265  0.2819
+gradient descent on MSE     1.9550 -1.0481  0.5265  0.2819
+maximum likelihood          1.9550 -1.0481  0.5265  0.2819
+noise: true sigma 0.5, learned sigma 0.50004, RMS residual 0.50004

@@ -1,0 +1,11 @@
+$ uv run -m u4.quantise --model HuggingFaceTB/SmolLM2-135M
+HuggingFaceTB/SmolLM2-135M: 106.2M parameters in its block matrices; validation loss 2.0336
+    in float32
+weights                        bits/weight  block MiB     loss   change
+float32                              32.00      405.0   2.0336  +0.0000
+int8, one scale per row               8.05      101.8   2.0352  +0.0016
+int4, groups of 128                   4.27       54.1   2.3881  +0.3545
+int4, groups of 32                    5.00       63.3   2.2799  +0.2464
+int3, groups of 32                    4.00       50.6   3.5964  +1.5628
+int4 GPTQ, groups of 128              4.27       54.1   2.1565  +0.1229
+KV cache in int8, one scale per head and position: second-half loss 2.0150 -> 2.0149

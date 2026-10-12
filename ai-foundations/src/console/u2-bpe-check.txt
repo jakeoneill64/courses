@@ -1,0 +1,8 @@
+$ uv run -m u2.bpe_check
+the first 200 merges of the fast trainer equal the naive trainer's
+the first ten: 'he', ' t', ' a', ' s', ' w', 'nd', ' the', 'ed', ' b', ' to'
+40 texts, from stories to random Unicode, decode to exactly themselves
+SmolLM2's vocabulary loaded into aif.bpe: identical tokens to Hugging Face's on 47 of 47
+    texts
+SmolLM2's vocabulary has no token for 21 byte values, which both encoders drop: 0x4, 0x6,
+    0x13, 0x14, 0x16, 0x1d, ...

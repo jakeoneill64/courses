@@ -1,0 +1,24 @@
+$ uv run -m u4.numerics
+format     bits  mantissa     largest  smallest normal    epsilon
+float32      32        23     3.4e+38         1.18e-38   1.19e-07
+float16      16        10    6.55e+04          6.1e-05   0.000977
+bfloat16     16         7    3.39e+38         1.18e-38    0.00781
+fp8 e4m3      8         3         448           0.0156      0.125
+fp8 e5m2      8         2    5.73e+04          6.1e-05       0.25
+adding 0.0001 to a running total 100,000 times (exact answer 10):
+  float32   total kept in float32:  10.0063; accumulated in float32:  10.0000
+  float16   total kept in float16:   0.2500; accumulated in float32:  10.0017
+  bfloat16  total kept in bfloat16:   0.0312; accumulated in float32:  10.0136
+float16 overflows above 65,504: exp(11) = 59,872, exp(12) = inf
+mean square of 4,096 activations of size about 300: 88,799 in float32, inf in float16
+gradients 3e-4, 2e-6, 4e-8, 1e-9 stored in float16:    3.0e-04, 2.0e-06, 6.0e-08, 0.0e+00
+the same gradients scaled by 1024, stored, unscaled: 3.0e-04, 2.0e-06, 4.0e-08, 9.9e-10
+relative error of a 512 x 512 matrix product against float64:
+  float32   4.1e-07
+  float16   3.6e-04
+  bfloat16  2.9e-03
+  fp8 e4m3  3.7e-02 (inputs scaled into range, products accumulated in float32)
+matrix product of 4096 x 4096 on the mps device:
+  float32    5.55 TFLOP/s
+  float16    6.01 TFLOP/s
+  bfloat16   2.91 TFLOP/s

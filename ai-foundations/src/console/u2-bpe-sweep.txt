@@ -1,0 +1,9 @@
+$ uv run -m u2.bpe_train
+counted 530,415,674 chunks (59,732 distinct) in 23 s
+vocabulary    512:  2.43 bytes per token on stories,  1.33 on Python code; trained in  0.8 s
+vocabulary   1024:  3.19 bytes per token on stories,  1.45 on Python code; trained in  1.1 s
+vocabulary   2048:  3.69 bytes per token on stories,  1.52 on Python code; trained in  1.4 s
+vocabulary   4096:  3.98 bytes per token on stories,  1.60 on Python code; trained in  1.6 s
+vocabulary   8192:  4.10 bytes per token on stories,  1.99 on Python code; trained in  1.8 s
+vocabulary  16384:  4.12 bytes per token on stories,  2.26 on Python code; trained in  1.9 s
+SmolLM2 (49,152 tokens, trained on web text and code): 4.06 on stories, 3.77 on code

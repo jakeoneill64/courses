@@ -1,0 +1,20 @@
+$ uv run -m u1.gradcheck
+scalar engine: d = -2.648889, dd/da = -2.901731, dd/db = -0.439294 (match the chain rule)
+tensor operations against central differences (float64):
+  operation                          rel. error
+  add, broadcast (3,4)+(4,)            3.7e-10
+  mul, broadcast (3,1)*(1,4)           1.3e-10
+  matmul (3,5)@(5,2)                   5.3e-09
+  batched matmul (2,3,4)@(4,5)         1.4e-08
+  divide, broadcast (3,4)/(3,1)        7.7e-10
+  power 1.5                            5.4e-10
+  exp, log                             6.6e-10
+  relu, tanh, sigmoid                  4.8e-09
+  sum over axis 0                      7.0e-11
+  mean keepdims                        1.7e-10
+  max over axis 1                      1.5e-10
+  reshape, transpose                   6.9e-10
+  index rows [0, 2, 2]                 1.5e-10
+  log_softmax                          3.4e-09
+  cross_entropy                        1.1e-08
+two-layer net vs PyTorch: loss 1.734024382277 vs 1.734024382277, gradients within 4.2e-17

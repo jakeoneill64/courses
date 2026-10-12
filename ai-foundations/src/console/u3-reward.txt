@@ -1,0 +1,14 @@
+$ uv run -m u3.reward
+4,000 training pairs and 1,000 test pairs from UltraFeedback
+before training: test accuracy 0.0% (the head starts at zero, so every pair ties)
+step  100/1000  loss 0.691    154 s
+step  200/1000  loss 0.725    304 s
+step  300/1000  loss 0.701    468 s
+step  400/1000  loss 0.782    622 s
+step  500/1000  loss 0.909    774 s
+step  600/1000  loss 0.558    931 s
+step  700/1000  loss 0.659   1079 s
+step  800/1000  loss 0.517   1233 s
+step  900/1000  loss 0.414   1384 s
+step 1000/1000  loss 0.618   1533 s
+after training: test accuracy 64.9%, mean reward margin 0.21

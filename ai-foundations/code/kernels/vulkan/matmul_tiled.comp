@@ -1,0 +1,27 @@
+#version 460
+
+// snippet:begin tiled
+const uint TILE = 16;
+layout(local_size_x = 16, local_size_y = 16) in;
+layout(std430, binding = 0) readonly buffer A { float a[]; };
+layout(std430, binding = 1) readonly buffer B { float b[]; };
+layout(std430, binding = 2) writeonly buffer C { float c[]; };
+layout(push_constant) uniform Sizes { uint n, k, m; };
+shared float ta[TILE][TILE];
+shared float tb[TILE][TILE];
+
+void main() {
+    uint row = gl_GlobalInvocationID.y, col = gl_GlobalInvocationID.x;
+    uvec2 local = gl_LocalInvocationID.xy;
+    float sum = 0.0;
+    for (uint start = 0; start < k; start += TILE) {
+        bool inA = row < n && start + local.x < k, inB = col < m && start + local.y < k;
+        ta[local.y][local.x] = inA ? a[row * k + start + local.x] : 0.0;
+        tb[local.y][local.x] = inB ? b[(start + local.y) * m + col] : 0.0;
+        barrier();
+        for (uint p = 0; p < TILE; ++p) sum += ta[local.y][p] * tb[p][local.x];
+        barrier();
+    }
+    if (row < n && col < m) c[row * m + col] = sum;
+}
+// snippet:end tiled

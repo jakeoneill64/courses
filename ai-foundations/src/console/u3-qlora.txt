@@ -1,0 +1,14 @@
+$ uv run -m u3.lora --model HuggingFaceTB/SmolLM2-360M --int4 --examples 5000
+SmolLM2-360M, 4-bit: 8.68M trainable parameters (2.23% of the model); frozen weights take
+    340 MiB
+step   200/222  loss 1.155   6667 s
+step   222/222  loss 1.175   7224 s
+held-out loss 1.518 -> 1.181; 33.01 s per step; peak memory while training 17.54 GiB
+user: What is the boiling point of water at sea level?
+  assistant: 'At sea level, the boiling point of water is approximately 212°F (100°C). This
+    is because the pressure exerted by the atmosphere above the water is approximately 14.7
+    pounds per square inch (PSI), whic'
+user: Write a haiku about autumn leaves.
+  assistant: 'Autumn leaves,\na symphony of colors,\na symphony of sounds.\nThe wind
+    whispers,\na tale of leaves,\na tale of leaves.\nThe leaves,\na symphony of colors,\na
+    symphony of sounds.\nThe leaves,\na symphony of colo'

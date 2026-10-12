@@ -1,0 +1,15 @@
+$ uv run -m u3.dpo
+4,000 training pairs; beta 0.1, learning rate 2e-06
+step  100/1000  loss 0.656  margin +0.096    285 s
+step  200/1000  loss 0.641  margin +0.140    565 s
+step  300/1000  loss 0.499  margin +0.499    857 s
+step  400/1000  loss 0.729  margin -0.060   1141 s
+step  500/1000  loss 0.910  margin -0.395   1423 s
+step  600/1000  loss 0.672  margin +0.085   1713 s
+step  700/1000  loss 0.613  margin +0.191   1987 s
+step  800/1000  loss 0.499  margin +0.571   3103 s
+step  900/1000  loss 0.455  margin +0.772   5222 s
+step 1000/1000  loss 0.468  margin +0.547   5496 s
+test pairs ranked correctly by the implicit reward: 62.7%
+DPO model's reply preferred by the reward model on 58.0% of 200 test prompts
+mean reply length: 168 tokens before DPO, 191 after

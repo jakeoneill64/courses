@@ -1,0 +1,8 @@
+$ uv run -m u1.optim_check
+optimiser               max |w_tiny - w_torch| after 50 steps
+SGD                                                   5.6e-17
+SGD, momentum 0.9                                     2.0e-16
+SGD, Nesterov                                         8.9e-17
+RMSProp                                               2.8e-16
+Adam, L2 0.1                                          8.3e-17
+AdamW, decay 0.1                                      7.3e-17

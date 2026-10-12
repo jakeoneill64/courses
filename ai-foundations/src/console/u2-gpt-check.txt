@@ -1,0 +1,20 @@
+$ uv run -m u2.gpt_check
+this course's TinyStories model: 8 layers, d_model 512, 8 query and 4 key-value heads, d_ff
+    1408, vocabulary 8,192
+  embedding (tied with the output)      4,194,304   15.1%
+  attention, all layers                 6,291,456   22.6%
+  feed-forward, all layers             17,301,504   62.2%
+  norms                                     8,704    0.0%
+  total                                27,795,968   179 MFLOP per training token at 512
+    tokens of context
+SmolLM2-135M: 30 layers, d_model 576, 9 query and 3 key-value heads, d_ff 1536, vocabulary
+    49,152
+  embedding (tied with the output)     28,311,552   21.0%
+  attention, all layers                26,542,080   19.7%
+  feed-forward, all layers             79,626,240   59.2%
+  norms                                    35,136    0.0%
+  total                               134,515,008   860 MFLOP per training token at 512
+    tokens of context
+changing tokens 40 to 63 moves the logits at 0 to 39 by 0.0e+00 and at 40 to 63 by 2.44
+rotated q.k at positions (10, 3), (110, 103) and (400, 393): -4.4043, -4.4043, -4.4043
+one batch of random tokens memorised: loss 0.0028 after 300 steps

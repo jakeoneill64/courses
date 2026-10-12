@@ -1,0 +1,10 @@
+$ uv run -m u2.mlp_lm
+11.5M parameters, context of 8 tokens
+step  2000  training loss 2.734    76 s
+step  4000  training loss 2.575   151 s
+step  6000  training loss 2.506   226 s
+step  8000  training loss 2.384   302 s
+step 10000  training loss 2.408   377 s
+step 12000  training loss 2.374   456 s
+step 14000  training loss 2.326   531 s
+validation: 2.366 nats per token, 0.821 bits per byte, perplexity 10.7

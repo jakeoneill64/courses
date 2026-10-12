@@ -1,0 +1,4 @@
+$ uv run -m u1.lr_range
+lowest smoothed loss 0.387 at lr 7.8e-03; loss back above its start at lr 1.0e-01; stopped
+    at lr 2.2e-01
+suggested learning rate: about 8e-04, a tenth of the minimum's

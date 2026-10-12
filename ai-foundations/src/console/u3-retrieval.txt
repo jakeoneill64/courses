@@ -1,0 +1,18 @@
+$ uv run -m u3.retrieval
+SQuAD validation: 10,570 questions about 2,067 paragraphs
+contrastive step 500  loss 0.228  1983 s
+contrastive step 1000  loss 0.092  3654 s
+contrastive step 1500  loss 0.154  5506 s
+retriever                           recall@1  recall@5  recall@20
+BM25                                   75.4%     91.0%      96.0%
+SmolLM2-135M, mean-pooled              11.0%     24.4%      42.6%
+SmolLM2-135M, fine-tuned               54.8%     81.1%      94.1%
+fusion of BM25 and fine-tuned          72.6%     91.8%      98.4%
+HNSW over 20,958 paragraphs built in 19 s; 500 queries, 10 neighbours each:
+  ef  10: recall@10 against exact search 86.8%, 210 distances per query instead of 20,958
+  ef  32: recall@10 against exact search 95.3%, 365 distances per query instead of 20,958
+  ef 100: recall@10 against exact search 99.0%, 780 distances per query instead of 20,958
+SmolLM2-360M-Instruct answering 300 questions (token F1 against the reference answers):
+  closed book            10.7%
+  top 3 retrieved        25.2%
+  the right paragraph    32.3%

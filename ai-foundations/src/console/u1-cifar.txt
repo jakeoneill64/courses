@@ -1,0 +1,19 @@
+$ uv run -m u1.cifar
+epoch  1  loss 1.591  test accuracy 55.71%     85 s
+epoch  2  loss 1.391  test accuracy 64.59%    168 s
+epoch  3  loss 1.321  test accuracy 69.14%    251 s
+epoch  4  loss 1.276  test accuracy 73.71%    331 s
+epoch  5  loss 1.236  test accuracy 75.47%    411 s
+epoch  6  loss 1.155  test accuracy 72.97%    491 s
+epoch  7  loss 1.145  test accuracy 84.20%    571 s
+epoch  8  loss 1.103  test accuracy 85.87%    651 s
+epoch  9  loss 1.083  test accuracy 86.32%    731 s
+epoch 10  loss 1.057  test accuracy 87.00%    811 s
+epoch 11  loss 1.041  test accuracy 88.99%    891 s
+epoch 12  loss 1.028  test accuracy 89.13%    970 s
+epoch 13  loss 0.997  test accuracy 89.24%   1050 s
+epoch 14  loss 0.996  test accuracy 90.28%   1130 s
+epoch 15  loss 0.993  test accuracy 91.36%   1210 s
+epoch 16  loss 0.957  test accuracy 92.47%   1290 s
+6.6M parameters; 16 epochs in 1290 s
+nearest neighbour in feature space has the same class for 89.6% of 2,000 test images

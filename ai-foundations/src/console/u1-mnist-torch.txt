@@ -1,0 +1,4 @@
+$ uv run -m u1.mnist_torch
+tiny and PyTorch in lockstep for 100 steps (float64): largest loss difference 7.8e-16
+PyTorch on cpu: 0.44 s per epoch, test accuracy 97.53%
+PyTorch on mps: 2.14 s per epoch, test accuracy 97.57%

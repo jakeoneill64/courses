@@ -1,0 +1,6 @@
+$ uv run -m u1.softmax
+naive softmax of [1000, 1001, 1002]:  [nan nan nan]
+stable softmax of [1000, 1001, 1002]: [0.09003057 0.24472848 0.66524094]
+log of naive softmax of [0, -120]:    [  0. -inf]
+log-softmax via logsumexp:            [   0. -120.]
+gradient of cross-entropy = softmax - one-hot: largest error 1.5e-10

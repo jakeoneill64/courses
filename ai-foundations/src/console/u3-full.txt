@@ -1,0 +1,13 @@
+$ uv run -m u3.lora --full --examples 5000
+SmolLM2-135M: 134.52M trainable parameters (100.00% of the model); frozen weights take 0 MiB
+step   200/222  loss 1.353   2172 s
+step   222/222  loss 1.359   2390 s
+held-out loss 1.626 -> 1.374; 10.95 s per step; peak memory while training 12.55 GiB
+user: What is the boiling point of water at sea level?
+  assistant: 'The boiling point of water at sea level is 212 degrees Fahrenheit (100
+    degrees Celsius). This is the temperature at which water becomes a liquid at sea level.
+    The boiling point of water is a critical '
+user: Write a haiku about autumn leaves.
+  assistant: 'The leaves of autumn are a symphony of colors, each one a symphony of its
+    own. The leaves are a symphony of colors, each one a symphony of its own. The leaves
+    are a symphony of colors, each one a symp'

@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.25)
+project(ai_foundations LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+  set(CMAKE_BUILD_TYPE Release CACHE STRING "" FORCE)
+endif()
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+add_subdirectory(engine)
+
+find_package(Vulkan 1.3 QUIET)
+find_program(GLSLC glslc HINTS "$ENV{VULKAN_SDK}/bin")
+if(Vulkan_FOUND AND GLSLC)
+  add_subdirectory(kernels/vulkan)
+else()
+  message(STATUS "Vulkan SDK not found: skipping the Vulkan kernels of Chapter 4.4")
+endif()

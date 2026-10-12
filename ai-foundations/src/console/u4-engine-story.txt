@@ -1,0 +1,11 @@
+$ ./build/bin/aif_engine runs/engine/tinystories-28m-f32.bin --prompt 'Once upon a time, there was a little dog named' --tokens 120
+runs/engine/tinystories-28m-f32.bin: 8 layers, d_model 512, vocabulary 8192, 106.0 MiB of
+    weights, 12 threads
+Once upon a time, there was a little dog named Spot. Spot loved to play with his ball. One
+    day, Spot saw a big cat. The cat was very rude. Spot wanted to play with the cat, but
+    the cat did not want to play.
+Spot had an idea. He would play with the cat and his ball. He would throw the ball and the
+    cat would run to catch it. Spot was very happy. He played with the cat and his ball all
+    day long.
+But then, something unexpected happened. The cat was not rude anymore. The cat was nice and
+    played with Spot and his ball. They had lots of

@@ -1,0 +1,45 @@
+#version 460
+
+// snippet:begin flash
+const uint KEYS = 32, HEAD = 64;
+layout(local_size_x = 64) in;
+layout(std430, binding = 0) readonly buffer Q { float q[]; };
+layout(std430, binding = 1) readonly buffer K { float k[]; };
+layout(std430, binding = 2) readonly buffer V { float v[]; };
+layout(std430, binding = 3) writeonly buffer O { float o[]; };
+layout(push_constant) uniform Sizes { uint len; float scale; };
+shared float kb[KEYS][HEAD];
+shared float vb[KEYS][HEAD];
+
+void main() {
+    uint t = gl_LocalInvocationID.x, width = gl_WorkGroupSize.x;
+    uint head = gl_WorkGroupID.y, row = gl_WorkGroupID.x * width + t;
+    float qr[HEAD], acc[HEAD];
+    for (uint d = 0; d < HEAD; ++d) {
+        qr[d] = row < len ? q[(head * len + row) * HEAD + d] * scale : 0.0;
+        acc[d] = 0.0;
+    }
+    float best = -1.0 / 0.0, total = 0.0;
+    uint last = min(len, (gl_WorkGroupID.x + 1) * width);
+    for (uint start = 0; start < last; start += KEYS) {
+        for (uint i = t; i < KEYS * HEAD; i += width) {
+            uint key = start + i / HEAD;
+            kb[i / HEAD][i % HEAD] = key < len ? k[(head * len + key) * HEAD + i % HEAD] : 0.0;
+            vb[i / HEAD][i % HEAD] = key < len ? v[(head * len + key) * HEAD + i % HEAD] : 0.0;
+        }
+        barrier();
+        for (uint j = 0; j < KEYS && start + j <= row && row < len; ++j) {
+            float s = 0.0;
+            for (uint d = 0; d < HEAD; ++d) s += qr[d] * kb[j][d];
+            float next = max(best, s);
+            float shrink = exp(best - next), weight = exp(s - next);
+            total = total * shrink + weight;
+            for (uint d = 0; d < HEAD; ++d) acc[d] = acc[d] * shrink + weight * vb[j][d];
+            best = next;
+        }
+        barrier();
+    }
+    if (row < len)
+        for (uint d = 0; d < HEAD; ++d) o[(head * len + row) * HEAD + d] = acc[d] / total;
+}
+// snippet:end flash

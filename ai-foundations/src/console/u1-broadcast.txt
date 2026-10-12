@@ -1,0 +1,11 @@
+$ uv run -m u1.broadcast
+        (3, 4) with (4,)       -> (3, 4)
+        (3, 1) with (1, 4)     -> (3, 4)
+     (2, 3, 4) with (3, 1)     -> (2, 3, 4)
+  (8, 1, 6, 1) with (7, 1, 5)  -> (8, 7, 6, 5)
+        (3, 4) with (3,)       -> error
+        (2, 1) with (8, 4, 3)  -> error
+1000 x 1000 squared distances, 64 dimensions:
+  Python loops (estimated from 100 x 100)      1595 ms
+  broadcasting                                 35.0 ms, 244 MiB temporary
+  |x|^2 + |y|^2 - 2 x.y                         0.5 ms

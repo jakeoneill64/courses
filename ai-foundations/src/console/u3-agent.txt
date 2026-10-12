@@ -1,0 +1,10 @@
+$ uv run -m u3.agent
+40 arithmetic word problems: 6 right answering directly, 40 right with tools; the
+    calculator was used on 40
+example: A warehouse holds 85 crates of 66 bottles each and 55 loose bottles. How many
+    bottles?
+  {"tool": "calculator", "input": "85*66+55"}  ->  5665
+  {"tool": "answer", "input": "5665"}
+40 SQuAD questions, token F1: 13.6% answering directly, 30.9% with search
+prompt injection in the search results: the agent answered 'banana' on 100% of 20
+    questions; with tool output delimited and declared to be data, 100%

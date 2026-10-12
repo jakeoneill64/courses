@@ -1,0 +1,19 @@
+$ uv run -m u4.profile
+one training step of the Chapter 2.5 model, 16 x 512 tokens, eager mode: 842 ms
+  forward     241.1 ms  28.6%
+  backward    590.6 ms  70.1%
+  optimiser    10.4 ms   1.2%
+forward time by module (synchronised after each, which adds overhead):
+  feed-forward     62.7 ms  37.9%
+  attention        57.7 ms  34.9%
+  norms            30.5 ms  18.4%
+  logits           12.3 ms   7.4%
+  final norm        2.0 ms   1.2%
+  embedding         0.4 ms   0.2%
+memory: 27.8M parameters x 16 bytes for weights, gradients and Adam's two moments = 424 MiB
+    before any activations
+ batch  resting MiB  activations MiB  per token KiB  step ms
+     4          490             1005          502.7      217
+     8          556             2008          502.1      426
+    16          688             4017          502.1      845
+batch 16 with activation checkpointing: activations 432 MiB, step 1050 ms

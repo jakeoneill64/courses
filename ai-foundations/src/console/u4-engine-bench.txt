@@ -1,0 +1,6 @@
+$ uv run -m u4.engine_bench
+tokens per second generating 200 tokens, by threads, on the CPU:
+model            weights     MiB      1      2      4      8     12
+tinystories-28m  f32         106    386    564    741    762    495
+SmolLM2-135M     f32         516     85    114    144    144    100
+SmolLM2-360M     f32        1383     33     50     62     63     57

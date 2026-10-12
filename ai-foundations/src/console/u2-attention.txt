@@ -1,0 +1,9 @@
+$ uv run -m u2.attention
+multi-head causal attention in NumPy against PyTorch: largest difference 4.4e-16
+attention built from tiny's operations: gradients match PyTorch's to 4.4e-16
+d =  16: scores have standard deviation  3.6; the largest of 128 weights averages 0.50
+    unscaled, 0.06 scaled
+d =  64: scores have standard deviation  7.9; the largest of 128 weights averages 0.76
+    unscaled, 0.07 scaled
+d = 256: scores have standard deviation 14.8; the largest of 128 weights averages 0.87
+    unscaled, 0.06 scaled

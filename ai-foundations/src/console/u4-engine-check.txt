@@ -1,0 +1,5 @@
+$ ./build/bin/aif_engine runs/engine/tinystories-28m-f32.bin --check
+runs/engine/tinystories-28m-f32.bin: 8 layers, d_model 512, vocabulary 8192, 106.0 MiB of
+    weights, 12 threads
+prompt of 11 tokens: tokens identical to Python's; largest logit difference from PyTorch
+    1.00e-05
