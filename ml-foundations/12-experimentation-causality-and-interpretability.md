@@ -4,22 +4,23 @@
 
 ## Why this module
 
-Prediction answers one question: what will happen. A business asks three more that
+Prediction tells you what will happen. A business also asks three questions that
 prediction alone cannot answer: did the change work, who should we target, and why did
-the model say that. The Module 2 churn model tells you who is likely to leave; it does
+the model say that. The Module 2 churn model tells you who is likely to leave. It does
 not tell you who would stay if you called them, whether the retention offer you launched
-actually worked, or what a regulator should make of contract type driving the score.
-Those are the questions of Saïd's Augmenting Business Decisions with AI, whose subject is
-how a model's output becomes a decision, and of AI Governance, which wants explanations
-and fairness audits that survive scrutiny. This module is aimed squarely at both.
+worked, or what a regulator should make of contract type driving the score. Those are
+the questions of Saïd's Augmenting Business Decisions with AI, whose subject is how a
+model's output becomes a decision, and of AI Governance, which wants explanations and
+fairness audits that survive scrutiny. This module prepares you for both.
 
 The common thread is that a correlation a model found is not the effect of an
-intervention. Randomisation is the one place you get the causal answer for free, and the
-first third of the module is about running and reading experiments without fooling
-yourself. The second third approximates randomisation when you cannot have it, and turns
-that machinery towards the targeting question with uplift models. The last third explains
-models and separates "the model uses this" from "this causes that", because explanations
-and fairness audits are read by people who will conflate the two unless you stop them.
+intervention. Randomisation is the only design that gives the causal answer without
+further assumptions, and the first third of the module is about running and reading
+experiments without fooling yourself. The second third approximates randomisation when
+you cannot have it, and applies that machinery to the targeting question with uplift
+models. The last third explains models and separates "the model uses this" from "this
+causes that", because readers of explanations and fairness audits will confuse the two
+unless the write-up keeps them apart.
 
 Structurally, the disaggregated metrics and fairness statement produced here go into the
 model card in Module 13, and Module 14 requires a decision component, which is the uplift
@@ -50,63 +51,64 @@ If all six are easy, do Labs 12.3 and 12.5 only, and the write-up.
 everything else.** Each unit has two potential outcomes, Y(1) and Y(0), and you observe
 one; the average treatment effect E[Y(1) − Y(0)] is not observable for anyone. A random
 coin makes the treated and control groups exchangeable, so the difference in observed
-means is an unbiased estimate of it. Everything else in this module is either reading
-that difference correctly or approximating the coin when you were not allowed to flip it.
+means is an unbiased estimate of it. The rest of this module covers reading that
+difference correctly and approximating randomisation when you cannot randomise.
 
 **A test is designed before it runs.** Fix the metric, the minimum detectable effect, the
 significance level and the power, and the sample size follows: for a conversion rate,
 n per arm ≈ (z_{α/2} + z_β)² · 2p̄(1 − p̄) / δ², about 53,000 per arm for a 3% baseline and
 a 0.3-point lift at 80% power. Real online effects are 1 to 2% relative, so most tests
-that "showed nothing" were never powered to see anything, and the ones that showed a
-large effect were selected for luck, which is the winner's curse. Write the design down
-before the first user is assigned.
+that "showed nothing" never had the power to detect such an effect, and the ones that
+showed a large effect were selected for luck, which is the winner's curse. Write the
+design down before the first user is assigned.
 
 **Peeking inflates the false-positive rate, and daily peeking roughly quintuples it.**
 The test statistic on cumulative data is a random walk, and the probability that it
-crosses ±1.96 at least once in 30 looks is around 25 to 30%, not 5%. The fixes are a
-fixed horizon you do not touch, alpha-spending boundaries (O'Brien-Fleming, or the crude
-Bonferroni α/k), or always-valid sequential tests such as the mixture sequential
-probability ratio test (Johari et al.), which pay for the freedom to stop early with
-lower power at any fixed n. Lab 12.1 shows you the 25% and then makes it go away.
+crosses ±1.96 at least once in 30 looks is around 25 to 30% against the nominal 5%. The
+fixes are a fixed horizon you do not touch, alpha-spending boundaries (O'Brien-Fleming,
+or the crude Bonferroni α/k), or always-valid sequential tests such as the mixture
+sequential probability ratio test (Johari et al.), which pay for the freedom to stop
+early with lower power at any fixed n. Lab 12.1 reproduces the 25% and then corrects it.
 
-**Variance is the enemy, and there are honest ways to reduce it.** CUPED (Deng et al.)
-regresses the metric on a pre-experiment covariate, typically the same metric last
-month, and analyses the residual, cutting variance by a factor of 1 − ρ²; with ρ = 0.5
-that is 25% fewer users for the same power. Ratio metrics such as revenue per session are
-not means over independent units when the randomisation unit is the user, and the delta
-method gives the right variance: Var(Ȳ/X̄) ≈ (1/μ_X²)[Var(Y) − 2(μ_Y/μ_X)Cov(X, Y) +
-(μ_Y²/μ_X²)Var(X)]/n. Before any of this, check the sample ratio with a chi-square test
+**Lower variance means smaller tests, and several standard methods reduce it.** CUPED
+(Deng et al.) regresses the metric on a pre-experiment covariate, typically the same
+metric last month, and analyses the residual, cutting variance by a factor of 1 − ρ²;
+with ρ = 0.5 that is 25% fewer users for the same power. Ratio metrics such as revenue
+per session are not means over independent units when the randomisation unit is the
+user, and the delta method gives the right variance:
+Var(Ȳ/X̄) ≈ (1/μ_X²)[Var(Y) − 2(μ_Y/μ_X)Cov(X, Y) + (μ_Y²/μ_X²)Var(X)]/n. Before any of this, check the sample ratio with a chi-square test
 on arm counts; if it fails, the assignment is broken and the result is void.
 
-**Most experiment failures are organisational, not statistical.** Novelty effects fade
-and primacy effects grow, so a one-week test on a UI change measures curiosity.
-Guardrail metrics (latency, errors, unsubscribes) must be pre-registered so a win on the
-overall evaluation criterion cannot hide harm. Segment fishing after the fact, testing
-twenty subgroups and reporting the one at p < 0.05, is the multiple-comparisons problem
-in a business suit. Kohavi's rule: most ideas fail, and an organisation that cannot bear
-that will quietly stop running real tests.
+**Most experiment failures are organisational.** Novelty effects fade and primacy
+effects grow, so a one-week test on a UI change mostly measures curiosity. Guardrail
+metrics (latency, errors, unsubscribes) must be pre-registered so a win on the overall
+evaluation criterion cannot hide harm. Segment fishing after the fact, testing twenty
+subgroups and reporting the one at p < 0.05, is the multiple-comparisons problem. Kohavi
+reports that most ideas fail, and an organisation that cannot accept that will stop
+running real tests.
 
 **Without randomisation you need a causal model, and a DAG is how you write one down.**
 A confounder X that causes both treatment T and outcome Y mixes its effect into the
-observed association; the backdoor criterion says conditioning on a set that blocks every
-path from T to Y entering T through an arrow identifies the effect. A collider is caused
-by both T and Y; conditioning on it opens a closed path and manufactures association from
-nothing, as when you analyse only customers who complained. Identification (is the effect
-a function of the observed distribution at all) is a question about the graph; estimation
-comes afterwards, and no estimator rescues a wrong graph.
+observed association. The backdoor criterion says that conditioning on a set which
+contains no descendant of T and blocks every path from T to Y entering T through an
+arrow identifies the effect. A collider is caused by both T and Y, and conditioning on
+it opens a closed path and creates a spurious association, as when you analyse only
+customers who complained. Identification (is the effect a function of the observed
+distribution at all) is a question about the graph. Estimation comes afterwards, and no
+estimator can correct a wrong graph.
 
 **The estimators are one idea with different failure modes.** Regression adjustment fits
 Y on T and X and reads off the coefficient, and is wrong if the functional form is.
-Propensity methods fit e(X) = P(T = 1 | X) and weight units by 1/e(X) (controls by
-1/(1 − e(X))) or match treated units to similar controls; they are wrong if the propensity
-model is, and unstable when propensities near 0 or 1 give huge weights, which is why you
-trim. The doubly robust (AIPW) estimator combines both and is consistent if either model
-is right. Difference-in-differences removes fixed group differences with a pre-period and
-needs parallel trends; instrumental variables need a variable that moves T but not Y
-directly; regression discontinuity compares units just either side of a threshold rule.
+Propensity methods fit e(X) = P(T = 1 | X) and weight treated units by 1/e(X) and
+controls by 1/(1 − e(X)), or match treated units to similar controls. They are wrong if
+the propensity model is, and unstable when propensities near 0 or 1 give huge weights,
+which is why you trim. The doubly robust (AIPW) estimator combines both and is
+consistent if either model is right. Difference-in-differences removes fixed group
+differences with a pre-period and needs parallel trends; instrumental variables need a
+variable that moves T but not Y directly; regression discontinuity compares units just either side of a threshold rule.
 Each rests on an assumption the data cannot test.
 
-**Uplift is the difference between who will buy and who will buy because you acted.**
+**Uplift modelling targets the customers whose behaviour the treatment changes.**
 Sort customers by (buys untreated, buys treated): sure things buy regardless, lost causes
 never do, persuadables buy only if treated, sleeping dogs buy only if left alone. A
 propensity model ranks sure things top; an uplift model ranks persuadables top, and they
@@ -117,44 +119,47 @@ al.) imputes each unit's counterfactual from the other arm's model and wins when
 unbalanced; causal forests (Athey and Wager) split on effect heterogeneity with honest
 sample splitting. Evaluate with the Qini curve, cumulative incremental conversions
 against fraction targeted, sorted by predicted uplift, against the diagonal. All of it
-needs a randomised or well-identified treatment; uplift on observational campaign data
-recovers the old targeting rule, not the effect.
+needs a randomised or well-identified treatment. Fitted to observational campaign data,
+an uplift model recovers the old targeting rule instead of the effect.
 
-**An explanation answers a specific question, and global and local are different
-questions.** Global: which features does the model use across the population. Local: why
-this prediction for this customer. Impurity importance, the default in tree libraries,
-sums the loss reduction at each feature's splits and is inflated by high-cardinality and
-continuous features. Permutation importance shuffles a feature and measures the loss
-increase, which is honest about reliance but falls to zero for a feature whose correlated
-twin can stand in for it, so two near-duplicates both look useless. Partial dependence
-averages the prediction as one feature varies; ICE curves draw it per individual and
-reveal the interactions the average hides.
+**Each explanation method answers a specific question, and global and local
+explanations answer different ones.** A global explanation says which features the model
+uses across the population. A local one says why the model made this prediction for this
+customer. Impurity importance, the default in tree libraries, sums the loss reduction at
+each feature's splits and is inflated by high-cardinality and continuous features.
+Permutation importance shuffles a feature and measures the loss increase. It measures the
+model's reliance on the feature directly, but falls to zero for a feature whose
+correlated twin can stand in for it, so two near-duplicates both look useless. Partial
+dependence averages the prediction as one feature varies; ICE curves draw it per
+individual and reveal the interactions the average hides.
 
 **SHAP gives local attributions with an axiomatic guarantee, and TreeSHAP makes them
 exact for trees.** The Shapley value is the unique attribution satisfying efficiency
 (attributions sum to prediction minus baseline), symmetry, dummy and additivity, a
-weighted average of a feature's marginal contribution over all 2^d coalitions. KernelSHAP
+weighted average of a feature's marginal contribution over the 2^(d−1) coalitions of the other features. KernelSHAP
 samples coalitions; TreeSHAP (Lundberg et al.) uses the tree structure to compute exact
-values in O(TLD²), which is why it is instant on your LightGBM. A SHAP value explains the
-model's function, not the world: if the model uses tenure because tenure proxies for
-contract type, SHAP faithfully credits tenure. LIME fits a local linear surrogate and is
-a cheaper, less stable answer to the same question; counterfactual explanations ("you
-would have been approved with £2,000 more income") are what a customer actually wants.
-Rudin's argument is that high-stakes decisions should use an inherently interpretable
-model, sparse linear or rule-based, because the accuracy gap on tabular data is usually
-small and an explanation of a black box is itself a model that can be wrong.
+values in O(TLD²), which is why it is fast on your LightGBM. A SHAP value describes the
+model's function and says nothing about causes in the world: if the model uses tenure
+because tenure proxies for contract type, SHAP credits tenure. LIME fits a local linear
+surrogate and is a cheaper, less stable answer to the same question. Counterfactual
+explanations ("you would have been approved with £2,000 more income") are what a
+customer usually wants. Rudin's argument is that high-stakes decisions should use an
+inherently interpretable model, sparse linear or rule-based, because the accuracy gap on
+tabular data is usually small and an explanation of a black box is itself a model that
+can be wrong.
 
 **Fairness has several definitions, and they cannot all hold at once.** A protected
 attribute is rarely a feature, but proxies (postcode, relationship status, name) carry
 it. Demographic parity asks that the selection rate P(Ŷ = 1 | A) be equal across groups;
 equalised odds (Hardt, Price, Srebro) asks that TPR and FPR be equal; calibration within
-groups asks that a score of 0.7 mean 70% in every group. With unequal base rates an
-imperfect classifier cannot satisfy demographic parity and equalised odds together
-(Problem 8), and Chouldechova shows calibration and equal error rates conflict likewise.
-Reweighing the training data or setting group-specific thresholds buys one metric at the
-price of another and of accuracy; which to buy is a policy decision. A governance
-committee needs the rates by group before and after, the metric you chose and why, what
-it cost, and what you did not measure.
+groups asks that a score of 0.7 mean 70% in every group. With unequal base rates, no
+classifier that carries information about the label (TPR ≠ FPR) can satisfy demographic
+parity and equalised odds together (Problem 8). Chouldechova shows that calibration and
+equal error rates conflict in the same way for any imperfect classifier.
+Reweighing the training data or setting group-specific thresholds improves one metric at
+the cost of another and of accuracy, and the choice between them is a policy decision. A
+governance committee needs the rates by group before and after, the metric you chose and
+why, what it cost, and what you did not measure.
 
 **Forward links.** Module 13 puts the disaggregated metrics and the fairness statement
 into the model card, treats drift as a change in the population you calibrated on, and
@@ -194,7 +199,7 @@ Run `uv sync --group causal` first.
 
 ### Lab 12.1: A/B testing by simulation
 
-Goal: own the arithmetic well enough to know when a dashboard is lying.
+Goal: learn the arithmetic of A/B tests well enough to tell when a dashboard is wrong.
 
 1. `ab/power.py`: `sample_size(p_base, mde, alpha=0.05, power=0.8)` and `power(n, p_base,
    mde)`. Check by simulation: 2,000 tests at the computed n with the effect present, and
@@ -221,7 +226,8 @@ at most 0.06 and delta coverage is in [0.93, 0.97]; the four figures are in the 
 
 ### Lab 12.2: Causal estimators on a known DAG, then on Lalonde
 
-Goal: see which estimators recover a known effect, and how a collider ruins them.
+Goal: measure which estimators recover a known effect, and how conditioning on a
+collider biases them.
 
 1. `estimators.py`: simulate n = 5,000 with X ~ N(0, 1), T ~ Bernoulli(σ(0.8X)),
    Y = 2.0T + 1.5X + ε, so the ATE is 2.0. A second version adds a collider C = T + Y + ε
@@ -247,8 +253,8 @@ comparison is hard (positivity: most CPS controls look nothing like NSW particip
 
 ### Lab 12.3: Hillstrom email uplift (headline lab)
 
-Goal: a targeting decision with a stated cost and margin, and proof it beats the
-obvious alternative.
+Goal: a targeting decision with a stated cost and margin, and evidence that it beats
+targeting by propensity.
 
 Data: `data/hillstrom/hillstrom.csv`, 64,000 customers randomised in thirds to a men's
 merchandise email, a women's merchandise email, or no email. Features: recency (months),
@@ -267,7 +273,7 @@ spend.
    `econml.dml.CausalForestDML(model_y=LGBMRegressor(), model_t=LogisticRegression(),
    discrete_treatment=True, n_estimators=500, min_samples_leaf=50)`. Repeat on conversion:
    at a 1% base rate with 21,000 per arm, CATE on conversion is barely estimable, and
-   that is a finding.
+   you should report that as a result.
 4. `uplift/qini.py`: sort the held-out 30% by predicted uplift; cumulative incremental
    visits (treated minus control, scaled to equal size) against fraction targeted; the
    diagonal for random; the Qini coefficient as the area between. Curves for all three
@@ -288,7 +294,7 @@ their overlap; pytest checks `qini` against a hand-computed six-row example.
 
 ### Lab 12.4: SHAP on the Module 2 churn LightGBM
 
-Goal: learn what each importance measure measures by breaking them.
+Goal: learn what each importance measure measures by finding the cases where it fails.
 
 1. Load the Module 2 model from its MLflow run, or retrain from its logged parameters.
    `shap.TreeExplainer(model)(X_test)`, then `shap.plots.beeswarm`, and

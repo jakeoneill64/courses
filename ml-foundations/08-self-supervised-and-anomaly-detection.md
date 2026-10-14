@@ -4,29 +4,27 @@
 
 ## Why this module
 
-Two unsupervised topics that matter more in practice than anything else in Part II or
-III. The first is learning representations without labels, which is the idea under every
-foundation model: pretrain on what you have in bulk, fine-tune on what you have in
-scarcity. The second is finding the rare thing in a sea of normal: fraud, faults,
-intrusions, the one transaction in six hundred that should not have gone through. Both
-are unsupervised learning with a purpose, and both force the evaluation discipline that
-the Oxford Deep Neural Networks and Security and Privacy of ML assignments will ask for,
-because in neither case does the obvious metric mean what it appears to mean.
+This module covers two unsupervised topics that matter more in practice than anything
+else in Part II or III. The first is learning representations without labels, which is
+the idea under every foundation model: pretrain on the data you have in bulk, then
+fine-tune on the few labels you have. The second is finding rare events among normal
+ones: fraud, faults, intrusions, the one transaction in six hundred that should not have
+gone through. Both require the evaluation discipline that the Oxford Deep Neural
+Networks and Security and Privacy of ML assignments will ask for, because in neither
+case does the obvious metric mean what it appears to mean.
 
 Structurally this module closes Part II's loop. The GMM from Module 3, the PCA from
 Module 4 and the autoencoder from Module 7 become anomaly detectors, and you find out on
-real fraud data which of them survive contact with a 0.17 percent positive rate. The
+real fraud data which of them still work at a 0.17 percent positive rate. The
 self-supervised half takes Module 5's harness and ResNet and shows that the same encoder,
 trained on a task with no labels, can beat one trained with labels when labels are few.
-That result, and understanding why augmentation rather than architecture produces it, is
-what makes Module 9's masked and autoregressive pretraining feel inevitable rather than
-arbitrary.
+That result, and the reason augmentation rather than architecture produces it, motivates
+Module 9's masked and autoregressive pretraining.
 
-The business relevance needs no argument. Fraud, chargebacks, equipment failure and
-account takeover are where unsupervised models earn money today, and every one of them
-has an analyst on the end of the alert queue whose time is the real constraint. Learning
-to set a threshold from a cost model and an alert budget, rather than from a metric, is
-the habit this module leaves you with.
+Fraud, chargebacks, equipment failure and account takeover are where unsupervised models
+earn money today. Each has an analyst at the end of the alert queue, and that analyst's
+time is the binding constraint. This module trains the habit of setting a threshold
+from a cost model and an alert budget rather than from a metric.
 
 ## Skip test
 
@@ -50,29 +48,29 @@ If all six are easy, do Labs 8.1 and 8.4 only, and the write-up.
 
 ## Core ideas
 
-**Pretrain-then-fine-tune is the organising idea of modern machine learning, and
-unlabelled data is the lever.** Labels are expensive, slow and specific to one task;
-unlabelled data is nearly free and shared across all of them. Self-supervised learning
-invents a supervisory signal from the data itself, trains an encoder on it, and hands the
-encoder to a downstream task with a few labels. The bet is that whatever structure you
-must learn to solve the invented task is the same structure the real task needs. Every
-large language model, every vision foundation model and every embedding model you will
-meet in Module 10 is this bet paying off, and the design question in each case is the
-same: what invented task forces the right structure?
+**Pretraining on unlabelled data and fine-tuning on a few labels is the organising idea
+of modern machine learning.** Labels are expensive, slow and specific to one task, while
+unlabelled data is nearly free and serves all of them. Self-supervised learning invents a
+supervisory signal from the data itself, trains an encoder on it, and hands the encoder
+to a downstream task with a few labels. The bet is that whatever structure you must
+learn to solve the invented task is the same structure the real task needs. Every large
+language model, vision foundation model and embedding model you will meet in Module 10
+is a case of this bet succeeding, and in each case the design question is which
+invented task forces the right structure.
 
 **Pretext tasks were the first answer and were superseded because they encoded the
 wrong invariances.** Predicting a rotation, solving a jigsaw of patches, or colourising a
 grey image each requires some understanding of objects, and each also requires
 remembering things a classifier does not care about: which way is up, where the seam is,
 what colour the wall was. The representations were better than random and worse than
-supervised, and the gap did not close with scale. What replaced them was a task whose
-solution is exactly the invariance you want: recognise two views of the same thing.
+supervised, and the gap did not close with scale. They were replaced by recognising two
+views of the same thing, a task whose solution is the invariance you want.
 
 **Contrastive learning turns "same or different" into a likelihood, and InfoNCE is that
 likelihood.** Take N pairs (x_i, x_i⁺) of two views of the same image, encode to z, and
 score similarity s(z_i, z_j) = z_i·z_j / (τ ‖z_i‖ ‖z_j‖). The InfoNCE loss treats each
-anchor as an N-way classification of its positive against the other 2N − 2 items in the
-batch: ℓ_i = −log [exp s(z_i, z_i⁺) / Σ_{k≠i} exp s(z_i, z_k)]. Problem 1 shows its
+anchor as a (2N − 1)-way classification of its positive against the other 2N − 2 items in
+the batch: ℓ_i = −log [exp s(z_i, z_i⁺) / Σ_{k≠i} exp s(z_i, z_k)]. Problem 1 shows its
 minimum bounds mutual information, I(x; x⁺) ≥ log N − L, so with N = 512 the bound cannot
 exceed 6.2 nats however good the encoder, which is one reason batch size matters. The
 negatives are what stop the trivial solution of mapping everything to one point. The
@@ -80,40 +78,39 @@ temperature τ sets how sharply the softmax concentrates on the hardest negative
 small and a few near-duplicates dominate every gradient, too large and all negatives are
 weighted alike and the loss stops discriminating (Problem 2).
 
-**SimCLR's recipe is simple, and the augmentation set is the actual model.** Two random
-augmentations of each image, a ResNet encoder, a two-layer MLP projection head, InfoNCE
-on the head's output, large batches, long training. The encoder's output before the head
-is what you keep; the head absorbs the invariances the loss demands so the encoder can
-retain information the loss would otherwise throw away. Chen et al.'s ablations make one
-thing plain: the choice of augmentations, and in particular the combination of random
-resized cropping with strong colour jitter, moves the linear-probe accuracy by tens of
-points, while architecture changes move it by a few. You are telling the model what does
-not matter, and the representation is the complement of that. Change the augmentations
-and you change the task.
+**SimCLR's recipe is short, and the choice of augmentations decides most of its
+accuracy.** The recipe is two random augmentations of each image, a ResNet encoder, a
+two-layer MLP projection head, InfoNCE on the head's output, large batches and long
+training. The encoder's output before the head is what you keep; the head
+absorbs the invariances the loss demands so the encoder can retain information the loss
+would otherwise throw away. Chen et al.'s ablations show that the choice of
+augmentations, and in particular the combination of random resized cropping with strong
+colour jitter, moves the linear-probe accuracy by tens of points, while architecture
+changes move it by a few. The augmentations tell the model what to ignore and the
+representation keeps the rest, so changing the augmentations changes the task.
 
 **MoCo fixes the batch-size problem with a queue and a slowly moving encoder.** InfoNCE
-wants many negatives, and SimCLR gets them by using batches of thousands. MoCo keeps a
+needs many negatives, and SimCLR gets them by using batches of thousands. MoCo keeps a
 queue of recent keys as negatives instead, so the number of negatives is decoupled from
-the batch. The catch is that keys computed by a fast-changing encoder are inconsistent
-with each other, so MoCo encodes keys with a momentum encoder whose weights are an
-exponential moving average of the query encoder's, moving slowly enough that a queue of
-65,536 keys stays coherent. The same momentum-encoder trick reappears in BYOL and DINO
+the batch. Keys computed by a fast-changing encoder are inconsistent with each other,
+so MoCo encodes keys with a momentum encoder whose weights are an exponential moving
+average of the query encoder's, moving slowly enough that a queue of 65,536 keys stays
+coherent. The same momentum-encoder trick reappears in BYOL and DINO
 for a different reason.
 
-**Non-contrastive methods drop negatives entirely and should collapse, and the
-interesting fact is why they do not.** BYOL trains an online network to predict a
-momentum target network's embedding of the other view; SimSiam removes the momentum
-encoder too and trains two branches of one network with a small predictor MLP on one
-side, a stop-gradient on the other, and negative cosine similarity as the loss. With only
-positive pairs the loss is minimised by a constant output, yet in practice the embedding
-stays spread. Chen and He's ablations show the stop-gradient is essential and the
-predictor nearly so, and their interpretation is that the pair acts like an EM algorithm:
-the stopped branch plays the role of a fixed target (the E-step), the other branch fits
-it (the M-step), and the predictor is what keeps the two from being identical (Problem 3).
-Lab 8.2 makes you watch the collapse happen when you remove the stop-gradient. DINO is
-BYOL with a vision transformer, a centring and sharpening step on the target instead of a
-predictor, and the observation that the resulting attention maps segment objects with no
-labels at all.
+**Non-contrastive methods drop negatives entirely, so something else must stop them
+collapsing.** BYOL trains an online network to predict a momentum target network's
+embedding of the other view; SimSiam removes the momentum encoder too and trains two
+branches of one network with a small predictor MLP on one side, a stop-gradient on the
+other, and negative cosine similarity as the loss. With only positive pairs a constant
+output minimises the loss, but in practice the embedding stays spread. Chen and He's
+ablations show that both the stop-gradient and the predictor are essential. Their
+interpretation is that the pair acts like an EM algorithm: the stopped branch plays the
+role of a fixed target (the E-step), the other branch fits it (the M-step), and the
+predictor keeps the two from being identical (Problem 3). In Lab 8.2 you watch the
+collapse happen when you remove the stop-gradient. DINO is BYOL with a vision
+transformer, a centring and sharpening step on the target instead of a predictor, and
+the observation that the resulting attention maps segment objects with no labels at all.
 
 **Masked modelling is the bridge to language, and the masking ratio tells you how
 redundant a modality is.** BERT hides 15 percent of tokens and predicts them; a masked
@@ -132,10 +129,10 @@ The standard probes are a linear classifier on frozen features, k-nearest neighb
 the feature space (no training at all), and full fine-tuning. A label-efficiency curve
 plots downstream accuracy against the labelled fraction (1, 10, 100 percent) for the
 self-supervised encoder and for a supervised model trained from scratch on the same
-labelled subset with the same augmentations and budget. That last clause is the whole
-comparison. Self-supervision wins at 1 and 10 percent by a wide margin, and roughly draws
-at 100 percent on CIFAR-10; a claim that it "beats supervised" without stating the
-labelled fraction is not a result.
+labelled subset with the same augmentations and budget. The comparison is only fair if
+that last condition holds. Self-supervision wins at 1 and 10 percent by a wide margin,
+and roughly draws at 100 percent on CIFAR-10. A claim that it "beats supervised" means
+nothing unless it states the labelled fraction.
 
 **Anomaly detection is several problems that share a name.** A point anomaly is odd on
 its own; a contextual anomaly is normal in general but odd here (a large purchase at 3 am
@@ -148,64 +145,69 @@ and such fast drift that the first two are what you run day to day. Decide which
 doing before choosing a method, because the methods and the evaluation differ.
 
 **Statistical and density methods score how far a point is from where the mass is.** A
-z-score per feature ignores correlation; the Mahalanobis distance d² = (x − μ)ᵀ Σ⁻¹ (x − μ)
-accounts for it, and under Gaussianity d² is χ² with d degrees of freedom, which gives a
-threshold with a stated false-positive rate (Problem 5). Estimate μ and Σ robustly, with
-`MinCovDet`, or the anomalies you are hunting inflate the covariance and hide themselves.
-Module 3's GMM generalises to multimodal normals, with log-likelihood as the score; kernel
-density estimation does the same without parameters and fails past a dozen dimensions.
-LOF compares a point's local density with that of its neighbours, so a point in a sparse
-but legitimate region is not penalised while a point near a dense cluster but not in it
-is; it is O(n²) without an index and sensitive to k.
+z-score per feature ignores correlation; the Mahalanobis distance
+d² = (x − μ)ᵀ Σ⁻¹ (x − μ) accounts for it, and under Gaussianity d² is χ² with d degrees
+of freedom, which gives a threshold with a stated false-positive rate (Problem 5). Estimate μ and Σ with
+`MinCovDet`, which resists outliers, or the anomalies you are looking for inflate the
+covariance and become harder to detect. Module 3's GMM generalises to multimodal
+normals, with log-likelihood as the score; kernel density estimation does the same
+without parameters and fails past a dozen dimensions. LOF compares a point's local
+density with that of its neighbours, so a point in a sparse but legitimate region is not
+penalised while a point near a dense cluster but not in it is. It is O(n²) without an
+index and sensitive to k.
 
-**Isolation forest is the pragmatic default, and one-class methods are its
-learned-boundary cousins.** Build many random trees, each splitting a random feature at a
-random value on a subsample of 256 points, and record the depth at which each point ends
-alone. Anomalies are few and different, so they are isolated in a handful of splits;
-normal points need many. The expected path length is normalised by the average path length
-of an unsuccessful search in a binary search tree, c(n) = 2H(n − 1) − 2(n − 1)/n, to give
-a score in (0, 1] (Problem 4). It is linear in n, needs no distances, handles mixed
-scales tolerably, and has one hyperparameter that matters (the contamination rate, which
-sets the threshold and nothing else). One-class SVM fits the tightest boundary around the
-normals in a kernel space; Deep SVDD does the same with a network mapping normals to a
-small hypersphere, and must be regularised or it maps everything to the centre.
+**Isolation forest is the pragmatic default, and one-class methods learn an explicit
+boundary around the normals instead.** Build many random trees, each splitting a random
+feature at a random value on a subsample of 256 points, and record the depth at which
+each point ends alone. Anomalies are few and different, so they are isolated in a
+handful of splits, and normal points need many. The expected path length is normalised
+by the average path length of an unsuccessful search in a binary search tree,
+c(n) = 2H(n − 1) − 2(n − 1)/n, to give a score in (0, 1] (Problem 4). It is linear in n, needs
+no distances, handles mixed scales tolerably, and has one hyperparameter that matters
+(the contamination rate, which sets the threshold and nothing else). One-class SVM fits
+the tightest boundary around the normals in a kernel space; Deep SVDD does the same with
+a network mapping normals to a small hypersphere, and must be regularised or it maps
+everything to the centre.
 
 **Reconstruction error is an anomaly score with a specific blind spot.** Train Module 7's
 autoencoder on transactions, score each new one by ‖x − x̂‖². Anything unlike the training
-data reconstructs badly. The failure is anything an over-capable decoder can reconstruct
-anyway: fraud that lives on the same manifold as normal spending, or a bottleneck wide
-enough to pass everything through. A VAE's negative ELBO has the same blind spot with a
-better calibration story. In practice reconstruction methods shine on sensor and image
-data where normal is a tight manifold, and disappoint on tabular data like fraud where
-normal is diffuse and fraud is not far from it.
+data reconstructs badly. The score fails on anything the decoder can reconstruct anyway,
+such as fraud on the same manifold as normal spending, and on everything when the
+bottleneck is wide enough to pass all inputs through. A VAE's negative ELBO has the same
+blind spot with a better calibration story. Reconstruction methods work well on sensor
+and image data, where normal data lies on a tight manifold, and poorly on tabular data
+such as fraud, where normal is diffuse and fraud lies close to it.
 
-**Under extreme imbalance ROC-AUC flatters everything, so report what an analyst
-experiences.** With roughly 150 frauds in 85,000 transactions, a detector that ranks 99 percent
-of normals below the frauds has a false-positive rate of one percent and a ROC-AUC near
-0.99, and it also produces 850 false alerts for every 150 true ones. Precision-recall
-curves and PR-AUC live in the space the analyst sees; precision at k, for k the number of
-alerts the team can review in a day, is the honest headline. A cost model closes the loop:
-with c_fp the cost of a wasted review and c_fn the cost of a missed fraud, the
-threshold that minimises expected cost flags when p(fraud | x) > c_fp / (c_fp + c_fn)
-(Problem 7), and an alert budget is the same decision with a capacity constraint instead
-of a price. Bootstrap the metric, because 150-odd positives make the point estimate noisy.
+**Under extreme imbalance ROC-AUC makes every detector look good, so report what an
+analyst experiences.** With roughly 150 frauds in 85,000 transactions, a detector that
+ranks 99 percent of normals below the frauds has a false-positive rate of one percent
+and a ROC-AUC near 0.99, and it also produces 850 false alerts for every 150 true ones.
+Precision-recall curves and PR-AUC measure what the analyst sees, and precision at k,
+for k the number of alerts the team can review in a day, is the honest headline. A cost
+model sets the threshold. With c_fp the cost of a wasted review and c_fn the cost of a
+missed fraud, the threshold that minimises expected cost flags when
+p(fraud | x) > c_fp / (c_fp + c_fn) (Problem 7). An alert budget is the same decision
+with a capacity constraint in place of a price. Bootstrap the metric, because 150-odd
+positives make the point estimate noisy.
 
-**Fraud changes because fraudsters read your rejections, and the data is stranger than
-it looks.** Labels arrive weeks late through chargebacks, so today's model trained on
-today's labels is a model of last month's fraud. A fixed threshold's alert rate drifts as
-the score distribution moves, which you monitor with a KS test or a population stability
-index between the training period and a rolling window, and recalibrate on a schedule
-rather than when someone notices. Adversaries adapt, so any published or inferred rule
-decays; this is the adversarial drift the SPM course discusses. Finally, the ULB dataset's
-features V1 to V28 are principal components of the real ones, so a rule like "V14 below
-−5" cannot be explained to a customer or a regulator, and feature attribution reads
-directions in PCA space. Interpretability was traded for release, and you should say so.
+**Fraud changes because fraudsters learn from your rejections, and the dataset has
+quirks of its own.** Labels arrive weeks late through chargebacks, so today's model
+trained on today's labels is a model of last month's fraud. A fixed threshold's alert
+rate drifts as the score distribution moves. Monitor it with a KS test or a population
+stability index between the training period and a rolling window, and recalibrate on a
+schedule rather than when someone notices. Adversaries adapt, so any published or
+inferred rule loses its effect over time, which is the adversarial drift the SPM course
+discusses. Finally, the ULB dataset's features V1 to V28 are principal components of the
+real ones, so a rule like "V14 below −5" cannot be explained to a customer or a
+regulator, and feature attribution reads directions in PCA space. The dataset gave up
+interpretability so that it could be released, and your write-up should say so.
 
 **Forward links.** Module 9 covers the two pretraining objectives that won for text,
-masked and autoregressive, and builds the architecture they run on; the InfoNCE loss
-returns as the training objective for the embedding models behind retrieval in Module 10. Module 13 turns this module's KS and PSI
-checks into a monitoring job on a served model, and its model card must state the alert
-budget and cost model the threshold came from.
+masked and autoregressive, and builds the architecture they run on. The InfoNCE loss
+returns as the training objective for the embedding models behind retrieval in
+Module 10. Module 13 turns this module's KS and PSI checks into a monitoring job on a
+served model, and its model card must state the alert budget and cost model the
+threshold came from.
 
 ## Reading
 
@@ -279,10 +281,10 @@ above 75 percent; the label-efficiency figure shows the SSL probe and fine-tune 
 supervised baseline at 1 and 10 percent with the numbers in a table; and the temperature
 ablation is in the notebook with a sentence on which τ won and why.
 
-### Lab 8.2: SimSiam and the collapse you were promised
+### Lab 8.2: SimSiam and representation collapse
 
-Goal: see that positives alone can work, and see exactly what happens when you remove the
-one line that makes it work.
+Goal: show that training on positive pairs alone can work, and observe the collapse when
+you remove the stop-gradient or the predictor.
 
 1. Implement SimSiam in `08-selfsup/simsiam/model.py`: the Lab 8.1 encoder, a projection
    MLP to 2048 dimensions with BatchNorm, a predictor MLP 2048 → 512 → 2048, and the
@@ -300,9 +302,9 @@ Done when: the three std traces are on one figure, the healthy run's std stays n
 while the ablations collapse, and the notebook states the kNN accuracy of the healthy
 run against SimCLR at equal epochs.
 
-### Lab 8.3: Masked autoencoding, lite
+### Lab 8.3: A small masked autoencoder
 
-Goal: make MAE concrete before Module 9 builds transformers in earnest.
+Goal: build a small MAE before Module 9 covers transformers in full.
 
 1. Split CIFAR-10 images into 4 × 4 patches (64 per image), flatten to 48-dim vectors, and
    mask a random 75 percent. Encode the 16 visible patches with a small transformer (four
@@ -315,8 +317,8 @@ Goal: make MAE concrete before Module 9 builds transformers in earnest.
 3. Train 50 epochs, batch 256, AdamW 1.5e-4 with cosine. Show eight test images as
    original, masked and reconstructed.
 4. Linear probe on the mean-pooled encoder output over all 64 patches with no masking.
-   Expect this to trail SimCLR noticeably, plausibly somewhere in the 45 to 60 percent
-   range; state your number and the gap.
+   Expect this to trail SimCLR noticeably, probably in the 45 to 60 percent range. State
+   your number and the gap.
 
 Done when: the reconstruction figure is in the notebook, the linear-probe number is
 reported against Lab 8.1's, and one paragraph explains why masked modelling's linear
@@ -354,7 +356,7 @@ components of undisclosed features), Amount and Class.
    contrast is visible. Realistic expectations: the supervised model's PR-AUC lands
    somewhere around 0.7 to 0.85 on a time split; isolation forest and the other
    unsupervised methods sit far below, often under 0.3; ROC-AUC is above 0.9 for nearly
-   everything, which is the lesson.
+   everything, which shows how little it separates the detectors.
 6. Cost model. Take c_fp = £5 for an analyst review and c_fn as the median fraud Amount in
    the training period. Compute the cost-optimal threshold for the supervised model and
    its alert count; then compute the best achievable precision under a budget of 100
@@ -451,6 +453,7 @@ function in `08-selfsup/fraud/drift.py`.
 ## Next
 
 Module 9 takes the two objectives that won for text, masked prediction from this module's
-MAE and autoregressive prediction, and builds the architecture they run on. Attention
-arrives as soft retrieval, GPT is written from an empty file, and the tokeniser and KV
-cache you add make the Oxford LLM course's architecture week feel like revision.
+MAE and autoregressive prediction, and builds the architecture they run on. It introduces
+attention as soft retrieval and has you write GPT from an empty file, and with the
+tokeniser and KV cache you add, the Oxford LLM course's architecture week will be
+revision.

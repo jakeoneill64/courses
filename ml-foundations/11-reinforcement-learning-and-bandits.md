@@ -9,21 +9,20 @@ of its vocabulary. Every LLM paper you read on the MSc has a section on reinforc
 learning from human feedback, and you cannot judge it without knowing what a policy
 gradient is, why PPO clips it, and what a reward model can be gamed into. The Oxford
 Generative AI week assumes that literacy, and the Classical Machine Learning week
-covers the tabular foundations at speed. One week here makes both feel familiar.
+covers the tabular foundations at speed. One week here prepares you for both.
 
-The part of RL a business actually deploys is the bandit. Whenever you choose between
-subject lines, prices, recommendations or ad creatives and see the outcome, you are
-facing the explore-exploit trade, and the choice between an A/B test and a bandit is a
-real decision with real money attached. A bandit earns more during the experiment; an
-A/B test gives you a clean inference at the end. Knowing when each is right, and how to
-evaluate a new policy from logs without running it, is the practical skill this
-module leaves you with, and it is the one the Augmenting Business Decisions course
-will expect you to argue about.
+The part of RL that businesses deploy is the bandit. Whenever you choose between
+subject lines, prices, recommendations or ad creatives and see the outcome, you face the
+explore-exploit trade-off, and choosing between an A/B test and a bandit is a decision
+with money at stake. A bandit earns more during the experiment, and an A/B test gives a clean
+inference at the end. This module teaches when each is right and how to evaluate a new
+policy from logs without running it, and the Augmenting Business Decisions course will
+expect you to argue about both.
 
-Structurally, the module closes two loops. The policy gradient and PPO paragraphs
-explain what Module 10's RLHF and DPO sections were built on. The bandit and
-off-policy evaluation labs are the bridge to Module 12, where the same email data is
-analysed as a controlled experiment and as a causal question.
+Structurally, the module links Module 10 to Module 12. The policy gradient and PPO
+paragraphs explain what Module 10's RLHF and DPO sections were built on. The bandit and
+off-policy evaluation labs lead into Module 12, where the same email data is analysed
+as a controlled experiment and as a causal question.
 
 ## Skip test
 
@@ -47,9 +46,10 @@ If all six are easy, do Labs 11.4 and 11.5 only, and the write-up.
 
 ## Core ideas
 
-**A Markov decision process is a supervised learning problem with the labels delayed
-and the data chosen by the learner.** States s, actions a, transition probabilities
-P(s' | s, a), rewards r, and a discount γ in [0, 1) define it. The return is
+**A Markov decision process differs from supervised learning in two ways: the feedback
+arrives late, and the learner's actions choose the data.** States s, actions a,
+transition probabilities P(s' | s, a), rewards r, and a discount γ in [0, 1) define it.
+The return is
 G_t = Σ_k γ^k r_{t+k+1}, and discounting is both a preference for sooner reward and the
 device that keeps infinite sums finite. A policy π(a | s) induces two value functions:
 V^π(s), the expected return from s, and Q^π(s, a), the expected return from taking a
@@ -61,9 +61,9 @@ contraction.** Expectation: V^π(s) = Σ_a π(a | s) Σ_s' P(s' | s, a)[r + γV^
 Optimality: Q*(s, a) = Σ_s' P(s' | s, a)[r + γ max_a' Q*(s', a')]. Define the operator
 T that maps a value function to the right-hand side; then ‖TV − TU‖∞ ≤ γ‖V − U‖∞
 (Problem 1), so by Banach's theorem T has exactly one fixed point and iterating it
-from anywhere converges geometrically at rate γ. That is why value iteration works,
-why γ close to 1 makes everything slow, and why the same equations become unstable
-when a function approximator breaks the contraction.
+from anywhere converges geometrically at rate γ. This is why value iteration works,
+why γ close to 1 slows convergence, and why the same equations become unstable when a
+function approximator breaks the contraction.
 
 **Dynamic programming solves the MDP exactly when the model is known.** Policy
 evaluation iterates the expectation equation to convergence. Policy improvement makes
@@ -71,33 +71,33 @@ the policy greedy with respect to the resulting Q; the policy improvement theore
 this never makes it worse. Policy iteration alternates the two and converges in a
 handful of rounds on small problems; value iteration folds the improvement into every
 sweep and converges in more, cheaper, sweeps. Lab 11.1 runs all three on FrozenLake,
-where the transition table is in `env.unwrapped.P` and the optimal policy on the
-slippery 4×4 map reaches the goal only about three quarters of the time, because no
-policy can do better against the ice.
+where the transition table is in `env.unwrapped.P`. On the slippery 4×4 map the optimal
+policy reaches the goal within the default 100-step limit only about three quarters of
+the time, and no policy does better on the ice.
 
 **Learning from experience trades bias for variance.** Monte Carlo waits for the
 episode to end and updates V(s) towards the observed return G_t: unbiased, high
 variance, needs episodes to terminate. Temporal difference updates towards the
 bootstrapped target r + γV(s'): biased while V is wrong, much lower variance, and
-learns online from every step. TD(λ) interpolates between them with a trace. In
-practice TD wins on most problems because variance is what limits learning speed, and
-the bias vanishes as V converges (Problem 3).
+learns online from every step. TD(λ) interpolates between them with a trace. TD learns
+faster on most problems because variance is what limits learning speed, and the bias
+vanishes as V converges (Problem 3).
 
-**SARSA and Q-learning differ in one symbol, and the cliff shows why it matters.**
-SARSA updates Q(s, a) towards r + γQ(s', a') using the action a' the policy actually
-took: on-policy, so it learns the value of the exploring policy, including its
-mistakes. Q-learning updates towards r + γ max_a' Q(s', a'): off-policy, so it learns
-the value of the greedy policy no matter how it explores. On the cliff gridworld with
+**SARSA and Q-learning differ in one term of the update, and the cliff gridworld shows
+the consequence.** SARSA updates Q(s, a) towards r + γQ(s', a') using the action a' the
+policy actually took: on-policy, so it learns the value of the exploring policy,
+including its mistakes. Q-learning updates towards r + γ max_a' Q(s', a'): off-policy,
+so it learns the value of the greedy policy no matter how it explores. On the cliff gridworld with
 ε-greedy exploration, Q-learning learns the shortest path along the cliff edge and
 keeps falling off during training, averaging about −50 per episode; SARSA learns the
 safe path along the top, at about −25. Both converge to the same optimal policy when ε
-decays to zero. Off-policy learning is what makes experience replay possible, and it is
-also the source of the instability in the next paragraph.
+decays to zero. Off-policy learning makes experience replay possible, and it is also a
+source of the instability described in the next paragraph.
 
-**Exploration is a decision problem in its own right, and the good methods use
-uncertainty.** ε-greedy explores uniformly and forever, which wastes trials on arms it
-already knows are bad. Optimistic initialisation explores by default until each
-estimate has been driven down. Upper confidence bound methods choose the action with
+**Exploration is a decision problem in its own right, and the better methods use the
+uncertainty in each estimate.** ε-greedy explores uniformly and forever, which wastes
+trials on arms it already knows are bad. Optimistic initialisation explores by default
+until each estimate has been driven down. Upper confidence bound methods choose the action with
 the highest plausible value, μ̂_a + √(2 ln t / n_a) for UCB1, so exploration
 concentrates on actions that are uncertain and might be good, and the regret grows
 only logarithmically in T (Problem 5). Thompson sampling keeps a posterior over each
@@ -106,61 +106,61 @@ explores in proportion to the probability that an action is best, is simple to
 implement for Bernoulli rewards with Beta posteriors, and empirically matches or beats
 UCB (Chapelle and Li). It is the default choice in Lab 11.4.
 
-**Function approximation breaks the tabular guarantees, and DQN patches it with two
-tricks.** Replace the Q table with a network and the fixed point may not exist: the
-combination of bootstrapping, off-policy data and function approximation is the deadly
-triad, and any two are fine. DQN trains anyway by storing transitions in a replay
-buffer and sampling minibatches from it, which breaks the correlation between
-consecutive samples, and by computing targets from a separate target network updated
-only every few thousand steps, which stops the target moving with every update. The
-result learned Atari from pixels in 2015 and is the reference design for value-based
-deep RL; you build a small one for CartPole as the optional part of Lab 11.3.
+**Function approximation breaks the tabular guarantees, and DQN adds two techniques
+that let it train anyway.** Replace the Q table with a network and the fixed point may
+not exist. The combination of bootstrapping, off-policy data and function approximation
+is the deadly triad, and instability needs all three. DQN stores transitions in a
+replay buffer and samples minibatches from it, which breaks the correlation between
+consecutive samples. It computes targets from a separate target network updated only
+every few thousand steps, which stops the target moving with every update. DQN learned
+Atari from pixels in 2015 and is the reference design for value-based deep RL; you
+build a small one for CartPole as the optional part of Lab 11.3.
 
 **Policy gradient methods optimise the policy directly and are what LLM training
 uses.** For a stochastic policy π_θ, the policy gradient theorem gives
 ∇J(θ) = E[Σ_t ∇ log π_θ(a_t | s_t) G_t]: push up the log-probability of actions in
 proportion to the return that followed them. REINFORCE is that expectation estimated
-from sampled episodes, and its variance is enormous because G_t is a sum of many noisy
+from sampled episodes, and its variance is high because G_t is a sum of many noisy
 rewards. Subtracting a baseline b(s_t) leaves the gradient unbiased (Problem 2) and, if
-b ≈ V(s_t), reduces the variance by an order of magnitude; the difference G_t − V(s_t)
+b ≈ V(s_t), can reduce the variance several-fold; the difference G_t − V(s_t)
 is the advantage. Actor-critic replaces G_t with a bootstrapped estimate from a learned
 critic, trading variance for bias exactly as TD did. Lab 11.3 measures the variance
 with and without the baseline.
 
 **PPO makes policy gradient safe to run for many steps on the same data, which is why
-RLHF uses it.** A large policy update can collapse performance and the on-policy
-gradient offers no protection. PPO maximises a clipped surrogate,
+RLHF uses it.** A large policy update can collapse performance, and the on-policy
+gradient offers no protection against one. PPO maximises a clipped surrogate,
 E[min(ρ_t A_t, clip(ρ_t, 1−ε, 1+ε) A_t)] with ρ_t = π_θ(a_t | s_t)/π_old(a_t | s_t),
-so the policy cannot move the probability of any action by more than a factor of about
-1±ε in one round, and several epochs of minibatch updates on one batch of rollouts are
-safe. In RLHF the "environment" is a prompt, the "action" is a whole response, the
-reward is a model trained on human preference pairs, and a KL penalty to the reference
-policy is added to the reward. Without the penalty the policy finds the reward model's
-blind spots (verbose, sycophantic, keyword-stuffed responses) and exploits them; this is
-reward hacking, and it is the general failure mode of every optimised proxy (Problem
-8). DPO, which Module 10 used, removes the reward model and the RL loop by rewriting
-the same objective as a classification loss on preference pairs.
+so the objective gains nothing from moving the probability of any action by more than
+a factor of about 1±ε in one round, and several epochs of minibatch updates on one batch
+of rollouts are safe. In RLHF the "environment" is a prompt, the "action" is a whole
+response, the reward is a model trained on human preference pairs, and a KL penalty to
+the reference policy is added to the reward. Without the penalty the policy finds the
+reward model's blind spots (verbose, sycophantic, keyword-stuffed responses) and
+exploits them. This is reward hacking, and any proxy that is optimised hard is open to
+it (Problem 8). DPO, which Module 10 used, removes the reward model and the RL loop by
+rewriting the same objective as a classification loss on preference pairs.
 
-**Bandits are MDPs with one state, and they are the RL a business runs.** With K arms
-and unknown mean rewards, the regret after T pulls is T·μ* − Σ_t μ_{a_t}: the reward you
-gave up by not knowing the best arm from the start. An A/B/n test is a bandit strategy
-that pulls arms uniformly for a fixed horizon and then commits; its regret is linear in
-the test length, but it delivers what a bandit does not, a confidence interval on every
-arm's value and a valid p-value. Choose the A/B test when you need the inference (a
-pricing decision that will be defended to a regulator, a feature launch that has to be
-understood), when the metric is delayed, or when the arms will interact with each
-other. Choose the bandit when the reward is fast and the goal is cumulative (subject
-lines, ranking, creative rotation), when the arms change often, or when the cost of
-exploring bad arms is real money. Lab 11.4 puts numbers on the difference.
+**Bandits are MDPs with one state, and they are the form of RL that businesses run.**
+With K arms and unknown mean rewards, the regret after T pulls is T·μ* − Σ_t μ_{a_t}:
+the reward you gave up by not knowing the best arm from the start. An A/B/n test is a
+bandit strategy that pulls arms uniformly for a fixed horizon and then commits. Its
+regret is linear in the test length, but it delivers a confidence interval on every
+arm's value and a valid p-value, which a bandit does not. Choose the A/B test when you
+need the inference (a pricing decision that will be defended to a regulator, a feature
+launch that has to be understood), when the metric is delayed, or when the arms will
+interact with each other. Choose the bandit when the reward is fast and the goal is
+cumulative (subject lines, ranking, creative rotation), when the arms change often, or
+when exploring bad arms costs money. Lab 11.4 puts numbers on the difference.
 
-**Contextual bandits personalise, and LinUCB is the workhorse.** When each round comes
-with a feature vector x (the user, the time, the device), the arm values become
-functions of x. LinUCB assumes E[r | x, a] = θ_aᵀx, maintains a ridge-regression
-estimate θ̂_a per arm with covariance A_a⁻¹, and pulls the arm maximising
+**Contextual bandits personalise the choice, and LinUCB is the standard algorithm.**
+When each round comes with a feature vector x (the user, the time, the device), the arm
+values become functions of x. LinUCB assumes E[r | x, a] = θ_aᵀx, maintains a
+ridge-regression estimate θ̂_a per arm with covariance A_a⁻¹, and pulls the arm maximising
 θ̂_aᵀx + α√(xᵀA_a⁻¹x), which is UCB with the confidence width from the regression.
 It was built for news recommendation at Yahoo and is what most "personalisation
-engine" products contain. Its assumptions, linear reward and stationarity, are also
-what break it, and the honest limits below apply.
+engine" products contain. It fails when its assumptions of linear reward and
+stationarity fail, and the limits described below apply to it.
 
 **Off-policy evaluation lets you score a new policy on data an old one collected.**
 Given logs (x_i, a_i, r_i) from a logging policy π_0 with known propensities
@@ -175,15 +175,15 @@ propensities or the reward model are right, with lower variance than IPS when bo
 roughly right. This is how you avoid running a live experiment for every candidate
 policy, and it is why production systems log propensities.
 
-**The honest limits of RL in a business are delayed reward, non-stationarity and the
-gap between prediction and explanation.** Bandits assume the reward arrives before the
-next decision; a subject line's click does, a customer's lifetime value does not, and
+**The limits of RL in a business are delayed reward, non-stationarity and the gap
+between prediction and explanation.** Bandits assume the reward arrives before the next
+decision. A subject line's click does and a customer's lifetime value does not, and
 attributing a delayed outcome to one action is the credit assignment problem in its
 hardest form. Arm values drift: the best subject line in March is not the best in
 December, so production bandits discount or window their statistics and never stop
-exploring entirely (Lab 11.4). And a bandit tells you which arm is best without telling
-you why; when the business asks why, or asks what would happen under an arm nobody has
-tried, you need causal inference and a designed experiment, which is Module 12.
+exploring entirely (Lab 11.4). A bandit tells you which arm is best but not why. When
+the business asks why, or asks what would happen under an arm nobody has tried, you
+need causal inference and a designed experiment, which are the subject of Module 12.
 
 **Forward links.** The policy gradient theorem, the advantage, the KL penalty and the
 clipped ratio are the machinery beneath Module 10's RLHF and DPO. Regret, propensities
@@ -232,14 +232,16 @@ Goal: solve an MDP exactly and verify the Bellman equation numerically.
    iteration and value iteration agree on V* to 1e-6 and on the greedy policy wherever
    the action values are not tied.
 3. Run the greedy policy for 10,000 episodes with `env.reset(seed=...)` and compare the
-   empirical success rate with V*(start); on 4×4 both are about 0.74 under the default
-   100-step truncation. Plot V* on the grid for both maps with the policy's arrows.
+   empirical success rate with the policy's success probability, computed by evaluating
+   it at γ = 1 over the default 100-step truncation; on 4×4 both are about 0.74.
+   V*(start) at γ = 0.99 is a discounted return, about 0.54 on 4×4, and is not a success
+   rate. Plot V* on the grid for both maps with the policy's arrows.
 4. Record the number of sweeps each method needs on each map and how it changes at
    γ = 0.9 and γ = 0.999.
 
 Done when: the residual and agreement tests pass under pytest on both maps, the
-empirical success rate is within 0.02 of V*(start), and the two value grids are in the
-notebook with the sweep counts.
+empirical success rate is within 0.02 of the computed success probability, and the two
+value grids are in the notebook with the sweep counts.
 
 ### Lab 11.2: SARSA and Q-learning on the cliff
 
@@ -262,7 +264,7 @@ recover the optimal FrozenLake policy on the non-slippery map within 5,000 episo
 
 ### Lab 11.3: REINFORCE with a baseline on CartPole
 
-Goal: implement a policy gradient, measure its variance, and see what a baseline buys.
+Goal: implement a policy gradient and measure its variance with and without a baseline.
 
 1. In `11-rl/reinforce.py`: a policy network 4-64-2 with a categorical head and a value
    network 4-64-1; `collect_episode(env, policy)`; `reinforce_update(policy, value,
@@ -286,8 +288,8 @@ finite gradient with the expected sign on a hand-built two-step episode.
 
 ### Lab 11.4: Bandits against A/B for a marketing decision (headline lab)
 
-Goal: put numbers on the cost of an A/B test and the risks of a bandit, on a problem
-shaped like the one a marketing team actually has.
+Goal: measure the cost of an A/B test and the risks of a bandit on a problem with the
+shape of a real marketing decision.
 
 1. In `11-rl/bandits.py` write `BernoulliEnv(rates, seed)` with five subject lines at
    true conversion rates 2.0, 2.3, 2.5, 2.8 and 3.5%, a horizon of 100,000 sends, and

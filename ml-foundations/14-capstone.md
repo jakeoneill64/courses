@@ -5,17 +5,18 @@
 ## Why this module
 
 Every Oxford assignment is a small capstone: a dataset, a question, methods chosen and
-justified, results against a baseline, limitations. This is a large one, and its point is
-integration. You have built every component in isolation and tested each against a
-library or a benchmark; you have not yet made a segmentation feed a churn model that
+justified, results against a baseline, limitations. This is a large one, and its purpose
+is integration. You have built every component in isolation and tested each against a
+library or a benchmark. You have not yet made a segmentation feed a churn model that
 feeds a targeting decision that a RAG assistant can explain, with one experiment log,
-one API and one report. The seams between components are where the time goes and where
-the errors live, and a fortnight is enough to find that out on something small.
+one API and one report. Most of the time and most of the errors are at the boundaries
+between components, and a fortnight on a small project is enough to see this.
 
-The second job is the report. Thirteen write-ups of 800 words have given you fluency;
-the MSc assignments and any real project need 3,000 to 4,000 words that argue rather
-than narrate, with an executive summary a manager reads and an appendix a marker checks.
-Write it as if it were being submitted, because the next one will be.
+The second job is the report. Thirteen write-ups of 800 words have given you fluency.
+The MSc assignments and any real project need 3,000 to 4,000 words that make an argument
+instead of narrating, with an executive summary a manager reads and an appendix a marker
+checks. Write it as if you were submitting it, because the next report you write will be
+submitted.
 
 ## The brief
 
@@ -29,8 +30,8 @@ Every project, whichever option, must have:
   regression) with its number in the same table as yours.
 - At least one unsupervised component, one supervised component and one LLM component,
   each with the evaluation its module taught you.
-- Experiment tracking for every number in the report; a number without a run is not a
-  result.
+- Experiment tracking for every number in the report, so that each number traces to a
+  run.
 - pytest tests on the pipeline in the Module 13 style, at least schema, golden and
   training-smoke.
 - A served endpoint with a schema, a health check and a model card.
@@ -54,10 +55,10 @@ your own segment reports and product-group summaries with a Module 10 eval set; 
 a targeting campaign in the Module 12 style; serve the churn model with drift monitoring
 and a model card from Module 13.
 
-The hard part: there is no treatment in the data. The uplift component is a simulation:
-define a retention offer whose effect depends on segment and recency in a way you
+The hard part: there is no treatment in the data, so the uplift component is simulated.
+Define a retention offer whose effect depends on segment and recency in a way you
 specify, apply it to a random half, and show your targeting recovers most of the oracle
-profit. Be explicit that this tests the method, not the retailer.
+profit. State explicitly that this tests the method and says nothing about the retailer.
 
 Good looks like: a segmentation stable at ARI above 0.6 year over year with segments that
 differ on year-two revenue; next-quarter churn AUC above 0.78 against a recency-only
@@ -76,7 +77,7 @@ the emerging issue as anomaly detection over weekly topic volumes (Module 8); bu
 agent that drafts replies with citations from a small policy corpus you write; produce
 the governance mapping for a system that drafts messages to bank customers.
 
-The hard part: generated tickets are not real tickets. Say so in the data card, measure
+The hard part: generated tickets differ from real ones. Say so in the data card, measure
 how separable they are from the real queries (a classifier that tells them apart is a
 measure of your synthetic data's realism), and keep every headline number on the real
 test set where one exists.
@@ -103,7 +104,8 @@ the report can say what that is worth.
 
 ## Two-week plan
 
-Ten working days. The order is fixed; the depth of each is yours.
+The plan covers ten working days. The order is fixed, and you choose the depth of each
+step.
 
 1. Scope. Write the business question, the decision, the metric and the three
    components on one page. Write the data card. Draft the LLM component's evaluation set
@@ -112,7 +114,7 @@ Ten working days. The order is fixed; the depth of each is yours.
    baseline, tracked, with the test split fixed for the rest of the project.
 3. The unsupervised component: clustering or topic discovery, with the model-selection
    evidence from Module 3 and a stability check.
-4. The supervised component: the Module 2 pipeline with honest cross-validation,
+4. The supervised component: the Module 2 pipeline with leakage-free cross-validation,
    calibration and SHAP.
 5. The LLM component: retrieval and generation against the day-one evaluation set, with
    the ablation table.
@@ -124,7 +126,7 @@ Ten working days. The order is fixed; the depth of each is yours.
 9. The talk: ten slides, one per decision, recorded in one take.
 10. Buffer. Clone the repo fresh, follow the README, and time it. Fix what broke.
 
-If you are on day six and the LLM component is not evaluated, cut its scope, not its
+If the LLM component is not evaluated by day six, reduce its scope and keep its
 evaluation.
 
 ## Rubric
@@ -136,7 +138,7 @@ a distinction from a pass in a marker's eyes.
 |---|---|---|
 | Problem framing and business value | 15 | The decision is named, the metric follows from it, and the report says what a one-point improvement is worth in money or time. |
 | Data understanding and cleaning | 15 | Every cleaning rule has a row count and a reason; leakage across time is discussed and prevented; the data card would let someone else use the data. |
-| Method choice and justification | 20 | Each method is chosen against a named alternative for a reason tied to the data, and the report explains the mechanism, not just the name. |
+| Method choice and justification | 20 | Each method is chosen against a named alternative for a reason tied to the data, and the report explains the mechanism as well as naming the method. |
 | Evaluation rigour and baselines | 20 | Baselines are in every table; intervals or seeds are reported; the ablation shows what each component contributed; the eval set for the LLM component predates the system. |
 | Engineering quality and reproducibility | 10 | Tests pass, a stranger reproduces the headline number in under an hour, and every number traces to a run. |
 | Communication | 15 | The executive summary stands alone; figures earn their place; the talk makes one argument in ten minutes. |
@@ -178,20 +180,20 @@ a distinction from a pass in a marker's eyes.
 
 ## After the course
 
-Keep the labs repo alive through the MSc. Each one-week course ends with an assignment on
-a dataset, and the fastest start is a copy of the relevant module's pipeline with the data
-swapped: Module 2 and 3 for Classical Machine Learning, Module 5 and 6 for Deep Neural
-Networks and Computer Vision, Module 10 for Generative AI with LLMs, Module 4's
+Keep the labs repo in use through the MSc. Each one-week course ends with an assignment
+on a dataset, and the fastest start is a copy of the relevant module's pipeline with the
+data swapped: Modules 2 and 3 for Classical Machine Learning, Modules 5 and 6 for Deep
+Neural Networks and Computer Vision, Module 10 for Generative AI with LLMs, Module 4's
 embeddings and the Module 10 stretch on triples for Knowledge Graphs, Module 13's
 adversarial and privacy work for Security and Privacy of ML, Module 13's ONNX path for
 Edge AI, and Modules 12 and 13 for the governance and decision courses. Before each
 course week, re-read that module's Core ideas and re-run its headline lab; it takes an
 evening and turns the week into revision.
 
-Three suggestions for reading in the weeks before the first three ML courses. Before
+Three reading suggestions cover the weeks before the first three ML courses. Before
 Classical Machine Learning, work through James, Witten, Hastie, Tibshirani, *An
-Introduction to Statistical Learning with Python*, ch. 4-6 and 8-10, doing the labs; it
-is the register the course speaks in. Before Deep Neural Networks, read Prince,
+Introduction to Statistical Learning with Python*, ch. 4-6 and 8-10, doing the labs; its
+level and notation match the course's. Before Deep Neural Networks, read Prince,
 *Understanding Deep Learning*, ch. 6-11 in one pass for the vocabulary of optimisation,
 regularisation and architectures, and Bishop and Bishop, *Deep Learning*, ch. 12 on
 transformers. Before Generative AI with LLMs, read Jurafsky and Martin's ch. 10-12 again

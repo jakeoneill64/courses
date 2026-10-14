@@ -4,21 +4,22 @@
 
 ## Why this module
 
-The model is a small part of a machine-learning system, and it is the part that gets all
-the attention. Sculley et al. counted what surrounds it (data collection, feature
-pipelines, serving, monitoring, configuration, and the glue between them) and found the
-model to be a few percent of the code and less of the trouble. This module is about the
-rest: getting a model into production, keeping it honest once it is there, and writing
-down what it is for and not for, in a form a regulator, a customer and the engineer who
-inherits it can use. It feeds three Oxford courses. AI in Practice is about deployment
-realities; Edge AI is about running models under compute and memory constraints, which is
-the ONNX and quantisation work here; and AI Governance wants model cards, risk tiers and
-the vocabulary of the EU AI Act.
+The model is a small part of a machine-learning system, and it is the part that gets
+most of the attention. Sculley et al. counted what surrounds it (data collection,
+feature pipelines, serving, monitoring, configuration, and the glue between them) and
+found the model to be a few percent of the code and a smaller share of the problems.
+This module is about the rest: getting a model into production, checking that it stays
+accurate once it is there, and writing down what it is for and not for, in a form a
+regulator, a customer and the engineer who inherits it can use. It feeds three Oxford
+courses. AI in Practice is about deployment realities. Edge AI is about running models
+under compute and memory constraints, which is the ONNX and quantisation work here. AI
+Governance wants model cards, risk tiers and the vocabulary of the EU AI Act.
 
-It is also where your C++ pays off. A ResNet exported to ONNX and run from a CMake
-project against ONNX Runtime is a real deployment path for edge devices and for cost, and
-you will benchmark it against PyTorch on your Mac's CPU and GPU. The habit of Module 5,
-measure rather than assume, applies to latency exactly as it did to accuracy.
+It is also where your C++ experience is directly useful. A ResNet exported to ONNX and
+run from a CMake project against ONNX Runtime is a real deployment path for edge devices
+and for cost, and you will benchmark it against PyTorch on your Mac's CPU and GPU.
+Module 5's habit of measuring instead of assuming applies to latency as it did to
+accuracy.
 
 Structurally, Module 14 requires a served endpoint with a model card, drift monitoring
 and a governance mapping. This module builds each part once so the capstone can assemble
@@ -44,32 +45,34 @@ If all six are easy, do Labs 13.2 and 13.6 only, and the write-up.
 
 ## Core ideas
 
-**The model is the smallest part of the system, and the system is where it fails.**
-Sculley et al. named the debts: glue code, pipeline jungles nobody owns, undeclared
-dependencies on upstream tables that change without notice, and feedback loops where the
-model's outputs become its inputs. The commonest production bug is training-serving skew:
-features computed at training time from a warehouse differ from those computed at request
-time from live systems, in units, defaults, time zones or missing-value handling, and the
-model quietly degrades. The defence is one feature function used in both places, tested.
-Batch inference (score everyone nightly) and online inference (score on request) sit at
-different corners of a latency, throughput and cost triangle; most business models are
-batch, and the ones that need online serving need it for a reason you can state.
+**The model is the smallest part of a machine-learning system, and most failures happen
+in the rest of it.** Sculley et al. named the debts: glue code, pipeline jungles nobody
+owns, undeclared dependencies on upstream tables that change without notice, and
+feedback loops where the model's outputs become its inputs. The commonest production bug
+is training-serving skew. Features computed at training time from a warehouse differ from
+those computed at request time from live systems, in units, defaults, time zones or
+missing-value handling, and the model's accuracy falls without any error being raised.
+The defence is a single tested feature function used in both places. Batch inference
+(score everyone nightly) and online inference (score on request) sit at different
+corners of a latency, throughput and cost triangle. Most business models are batch, and
+the ones that need online serving need it for a reason you can state.
 
-**A model is a file, and the file format decides where it can run.** A PyTorch state dict
-needs the defining class and a Python runtime; a pickled pipeline is arbitrary code
-execution on load and must never cross a trust boundary. `torch.export` captures the
-graph as an intermediate representation; ONNX is the interchange format other runtimes
-read, produced by `torch.onnx.export`, which since PyTorch 2.5 offers a dynamo-based
-exporter alongside the legacy TorchScript tracer. Data-dependent Python control flow,
-custom operators and some in-place patterns export wrongly or not at all, and dynamic
-batch dimensions must be declared. An export is verified, never assumed: same inputs,
-outputs within 1e-4, identical argmax over a thousand examples.
+**A saved model's file format decides where it can run.** A PyTorch state dict needs
+the defining class and a Python runtime. A pickled pipeline executes arbitrary code on
+load and must never cross a trust boundary. `torch.export` captures the graph as an
+intermediate representation. ONNX is the interchange format other runtimes read,
+produced by `torch.onnx.export`, which since PyTorch 2.5 offers a dynamo-based exporter
+alongside the legacy TorchScript tracer. Data-dependent Python control flow, custom
+operators and some in-place patterns export wrongly or not at all, and dynamic batch
+dimensions must be declared. Verify every export: same inputs, outputs within 1e-4,
+identical argmax over a thousand examples.
 
-**ONNX Runtime is a C++ inference engine, and the C++ path is the deployment path.** It
-loads the graph, applies graph optimisations (constant folding, operator fusion) and
-dispatches to an execution provider: CPU by default, CoreML on Apple hardware, CUDA or
-TensorRT on NVIDIA. Intra-op threads parallelise one operator, inter-op threads run
-independent branches, and for single-image latency one thread often wins. A C++ program
+**ONNX Runtime is a C++ inference engine, and calling it from C++ is the standard
+deployment path.** It loads the graph, applies graph optimisations (constant folding,
+operator fusion) and dispatches to an execution provider: CPU by default, CoreML on
+Apple hardware, CUDA or TensorRT on NVIDIA. Intra-op threads parallelise one operator,
+inter-op threads run independent branches, and for single-image latency one thread often
+wins. A C++ program
 against it has no interpreter, a small footprint and predictable latency, which is why it
 runs on edge devices and saves money at scale. Python and C++ use the same engine; the
 difference you measure in Lab 13.2 is tensor conversion overhead.
@@ -81,17 +84,17 @@ calibrates activation ranges on a few hundred inputs and quantises convolutions 
 4× smaller file and typically 1.5 to 3× CPU speedup at under half a point of accuracy on
 an image classifier; per-channel weight scales recover most of any loss. LLMs use int4
 weight-only quantisation (GGUF, GPTQ, AWQ) because decoding is memory-bound. Pruning
-rarely speeds up dense hardware; distillation trains a small student on a large
-teacher's outputs, which is how DistilBERT exists.
+rarely speeds up inference on dense hardware. Distillation trains a small student on a
+large teacher's outputs, which is how DistilBERT was made.
 
-**Serving is an API with a schema, and the schema is your first test.** A FastAPI service
-declares the request as a pydantic model whose fields mirror the training features by
-name, type and allowed values, so a string in a numeric field or an unseen category fails
-with a 422 at the door instead of a wrong prediction downstream. Load the model once at
-start-up, offer single and batch endpoints, return the model version with every
-response, and give `/health` a canned prediction so the check exercises the model. For a
-gradient-boosted model, per-request overhead is most of the latency, and batching
-amortises it.
+**A served model is an API with a schema, and the schema is the first check on every
+request.** A FastAPI service declares the request as a pydantic model whose fields mirror
+the training features by name, type and allowed values. A string in a numeric field or
+an unseen category then fails with a 422 at the API instead of producing a wrong
+prediction downstream. Load the model once at start-up, offer single and batch
+endpoints, return the model version with every response, and give `/health` a canned
+prediction so the check exercises the model. For a gradient-boosted model, per-request
+overhead is most of the latency, and batching amortises it.
 
 **ML code is tested like other code, plus four tests other code does not need.**
 Invariance tests assert a prediction does not change when something irrelevant does (a
@@ -100,71 +103,75 @@ does (a higher monthly charge does not lower churn probability), and LightGBM's 
 constraints can make that exact. Golden tests pin predictions on a fixed set so a refactor
 cannot move them silently. A training smoke test on a few hundred rows asserts the loss
 falls. Breck et al.'s ML Test Score lists 28 tests across data, model, infrastructure and
-monitoring, scores each 0, 1 or 2 for absent, manual or automated, and takes the minimum
-over sections; most teams that think they are at 5 are at 1.
+monitoring, scores each 0, 0.5 or 1 for absent, manual or automated, sums each section,
+and takes the minimum over sections. Most teams that think they are at 5 are at 1.
 
-**Monitoring asks whether the world still looks like the training set.** Per feature, the
-population stability index PSI = Σ (p_i − q_i) ln(p_i/q_i) over bins of the reference
-distribution, with 0.1 and 0.25 as conventional warn and act thresholds inherited from
-credit scoring; Kolmogorov-Smirnov for continuous features, chi-square for categoricals.
-Prediction drift on the score histogram catches what per-feature checks miss.
-Performance monitoring is harder because labels arrive late or never: churn labels take a
-month, fraud labels a dispute cycle, and a fraction never come, so you score the labelled
-tail and watch proxies for the rest. Most alerts are pipeline failures (a unit change, a
-new category, a null column) rather than the world changing, which is good news if the
-alert fires and very bad if nothing does.
+**Monitoring checks whether live data still resembles the training data.** Per feature,
+compute the population stability index PSI = Σ (p_i − q_i) ln(p_i/q_i) over bins of the
+reference distribution, with 0.1 and 0.25 as conventional warn and act thresholds
+inherited from credit scoring, and use Kolmogorov-Smirnov for continuous features and
+chi-square for categoricals. Prediction drift on the score histogram catches what
+per-feature checks miss. Performance monitoring is harder because labels arrive late or
+never: churn labels take a month, fraud labels a dispute cycle, and a fraction never
+come, so you score the labelled tail and watch proxies for the rest. Most alerts are pipeline failures (a unit change, a
+new category, a null column) rather than changes in the world. These are cheap to fix
+when an alert fires and costly when none does.
 
-**Retraining is a policy, and deployment is a controlled experiment.** Scheduled
-retraining is simple and wastes compute; triggered retraining is responsive and needs
-monitoring you trust. Either way the challenger must beat the champion on recent labelled
-data, then run in shadow (scoring live traffic without acting), then as a canary on a
-fraction of requests, with a one-command rollback. MLflow's registry holds versions and
-aliases such as `champion`; data is versioned by hash or DVC; the lock file pins the
-environment; a result you cannot reproduce from those three is not a result.
+**Retraining needs a written policy, and each deployment should be run as a controlled
+experiment.** Scheduled retraining is simple and wastes compute; triggered retraining is
+responsive and needs monitoring you trust. Either way the challenger must beat the
+champion on recent labelled data, then run in shadow (scoring live traffic without
+acting), then as a canary on a fraction of requests, with a one-command rollback.
+MLflow's registry holds versions and aliases such as `champion`. Data is versioned by
+hash or with DVC, and the lock file pins the environment. Do not report a result you
+cannot reproduce from those three.
 
-**Documentation is for a decision, and two documents cover most of them.** A model card
-(Mitchell et al.) states intended and out-of-scope use, training and evaluation data,
-metrics disaggregated by the groups that matter, failure modes and ethical
-considerations; its reader decides whether to use the model for their case. A datasheet
-(Gebru et al.) does the same for a dataset: motivation, composition, collection,
-preprocessing, recommended uses, maintenance; its reader decides whether to train on it.
+**Documentation exists to support decisions, and two documents cover most of them.** A
+model card (Mitchell et al.) states intended and out-of-scope use, training and
+evaluation data, metrics disaggregated by the groups that matter, failure modes and
+ethical considerations; its reader decides whether to use the model for their case. A
+datasheet (Gebru et al.) does the same for a dataset: motivation, composition,
+collection, preprocessing, recommended uses, maintenance; its reader decides whether to
+train on it.
 Both are short, versioned with the model, and the first thing an auditor asks for.
 
 **The EU AI Act (Regulation (EU) 2024/1689) sorts systems by risk, and obligations follow
 the tier.** Article 5 prohibits a short list of practices (manipulative systems, social
-scoring, most real-time biometric identification in public). Annex III lists the
-high-risk areas: biometrics, critical infrastructure, education, employment (including
-recruitment and CV screening), essential services (including creditworthiness, with an
-explicit carve-out for fraud detection), law enforcement, migration, justice. Providers of
-high-risk systems meet Articles 9 to 15: a risk-management system, data governance,
-technical documentation, automatic logging, transparency to deployers, human oversight,
-and accuracy, robustness and cybersecurity, plus conformity assessment; deployers have
-duties under Article 26. Article 50 requires that people be told they are interacting
-with an AI system and that synthetic content be marked. General-purpose AI models fall
+scoring, most real-time remote biometric identification in public spaces for law
+enforcement). Annex III lists the high-risk areas: biometrics, critical infrastructure,
+education, employment (including recruitment and CV screening), essential services
+(including creditworthiness, with an explicit carve-out for fraud detection), law
+enforcement, migration, justice. Providers of high-risk systems meet Articles 9 to 15: a
+risk-management system, data governance, technical documentation, automatic logging,
+transparency to deployers, human oversight, and accuracy, robustness and cybersecurity.
+They also need a conformity assessment, and deployers have duties under Article 26.
+Article 50 requires that people be told they are interacting with an AI system and that
+synthetic content be marked. General-purpose AI models fall
 under Chapter V, with documentation and copyright duties for providers (Article 53) and
 more for systemic-risk models (Article 55). Everything else is minimal risk. Prohibitions
 applied from February 2025, the general-purpose provisions from August 2025, most
 high-risk obligations from August 2026; check the current timetable, since amendments
 have been proposed.
 
-**The other frameworks are voluntary, and a mature team uses them anyway.** The UK has no
-AI statute and asks existing regulators to apply five principles (safety, transparency,
-fairness, accountability, contestability). NIST's AI Risk Management Framework organises
-the work into Govern, Map, Measure and Manage and is the common language of US
-procurement. ISO/IEC 42001:2023 is a certifiable management-system standard, the ISO 27001
-of AI, and what a large customer asks whether you hold. None says what a good model is;
-all ask whether you can show your work.
+**The other frameworks are voluntary, and established teams use them anyway.** The UK
+has no AI statute and asks existing regulators to apply five principles (safety,
+transparency, fairness, accountability, contestability). NIST's AI Risk Management
+Framework organises the work into Govern, Map, Measure and Manage and is the common
+language of US procurement. ISO/IEC 42001:2023 is a certifiable management-system
+standard, the AI counterpart of ISO 27001, and large customers ask whether you hold it.
+None of them defines a good model. All of them ask whether you can document and evidence
+your process.
 
-**A model leaks its training data, and the attacks are practical.** Membership inference
-(Shokri et al.) decides whether a record was in the training set from the model's higher
-confidence on examples it has seen; it works best on overfit models and is a breach when
-the data is medical or financial. Model extraction trains a copy through an API; model
+**Models can leak their training data, and the attacks work in practice.** Membership
+inference (Shokri et al.) decides whether a record was in the training set from the
+model's higher confidence on examples it has seen. It works best on overfit models and
+is a breach when the data is medical or financial. Model extraction trains a copy through an API; model
 inversion reconstructs representative inputs. Differential privacy is the formal answer:
 M is (ε, δ)-DP if for all neighbouring datasets D, D' and outputs S, P[M(D) ∈ S] ≤
 e^ε P[M(D') ∈ S] + δ, so no single record changes any output's probability by more than
-e^ε. ε = 1 is strong; ε = 8 bounds the ratio at about 3,000 and is a guarantee mostly on
-paper. DP-SGD clips per-example gradients and adds noise, at an accuracy cost that is
-large on small data. Data minimisation is the cheapest defence and the one regulators ask
+e^ε. ε = 1 is strong; ε = 8 bounds the ratio at about 3,000 and is a weak guarantee.
+DP-SGD clips per-example gradients and adds noise, at an accuracy cost that is large on
+small data. Data minimisation is the cheapest defence and the one regulators ask
 about first.
 
 **Adversarial examples exist because networks are locally linear in high dimensions.**
@@ -174,9 +181,10 @@ change in the logit flips the class, and an undefended CIFAR-10 model falls from
 near zero. PGD (Madry et al.) takes several smaller steps with projection back into the
 ε-ball and is the standard strong attack. Adversarial training on PGD examples is the
 only defence that has held, at several times the training compute and roughly ten points
-of clean accuracy. The realistic threat for a business is not stickers on stop signs; it
-is a fraud ring probing a scoring API and a content classifier under deliberate evasion,
-which is why Module 8's fraud detector needs this more than Module 5's ResNet does.
+of clean accuracy. For a business, the realistic threats are a fraud ring probing a
+scoring API and deliberate evasion of a content classifier, more than physical attacks
+such as stickers on stop signs. Module 8's fraud detector therefore needs this
+protection more than Module 5's ResNet does.
 
 **Forward links.** Module 14 assembles all of it: the capstone's model is served with a
 schema, tested with golden and directional tests, monitored with PSI, documented with a
@@ -199,7 +207,7 @@ follow.
   Learning Models", 2017; Dwork and Roth, *The Algorithmic Foundations of Differential
   Privacy* (free), ch. 1-2.
 - Regulation (EU) 2024/1689 (the AI Act): Articles 5, 6, 9-15, 26, 50-55 and Annex III.
-  Read the Articles, not a summary; they are shorter than you expect.
+  Read the Articles themselves; they are shorter than you expect.
 - NIST AI Risk Management Framework 1.0, 2023 (free); ISO/IEC 42001:2023, the overview
   and clause structure.
 - ONNX Runtime documentation: the C++ API, execution providers, and the quantisation
@@ -211,7 +219,7 @@ Run `uv sync --group serve` and `brew install onnxruntime hey cmake` first.
 
 ### Lab 13.1: Serve the churn model
 
-Goal: a production-shaped API for the Module 2 model, with numbers for its latency.
+Goal: a production-shaped API for the Module 2 model, with measured latency.
 
 1. Register the Module 2 model: `mlflow.register_model(f"runs:/{run_id}/model", "churn")`
    and set the alias `champion`. `13-systems/serve/app.py` loads
@@ -245,7 +253,7 @@ measured across four runtimes.
    which you used. Run `onnx.checker.check_model`.
 2. Parity: `onnxruntime.InferenceSession` on the CPU provider against PyTorch fp32 on the
    CPU for 1,000 test images: max absolute logit difference under 1e-4 and identical
-   argmax; then full test-set accuracy identical to the image.
+   argmax; then full test-set accuracy identical to PyTorch's.
 3. `onnx-cpp/CMakeLists.txt` and `main.cpp` against the headers and library under
    `brew --prefix onnxruntime`: `Ort::Env`, `Ort::SessionOptions` with
    `SetIntraOpNumThreads`, `Ort::Session`; load a PNG with the single-header stb_image,
@@ -273,7 +281,8 @@ accuracy, size, latency) are in the notebook with the exporter used stated.
 
 ### Lab 13.3: Drift monitoring
 
-Goal: a monitor that fires on the right windows and stays quiet on the wrong ones.
+Goal: a drift monitor that alerts on the drifted windows and stays silent on the clean
+one.
 
 1. `13-systems/monitor.py`: `psi(ref, live, bins=10)` with quantile bins from the
    reference and a 1e-4 floor to avoid log 0; `ks(ref, live)` via
@@ -298,7 +307,7 @@ trips act; the drift report for the four windows is in the notebook; the policy 
 
 ### Lab 13.4: Tests for ML
 
-Goal: a test suite for the churn pipeline that would catch the bugs that actually happen.
+Goal: a test suite for the churn pipeline that catches the common production bugs.
 
 1. `13-systems/tests/`: `test_schema.py` (column set, dtypes, ranges, categorical
    domains, on a sample of the data); `test_transforms.py` (known input to known output,
@@ -309,7 +318,7 @@ Goal: a test suite for the churn pipeline that would catch the bugs that actuall
    predictions, tolerance 1e-6, regenerated only with a version bump);
    `test_training_smoke.py` (train on 500 rows for 20 rounds, assert loss falls and both
    classes are predicted).
-2. Score the pipeline against the ML Test Score's 28 tests at 0, 1 or 2 each, take the
+2. Score the pipeline against the ML Test Score's 28 tests at 0, 0.5 or 1 each, take the
    section minimum, and name the three cheapest points you are not collecting.
 
 Done when: all suites pass in under 60 seconds; the rubric table with your score is in
@@ -346,8 +355,8 @@ them.
 2. `13-systems/model-card-rag.md` for the Module 10 RAG system: intended users, corpus
    scope and date, retrieval and answer metrics from Lab 10.3, the injection results from
    Lab 10.6 as known failures, and out-of-scope uses.
-3. `13-systems/datasheet-telco.md` following Gebru et al., honest about the fact that
-   IBM's sample dataset has no documented provenance.
+3. `13-systems/datasheet-telco.md` following Gebru et al., stating that IBM's sample
+   dataset has no documented provenance.
 4. `13-systems/ai-act-mapping.md`: for the churn model used to prioritise retention
    offers, the Module 8 fraud detector, the RAG assistant for internal staff, and a
    hypothetical CV-screening model: the tier, the Article or Annex III point that puts it
@@ -417,5 +426,5 @@ item, and the other two are minimal risk with Article 50 noted for the assistant
 ## Next
 
 Module 14 is the capstone. Everything in this module becomes a checklist item there: a
-schema at the door, tests, a monitor, a model card, a tier. The two weeks are for the
+request schema, tests, a monitor, a model card, a tier. The two weeks are for the
 project; the infrastructure should take a day because you have built it once.

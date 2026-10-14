@@ -4,22 +4,22 @@
 
 ## Why this module
 
-Most business ML problems are a table with a label column, and most of them are won by a
-well-evaluated gradient-boosted tree or, embarrassingly often, by logistic regression.
-The Oxford Classical Machine Learning week covers this ground in five days, and its
-assignment hands you a dataset and asks for a model, a justified choice of method and an
-honest evaluation. What separates a good submission from an average one is rarely the
-model. It is whether the cross-validation leaked, whether the metric matches the
-decision, whether the probabilities mean anything, and whether the comparison to the
-baseline carries an interval. This module is about that discipline as much as about the
-models.
+Most business ML problems are a table with a label column, and the best model for most
+of them is a well-evaluated gradient-boosted tree or, more often than people expect,
+logistic regression. The Oxford Classical Machine Learning week covers this ground in
+five days, and its assignment gives you a dataset and asks for a model, a justified
+choice of method and an honest evaluation. A good submission usually differs from an
+average one in the evaluation: whether the cross-validation leaked, whether the metric
+matches the decision, whether the probabilities mean anything, and whether the
+comparison to the baseline carries an interval. This module covers that discipline as
+well as the models.
 
-Structurally, this is where the statistical learning framework gets fixed: a loss, a
-hypothesis class, empirical risk, and the gap between training and generalisation error.
-Every later module is a special case with a different hypothesis class. Bagging and
-boosting are Module 1's bias-variance decomposition turned into algorithms; calibration
-is Module 1's claim that a loss is a likelihood, tested on real probabilities. Module 12
-comes back to the churn model built here for SHAP and uplift, and Module 13 serves it.
+This module sets out the statistical learning framework: a loss, a hypothesis class,
+empirical risk, and the gap between training and generalisation error. Every later
+module is a special case with a different hypothesis class. Bagging and boosting apply
+Module 1's bias-variance decomposition, and calibration tests Module 1's claim that a
+loss is a likelihood on real probabilities. Module 12 returns to the churn model built
+here for SHAP and uplift, and Module 13 serves it.
 
 ## Skip test
 
@@ -44,157 +44,165 @@ If all six are easy, do Lab 2.5 only, and the write-up.
 
 ## Core ideas
 
-**Learning is minimising empirical risk and hoping it tracks the true risk.** You pick a
-hypothesis class H and a loss ℓ and choose f ∈ H to minimise the average loss on the
-training set. The true risk is the expected loss on new data; the gap between the two is
-what generalisation means, and it grows with the capacity of H and shrinks with n.
-Everything you do to choose a model (features, hyperparameters, which of five
-algorithms) is fitting to whatever data you chose it on. Hence three sets: train to fit,
-validation to choose, test to report, and the test set is read once. Look at it twice
-and it has become a validation set with an optimistic number attached. On a small
-dataset cross-validation plays the validation role and the test set stays sealed until
-the write-up.
+**Learning minimises empirical risk on the assumption that it tracks the true risk.** You
+pick a hypothesis class H and a loss ℓ and choose f ∈ H to minimise the average loss on
+the training set. The true risk is the expected loss on new data. The gap between the
+two is the generalisation gap; it grows with the capacity of H and shrinks with n. Every
+choice you make about a model (features, hyperparameters, which of five algorithms) is
+also fitted to the data you used to make it. That is why there are three sets: a
+training set to fit, a validation set to choose, and a test set to report, which is read
+once. If you look at the test set twice, it becomes a validation set and the number you
+report is optimistic. On a small dataset cross-validation plays the validation role and
+the test set stays sealed until the write-up.
 
-**Cross-validation is only as honest as the pipeline inside it, and leakage is how it
-lies.** k-fold CV fits k models each on k − 1 folds and scores the held-out fold;
-stratified folds keep class proportions, grouped folds keep all rows of one customer
-together, and time-series splits only train on the past. Leakage is any route by which a
-held-out label reaches the model: a feature that is a consequence of the label (Bank
-Marketing's `duration` is the length of a call whose outcome is the label),
-preprocessing fitted on all rows before the split (a scaler, an imputer, a target
-encoder), duplicate rows landing on both sides, feature selection on the full data.
-`Pipeline` and `ColumnTransformer` exist so every fitted step lives inside the fold:
-`cross_val_score(pipe, X, y, cv=StratifiedKFold(5, shuffle=True))` refits the scaler
-five times, and that is the point. Read Kaufman et al. before you believe any number,
+**Cross-validation is only as reliable as the pipeline inside it, and leakage makes its
+estimates optimistic.** k-fold CV fits k models each on k − 1 folds and scores the
+held-out fold. Stratified folds keep class proportions, grouped folds keep all rows of
+one customer together, and time-series splits only train on the past. Leakage is any
+route by which a held-out label reaches the model: a feature that is a consequence of
+the label (Bank Marketing's `duration` is the length of a call whose outcome is the
+label), preprocessing fitted on all rows before the split (a scaler, an imputer, a
+target encoder), duplicate rows landing on both sides, feature selection on the full
+data.
+`Pipeline` and `ColumnTransformer` exist so that every fitted step stays inside the
+fold; `cross_val_score(pipe, X, y, cv=StratifiedKFold(5, shuffle=True))` refits the
+scaler five times, once per fold. Read Kaufman et al. before you believe any number,
 including your own.
 
 **Linear and logistic regression are the baseline you have to beat, and the penalties
 are Module 1's priors.** Ridge adds λ‖w‖² and has the closed form
 w = (XᵀX + λI)⁻¹Xᵀy, which shrinks the component along the i-th singular direction by
-σᵢ²/(σᵢ² + λ): the ill-conditioned directions are damped most. The lasso adds λ‖w‖₁ and
-sets coefficients exactly to zero; elastic net mixes the two and behaves better with
-correlated features. Neither penalty is invariant to feature scale, so a feature in pence
-is penalised a hundred times harder than one in pounds; standardise inside the pipeline
-(trees do not care). Logistic regression is the Bernoulli NLL with a linear logit; its
-loss is convex (Problem 1), its coefficients are log-odds ratios a manager can read, and
-on data with mostly additive effects it is very hard to beat, which is the lesson of Lab
-2.5.
+σᵢ²/(σᵢ² + λ), so the directions with the smallest singular values are damped most. The
+lasso adds λ‖w‖₁ and sets coefficients exactly to zero; elastic net mixes the two and
+behaves better with correlated features. Neither penalty is invariant to feature scale.
+A quantity recorded in pounds needs a coefficient a hundred times larger than the same
+quantity in pence, so the lasso penalises it a hundred times harder and ridge ten
+thousand times harder. Standardise inside the pipeline (trees are unaffected by scale).
+Logistic regression is the Bernoulli NLL with a linear logit. Its loss is convex
+(Problem 1), its coefficients are log-odds ratios a manager can read, and on data with
+mostly additive effects it is hard to beat, as Lab 2.5 shows.
 
 **k-nearest neighbours is the simplest model and the clearest demonstration of the
 curse of dimensionality.** Predict by voting among the k closest training points; bias
 falls and variance rises as k shrinks, and each query costs O(n) without an index. It
-fails in high dimensions because distances concentrate: nearly all of a unit cube's
-volume sits in a thin shell near its boundary, the nearest neighbour is almost as far as
-the farthest, and "local" stops meaning anything (Module 3's Problem 6 makes you watch
-it). The same fact is why tree ensembles, which split one feature at a time, beat
-distance-based methods on wide tables, and why Module 4 reduces dimension before
+fails in high dimensions because distances concentrate. Nearly all of a unit cube's
+volume lies in a thin shell near its boundary, the nearest neighbour is almost as far
+away as the farthest, and "local" stops meaning anything (Module 3's Problem 6 shows
+this). The same fact explains why tree ensembles, which split one feature at a time,
+beat distance-based methods on wide tables, and why Module 4 reduces dimension before
 searching.
 
-**A decision tree is a greedy recursive partition, and it overfits by construction.**
+**A decision tree is a greedy recursive partition, and a fully grown tree overfits.**
 CART chooses, at each node, the feature and threshold that most reduce an impurity (Gini
 Σₖ pₖ(1 − pₖ) or entropy for classification, variance for regression), then recurses
 until a stopping rule (`max_depth`, `min_samples_leaf`) or purity. The best split on a
 numeric feature comes from sorting and scanning cumulative class counts, O(n log n) per
 feature per node. Trees are invariant to monotone transforms, handle mixed types, ignore
-irrelevant features and are readable when small. Grown to purity they memorise: a small
-change in the data changes the first split and therefore the whole tree, which is high
-variance in Module 1's sense, a weakness for one tree and the whole reason ensembles of
-them work.
+irrelevant features and are readable when small. Grown to purity they memorise the
+training data. A small change in the data changes the first split and therefore the
+whole tree, which is high variance in Module 1's sense. That variance is a weakness in a
+single tree and the reason ensembles of trees work.
 
-**Bagging and random forests average many high-variance trees, and correlation is what
-limits the gain.** Bootstrap the rows, grow a deep tree on each, average. If each tree
-has variance σ² and any pair has correlation ρ, the average of B trees has variance
-ρσ² + (1 − ρ)σ²/B: the second term vanishes with B, the first does not. Random forests
-attack ρ by considering a random subset of features at each split
-(`max_features="sqrt"` for classification), decorrelating the trees at a small cost in
-bias. Out-of-bag predictions give a free validation estimate. Forests are hard to
-overfit with more trees and need little tuning; their failure is smooth functions and
-extrapolation, which a piecewise-constant average cannot do.
+**Bagging and random forests average many high-variance trees, and the correlation
+between trees limits the gain.** Bagging bootstraps the rows, grows a deep tree on each
+sample and averages the trees. If each tree has variance σ² and any pair has
+correlation ρ, the average of B trees has variance ρσ² + (1 − ρ)σ²/B, so adding trees
+removes only the second term. Random forests reduce ρ by considering a random subset of
+features at each split (`max_features="sqrt"` for classification), which decorrelates
+the trees at a small cost in bias. Out-of-bag predictions give a free validation
+estimate. Adding trees does not make a forest overfit, and forests need little tuning.
+They fit smooth functions poorly and cannot extrapolate, because their output is a
+piecewise-constant average.
 
-**Gradient boosting is gradient descent in function space, and its hyperparameters are
-step size, step shape and when to stop.** Start from a constant, then repeatedly fit a
-small tree to the negative gradient of the loss with respect to the current predictions
-(the residual for squared loss, y − p for log loss) and add it scaled by a learning rate
-η. Lower η needs more trees and generalises better; tree size (`num_leaves` in LightGBM,
-`max_depth` in XGBoost) sets how many interactions one step can express;
-`min_child_samples` stops leaves fitting a handful of rows; row and column subsampling
-borrow the forest's randomness; L2 on leaf values smooths them. The setting that matters
-most is the number of trees, and the only honest way to choose it is early stopping on a
-validation fold (`lightgbm.early_stopping(50)` as a callback). Boosting can overfit,
-unlike bagging, because every tree is fitted to the errors of the last; Lab 2.3 shows
-the curve turning up at η = 1.
+**Gradient boosting is gradient descent in function space, and its hyperparameters set
+the step size, the shape of each step and when to stop.** Start from a constant, then
+repeatedly fit a small tree to the negative gradient of the loss with respect to the
+current predictions (the residual for squared loss, y − p for log loss) and add it
+scaled by a learning rate η. A lower η needs more trees and generalises better. Tree
+size (`num_leaves` in LightGBM, `max_depth` in XGBoost) sets how many interactions one
+step can express, and `min_child_samples` stops leaves fitting a handful of rows. Row
+and column subsampling add the forest's randomness, and an L2 penalty on leaf values
+smooths them. The most important setting is the number of trees, and it should be
+chosen by early stopping on a validation fold (`lightgbm.early_stopping(50)` as a
+callback). Unlike bagging, boosting can overfit as trees are added, because each tree is
+fitted to the errors of the ensemble so far; Lab 2.3 shows the curve turning up at
+η = 1.
 
-**Support vector machines maximise the margin, and the kernel trick does it in a space
-you never construct.** The SVM finds the separating hyperplane with the largest margin,
-softened by a penalty C on violations; the solution depends only on the points at or
-inside the margin. Because the dual sees inputs only through inner products, replacing
+**Support vector machines maximise the margin, and the kernel trick lets them do so in a
+feature space that is never constructed.** The SVM finds the separating hyperplane with
+the largest margin, softened by a penalty C on violations; the solution depends only on
+the points at or inside the margin. Because the dual sees inputs only through inner products, replacing
 xᵢᵀxⱼ with a kernel k(xᵢ, xⱼ) gives a nonlinear boundary in the original space; the RBF
 kernel corresponds to an infinite-dimensional feature map. SVMs scale poorly (the kernel
-matrix is O(n²) memory) and `SVC` outputs are distances, not probabilities. CML covers
-them properly; on this module's data a tuned SVM roughly matches logistic regression and
-loses to LightGBM.
+matrix is O(n²) memory), and `SVC` outputs distances to the boundary instead of
+probabilities. The CML course covers them in depth. On this module's data a tuned SVM
+roughly matches logistic regression and does worse than LightGBM.
 
-**A model's probabilities are only useful if they are calibrated, and most models' are
-not.** A calibrated model's predictions of 0.7 come true 70% of the time. Logistic
-regression is roughly calibrated because it minimises a proper scoring rule directly;
-boosted trees and forests push scores towards the middle, SVMs have no probabilities,
-and class weighting or resampling shifts the base rate. Check with a reliability diagram
+**Predicted probabilities are useful only if they are calibrated, and most models'
+probabilities are not.** A calibrated model's predictions of 0.7 come true 70% of the
+time. Logistic regression is roughly calibrated because it minimises a proper scoring
+rule directly. Boosted trees and forests push scores towards the middle, SVMs have no
+probabilities, and class weighting or resampling shifts the base rate. Check with a reliability diagram
 (`calibration_curve`: predicted probability binned against observed frequency) and score
-with Brier or log loss, which reward calibration as well as discrimination; ROC-AUC
-cannot see it. Fix with Platt scaling (a logistic regression on the scores) or isotonic
-regression (a monotone step function, more flexible, needs more data), fitted on data
-the model did not train on, which `CalibratedClassifierCV(estimator, method="isotonic",
-cv=5)` arranges. Reproduce Niculescu-Mizil and Caruana's figures in Lab 2.4.
+with Brier or log loss, which reward calibration as well as discrimination; ROC-AUC is
+unaffected by calibration. Fix it with Platt scaling (a logistic regression on the
+scores) or isotonic regression (a monotone step function, more flexible, needs more
+data), fitted on data the model did not train on, which
+`CalibratedClassifierCV(estimator, method="isotonic", cv=5)` arranges. Reproduce
+Niculescu-Mizil and Caruana's figures in Lab 2.4.
 
-**Every metric is a decision rule in disguise, and you should be able to say whose
-decision.** Accuracy is meaningless at 12% prevalence, where always-no scores 0.88.
-Precision is the fraction of the people you contacted who were worth contacting; recall
-is the fraction of those worth contacting that you reached; F1 assumes the two errors
-cost the same, which they never do. ROC-AUC is the probability that a random positive
-outranks a random negative; it is insensitive to prevalence, a virtue for comparing
-models and a vice for describing a rare-event system, since at 1% prevalence an AUC of
-0.9 can coexist with precision under 10%. The precision-recall curve and its area
-(`average_precision_score`) track what an operator sees at each threshold and are the
-right summary under imbalance (Problem 5). Log loss and Brier judge probabilities, not
-rankings. Report the two or three that match the decision and say which decision.
+**Each metric measures performance for a particular decision, and you should be able to
+say which decision.** Accuracy is meaningless at 12% prevalence, where predicting "no"
+for everyone scores 0.88. Precision is the fraction of the people you contacted who were
+worth contacting, and recall is the fraction of those worth contacting that you
+reached. F1 assumes the two errors cost the same, which is rarely true. ROC-AUC is the
+probability that a random positive outranks a random negative. It is insensitive to
+prevalence, which helps when comparing models but misleads when describing a rare-event
+system, since at 1% prevalence an AUC of 0.9 can coexist with precision under 10%. The
+precision-recall curve and its area (`average_precision_score`) track what an operator
+sees at each threshold and are the right summary under imbalance (Problem 5). Log loss
+and Brier score evaluate the probabilities themselves. Report the two or three metrics
+that match the decision and say which decision.
 
-**The threshold comes from the cost matrix, not from 0.5, and class imbalance is mostly a
+**Set the threshold from the cost matrix instead of at 0.5; class imbalance is mostly a
 threshold problem.** With cost C_FP for a false positive and C_FN for a false negative,
 predicting positive at probability p costs (1 − p)C_FP in expectation and predicting
 negative costs pC_FN, so predict positive when p > C_FP/(C_FP + C_FN). If a missed
-churner costs ten times an unnecessary offer, the threshold is 0.09. That is the whole
-of cost-sensitive classification for a calibrated model, and it makes most resampling
-unnecessary: oversampling, or SMOTE's synthetic interpolations, distorts the
-probabilities you then have to recalibrate, and evidence that either helps a tuned
-boosted model is thin. Prefer `class_weight` or `scale_pos_weight`, then choose the
-threshold from costs, or from expected value per customer when the value varies (Lab
-2.5).
+churner costs ten times an unnecessary offer, the threshold is 0.09. For a calibrated
+model that is all cost-sensitive classification requires, and it makes most resampling
+unnecessary. Oversampling, or SMOTE's synthetic interpolations, distorts the
+probabilities, which you then have to recalibrate, and there is little evidence that
+either helps a tuned boosted model. Prefer `class_weight` or `scale_pos_weight`, then
+choose the threshold from costs, or from expected value per customer when the value
+varies (Lab 2.5).
 
-**Categorical features have three treatments, and one of them leaks.** One-hot encoding
-is safe, linear-model friendly and explodes on high cardinality. LightGBM and XGBoost
-accept pandas `category` columns natively and find groupings of levels at each split,
-usually a little better than one-hot for trees. Target encoding replaces each level with
-the mean label for that level, powerful for high-cardinality columns and a direct leak
-of the label into the feature unless computed out-of-fold;
-`sklearn.preprocessing.TargetEncoder` does the cross-fitting, and Problem 6 shows what
-happens if you do not. Ordinal encoding of an unordered categorical imposes a fake order
-that trees can work around and linear models cannot.
+**There are three standard treatments of categorical features, and one of them can
+leak the label.** One-hot encoding is safe and suits linear models, but the number of
+columns grows with cardinality. LightGBM and XGBoost accept pandas `category` columns
+natively and find groupings of levels at each split, usually a little better than
+one-hot for trees. Target encoding replaces each level with the mean label for that
+level. It works well on high-cardinality columns but leaks the label into the feature
+unless computed out of fold; `sklearn.preprocessing.TargetEncoder` does the
+cross-fitting, and Problem 6 shows what happens without it. Ordinal encoding of an
+unordered categorical imposes a false order that trees can work around and linear
+models cannot.
 
 **Search hyperparameters randomly, prune early, and compare models with paired
-differences and intervals.** Random search beats grid because most hyperparameters do
-not matter and grid spends its budget on them; Optuna's TPE sampler does a little better
-still, and pruning kills trials already losing at fold two of five. Fifty to a hundred
-trials is usually enough for a boosted tree. Then compare honestly: a single CV mean
-hides its variance, so use repeated stratified CV (5 × 5 gives 25 numbers), take the
-difference between two models on each shared fold (paired, so the variance is far
-smaller), and report the mean difference with a t-based interval. Bengio and Grandvalet
-show that overlapping training folds leave no unbiased variance estimator, so treat the
-interval as slightly too narrow. A model 0.003 AUC better with an interval crossing zero
-is not better, and saying so in a write-up is worth more than the 0.003.
+differences and intervals.** Random search beats grid search because most
+hyperparameters matter little and a grid spends its budget varying them. Optuna's TPE
+sampler does a little better, and pruning stops trials that are already losing at fold
+two of five. Fifty to a hundred trials is usually enough for a boosted tree. A single CV
+mean hides its variance, so to compare models use repeated stratified CV (5 × 5 gives 25
+numbers), take the difference between two models on each shared fold (paired, so the
+variance is far smaller), and report the mean difference with a t-based interval.
+Bengio and Grandvalet show that overlapping training folds leave no unbiased variance
+estimator, so treat the interval as slightly too narrow. A model 0.003 AUC better with
+an interval that crosses zero has not been shown to be better, and the write-up should
+say so.
 
 **Forward links.** The Telco churn model returns in Module 12 for SHAP and uplift and in
-Module 13 as the thing you serve and monitor. Boosted trees are the baseline every deep
-model in Modules 5 to 10 must beat on tabular data, and mostly does not. Calibration
+Module 13 as the model you serve and monitor. Boosted trees are the baseline every deep
+model in Modules 5 to 10 must beat on tabular data, and most do not. Calibration
 reappears for networks in Module 5 and for LLM confidence in Module 10. The leakage
 discipline is the one Module 8 needs for fraud and Module 12 for experiments.
 
@@ -226,7 +234,8 @@ discipline is the one Module 8 needs for fraud and Module 12 for experiments.
 
 ### Lab 2.1: Logistic regression from an empty file
 
-Goal: own the loss, the gradient and scikit-learn's regularisation convention.
+Goal: implement the loss and its gradient, and match scikit-learn's regularisation
+convention.
 
 1. Load Adult (`fetch_openml("adult", version=2)`; 48,842 rows, 14 features, about 24%
    earning over 50K). Build a `ColumnTransformer` that one-hot encodes categoricals with
@@ -305,7 +314,7 @@ probabilities.
 5. Downsample positives to 1% prevalence and refit; show ROC-AUC barely moves while
    average precision collapses.
 
-Done when: the notebook has the ROC and PR pair, six reliability diagrams with Brier
+Done when: the notebook has the ROC and PR pair, nine reliability diagrams with Brier
 scores, the cost curve with both thresholds marked, and the 1% experiment, each with one
 sentence of interpretation.
 
@@ -326,13 +335,14 @@ customers). One row per customer: demographics, services subscribed, `Contract`,
 3. Baselines: majority class, and logistic regression with one-hot and standardisation
    in a `Pipeline`. Expect ROC-AUC roughly 0.84 to 0.85.
 4. LightGBM tuned with Optuna: `num_leaves` 4 to 64, `learning_rate` 0.005 to 0.2 (log),
-   `min_child_samples` 5 to 100, `feature_fraction` and `bagging_fraction` 0.5 to 1.0,
+   `min_child_samples` 5 to 100, `feature_fraction` and `bagging_fraction` 0.5 to 1.0
+   (with `bagging_freq=1`, without which LightGBM ignores `bagging_fraction`),
    `lambda_l2` 1e-3 to 10 (log), `n_estimators=2000` with `early_stopping(50)` on the
    fold's validation part. Report each fold's AUC with `trial.report` and call
-   `trial.should_prune()` so `MedianPruner` can stop losing trials. 60 trials. Expect
-   roughly 0.84 to 0.86 and a gain over logistic of a point at most; write down before
-   you run why (7,000 rows, mostly categorical features with near-additive effects,
-   little numeric structure for trees to exploit).
+   `trial.should_prune()` so `MedianPruner` can stop losing trials. Run 60 trials.
+   Expect roughly 0.84 to 0.86 and a gain over logistic of a point at most; before you
+   run, write down why (7,000 rows, mostly categorical features with near-additive
+   effects, little numeric structure for trees to exploit).
 5. Calibrate the best model with isotonic regression on out-of-fold predictions;
    reliability diagram before and after.
 6. Decision. A retention offer costs £20, succeeds on 30% of the churners it reaches,
@@ -410,6 +420,6 @@ sealed test set was scored exactly once.
 ## Next
 
 Module 3 removes the label column. The evaluation discipline carries over unchanged, but
-without a metric to cross-validate you will have to argue from stability and
-predictive validity instead, and the churn features you cleaned here become the
-starting point for asking whether customers form groups at all.
+without a metric to cross-validate you will have to argue from stability and predictive
+validity instead. It starts from the Online Retail transactions and asks whether
+customers form groups at all.

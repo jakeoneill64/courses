@@ -4,23 +4,24 @@
 
 ## Why this module
 
-You already know what a gradient is and have written backpropagation, so this is not a
-maths course. It is a fast pass over the specific results every later module leans on,
-organised by where each shows up later rather than by textbook chapter. The SVD is here
-because Module 4's PCA and recommender are the SVD; the negative log-likelihood is here
-because every loss you will minimise is one; logsumexp is here because Module 3's EM and
-Module 9's attention both die without it.
+You already know what a gradient is and have written backpropagation, so this module
+covers only the specific results that later modules use, organised by where each one
+appears rather than by textbook chapter. The SVD is included because Module 4's PCA and
+recommender are built on it, the negative log-likelihood because every loss you will
+minimise is one, and logsumexp because Module 3's EM and Module 9's attention are
+numerically unstable without it.
 
-The Oxford Classical Machine Learning and Deep Neural Networks weeks assume this is
-fluent. When a lecturer writes "the MLE under Gaussian noise is least squares" and moves
-on, you want to have derived it, not to be reconstructing it while the next slide goes
-by. The assignments reward the same fluency: explaining why a method fits the data is a
-statement about its noise model, its prior and its loss.
+The Oxford Classical Machine Learning and Deep Neural Networks weeks assume you are
+fluent in this material. When a lecturer writes "the MLE under Gaussian noise is least
+squares" and moves on, you want to have derived it already instead of reconstructing it
+while the next slide goes by. The assignments reward the same fluency, because
+explaining why a method fits the data means describing its noise model, its prior and
+its loss.
 
-Structurally, both gaps you named rest here. Unsupervised learning is density estimation
-and low-rank structure, which is maximum likelihood and the SVD. The craft of training
-networks is mostly conditioning, numerical stability and knowing which loss encodes which
-assumption. Module 5 will cite this module more than any other.
+Both gaps you named depend on this material. Unsupervised learning is density
+estimation and low-rank structure, which means maximum likelihood and the SVD. The craft
+of training networks is mostly conditioning, numerical stability and knowing which loss
+encodes which assumption. Module 5 will cite this module more than any other.
 
 ## Skip test
 
@@ -46,138 +47,145 @@ If all six are easy, do Lab 1.5 only, and the write-up.
 
 ## Core ideas
 
-**A matrix is a linear map, and its rank is the dimension of what it can reach.** An
-m × n matrix sends ℝⁿ to ℝᵐ; its column space is the set of outputs it can produce and
-its rank r is that space's dimension; the other n − r input directions are sent to zero
-and are invisible downstream. Low rank is sometimes the point (an embedding table, a
-recommender's k factors, a rank-8 LoRA adapter in Module 10) and sometimes the disease
-(a collapsed representation in Module 8). A design matrix with rank below its column
-count has singular normal equations; ridge in Module 2 is the fix.
+**A matrix is a linear map, and its rank is the dimension of the set of outputs it can
+produce.** An m × n matrix sends ℝⁿ to ℝᵐ. Its column space is that set of outputs, and
+its rank r is the column space's dimension. The remaining n − r input directions are
+sent to zero and have no effect downstream. Low rank is sometimes a design choice (an
+embedding table, a recommender's k factors, a rank-8 LoRA adapter in Module 10) and
+sometimes a fault (a collapsed representation in Module 8). A design matrix with rank
+below its column count has singular normal equations, and Module 2's ridge regression
+fixes this.
 
 **Symmetric matrices have real eigenvalues and orthogonal eigenvectors, and every matrix
 has an SVD.** For symmetric S, S = QΛQᵀ: rotate into the eigenbasis, scale, rotate back.
 For any A, A = UΣVᵀ with orthogonal U and V and singular values σ₁ ≥ σ₂ ≥ ... ≥ 0; the
-σᵢ² are the eigenvalues of AᵀA. Eckart and Young: the best rank-k approximation to A in
-Frobenius or spectral norm is Σᵢ≤ₖ σᵢuᵢvᵢᵀ, with Frobenius error √(Σᵢ>ₖ σᵢ²). That
-theorem is PCA (Lab 1.1), Module 4's recommender, and the reason a 4,096 × 4,096 weight
-can be updated through two 4,096 × 8 matrices. Use `np.linalg.eigh`, not `eig`, for
-symmetric matrices.
+σᵢ² are the eigenvalues of AᵀA. The Eckart-Young theorem states that the best rank-k
+approximation to A in Frobenius or spectral norm is Σᵢ≤ₖ σᵢuᵢvᵢᵀ, with Frobenius error
+√(Σᵢ>ₖ σᵢ²). The theorem underlies PCA (Lab 1.1) and Module 4's recommender, and it
+explains why a 4,096 × 4,096 weight can be updated through two 4,096 × 8 matrices. For
+symmetric matrices use `np.linalg.eigh` instead of `eig`.
 
-**Covariance matrices are positive semi-definite, and the condition number says how
-badly a matrix will treat your optimiser.** S is PSD if xᵀSx ≥ 0 for all x; every
-covariance qualifies because xᵀΣx is the variance of the projection onto x, its
-eigenvectors are the principal axes and its eigenvalues the variances along them. The
-condition number κ = σ_max/σ_min is, for a least-squares loss, the ratio of largest to
-smallest curvature, and gradient descent at the largest stable step needs on the order
-of κ iterations along the flattest direction; standardising features, batch
-normalisation and Adam all attack κ. ‖x‖₁ is what makes the lasso sparse; the spectral
-norm ‖A‖₂ = σ₁ bounds how much a layer can stretch a gradient passing back through it.
+**Covariance matrices are positive semi-definite, and the condition number measures how
+hard a matrix makes optimisation.** S is PSD if xᵀSx ≥ 0 for all x. Every covariance
+matrix is PSD because xᵀΣx is the variance of the projection onto x; its eigenvectors
+are the principal axes and its eigenvalues are the variances along them. The condition
+number κ = σ_max/σ_min is, for a least-squares loss, the ratio of largest to smallest
+curvature. Gradient descent at the largest stable step needs on the order of κ
+iterations along the flattest direction, and standardising features, batch
+normalisation and Adam all reduce the effective κ. The L1 norm ‖x‖₁ makes the lasso
+sparse, and the spectral norm ‖A‖₂ = σ₁ bounds how much a layer can stretch a gradient
+passing back through it.
 
 **The chain rule is a product of Jacobians, and backpropagation multiplies them in the
-cheap order.** For f_L ∘ ... ∘ f₁ the Jacobian is J_L ⋯ J₁. A loss is scalar, so its
-Jacobian is a row, and multiplying from the left, gᵀJ_L then (gᵀJ_L)J_{L−1}, keeps every
-intermediate a vector: one vector-Jacobian product per layer, no Jacobian ever formed,
-where forward mode would cost n times more. The Hessian is the Jacobian of the gradient;
-its eigenvalues are the curvatures, its condition number the κ above, and for least
-squares it is JᵀJ plus a term vanishing at a perfect fit, the Gauss-Newton
-approximation.
+cheaper order.** For f_L ∘ ... ∘ f₁ the Jacobian is J_L ⋯ J₁. A loss is scalar, so its
+Jacobian is a row. Multiplying from the left, gᵀJ_L and then (gᵀJ_L)J_{L−1}, keeps every
+intermediate a vector, so each layer costs one vector-Jacobian product and no Jacobian
+is ever formed. Forward mode would cost n times more. The Hessian is the Jacobian of the
+gradient; its eigenvalues are the curvatures and its condition number is the κ above.
+For least squares the Hessian is JᵀJ plus a term that vanishes at a perfect fit, and
+JᵀJ alone is the Gauss-Newton approximation.
 
-**Probability is bookkeeping over a joint distribution, and Bayes' rule is division.**
-From p(x, y): marginalise by summing out what you do not care about, condition by
-dividing by a marginal, and Bayes' rule p(θ | D) = p(D | θ)p(θ)/p(D) is that division
-with the joint factored the other way. Expectation is linear; variance
-Var(x) = E[x²] − E[x]² is not, and that identity is the formula Lab 1.3 shows you must
-never evaluate in floating point. Conditional independence given z, the assumption every
-latent variable model makes, means the joint factorises once z is known; Module 3's
-E-step is a posterior over z by Bayes' rule and nothing more.
+**Probability calculations start from a joint distribution, and Bayes' rule divides
+the joint by a marginal.** From p(x, y), you marginalise by summing out the variables
+you do not need and condition by dividing by a marginal. Bayes' rule
+p(θ | D) = p(D | θ)p(θ)/p(D) is that division with the joint factored the other way.
+Expectation is linear and variance is not. The identity Var(x) = E[x²] − E[x]² is the
+formula Lab 1.3 shows you must never evaluate in floating point. Conditional
+independence given z, the assumption every latent variable model makes, means the joint
+factorises once z is known. Module 3's E-step computes a posterior over z by Bayes'
+rule.
 
 **The Gaussian is the default because it has maximum entropy for a given mean and
-covariance, and its covariance is an ellipse.** N(x | μ, Σ) = (2π)^(−d/2) |Σ|^(−1/2)
-exp(−½(x − μ)ᵀΣ⁻¹(x − μ)); its level sets are ellipsoids with axes along the eigenvectors
-of Σ and semi-axes √λᵢ, so Module 3's 2σ ellipse has semi-axes 2√λᵢ. Never invert Σ:
-take the Cholesky factor L, solve Ly = x − μ, use ‖y‖² and log|Σ| = 2 Σ log Lᵢᵢ. The
-Bernoulli, categorical and Poisson cover labels, classes and counts, and all four are
-exponential families p(x | η) = h(x) exp(ηᵀT(x) − A(η)), where ∇A = E[T(x)], so the MLE
-matches expected sufficient statistics to the data's (Module 3's M-step is weighted
-averages) and the gradient T(x) − E[T] is the "observed minus predicted" form logistic
-regression and softmax share.
+covariance, and its contours are ellipses set by the covariance.**
+N(x | μ, Σ) = (2π)^(−d/2) |Σ|^(−1/2) exp(−½(x − μ)ᵀΣ⁻¹(x − μ)). Its level sets are
+ellipsoids with axes along the eigenvectors of Σ and semi-axes √λᵢ, so Module 3's 2σ
+ellipse has semi-axes 2√λᵢ. Never invert Σ. Take the Cholesky factor L, solve
+Ly = x − μ, and use ‖y‖² and log|Σ| = 2 Σ log Lᵢᵢ. The Bernoulli, categorical and Poisson
+distributions cover labels, classes and counts. All four are exponential families
+p(x | η) = h(x) exp(ηᵀT(x) − A(η)) with ∇A = E[T(x)], so the MLE matches the expected
+sufficient statistics to the data's (Module 3's M-step computes weighted averages). The
+gradient T(x) − E[T] is the "observed minus predicted" form that logistic regression and
+softmax share.
 
 **Every standard loss is a negative log-likelihood, and every standard regulariser a
-negative log-prior.** Maximum likelihood maximises Σᵢ log p(yᵢ | xᵢ, θ). Gaussian noise
-of fixed variance gives Σ(yᵢ − f(xᵢ))²/(2σ²) plus a constant: mean squared error.
-Laplace noise gives mean absolute error. A categorical yᵢ with probabilities
-softmax(f(xᵢ)) gives −Σ log p(yᵢ): cross-entropy. MAP adds log p(θ): a Gaussian prior
-N(0, τ²I) contributes ‖θ‖²/(2τ²), which is L2 with λ = σ²/τ², and a Laplace prior
-contributes |θ|/b, which is L1. So "which loss" is never taste: it is a claim about how
-the targets are noisy, and switching to Huber in Lab 1.5 says you believe in outliers.
+negative log-prior.** Maximum likelihood maximises Σᵢ log p(yᵢ | xᵢ, θ). Under Gaussian
+noise of fixed variance the negative log-likelihood is Σ(yᵢ − f(xᵢ))²/(2σ²) plus a
+constant, so minimising it minimises mean squared error. Laplace noise gives mean
+absolute error. A categorical yᵢ with probabilities softmax(f(xᵢ)) gives −Σ log p(yᵢ),
+the cross-entropy. MAP adds log p(θ). A Gaussian prior N(0, τ²I) contributes
+‖θ‖²/(2τ²), which is L2 with λ = σ²/τ², and a Laplace prior contributes |θ|/b, which is
+L1. Choosing a loss is therefore a claim about how the targets are noisy, and switching
+to Huber in Lab 1.5 says you expect outliers.
 
-**Cross-entropy is entropy plus KL, so minimising it minimises KL to the data, and the
-floor is the label noise.** H(p) = −Σ p log p is the expected code length under the
-truth, H(p, q) = −Σ p log q the cost of coding with q instead, and KL(p ‖ q) = Σ p
-log(p/q) the excess, so H(p, q) = H(p) + KL(p ‖ q). Gibbs' inequality, KL ≥ 0 with
-equality iff p = q, follows from Jensen or from log x ≤ x − 1. Minimising cross-entropy
-on data minimises KL(p_data ‖ q_θ) because H(p_data) is constant in θ, so the loss
-cannot fall below H(p_data): with 5% wrong labels, a training loss heading to zero is
-memorisation. KL is asymmetric, mild when q puts mass where p has none and infinite when
-q misses mass p has, which is why maximum likelihood covers every mode.
+**Cross-entropy is entropy plus KL, so minimising it minimises KL to the data, and
+label noise sets a floor under it.** H(p) = −Σ p log p is the expected code length under
+the truth, H(p, q) = −Σ p log q the cost of coding with q instead, and
+KL(p ‖ q) = Σ p log(p/q) the excess, so H(p, q) = H(p) + KL(p ‖ q). Gibbs' inequality,
+KL ≥ 0 with equality iff p = q, follows from Jensen or from log x ≤ x − 1. Minimising
+cross-entropy on data minimises KL(p_data ‖ q_θ) because H(p_data) is constant in θ, so
+the loss cannot fall below H(p_data). With 5% wrong labels, a training loss heading to
+zero means the model is memorising. KL is asymmetric. It penalises q mildly for putting
+mass where p has none and infinitely for missing mass that p has, which is why maximum
+likelihood covers every mode.
 
 **Expected squared error is bias squared plus variance plus irreducible noise, and the
 three respond to different levers.** For y = f(x) + ε and f̂ trained on a random
-dataset, E[(y − f̂(x))²] = (E[f̂(x)] − f(x))² + Var(f̂(x)) + σ². Bias is what you are
-wrong about on average because the model class cannot represent f; variance is how much
-the answer depends on which sample you drew. More data cuts variance and leaves bias
-alone; a richer model class trades bias for variance; regularisation and averaging
-(bagging, in Module 2) cut variance at a small cost in bias. Problem 4 derives it, Lab
-1.4 measures it, and it is Module 2's vocabulary for forests and boosting.
+dataset, E[(y − f̂(x))²] = (E[f̂(x)] − f(x))² + Var(f̂(x)) + σ². Bias is the average
+error that remains because the model class cannot represent f. Variance is how much the
+answer depends on which sample you drew. More data cuts variance and leaves bias alone,
+a richer model class trades bias for variance, and regularisation and averaging
+(bagging, in Module 2) cut variance at a small cost in bias. Problem 4 derives the
+decomposition, Lab 1.4 measures it, and Module 2 uses it to explain forests and
+boosting.
 
-**The law of large numbers says your sample mean converges; the central limit theorem
-says how fast, and confidence intervals follow.** The mean of n independent draws with
+**The law of large numbers says a sample mean converges, and the central limit theorem
+says how fast, which gives confidence intervals.** The mean of n independent draws with
 variance σ² has standard error σ/√n and, for large n, a near-Gaussian distribution
 whatever the draws' shape. A test accuracy is a mean of Bernoulli outcomes with standard
-error √(p(1 − p)/n): 0.91 on 1,000 examples is 0.91 ± 0.018 at 95%, and a competitor at
-0.92 sits inside the interval. When there is no formula (AUC, F1, a median) the
-bootstrap does the job: resample the test set with replacement B = 1,000 times,
-recompute, take the 2.5th and 97.5th percentiles. Lab 1.4 checks that such an interval
-contains the truth 95% of the time, which is the only way to trust one; every number in
-every write-up in this course carries an interval or a seed spread.
+error √(p(1 − p)/n), so 0.91 on 1,000 examples is 0.91 ± 0.018 at 95%, and a competitor
+at 0.92 sits inside the interval. When there is no formula (AUC, F1, a median), use the
+bootstrap: resample the test set with replacement B = 1,000 times, recompute, and take
+the 2.5th and 97.5th percentiles. Lab 1.4 checks that such an interval contains the
+truth 95% of the time. Every number in every write-up in this course carries an
+interval or a seed spread.
 
-**Monte Carlo averages samples to estimate an expectation, and reparameterisation is
-what lets you differentiate through it.** E_p[f(x)] ≈ (1/N) Σ f(xᵢ), with error falling
-as 1/√N regardless of dimension. The trouble comes when p depends on parameters you are
-optimising: ∇_φ E_{p_φ}[f] is not E[∇f], because the sampling distribution moves. Write
-x = g(φ, ε) with ε from a fixed distribution, for a Gaussian x = μ + σε with ε ~ N(0, I),
-and the expectation is over ε, so the gradient passes through g by the chain rule; that
-one line makes Module 7's VAE trainable. The score-function alternative
-f(x)∇ log p_φ(x) handles discrete x with variance high enough that Module 11's
-REINFORCE is mostly about reducing it.
+**Monte Carlo averages samples to estimate an expectation, and reparameterisation lets
+you differentiate through it.** E_p[f(x)] ≈ (1/N) Σ f(xᵢ), with error falling as 1/√N
+regardless of dimension. The difficulty arises when p depends on parameters you are
+optimising. Then ∇_φ E_{p_φ}[f] is not E[∇f], because the sampling distribution itself
+moves with φ. Writing x = g(φ, ε) with ε from a fixed distribution (for a Gaussian,
+x = μ + σε with ε ~ N(0, I)) puts the expectation over ε, so the gradient passes through
+g by the chain rule. This step is what makes Module 7's VAE trainable. The
+score-function estimator f(x)∇ log p_φ(x) also handles discrete x, but its variance is
+high enough that Module 11's REINFORCE is mostly about reducing it.
 
 **Float32 has about seven decimal digits, float64 sixteen, and most numerical bugs are
 one of three patterns.** Overflow: exp(89) exceeds float32's maximum of about
-3.4 × 10³⁸, so softmax of logits near 1,000 is NaN; the fix is
-softmax(z) = softmax(z − max z) and its log form logsumexp(z) = m + log Σ exp(zᵢ − m)
-with m = max z, so compute log-softmax as z − logsumexp(z), never log(softmax(z)).
-Cancellation: E[x²] − E[x]² on data with mean 10⁸ and variance 1 needs 17 digits and
-float64 has 16; Welford's update mₖ = mₖ₋₁ + (xₖ − mₖ₋₁)/k,
-Sₖ = Sₖ₋₁ + (xₖ − mₖ₋₁)(xₖ − mₖ) never forms the large intermediate. Underflow: a product
-of 1,000 probabilities is zero in any precision, so likelihoods live in the log domain.
-On the Mac, MPS has no float64: gradient checks run on the CPU and long float32
-reductions drift.
+3.4 × 10³⁸, so softmax of logits near 1,000 is NaN. The fix is
+softmax(z) = softmax(z − max z), and its log form is
+logsumexp(z) = m + log Σ exp(zᵢ − m) with m = max z; compute log-softmax as
+z − logsumexp(z), never as log(softmax(z)). Cancellation: E[x²] − E[x]² on data with
+mean 10⁸ and variance 1 needs 17 digits and float64 has 16. Welford's update
+mₖ = mₖ₋₁ + (xₖ − mₖ₋₁)/k, Sₖ = Sₖ₋₁ + (xₖ − mₖ₋₁)(xₖ − mₖ) never forms the large
+intermediate. Underflow: a product of 1,000 probabilities is zero in any precision, so
+compute likelihoods in the log domain. On the Mac, MPS has no float64, so gradient
+checks run on the CPU and long float32 reductions drift.
 
 **Sampling from a distribution is applying the inverse CDF to uniform noise.** If
-U ~ Uniform(0, 1) then F⁻¹(U) has CDF F: −log(1 − U)/λ for the exponential, a cumulative
-sum and a search for a categorical (how `np.random.choice` works), Box-Muller for the
-Gaussian since its inverse has no closed form. When F cannot be inverted you use
-rejection sampling, MCMC, or learn a transformation of simple noise, which is what a VAE
-decoder and a diffusion model both are. Lab 1.5 draws residuals from each loss's implied
-density this way, so you can see that MAE believes in Laplace tails and Huber in a
-Gaussian centre with exponential shoulders.
+U ~ Uniform(0, 1) then F⁻¹(U) has CDF F. This gives −log(1 − U)/λ for the exponential
+and a cumulative sum followed by a search for a categorical (how `np.random.choice`
+works). The Gaussian's inverse CDF has no closed form, so Box-Muller is used instead.
+When F cannot be inverted, use rejection sampling or MCMC, or learn a transformation of
+simple noise; a VAE decoder and a diffusion model are both such transformations. Lab
+1.5 draws residuals from each loss's implied density this way, so you can see that MAE
+implies Laplace tails and Huber a Gaussian centre with exponential tails.
 
-**Forward links.** The SVD is Module 4's PCA and recommender and Module 10's LoRA. The
-NLL view of losses is how Module 2 picks objectives for boosted trees, how Module 7
-derives the ELBO's reconstruction term, and how Module 9 reads the language-modelling
-loss as compression. Condition number is Module 5's explanation for normalisation
-layers and Adam. Intervals and the bootstrap sit on every results table from Module 2
-on and are the whole of Module 12's A/B analysis.
+**Forward links.** The SVD reappears in Module 4's PCA and recommender and in Module
+10's LoRA. The NLL view of losses is how Module 2 picks objectives for boosted trees, how
+Module 7 derives the ELBO's reconstruction term, and how Module 9 reads the
+language-modelling loss as compression. Condition number is Module 5's explanation for
+normalisation layers and Adam. Intervals and the bootstrap appear on every results
+table from Module 2 on and are the core of Module 12's A/B analysis.
 
 ## Reading
 
@@ -204,8 +212,8 @@ on and are the whole of Module 12's A/B analysis.
 
 ### Lab 1.1: PCA two ways
 
-Goal: see that eigendecomposition of the covariance and SVD of the data are the same
-computation, and know what the components explain.
+Goal: show that eigendecomposition of the covariance and SVD of the data are the same
+computation, and interpret what the components explain.
 
 1. Load the 60,000 MNIST training images as a 60,000 × 784 float64 array in [0, 1] and
    centre it; do not standardise, since border pixels have near-zero variance.
@@ -215,13 +223,14 @@ computation, and know what the components explain.
    and scores.
 3. Assert both agree on explained variance to 1e-8 and on components up to sign, and
    match `sklearn.decomposition.PCA(n_components=50)` the same way. Time all three.
-4. Scree plot of the first 100 eigenvalues with cumulative variance (90% and 95% arrive
-   at roughly 90 and 150 components). Reconstruct ten digits at k = 2, 10, 50 and 784
-   and check reconstruction MSE equals the mean of the discarded eigenvalues, which is
-   Eckart-Young.
-5. Plot the 2D scores coloured by digit: roughly 17% of the variance, yet the digits
-   partly separate. Keep it for Module 4, where t-SNE will look much better and mean
-   much less.
+4. Scree plot of the first 100 eigenvalues with cumulative variance (which reaches 90%
+   and 95% at roughly 90 and 150 components). Reconstruct ten digits at k = 2, 10, 50
+   and 784, and check that the squared reconstruction error per image, averaged over
+   the training set, equals the sum of the discarded eigenvalues (Eckart-Young).
+5. Plot the 2D scores coloured by digit. They hold roughly 17% of the variance, yet the
+   digits partly separate. Keep the plot for comparison with Module 4's t-SNE plot,
+   which separates the digits more cleanly but whose sizes and distances mean much
+   less.
 
 Done when: the sign-invariant tests against scikit-learn pass under pytest for k = 2, 10
 and 50, the three figures are in the notebook, and reconstruction error matches the
@@ -250,12 +259,12 @@ notebook, and each step has one written line saying what it showed.
 
 ### Lab 1.3: Numerical stability
 
-Goal: cause every failure in the numerical-stability paragraph and fix each one.
+Goal: reproduce every failure in the numerical-stability paragraph and fix each one.
 
 1. In `01-maths/stable.py`, implement `softmax_naive`, `softmax_stable`,
    `logsumexp(z, axis)` and `log_softmax_stable`. Show the naive softmax is NaN on
    `[1000, 1000, 1000]` in both precisions, the stable one is exactly `[0, 0, 1]` on
-   `[-1000, 0, 1000]`, and `np.log(softmax_stable(z))` is −inf where
+   `[-1000, 0, 1000]`, and, in float32, `np.log(softmax_stable(z))` is −inf where
    `log_softmax_stable` is finite for a logit gap of 200. Test `logsumexp` against
    `scipy.special.logsumexp` including rows with −inf entries (a masked attention
    position in Module 9).
@@ -273,10 +282,10 @@ Done when: the softmax, logsumexp and Welford tests pass under pytest including 
 cases, the variance table shows the naive float64 formula failing at mean 10⁸, and the
 notebook has the four rules.
 
-### Lab 1.4: Bias, variance, and an interval that covers
+### Lab 1.4: Bias, variance and interval coverage
 
-Goal: measure the bias-variance decomposition rather than believe it, and check a
-bootstrap interval's coverage.
+Goal: measure the bias-variance decomposition, and check a bootstrap interval's
+coverage.
 
 1. Let f(x) = sin(2πx) on [0, 1] with noise σ = 0.3. Draw 200 training sets of n = 30
    and fit degrees 1 to 15 with `numpy.polynomial.Polynomial.fit`, which rescales the
@@ -298,10 +307,10 @@ Done when: the three-term plot's sum tracks the empirical error at every degree,
 coverage table has all six numbers, and you have one sentence on why Wald fails at
 p = 0.99.
 
-### Lab 1.5: The loss zoo (headline lab)
+### Lab 1.5: Losses, gradients and noise models (headline lab)
 
 Goal: implement the losses you will spend the course minimising, verify every gradient
-two ways, and expose each loss's noise model.
+two ways, and identify each loss's noise model.
 
 1. In `01-maths/losses.py`, implement NumPy functions returning `(loss, grad)` with
    respect to the prediction: `mse`, `mae`, `huber(delta=1.0)`, `bce_with_logits`,
@@ -378,11 +387,11 @@ contamination.
 - `01-maths/derivations.md` with the eight problem-set solutions and the gradient
   derivation for every loss in Lab 1.5.
 - Notebook with all five labs' figures and the variance, coverage and outlier tables.
-- Write-up on Lab 1.5, following `writeup-template.md`, framed as "choosing a loss is
-  choosing a noise model" for a manager deciding between MSE and Huber on a forecasting
-  problem with outliers. The Limitations section should engage with what a
-  finite-difference check cannot tell you at the kinks and with the precision float32 on
-  MPS lost that you only noticed because you looked.
+- Write-up on Lab 1.5, following `writeup-template.md`, framed around choosing a loss
+  as choosing a noise model, for a manager deciding between MSE and Huber on a
+  forecasting problem with outliers. The Limitations section should engage with what a
+  finite-difference check cannot tell you at the kinks, and with the precision lost to
+  float32 on MPS that you noticed only because you checked.
 
 ## Stretch
 
@@ -391,14 +400,14 @@ contamination.
 - Derive and implement the natural gradient for a Gaussian's (μ, σ²) via the Fisher
   information and show it beats plain gradient descent on Lab 1.2's NLL.
 - Implement the score-function and reparameterised estimators of ∇_μ E_{N(μ,1)}[x²] and
-  compare their variances over 1,000 samples: the argument for reparameterisation in
-  one plot.
+  compare their variances over 1,000 samples in one plot, which shows why
+  reparameterisation is preferred.
 - Read Higham, "The accuracy of floating point summation", 1993, and add pairwise
   summation to Lab 1.3's comparison.
 
 ## Next
 
-Module 2 puts this to work on tabular data: ridge is the Gaussian prior from Problem 2,
+Module 2 applies this to tabular data: ridge is the Gaussian prior from Problem 2,
 logistic regression is Problem 1's Bernoulli NLL with a linear f, and the intervals from
 Lab 1.4 go on every number in its model comparison table. The bias-variance
 decomposition becomes the explanation for why bagging and boosting work.

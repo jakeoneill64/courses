@@ -2,11 +2,11 @@
 
 **Half a week. Do it in one sitting; the dataset downloads run while you read Module 1.**
 
-## What this module buys you
+## What this module provides
 
-An environment that builds from one file, a GPU path you have measured rather than
-assumed, a labs repository with the shape the rest of the course expects, and every
-dataset cached locally so a lab never stalls on a download. It also fixes two habits
+This module sets up an environment that builds from one file, a GPU whose speed you have
+measured, a labs repository with the layout the rest of the course expects, and a local
+cache of every dataset so that no lab waits on a download. It also fixes two habits
 early: every experiment is tracked, and every module ends in a write-up.
 
 ---
@@ -16,9 +16,9 @@ early: every experiment is tracked, and every module ends in a write-up.
 Your Mac (Apple M2 Pro, 32 GB unified memory) is enough for every lab in this course.
 PyTorch's MPS backend runs on the GPU cores. Expect roughly a 5 to 10× speedup over the
 CPU on convnets and transformers at the sizes used here; the smoke test below measures
-yours. Three things to know about MPS before you hit them:
+yours. Know three things about MPS before you start:
 
-- No float64 tensors. Keep everything float32, and cast NumPy arrays explicitly.
+- MPS has no float64 tensors. Keep everything float32, and cast NumPy arrays explicitly.
 - A few operators are unimplemented. Set `PYTORCH_ENABLE_MPS_FALLBACK=1` in your shell
   and PyTorch will run those on the CPU with a warning instead of crashing.
 - Autocast to float16 works and roughly doubles throughput on large matmuls. bfloat16
@@ -33,8 +33,8 @@ the `device` string changes. The course never requires a paid GPU.
 
 ## Environment
 
-One project, one lock file, for the whole course. Use `uv`; it is fast, handles Python
-versions, and the lock file makes every result reproducible.
+Use one project and one lock file for the whole course. Use `uv`, which is fast and
+manages Python versions, and whose lock file makes every result reproducible.
 
 ```bash
 brew install uv
@@ -44,19 +44,20 @@ Create the labs repo from the starter files in this directory:
 
 ```bash
 mkdir -p ~/code/ml-course-labs && cd ~/code/ml-course-labs && git init
-cp ~/Desktop/ONeill-Website/ml-course/starter/pyproject.toml .
-cp ~/Desktop/ONeill-Website/ml-course/starter/smoke_test.py .
-cp ~/Desktop/ONeill-Website/ml-course/starter/cache_datasets.py .
-cp ~/Desktop/ONeill-Website/ml-course/starter/notebook-template.md .
-cp ~/Desktop/ONeill-Website/ml-course/starter/writeup-template.md .
+STARTER=~/code/courses/ml-foundations/starter  # wherever you cloned the courses repo
+cp "$STARTER/pyproject.toml" .
+cp "$STARTER/smoke_test.py" .
+cp "$STARTER/cache_datasets.py" .
+cp "$STARTER/notebook-template.md" .
+cp "$STARTER/writeup-template.md" .
 uv python install 3.12
 uv sync
 ```
 
 `uv sync` installs the core group: NumPy, SciPy, pandas, scikit-learn, PyTorch with
 torchvision, matplotlib, JupyterLab, MLflow, LightGBM, XGBoost, Optuna, UMAP, timm,
-Gymnasium, SHAP, pytest and ruff. The `llm`, `causal` and `serve` groups are installed
-when their modules arrive:
+Gymnasium, SHAP, pytest and ruff. Install the `llm`, `causal` and `serve` groups when
+you reach their modules:
 
 ```bash
 uv sync --group llm      # Module 9 onward: transformers, datasets, peft, sentence-transformers, faiss
@@ -72,8 +73,8 @@ export TOKENIZERS_PARALLELISM=false
 export HF_HOME=~/.cache/huggingface
 ```
 
-Editor: VS Code or Cursor with the Python and Jupyter extensions, pointed at
-`.venv/bin/python`. Or run `uv run jupyter lab`. Notebooks are for exploration; anything
+For an editor, use VS Code or Cursor with the Python and Jupyter extensions, pointed at
+`.venv/bin/python`, or run `uv run jupyter lab`. Notebooks are for exploration; anything
 you will run twice goes in a `.py` file with a `main()` and gets committed.
 
 ---
@@ -85,9 +86,9 @@ uv run python smoke_test.py
 ```
 
 It prints library versions, trains a small MLP on synthetic data on the CPU and on MPS,
-checks the loss actually falls, times both, runs a convnet forward pass under autocast,
-and reports whether bfloat16 is available. Read the output; the CPU-to-GPU ratio is your
-first data point on where the course's compute will go.
+checks that the loss falls, times both, runs a convnet forward pass under autocast, and
+reports whether bfloat16 is available. Read the output; the CPU-to-GPU ratio is your
+first measurement of where the course's compute time will go.
 
 ---
 
@@ -106,8 +107,8 @@ with mlflow.start_run(run_name=cfg.name):
 ```
 
 and `uv run mlflow ui` to browse. If you prefer Weights and Biases, the free tier is
-fine and the API is nearly identical; pick one and use it for everything. The rule is
-that no number goes in a notebook or write-up without a run it came from.
+fine and the API is nearly identical; pick one and use it for everything. No number goes
+in a notebook or write-up unless it comes from a tracked run.
 
 ---
 
@@ -119,8 +120,8 @@ Cache everything now so no lab waits on a download:
 uv run python cache_datasets.py
 ```
 
-The script fetches each dataset in its own try block and reports what succeeded. What
-it pulls, and what each is for:
+The script fetches each dataset in its own try block and reports what succeeded. The
+table lists what it fetches and which modules use each dataset:
 
 | Dataset | Source | Modules |
 |---|---|---|
@@ -136,7 +137,7 @@ it pulls, and what each is for:
 | Hillstrom email marketing challenge | MineThatData, CSV | 12 |
 
 Two things are manual. Kaggle datasets need a free account and `~/.kaggle/kaggle.json`
-if you go that route instead of OpenML. And for Module 10 install Ollama
+if you go that route instead of OpenML. For Module 10, install Ollama
 (`brew install ollama`) and pull one small chat model and one embedding model:
 
 ```bash
@@ -169,12 +170,13 @@ the lock file.
 
 **Lab notebook** (`notebook-template.md`): a dated entry per session with hypothesis,
 what you ran (the MLflow run name), the number, and the gap between prediction and
-result. It is deliberately terse. The habit that matters is writing the prediction
+result. It is deliberately terse. The habit that matters most is writing the prediction
 down before you look at the result.
 
 **Write-up** (`writeup-template.md`): 500 to 800 words, six headings, written for a
 technical manager who will not run your code. This is the shape of the Oxford
-assignments. Do it for every module, even the ones you find easy; the point is fluency.
+assignments. Write one for every module, including the ones you find easy, to build
+fluency.
 
 ---
 
@@ -183,12 +185,12 @@ assignments. Do it for every module, even the ones you find easy; the point is f
 - `uv run python smoke_test.py` passes on both CPU and MPS and you have written the
   speedup ratio and bfloat16 status in `00-setup/notebook.md`.
 - `uv run python cache_datasets.py` reports success for everything except any Kaggle
-  item you chose to skip.
+  item you chose to skip and the Hugging Face step, which needs the `llm` group from Module 9.
 - `uv run mlflow ui` shows the smoke test's run.
 - The labs repo has its first commit, with the lock file in and `data/` ignored.
 - `uv run pytest` runs (zero tests collected is fine) and `uv run ruff check .` is clean.
 
 ## Next
 
-Module 1 is a fast pass over the maths that every later module leans on, pitched at
-someone who already knows what a gradient is.
+Module 1 is a fast pass over the maths that every later module uses, pitched at someone
+who already knows what a gradient is.

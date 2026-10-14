@@ -8,22 +8,22 @@ This is where the two gaps you named meet. Deep generative models are unsupervis
 learning done with the training craft from Module 5, and they are the hardest models in
 the course to get working, because there is no accuracy to watch and a loss that goes
 down can still mean nothing is being learned. The Oxford Generative AI course lists
-"foundation models: autoencoders, transformers, diffusion models" in one breath, and the
+"foundation models: autoencoders, transformers, diffusion models" in one line, and the
 Deep Neural Networks course expects you to know what a VAE optimises. Neither will have
-time to derive anything. You will have derived all of it here, by hand, before writing
-code.
+time to derive anything, so you derive all of it here, by hand, before writing code.
 
 The second reason is structural, and it is the one Module 3 promised. A Gaussian mixture
 fitted by EM is coordinate ascent on the ELBO with a discrete latent and an exact E-step.
-Make the latent continuous, replace the exact posterior with a network q_φ(z | x), and
-optimise the bound by gradient ascent on both sets of parameters at once: that is a
-variational autoencoder, and every line of the derivation is the one you already did.
-Then stack a thousand latent layers, fix the encoder to be Gaussian noise, and simplify
-the bound: that is a diffusion model. If you see diffusion as a VAE with a fixed encoder
-and a weighted loss, the papers stop looking like magic.
+If you make the latent continuous, replace the exact posterior with a network
+q_φ(z | x), and optimise the bound by gradient ascent on both sets of parameters at
+once, you have a variational autoencoder, and every line of its derivation is one you
+have already done. If you then stack a thousand latent layers, fix the encoder to be
+Gaussian noise, and simplify the bound, you have a diffusion model. Read as a VAE with a
+fixed encoder and a weighted loss, the diffusion papers follow from what you already
+know.
 
-The third reason is that these models earn their keep in businesses as anomaly scorers,
-feature extractors and synthetic-data generators far more often than as image makers.
+The third reason is that businesses use these models as anomaly scorers, feature
+extractors and synthetic-data generators far more often than as image generators.
 Module 8 uses reconstruction error on fraud data, and Module 10 assumes you know what an
 "image token" is, which is a VQ-VAE codebook index.
 
@@ -57,15 +57,15 @@ principal subspace (Problem 4), though the individual weights are not the compon
 since any invertible transform of the code leaves the loss unchanged. A denoising
 autoencoder reconstructs the clean input from a corrupted one, which stops it learning
 the identity; a sparse autoencoder penalises the code so each input uses a few units.
-None of these is a generative model: there is no distribution over z, so decoding a
-random code gives garbage, because the encoder maps data onto a thin set with holes and
-nothing tells you where the holes are.
+None of these is a generative model. There is no distribution over z, so decoding a
+random code gives an image unlike the data, because the encoder maps data onto a thin
+set with holes and nothing tells you where the holes are.
 
 **A prior on z fixes that and makes the likelihood intractable.** Write
 p(x) = ∫ p_θ(x | z) p(z) dz with p(z) = N(0, I) and p_θ a decoder network. In Module 3 the
 latent was discrete and the integral was a sum over k components. Here it has no closed
 form, Monte Carlo from the prior fails beyond a few dimensions because almost every z
-explains a given x terribly, and the posterior p(z | x) is just as intractable. EM's exact
+explains a given x poorly, and the posterior p(z | x) is just as intractable. EM's exact
 E-step is gone, and you need a bound you can raise without ever computing the posterior.
 
 **The ELBO is Module 3's bound with q made a network.** For any q(z | x),
@@ -77,32 +77,33 @@ every posterior towards the prior so codes overlap and a prior sample decodes to
 plausible. Unlike EM the bound is never tight: q_φ is restricted to a family (the
 approximation gap) and shares parameters across inputs (the amortisation gap).
 
-**Reparameterisation moves the randomness out of the gradient's way.** You need
-∇_φ E_{q_φ}[f(z)] with φ inside the sampling distribution. The score-function estimator
-E[f(z) ∇_φ log q_φ(z | x)] is unbiased but treats f as a black box, so its variance scales
-with the size of f rather than with how f changes; Problem 3 measures this. Writing
-z = μ_φ(x) + σ_φ(x) ⊙ ε with ε ~ N(0, I) puts the expectation over ε, and the gradient flows
-through f, μ and σ by ordinary backpropagation. The price is that z must be continuous,
-which is why discrete latents need the straight-through estimator or Gumbel-softmax.
+**Reparameterisation writes the sample as a deterministic function of the parameters and
+independent noise.** You need ∇_φ E_{q_φ}[f(z)] with φ inside the sampling distribution.
+The score-function estimator E[f(z) ∇_φ log q_φ(z | x)] is unbiased but treats f as a
+black box, so its variance scales with the size of f rather than with how f changes;
+Problem 3 measures this. Writing z = μ_φ(x) + σ_φ(x) ⊙ ε with ε ~ N(0, I) puts the
+expectation over ε, and the gradient flows through f, μ and σ by ordinary
+backpropagation. The price is that z must be continuous, which is why discrete latents
+need the straight-through estimator or Gumbel-softmax.
 
 **The decoder's likelihood decides what reconstruction means, and blur follows from it.**
 A Bernoulli decoder on binarised pixels gives binary cross-entropy; a Gaussian with fixed
-variance σ² gives squared error over 2σ², so σ silently weights the KL term. Both treat
+variance σ² gives squared error over 2σ², so σ sets the weight of the KL term. Both treat
 pixels as independent given z, so when z cannot say whether a stroke is one pixel left or
-right the optimal output is the average, which is a blur. Blur is the independence
-assumption plus limited information in z, not an under-trained network. The KL for a
-diagonal-Gaussian encoder against N(0, I) is closed form,
-½ Σ_j (μ_j² + σ_j² − 1 − log σ_j²), from Module 1's problem set; log it per dimension.
+right the optimal output is the average, which is a blur. Blur comes from the
+independence assumption and the limited information in z, and more training does not
+remove it. The KL for a diagonal-Gaussian encoder against N(0, I) is closed form,
+½ Σ_j (μ_j² + σ_j² − 1 − log σ_j²), from Module 1's problem set. Log it per dimension.
 
-**Posterior collapse is the KL term winning outright.** If the decoder can explain x
-without some dimension of z, the cheapest move is to set that dimension's posterior equal
-to the prior, so its KL is zero and it carries nothing. It happens early, while the encoder
-is still useless, and with decoders strong enough to model the data alone. KL annealing
-(β rising from 0 to 1 over the first epochs) gives the encoder time to become useful; free
-bits stop penalising small KLs; a weaker decoder forces use of z. β-VAE goes the other
-way on purpose: β > 1 trades reconstruction for dimensions closer to independent and often
-interpretable, and sweeping β traces a rate-distortion curve with rate the KL and
-distortion the reconstruction error.
+**Posterior collapse happens when the KL term pushes latent dimensions onto the prior.**
+If the decoder can explain x without some dimension of z, the cheapest move is to set
+that dimension's posterior equal to the prior, so its KL is zero and it carries nothing.
+It happens early, while the encoder is still useless, and with decoders strong enough to
+model the data alone. KL annealing (β rising from 0 to 1 over the first epochs) gives
+the encoder time to become useful; free bits stop penalising small KLs; a weaker decoder
+forces use of z. β-VAE raises the KL weight deliberately: β > 1 trades reconstruction
+for dimensions closer to independent and often interpretable, and sweeping β traces a
+rate-distortion curve with rate the KL and distortion the reconstruction error.
 
 **Evaluating a generative model means saying what you wanted from it.** The honest number
 is the test ELBO in nats per image, or bits per dimension, −ELBO / (D ln 2) with D = 784
@@ -112,8 +113,8 @@ embeds samples and real images with an Inception network, fits a Gaussian to eac
 reports the Fréchet distance; it needs tens of thousands of samples, is biased upwards at
 small n and is meaningless on digits. Likelihood and sample quality disagree both ways:
 memorising the training set gives perfect samples and terrible held-out likelihood, and
-mixing one percent noise into a good density barely moves the likelihood while visibly
-breaking samples.
+a mixture of 99 percent noise and 1 percent of a good density loses at most
+ln 100 ≈ 4.6 nats of log-likelihood per image while almost every sample is noise.
 
 **GANs replace the likelihood with a learned test.** A generator G maps noise to samples;
 a discriminator D is trained to tell them from data: min_G max_D E_data[log D(x)] +
@@ -123,79 +124,82 @@ D*(x) = p_data(x) / (p_data(x) + p_g(x)), and substituting it gives 2·JS(p_data
 practice G maximises log D(G(z)), the non-saturating loss, because early on D wins easily
 and log(1 − D(G(z))) has vanishing gradient exactly when G most needs one.
 
-**GANs are hard because the objective is a saddle, not a minimum.** Gradient descent on a
-minimax game can circle or collapse: G finds one output that fools D, D adapts, G jumps
-elsewhere, and modes are visited one at a time rather than covered. With no likelihood you
-cannot tell progress from motion without an external metric. Label smoothing, spectral
-normalisation on D and two time-scale updates make training usable rather than reliable.
-What GANs bought was sharpness, since D judges whole images and never rewards a per-pixel
-mean. Diffusion displaced them because it has a stable regression loss, covers all modes
-by construction and improves predictably with compute, and its sampling cost has since
-been engineered down.
+**GANs are hard to train because the objective is a saddle point of a two-player game.**
+Gradient descent on a minimax game can circle or collapse: G finds one output that fools
+D, D adapts, G jumps elsewhere, and modes are visited one at a time rather than covered.
+Without a likelihood you need an external metric to tell whether training is making
+progress. Label smoothing, spectral normalisation on D and two time-scale updates make
+training usable, but it stays unreliable. GANs gave sharp samples, because D judges
+whole images and never rewards a per-pixel mean. Diffusion displaced them because it
+has a stable regression loss, covers all modes by construction and improves predictably
+with compute, and its sampling cost has since been reduced.
 
 **Diffusion is a hierarchical VAE with a fixed noise encoder, and its bound reduces to
-denoising.** The forward process q(x_t | x_{t−1}) = N(√(1 − β_t) x_{t−1}, β_t I) uses a fixed
-schedule, linear from 10⁻⁴ to 0.02 over T = 1000 originally. With α_t = 1 − β_t and
-ᾱ_t = Π_{s≤t} α_s it marginalises to q(x_t | x_0) = N(√ᾱ_t x_0, (1 − ᾱ_t) I) (Problem 5), so
-x_t = √ᾱ_t x_0 + √(1 − ᾱ_t) ε in one line and x_T is essentially N(0, I). The reverse model
-p_θ(x_{t−1} | x_t) = N(μ_θ(x_t, t), σ_t² I) is a chain of Gaussian decoders whose ELBO is a
-sum over t of KL(q(x_{t−1} | x_t, x_0) ‖ p_θ(x_{t−1} | x_t)) plus end terms. Both Gaussians
-share a variance, so each KL is a squared distance between means; parameterise μ_θ through
-a network ε_θ(x_t, t) that predicts the added noise and each term becomes a weighted
-‖ε − ε_θ‖². Ho, Jain and Abbeel drop the weights and train
-L_simple = E_{t, x_0, ε} ‖ε − ε_θ(√ᾱ_t x_0 + √(1 − ᾱ_t) ε, t)‖² with t uniform, which
-Problem 6 shows down-weights small t, where the exact bound obsesses over imperceptible
-detail. A reweighted ELBO is still an ELBO, so a diffusion model is a VAE.
+denoising.** The forward process q(x_t | x_{t−1}) = N(√(1 − β_t) x_{t−1}, β_t I) uses a
+fixed schedule, linear from 10⁻⁴ to 0.02 over T = 1000 originally. With α_t = 1 − β_t
+and ᾱ_t = Π_{s≤t} α_s it marginalises to q(x_t | x_0) = N(√ᾱ_t x_0, (1 − ᾱ_t) I)
+(Problem 5), so x_t = √ᾱ_t x_0 + √(1 − ᾱ_t) ε in one line and x_T is close to N(0, I).
+The reverse model p_θ(x_{t−1} | x_t) = N(μ_θ(x_t, t), σ_t² I) is a chain of Gaussian
+decoders whose ELBO is a sum over t of KL(q(x_{t−1} | x_t, x_0) ‖ p_θ(x_{t−1} | x_t))
+plus end terms. Both Gaussians share a variance, so each KL is a squared distance
+between means; parameterise μ_θ through a network ε_θ(x_t, t) that predicts the added
+noise and each term becomes a weighted ‖ε − ε_θ‖². Ho, Jain and Abbeel drop the weights
+and train L_simple = E_{t, x_0, ε} ‖ε − ε_θ(√ᾱ_t x_0 + √(1 − ᾱ_t) ε, t)‖² with t
+uniform, which Problem 6 shows down-weights small t, where the exact bound puts heavy
+weight on imperceptible detail. The model is still a hierarchical VAE, trained with
+different weights on the terms of its bound.
 
-**Sampling is the slow part, and the samplers are where the engineering went.** Ancestral
-sampling runs T network evaluations of
-x_{t−1} = (1/√α_t)(x_t − (β_t / √(1 − ᾱ_t)) ε_θ(x_t, t)) + σ_t z. DDIM notes the loss depends
-only on the marginals q(x_t | x_0), so a non-Markovian forward process with the same
-marginals is consistent with the same trained network; its deterministic reverse step
-takes 50 steps with little loss and makes noise-to-image invertible. Classifier-free
-guidance trains one network with the condition dropped 10 to 20 percent of the time, then
-samples with ε̃ = ε_θ(x_t, ∅) + w (ε_θ(x_t, c) − ε_θ(x_t, ∅)), w around 3 to 7, trading
-diversity for fidelity. Latent diffusion trains an autoencoder with an 8× spatial
-downsample first and diffuses in its latent, so 512 × 512 × 3 becomes 64 × 64 × 4, 48×
-fewer dimensions. That is Stable Diffusion: a VAE with a diffusion prior.
+**Sampling is the slow part, and most of the engineering has gone into samplers.**
+Ancestral sampling runs T network evaluations of
+x_{t−1} = (1/√α_t)(x_t − (β_t / √(1 − ᾱ_t)) ε_θ(x_t, t)) + σ_t z. DDIM notes the loss
+depends only on the marginals q(x_t | x_0), so a non-Markovian forward process with the
+same marginals is consistent with the same trained network. Its deterministic reverse
+step needs only 50 steps with little loss of quality, and it makes the map from noise
+to image invertible. Classifier-free guidance trains one network with the condition
+dropped 10 to 20 percent of the time, then samples with
+ε̃ = ε_θ(x_t, ∅) + w (ε_θ(x_t, c) − ε_θ(x_t, ∅)), w around 3 to 7, trading diversity for
+fidelity. Latent diffusion trains an autoencoder with an 8× spatial downsample first and
+diffuses in its latent, so 512 × 512 × 3 becomes 64 × 64 × 4, 48× fewer dimensions.
+Stable Diffusion is this design, a VAE with a diffusion prior.
 
-**Score matching and normalising flows are the two other roads.** The score ∇_x log p(x)
-needs no normalising constant, and denoising score matching shows the optimal denoiser of
-Gaussian-corrupted data gives the corrupted density's score: for DDPM,
-∇_{x_t} log q(x_t) = −ε / √(1 − ᾱ_t), so ε_θ is a scaled score and ancestral sampling is a
-form of Langevin dynamics. That is Song and Ermon's route and the one that generalises to
-continuous time. Flows make the model invertible, x = f(z) with a tractable Jacobian, so
-log p(x) = log p(z) + log |det ∂f⁻¹/∂x| exactly and inference is exact too; the cost is a
-latent the size of x and layers with cheap determinants, hence coupling layers. Flows stay
-the right tool for exact densities on tabular data.
+**Score matching and normalising flows are the two other approaches.** The score
+∇_x log p(x) needs no normalising constant, and denoising score matching shows the optimal
+denoiser of Gaussian-corrupted data gives the corrupted density's score. For DDPM,
+∇_{x_t} log q(x_t) = −E[ε | x_t] / √(1 − ᾱ_t), so ε_θ is a scaled score and ancestral
+sampling is a form of Langevin dynamics. This is Song and Ermon's approach, and it
+generalises to continuous time. Flows make the model invertible, x = f(z) with a
+tractable Jacobian, so log p(x) = log p(z) + log |det ∂f⁻¹/∂x| exactly and inference is
+exact too. The cost is a latent the size of x and layers with cheap determinants, hence
+coupling layers. Flows remain the right tool for exact densities on tabular data.
 
 **VQ-VAE is an autoencoder with a k-means codebook in the middle.** The encoder emits a
 grid of vectors; each is replaced by its nearest of K codebook entries; the decoder sees
 the quantised grid. Nearest-neighbour has no gradient, so the straight-through estimator
 copies the decoder's gradient back onto the encoder output. The codebook updates by an
-exponential moving average of the encoder outputs assigned to each entry, a running k-means
-M-step and Module 3's codebook stretch made differentiable, and a commitment loss
-β ‖z_e − sg(e_k)‖² keeps the encoder near the codes. The failure is codebook collapse, most
-codes never selected; measure the fraction used and re-initialise dead codes from live
-encoder outputs. Discrete latents matter because a grid of indices is a token sequence a
-transformer can model: that is how DALL-E 1 and VQ-GAN generated images and how images
-and audio enter many multimodal LLMs.
+exponential moving average of the encoder outputs assigned to each entry, which is a
+running k-means M-step and Module 3's codebook stretch made differentiable. A commitment
+loss β ‖z_e − sg(e_k)‖² keeps the encoder near the codes. The usual failure is codebook
+collapse, where most codes are never selected. Measure the fraction used and
+re-initialise dead codes from live encoder outputs. Discrete latents matter because a
+grid of indices is a token sequence a transformer can model. DALL-E 1 and VQ-GAN
+generated images this way, and it is how images and audio enter many multimodal LLMs.
 
-**In a business these models are mostly not image generators.** Synthetic data needs the
-evaluation discipline of the model behind it: train on synthetic, test on real, report the
-gap, and check nothing was memorised, because privacy is not automatic. Reconstruction
-error or negative ELBO is an anomaly score meaning "unlike what I was trained on", the
-natural detector without labelled anomalies, blind to anything an over-capable decoder
-reconstructs anyway. An encoder's z is a feature vector for downstream models, and a
-VAE's z is usually worse for that than Module 8's contrastive representations, because
-reconstruction spends capacity on pixels the task ignores.
+**In a business these models are mostly used for synthetic data, anomaly scores and
+features.** Synthetic data needs the evaluation discipline of the model behind it: train
+on synthetic, test on real, report the gap, and check nothing was memorised, because
+privacy is not automatic. Reconstruction error or negative ELBO is an anomaly score
+meaning "unlike the training data". It is the natural detector when there are no
+labelled anomalies, and it misses anything an over-capable decoder reconstructs anyway.
+An encoder's z is a feature vector for downstream models, and a VAE's z is usually worse
+for that than Module 8's contrastive representations, because reconstruction spends
+capacity on pixels the task ignores.
 
 **Forward links.** Module 8 uses this module's autoencoder as one of five fraud detectors
 and shows where it fails, then reuses reconstruction as the pretext task in masked
 autoencoders. Module 9 covers the other big generative family, autoregressive models,
 which factorise p(x) = Π_i p(x_i | x_{<i}) for exact likelihood at the cost of sequential
-sampling; a transformer over VQ-VAE codes is the bridge. Module 10's map of the LLM
-landscape assumes you can say which family a foundation model belongs to and what each
+sampling; a transformer over VQ-VAE codes connects the two. Module 10's survey of LLMs
+assumes you can say which family a foundation model belongs to and what each
 can report as a number.
 
 ## Reading
@@ -221,7 +225,7 @@ can report as a number.
 - van den Oord, Vinyals and Kavukcuoglu, "Neural Discrete Representation Learning", 2017
   (VQ-VAE).
 - Luo, "Understanding Diffusion Models: A Unified Perspective", 2022. The clearest
-  derivation from ELBO to ε-prediction; read it after your own, not before.
+  derivation from ELBO to ε-prediction; read it after doing your own.
 - Prince, *Understanding Deep Learning* (free), ch. 15 (GANs), 16 (normalising flows),
   17 (VAEs) and 18 (diffusion models). Bishop and Bishop, *Deep Learning: Foundations
   and Concepts* (free), ch. 19 (autoencoders) and 20 (diffusion models).
@@ -239,7 +243,8 @@ in float32.
 
 ### Lab 7.1: Autoencoders on Fashion-MNIST
 
-Goal: see the linear case recover PCA, then see what nonlinearity and noise buy.
+Goal: check that the linear case recovers PCA, then measure what nonlinearity and noise
+add.
 
 1. Implement `LinearAE(d_in=784, d_code=32)` with no biases or nonlinearities, trained by
    SGD with squared loss on centred pixels until the training loss is flat to three
@@ -248,7 +253,8 @@ Goal: see the linear case recover PCA, then see what nonlinearity and noise buy.
 2. Fit PCA with 32 components using your `04-embeddings/pca.py`. Compare subspaces with
    `scipy.linalg.subspace_angles` between the decoder's column space and the top-32
    components, and by the Frobenius distance between the two projection matrices. Report
-   both test MSEs. Check the decoder columns are not orthogonal, so not the components.
+   both test MSEs. Check that the decoder columns are not orthogonal, and so are not the
+   components.
 3. Implement `ConvAE(d_code=32)`: three stride-2 convolutions to a 32-dimensional code,
    mirrored with transposed convolutions. Adam 1e-3, 20 epochs. Report test MSE against
    the linear model.
@@ -328,9 +334,10 @@ both samplers give legible digits, DDIM at 50 steps is at least 15× faster than
 ancestral steps and within a few points of it on mean confidence; and the histogram and
 confidence numbers are reported for both.
 
-### Lab 7.4: A small DCGAN, to see it go wrong
+### Lab 7.4: A small DCGAN and its failure modes
 
-Goal: watch instability and mode collapse, then apply the standard fixes. One afternoon.
+Goal: watch instability and mode collapse, then apply the standard fixes, in one
+afternoon.
 
 1. Implement `07-generative/gan/dcgan.py`: generator from 100-dim noise through transposed
    convolutions with BatchNorm and ReLU to 28 × 28 × 1 with tanh; discriminator with strided
@@ -351,7 +358,7 @@ did and how you knew.
 
 ### Lab 7.5: VQ-VAE on Fashion-MNIST
 
-Goal: a discrete latent that is honestly used, and why it matters for Module 9.
+Goal: a discrete latent with a well-used codebook, and the reason it matters for Module 9.
 
 1. Implement `VectorQuantizerEMA(num_codes=512, dim=64, decay=0.99, commitment=0.25)` in
    `07-generative/vqvae/quantizer.py`: nearest-code lookup, straight-through gradient, EMA
@@ -366,7 +373,8 @@ Goal: a discrete latent that is honestly used, and why it matters for Module 9.
 4. Show reconstructions and the 7 × 7 index map for eight test images. Change one index by
    hand and decode.
 5. Write down what a generative model over this latent needs: p(index_1, ..., index_49)
-   over 512 symbols. A transformer is exactly that, and Module 9 builds one.
+   over 512 symbols. An autoregressive transformer models that distribution, and Module 9
+   builds one.
 
 Done when: the quantizer tests pass; test MSE is within 30 percent of the Lab 7.1 conv AE;
 codebook usage is plotted over training and stated as a number; and the reconstruction
@@ -438,12 +446,12 @@ and index-map figures are in the notebook.
   compare it to a 10-component GMM from Module 3.
 - Install `diffusers` in a scratch environment, load a small pretrained Stable Diffusion
   checkpoint, and inspect the VAE stage alone: encode an image, print the latent shape,
-  decode it, and measure the reconstruction error. That is the "latent" in latent
-  diffusion.
+  decode it, and measure the reconstruction error. Latent diffusion runs in this latent
+  space.
 
 ## Next
 
 Module 8 uses this module's autoencoder and Module 3's GMM as two of five anomaly
 detectors on real fraud data, and turns reconstruction into a pretext task for learning
-representations without labels. The ELBO stays; what changes is that the objective stops
-being about generating and starts being about what the encoder learns on the way.
+representations without labels. The ELBO stays, and the aim moves from generating data
+to what the encoder learns during training.

@@ -13,13 +13,13 @@ are the model's or the labels'), and this module makes each decision once, with
 numbers, on a dataset small enough to iterate on in minutes.
 
 The Oxford Computer Vision week will move fast through architectures, detection and
-segmentation; the Deep Neural Networks week assumes you can read a convnet diagram and
-count its cost. So the first third of the module is convolution as arithmetic: output
-sizes, receptive fields, parameters against FLOPs, and why a depthwise separable
-convolution is eight times cheaper. You will be able to look at a model card and know
-whether the model runs on a phone before anyone benchmarks it.
+segmentation, and the Deep Neural Networks week assumes you can read a convnet diagram
+and count its cost. The first third of the module therefore treats convolution as
+arithmetic: output sizes, receptive fields, parameters against FLOPs, and why a
+depthwise separable convolution is eight times cheaper. You will be able to look at a
+model card and know whether the model runs on a phone before anyone benchmarks it.
 
-Structurally, this is where the Module 5 harness meets pretrained weights, and where
+This is where the Module 5 harness meets pretrained weights, and where
 three later threads begin. Module 8 asks what pretraining looks like without labels.
 Module 9 replaces the convolution with attention, and the Vision Transformer paragraph
 here is the preview. Module 13 exports the model you fine-tune here to ONNX and runs it
@@ -49,8 +49,8 @@ If all six are easy, do Labs 6.3 and 6.4 only, and the write-up.
 
 **A convolution is a linear map with two constraints: locality and weight sharing.**
 Each output pixel depends only on a k×k neighbourhood of the input, and every output
-pixel uses the same k×k×C_in weights. Those constraints are the whole reason convnets
-work on images: they bake in translation equivariance and cut parameters from
+pixel uses the same k×k×C_in weights. Those constraints are why convnets work on
+images. They build in translation equivariance and cut parameters from
 (H·W·C)² for a dense layer to k²·C_in·C_out, independent of image size. Lab 6.1 makes
 the linearity concrete by unrolling the input into patches (im2col) so that the
 convolution is one matrix multiply, which is also roughly how cuDNN and MPS compute it.
@@ -62,20 +62,22 @@ halves it.
 stride.** Track two numbers through the network: the receptive field r and the jump j
 (the input-pixel distance between adjacent output pixels). A layer with kernel k and
 stride s updates r ← r + (k−1)·j and j ← j·s. Stacked 3×3 convolutions grow r slowly
-at stride 1 and fast after each downsampling, which is why almost all the receptive
-field of a ResNet comes from its last two stages; ImageNet ResNet-18 ends at 435 pixels,
+at stride 1 and fast after each downsampling, which is why most of the receptive field
+of a ResNet comes from its last two stages; ImageNet ResNet-18 ends at 435 pixels,
 larger than the image. Dilation widens r without adding parameters or downsampling,
 which segmentation networks use to keep resolution. The theoretical receptive field
 overstates what the network uses: the effective receptive field is roughly Gaussian and
 much smaller, which Lab 6.2 measures.
 
-**Parameters and FLOPs are different quantities and diverge in opposite directions
-through a network.** A 3×3 convolution costs k²·C_in·C_out parameters and
+**Parameters and FLOPs are different quantities and are distributed differently through
+a network.** A 3×3 convolution costs k²·C_in·C_out parameters and
 H_out·W_out·k²·C_in·C_out multiply-accumulates. Early layers have few channels and
-large maps, so they dominate compute; late layers have many channels and small maps, so
-they dominate parameters. ResNet-50's 25.6M parameters and 4.1 GMACs at 224×224 come
-from different layers. Memory is a third axis: activations scale with H·W·C and are
-what limits batch size during training. Pooling and strided convolution both
+large maps, and late layers the reverse. When a stage halves the map and doubles the
+channels, each layer's MACs stay roughly the same while its parameters grow fourfold,
+so compute is spread across the stages and parameters concentrate in the last one.
+ResNet-50's 25.6M parameters and 4.1 GMACs at 224×224 come from different layers.
+Memory is a third axis: activations scale with H·W·C and are what limits batch size
+during training. Pooling and strided convolution both
 downsample; strided convolution costs parameters and learns the downsampling, and has
 mostly replaced max-pooling in modern designs. A 1×1 convolution is a per-pixel linear
 layer across channels: it changes channel count cheaply, mixes information after a
@@ -85,31 +87,32 @@ depthwise layer, and forms the bottleneck in ResNet-50's blocks.
 cost.** Split the 3×3 convolution into a depthwise 3×3 that filters each channel
 separately (k²·C parameters) and a 1×1 pointwise that mixes channels (C_in·C_out). The
 cost ratio to a dense convolution is 1/C_out + 1/k², about 1/8 for 3×3 at typical
-widths (Problem 2). MobileNet is that observation applied throughout, with width and
-resolution multipliers for trading accuracy against latency; it is the reason a
-classifier runs at 30 frames per second on a phone, and the ancestor of everything the
-Oxford Edge AI week deploys.
+widths (Problem 2). MobileNet applies it throughout, with width and resolution
+multipliers for trading accuracy against latency. It is why a classifier can run at 30
+frames per second on a phone, and it is the ancestor of everything the Oxford Edge AI
+week deploys.
 
-**The lineage is a sequence of one-idea-at-a-time changes.** LeNet (1998) established
+**The lineage is a sequence of changes, each adding one idea.** LeNet (1998) established
 the pattern of convolution, pooling and a dense head. AlexNet (2012) scaled it to
-ImageNet with ReLU, dropout and two GPUs and won by a margin that ended the feature
-engineering era. VGG (2014) showed that stacks of 3×3 convolutions beat larger kernels
-at equal receptive field and that depth was the lever, at 138M parameters and 15.5
-GMACs. ResNet (2015) made depth trainable with the identity shortcut from Module 5, and
-ResNet-50's bottleneck block (1×1 down, 3×3, 1×1 up) is still the default backbone in
-industry a decade later. EfficientNet (2019) searched for a small base network and
-then scaled depth, width and resolution together by fixed ratios (compound scaling),
-which gave a family with the best accuracy per FLOP of its time.
+ImageNet with ReLU, dropout and two GPUs, and won by a margin large enough that the
+field moved away from hand-engineered features. VGG (2014) showed that stacks of 3×3
+convolutions beat larger kernels at equal receptive field and that added depth improved
+accuracy, at 138M parameters and 15.5 GMACs. ResNet (2015) made depth trainable with the
+identity shortcut from Module 5, and ResNet-50's bottleneck block (1×1 down, 3×3, 1×1
+up) is still the default backbone in industry a decade later. EfficientNet (2019)
+searched for a small base network and then scaled depth, width and resolution together
+by fixed ratios (compound scaling), which gave a family with the best accuracy per FLOP
+of its time.
 
-**ConvNeXt and the Vision Transformer are the two current endpoints, and they
-converge.** The Vision Transformer (2020) cuts the image into 16×16 patches, embeds
+**ConvNeXt and the Vision Transformer are the two current endpoints, and their designs
+have converged.** The Vision Transformer (2020) cuts the image into 16×16 patches, embeds
 each as a token, and runs a standard transformer encoder with no convolutions at all;
 it has almost no built-in image prior, so it underperforms convnets on ImageNet-scale
 data and overtakes them when pretrained on hundreds of millions of images. ConvNeXt
 (2022) took a ResNet and adopted the transformer's macro-design choices one at a time
 (patchify stem, 7×7 depthwise kernels, inverted bottleneck, LayerNorm, GELU, fewer
-activations), and matched ViTs at equal compute with a pure convnet. The lesson is that
-the training recipe and the macro-architecture mattered more than attention itself.
+activations), and matched ViTs at equal compute with a pure convnet. The result showed
+that the training recipe and the macro-architecture mattered more than attention itself.
 Module 9 builds the transformer; `timm` gives you both families with pretrained
 weights, and `convnext_tiny` is the backbone this module uses.
 
@@ -122,11 +125,11 @@ the domain differs; Kornblith, Shlens and Le found it beats the linear probe on 
 every dataset and that better ImageNet models transfer better. Between them sits
 partial unfreezing: train the head, then unfreeze the last stage, then the rest. Use
 discriminative learning rates, roughly 10× lower for the backbone than the head,
-because the pretrained weights are already good and large steps destroy them; warm up
-and decay as in Module 5. BatchNorm complicates fine-tuning: the running statistics
-belong to ImageNet, small batches make new estimates noisy, and the safe options are
-to keep the backbone's BatchNorm in `eval()` mode (frozen statistics) or to use a
-backbone with LayerNorm, which is one reason ConvNeXt fine-tunes easily.
+because the pretrained weights are already good and large steps destroy them. Warm up
+and decay as in Module 5. BatchNorm complicates fine-tuning, because the running
+statistics belong to ImageNet and small batches make new estimates noisy. The safe
+options are to keep the backbone's BatchNorm in `eval()` mode (frozen statistics) or to
+use a backbone with LayerNorm, which is one reason ConvNeXt fine-tunes easily.
 
 **Augmentation at training time and at test time are different tools.** Training
 augmentation regularises: RandomResizedCrop and flip are the baseline, RandAugment
@@ -136,10 +139,10 @@ the stronger policies are close to neutral; they pay off in long runs. Test-time
 augmentation averages predictions over deterministic transforms of each test image
 (the image and its horizontal flip is the minimum) and buys a few tenths of a point at
 twice the inference cost, which is a trade you would make in a batch pipeline and not
-in a latency-bound API. Real image datasets are also long-tailed: the rare classes are
-where errors concentrate and where accuracy hides them, so report per-class recall and
-macro F1, and reach for class-balanced sampling, reweighting or logit adjustment when
-the tail matters to the business.
+in a latency-bound API. Real image datasets are also long-tailed. Errors concentrate in
+the rare classes and overall accuracy hides them, so report per-class recall and macro
+F1, and use class-balanced sampling, reweighting or logit adjustment when the tail
+matters to the business.
 
 **Grad-CAM shows where the evidence for a prediction came from.** Take the feature maps
 A^k of the last convolutional stage (for ConvNeXt-T at 224, 768 maps of 7×7). The
@@ -147,21 +150,21 @@ weight of map k for class c is the spatial mean of the gradient of the class sco
 α_k = (1/Z) Σ_ij ∂y^c/∂A^k_ij; the map is ReLU(Σ_k α_k A^k), upsampled to the input.
 The ReLU keeps only regions that push the score up; regions that push it down belong to
 other classes and would clutter the picture (Problem 6). It is coarse, at the
-resolution of the last stage, and it is a faithfulness check rather than an
-explanation: a map on the background when the prediction is right tells you the model
-has learned a shortcut, which is exactly the finding you want before deployment.
+resolution of the last stage, and it checks faithfulness without explaining the
+prediction. A map on the background when the prediction is right tells you the model
+has learned a shortcut, which you want to find before deployment.
 
 **Error analysis starts with the worst losses and suspects the labels first.** Sort
 the validation set by loss and look at the top 30 images: in a real dataset a good
 fraction are mislabelled, ambiguous or corrupt, and no architecture change fixes that.
 The confusion matrix names the pairs that are hard, and in Pets they are visually
-similar breeds, not random. Data-centric ML is the discipline of improving the data
+similar breeds. Data-centric ML is the discipline of improving the data
 instead of the model, and confident learning is its main tool: estimate, with
 out-of-fold predictions, the joint distribution of given and true labels, and flag
 examples whose given label the model consistently rejects. With 10% uniform label
-noise a fine-tuned model still trains well because it fits the clean majority first
-and memorises the noise late, which is why the training-loss curve on noisy data has a
-second drop that validation never shares (Lab 6.5).
+noise a fine-tuned model still trains well, because it fits the clean majority first
+and memorises the noise late. That is why the training-loss curve on noisy data has a
+second drop that the validation curve never shows (Lab 6.5).
 
 **Detection and segmentation are the same backbones with different heads and
 metrics.** Detection outputs boxes and classes: two-stage detectors propose regions and
@@ -170,8 +173,8 @@ it as set prediction with a transformer and no anchors or non-maximum suppressio
 Semantic segmentation classifies every pixel with an encoder-decoder such as FCN or
 U-Net, whose skip connections carry resolution from encoder to decoder. The metrics are
 intersection over union for a box or mask and mean average precision over IoU
-thresholds for a detector. The Oxford Computer Vision week covers these; the point here
-is to recognise that everything you learn about backbones, fine-tuning and Grad-CAM
+thresholds for a detector. The Oxford Computer Vision week covers these. Here you only
+need to recognise that everything you learn about backbones, fine-tuning and Grad-CAM
 transfers unchanged.
 
 **Forward links.** Module 8 replaces ImageNet labels with a contrastive objective and
@@ -188,7 +191,7 @@ limitations.
   networks), ch. 8 (modern convnets) and §14.1 to 14.2 (image augmentation and
   fine-tuning).
 - Prince, *Understanding Deep Learning* (free), ch. 10 (convolutional networks).
-- Howard and Gugger, ch. 5 to 7. They use the Pets dataset throughout; compare their
+- Howard and Gugger, ch. 5 to 7. They use the Pets dataset in ch. 5; compare their
   numbers with yours.
 - Krizhevsky, Sutskever, Hinton, "ImageNet Classification with Deep Convolutional
   Neural Networks", 2012; Simonyan and Zisserman, "Very Deep Convolutional Networks for
@@ -199,7 +202,7 @@ limitations.
   Convolutional Neural Networks", 2019.
 - Liu et al., "A ConvNet for the 2020s", 2022; Dosovitskiy et al., "An Image is Worth
   16×16 Words: Transformers for Image Recognition at Scale", 2020. Read the ConvNeXt
-  paper's roadmap figure closely; it is the lineage in one picture.
+  paper's roadmap figure closely; it shows the lineage in one figure.
 - Kornblith, Shlens, Le, "Do Better ImageNet Models Transfer Better?", 2019. Table 1 and
   the fine-tuning versus logistic regression comparison are the parts that matter.
 - Selvaraju et al., "Grad-CAM: Visual Explanations from Deep Networks via
@@ -213,9 +216,10 @@ limitations.
 
 ## Labs
 
-### Lab 6.1: Convolution from scratch, then count everything
+### Lab 6.1: Convolution from scratch and its cost
 
-Goal: own the arithmetic of a convolution and the cost of a network.
+Goal: implement a convolution as a matrix multiply, and count a network's parameters and
+multiply-accumulates.
 
 1. In `06-transfer/conv.py` implement `conv2d_im2col(x, w, stride, padding, dilation)`
    in NumPy: build the patch matrix with `np.lib.stride_tricks.sliding_window_view`,
@@ -233,11 +237,12 @@ Goal: own the arithmetic of a convolution and the cost of a network.
    log axes. Mark where each is concentrated.
 
 Done when: the conv test and the three FLOP tests pass under pytest, and the plot shows
-compute concentrated in the early stages and parameters in the late ones.
+per-layer compute roughly level across the stages and parameters concentrated in the
+late ones.
 
 ### Lab 6.2: Receptive fields and filters
 
-Goal: know how far a unit sees, in theory and in practice.
+Goal: compute a unit's theoretical receptive field and measure its effective one.
 
 1. Implement `receptive_field(layers)` applying the r and j recursion to a list of
    (kernel, stride, dilation) tuples, and compute the receptive field after each stage
@@ -344,7 +349,7 @@ corruptions, and you have a list of suspected genuine mislabels in the original 
 
 1. Derive the output size ⌊(H + 2p − d(k−1) − 1)/s⌋ + 1 from first principles, then
    evaluate it for the skip-test layer. Show that "same" padding at stride 1 needs
-   p = d(k−1)/2 and that for even k no integer p works.
+   p = d(k−1)/2 and that for even k and odd d no integer p works.
 2. Count parameters and multiply-accumulates for a 3×3 convolution from C_in to C_out on
    an H×W map, for its depthwise separable equivalent, and take the ratio. Evaluate it
    for C_in = C_out = 256 at 28×28. Which of the two terms in the ratio dominates and
@@ -364,9 +369,9 @@ corruptions, and you have a list of suspected genuine mislabels in the original 
    per class, and why regularisation strength C is the hyperparameter that matters.
 6. Derive Grad-CAM's channel weights by writing the class score as a function of the
    feature maps and taking the gradient, and show that for a network whose head is
-   global average pooling followed by a linear layer the weights equal the head's
-   weights for that class (the CAM special case). Explain why the ReLU is applied after
-   the weighted sum and not before.
+   global average pooling followed by a linear layer the weights are proportional to
+   the head's weights for that class (the CAM special case). Explain why the ReLU is
+   applied after the weighted sum and not before.
 7. With 3,680 training images and an augmentation policy that produces a fresh random
    view each epoch, how many distinct images does the model see in 12 epochs, and how
    many independent samples from the underlying distribution? Explain why augmented
@@ -406,6 +411,6 @@ corruptions, and you have a list of suspected genuine mislabels in the original 
 
 Module 7 leaves labels behind entirely: autoencoders learn a representation by
 reconstruction, the VAE makes that representation a probability distribution with the
-ELBO you derived in Module 3, and a diffusion model generates images from noise. The
-convolutional encoder and decoder it uses are the architectures from this module run
-forwards and backwards.
+ELBO you derived in Module 3, and a diffusion model generates images from noise. Its
+convolutional encoders are the architectures from this module, and its decoders mirror
+them.

@@ -8,9 +8,9 @@ neural networks, has a surface reading of transformers, and is heading into the 
 MSc in Artificial Intelligence for Business (Department of Computer Science with Saïd
 Business School).
 
-The course has two jobs. First, fill the two gaps you named: unsupervised learning, and
-the practical craft of actually training networks that work. Second, make the Oxford
-courses feel like revision rather than first contact. The MSc's machine-learning stream
+The course has two aims. First, fill the two gaps you named: unsupervised learning, and
+the practical craft of training networks that work. Second, make the Oxford courses
+revision of material you have already met. The MSc's machine-learning stream
 is built from one-week intensives (Classical Machine Learning, Deep Neural Networks,
 Generative AI with Large Language Models, Computer Vision, Edge AI, Knowledge Graphs,
 Security and Privacy of ML, Human-AI Interaction), each assessed by a written assignment
@@ -48,8 +48,8 @@ short write-up in that style so the habit is formed before you arrive.
 
 ## Structure
 
-Four parts, fourteen modules plus setup, about nineteen weeks at 10 to 12 hours a week.
-A ten-week fast track is below. Weeks are a guide, not a contract.
+The course has four parts and fourteen modules plus setup, about nineteen weeks at 10 to
+12 hours a week. A ten-week fast track is below. The week counts are a guide only.
 
 | # | Module | Weeks | Headline lab | Oxford course it feeds |
 |---|--------|-------|--------------|------------------------|
@@ -79,42 +79,42 @@ Dependencies: 1 before everything; 2 before 3 and 12; 5 before 6, 7, 8, 9; 9 bef
 ### Fast track (ten weeks)
 
 If the MSc starts soon: do 0, 3, 4, 5, 7, 9, 10 in full; do only the headline lab and
-the write-up for 2, 6, 8 and 12; skip 1 unless the Module 1 skip test hurts; skip 11
-and 13; do a one-week capstone. That covers both named gaps and the material the
+the write-up for 2, 6, 8 and 12; skip 1 unless you struggle with the Module 1 skip test;
+skip 11 and 13; do a one-week capstone. That covers both named gaps and the material the
 Classical ML, Deep Neural Networks and Generative AI courses assume.
 
 ---
 
 ## How to work the course
 
-**Implement before you import.** Every core algorithm is written first in NumPy or bare
-PyTorch and checked against the library version. Then use the library freely. The MSc
-assignments reward explaining why a method works and why you chose it, and you cannot
-explain what you have only called.
+**Write each core algorithm yourself before using the library.** Implement it first in
+NumPy or bare PyTorch and check it against the library version, then use the library
+freely. The MSc assignments reward explaining why a method works and why you chose it,
+which is hard to do for a method you have only called.
 
-**Paper before blog post.** When a module names a paper, read the paper (at least the
-abstract, method and main table) before any explainer. You will be reading papers on the
-MSc with a week to absorb each course; practise now on classics with good explainers to
-fall back on.
+**Read the paper before any explainer.** When a module names a paper, read at least its
+abstract, method and main table first. You will be reading papers on the MSc with a week
+to absorb each course; practise now on classics with good explainers to fall back on.
 
-**Keep a lab notebook.** One markdown file per module in your labs repo. Record the
-hypothesis, the run, the number, the gap. Loss curves and confusion matrices go in.
-Every experiment gets a tracked run with its config; if you cannot reproduce a number,
-it is not a result.
+**Keep a lab notebook.** Keep one markdown file per module in your labs repo. Record the
+hypothesis, the run, the number and the gap, and include loss curves and confusion
+matrices. Every experiment gets a tracked run with its config. Do not report a number
+you cannot reproduce.
 
 **Write it up.** Each module ends with a short write-up (500 to 800 words) in the shape
 the Oxford assignments take: the problem, the data, the method and why it fits, the
 results with an honest baseline, the limitations, what you would do next. Write for a
-technical manager who will not run your code. This is the single most transferable
-habit for the MSc.
+technical manager who will not run your code. This is the most transferable habit for
+the MSc.
 
 **Take the skip test.** Each module opens with a skip test. If every question is easy
 and you would be comfortable being interviewed on it, do only the headline lab and the
-write-up. Your background means Module 1 and the first half of Module 5 may go fast; be
-honest about Modules 3, 4, 7 and 8, which are where you said the gaps are.
+write-up. Given your background, Module 1 and the first half of Module 5 may go fast.
+Be honest about Modules 3, 4, 7 and 8, which are where you said the gaps are.
 
-**Cadence.** Two weekday evenings for reading, derivations and problem sets, one long
-weekend session for the labs. Training runs that take an hour go on before dinner.
+**Cadence.** Spend two weekday evenings on reading, derivations and problem sets, and
+one long weekend session on the labs. Start training runs that take an hour before
+dinner.
 
 **Labs repo.** Create a separate repository, one package per module:
 
@@ -142,8 +142,8 @@ ml-course-labs/
 
 ## Reference library
 
-Buy or download up front; the module files say which chapters when. Everything marked
-free is legally free online from the authors.
+Buy or download these up front; the module files say which chapters to read and when.
+Everything marked free is legally free online from the authors.
 
 | Book, paper or course | Used in |
 |---|---|
@@ -172,8 +172,8 @@ free is legally free online from the authors.
 
 ## Progress
 
-Tick as each module's "done when" criteria all hold and the write-up is in the repo.
-Date it.
+Tick each module when all its "done when" criteria hold and the write-up is in the repo,
+and date the tick.
 
 - [ ] 00 Setup: environment builds, GPU sanity check passes, datasets cached
 - [ ] 01 Maths and probability for ML

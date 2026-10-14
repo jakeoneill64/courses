@@ -7,17 +7,17 @@
 You have read about transformers and you can draw the diagram. That is the level at which
 the Oxford Generative AI course will pitch its architecture material, and it is not enough
 to explain to an examiner why the √d_k is there, why generation gets slower as the answer
-gets longer, or why a model that writes fluent prose cannot reverse a word. The way past
-surface reading is to write the thing from an empty file, train it, and then add the two
-pieces that turn a toy into a system: a tokeniser and a KV cache. After that the papers
-read as engineering notes.
+gets longer, or why a model that writes fluent prose cannot reverse a word. To get past
+surface reading, write the model from an empty file, train it, and then add the two
+pieces that turn a toy into a usable system: a tokeniser and a KV cache. After that you
+can read the papers as descriptions of engineering choices you have already made.
 
-The module also pays a debt to the practical-training gap. Language models are where the
-craft from Module 5 earns most: warmup matters, initialisation scale matters, the batch is
-measured in tokens, and a loss curve is the only thing you can watch. The scaling
-mini-study in Lab 9.5 is a small version of the experiment that decided how every large
-model since 2022 was sized, and doing it on a laptop gives you a feel for the numbers that
-the compute estimate in Problem 5 turns into a formula.
+The module also addresses the practical-training gap. Language models depend on the
+craft from Module 5 more than any other model in the course: warmup and initialisation
+scale both matter, the batch is measured in tokens, and the loss curve is the only thing
+you can watch. The scaling mini-study in Lab 9.5 is a small version of the experiment
+that decided how every large model since 2022 was sized, and doing it on a laptop gives
+you a feel for the numbers that the compute estimate in Problem 5 turns into a formula.
 
 Structurally, this is the third generative family. Module 7 gave you latent variable
 models and diffusion; Module 8 gave you masked prediction as a pretext task. Autoregressive
@@ -53,27 +53,26 @@ minimising KL from the data distribution to the model. Perplexity is exp(L): the
 number of equally likely choices at each step, so a perplexity of 1 is certainty and |V| is
 uniform guessing. The baseline is an n-gram model: count (n − 1)-token contexts, estimate
 the next-token distribution from counts, and smooth, because most contexts of length four
-have never been seen. Kneser-Ney smoothing is the good version; add-k is the one you can
-write in ten lines. An n-gram model with n = 5 on a million characters of Shakespeare is
-surprisingly hard to beat with a small network, and you should know its number before
-training anything.
+have never been seen. Kneser-Ney smoothing works best; add-k is the one you can write in
+ten lines. An n-gram model with n = 5 on a million characters of Shakespeare is a strong
+baseline, so measure its loss before training anything.
 
 **Tokenisation decides what the model can see, and byte-pair encoding is a compression
-algorithm doing a linguist's job.** Characters give a tiny vocabulary and long sequences;
+algorithm used to segment text.** Characters give a tiny vocabulary and long sequences;
 words give short sequences and an unbounded vocabulary with no way to spell a new one.
-Subwords split the difference. BPE starts from bytes or characters, counts every adjacent
-pair in the corpus, merges the most frequent pair into a new symbol, and repeats until the
-vocabulary is the size you asked for; encoding applies the same merges in the same order.
-Byte-level BPE starts from the 256 bytes so nothing is ever out of vocabulary. Larger
-vocabularies shorten sequences and enlarge the embedding matrix and softmax; 32,000 to
-128,000 is where current models sit. The failures follow from the design: numbers are
-split into chunks that vary with digit count, so arithmetic is learned per chunking; a
-word is one or two opaque tokens, so the model has never seen its letters and cannot
-reverse or count them; and whitespace and code indentation tokenise in ways that make
-formatting fragile.
+Subword vocabularies sit between the two. BPE starts from bytes or characters, counts
+every adjacent pair in the corpus, merges the most frequent pair into a new symbol, and
+repeats until the vocabulary is the size you asked for. Encoding applies the same merges
+in the same order. Byte-level BPE starts from the 256 bytes so nothing is ever out of
+vocabulary. Larger vocabularies shorten sequences and enlarge the embedding matrix and
+softmax; 32,000 to 128,000 is where current models sit. The failures follow from the
+design: numbers are split into chunks that vary with digit count, so arithmetic is
+learned per chunking; a word is one or two opaque tokens, so the model has never seen
+its letters and cannot reverse or count them; and whitespace and code indentation
+tokenise in ways that make formatting fragile.
 
-**Recurrent networks solved sequences by compressing the past into a state, and the
-gradient through time was the problem.** An RNN computes h_t = f(W h_{t−1} + U x_t), so the
+**Recurrent networks handle sequences by compressing the past into a state, and their
+weakness is the gradient through time.** An RNN computes h_t = f(W h_{t−1} + U x_t), so the
 gradient at step t reaches step t − k through k multiplications by Wᵀ f′, which shrinks to
 nothing or explodes depending on W's largest singular value. Clipping handles the
 explosion; nothing handles the vanishing in a plain RNN. The LSTM adds a cell state
@@ -81,17 +80,18 @@ updated additively, c_t = f_t ⊙ c_{t−1} + i_t ⊙ g_t, with learned forget, 
 gates, so the gradient has a path through time that is a product of gate values near one
 rather than of weight matrices (Problem 8); the GRU is the same idea with two gates.
 Truncated backpropagation through time trains on windows and carries the state across
-them. What recurrence never solved is that all history lives in one fixed-size vector and
-that each step depends on the last, so nothing parallelises across the sequence. Attention
-removed both constraints at once.
+them. Recurrence has two further limits: all history lives in one fixed-size vector,
+and each step depends on the last, so nothing parallelises across the sequence.
+Attention removed both at once.
 
-**Attention is soft retrieval: every position asks a question and reads a weighted
-average of the answers.** Each token produces a query q, a key k and a value v by linear
-maps. The output at position i is Σ_j softmax_j(q_i·k_j / √d_k) v_j: compare the query
-against every key, turn the scores into weights with a softmax, and average the values by
-those weights. Softmax is a differentiable argmax, so this is a lookup that can be trained
-by gradient descent. The √d_k is there because the dot product of two independent
-d_k-dimensional vectors with unit-variance components has variance d_k (Problem 2); at
+**Attention is soft retrieval: each position forms a query and reads a weighted average
+of the values.** Each token produces a query q, a key k and a value v by linear maps.
+The output at position i is Σ_j softmax_j(q_i·k_j / √d_k) v_j: compare the query against
+every key, turn the scores into weights with a softmax, and average the values by those
+weights. Softmax is a smooth approximation to argmax, so this is a lookup that can be
+trained by gradient descent. The √d_k is there because the dot product of two
+independent d_k-dimensional vectors with unit-variance components has variance d_k
+(Problem 2); at
 d_k = 64 unscaled scores have standard deviation 8, the softmax saturates to one-hot, and
 the gradient through it vanishes before training has started. Written for the whole
 sequence at once, Attention(Q, K, V) = softmax(QKᵀ / √d_k) V, which is two matrix
@@ -104,10 +104,10 @@ another (the encoder), which is how a translation model reads its source. A caus
 sets the scores for j > i to −∞ before the softmax so position i cannot see the future,
 and it is what makes a decoder a language model that can be trained on every position of
 a sequence in parallel. Multi-head attention runs h attention functions in parallel on
-h projections of dimension d_model / h and concatenates the outputs. What heads buy is
-the ability to attend to several things at once with one softmax each, since a single
-softmax must choose one mixture; in trained models individual heads specialise to previous
-token, syntactic dependency, or copying, and many are redundant and prunable.
+h projections of dimension d_model / h and concatenates the outputs. Heads let a layer
+attend to several things at once, with one softmax each, since a single softmax must
+choose one mixture. In trained models individual heads specialise to previous token,
+syntactic dependency, or copying, and many are redundant and prunable.
 
 **Attention is permutation-invariant, so position must be injected.** With no positional
 signal, a transformer is a set function over tokens and cannot tell "dog bites man" from
@@ -116,11 +116,10 @@ geometrically spaced frequencies; learned absolute embeddings are a table of siz
 × d_model and cannot extend past the context length. RoPE rotates each pair of dimensions
 of q and k by an angle proportional to the position, so that the dot product of a rotated
 query and key depends only on their relative offset (Problem 7), which gives relative
-position with no extra parameters and degrades gracefully somewhat past the training
-length. ALiBi drops positional embeddings entirely and subtracts a linear penalty on
-distance from the attention scores, which extrapolates further. Lab 9.6 shows that a
-causal decoder with no positional encoding at all still learns some position from the
-mask.
+position with no extra parameters and extrapolates a little past the training length.
+ALiBi drops positional embeddings entirely and subtracts a linear penalty on distance
+from the attention scores, which extrapolates further. Lab 9.6 shows that a causal
+decoder with no positional encoding at all still learns some position from the mask.
 
 **A transformer block is attention plus an MLP, each wrapped in a residual connection and
 a normalisation, and where you put the normalisation matters.** The block computes
@@ -129,14 +128,15 @@ expands to 4·d_model with a GELU and projects back. The original paper put Laye
 the residual sum (post-LN), which trains fine at 6 layers with warmup and diverges at
 depth without it; Xiong et al. showed that pre-LN keeps gradient scale even across layers
 and is why every modern model uses it. Dropout, when used, goes on the attention weights,
-on each residual branch's output and on the embeddings. Parameter counting is mechanical
-and you should be able to do it in your head: attention has 4·d_model² weights per layer,
-the MLP 8·d_model², so about 12·d_model² per layer, plus vocab × d_model for the tied
-embedding. Problem 4 does GPT-2 small and lands on 124 million.
+on each residual branch's output and on the embeddings. Parameter counting is mechanical,
+and you should be able to do it in your head. Attention has 4·d_model² weights per layer
+and the MLP 8·d_model², so about 12·d_model² per layer, plus vocab × d_model for the tied
+embedding. Problem 4 counts GPT-2 small and arrives at 124 million.
 
-**Three families, three uses.** Encoder-only models (BERT) see the whole sequence
-bidirectionally and are trained with masked prediction, which makes them the right tool
-for classification, tagging and embeddings, and useless for generation. Decoder-only
+**The three transformer families suit different uses.** Encoder-only models (BERT) see
+the whole sequence bidirectionally and are trained with masked prediction, which makes
+them the right tool for classification, tagging and embeddings, and useless for
+generation. Decoder-only
 models (GPT) are causal and trained on next-token prediction, which makes them generators
 and, it turned out, general-purpose learners once large enough. Encoder-decoder models
 (T5, the original transformer) read with one stack and write with another joined by
@@ -148,36 +148,38 @@ one of the first kind and prompts and adapts the second.
 around 0.95 rather than 0.999, weight decay on matrices but not on biases or norms, a
 linear warmup over the first few hundred to few thousand steps then cosine decay to a
 tenth of the peak, and gradient clipping at norm 1.0 are the defaults. Batch size is
-measured in tokens, not sequences, and half a million tokens per step is normal at scale.
-Tying the input embedding to the output softmax saves vocab × d_model parameters and
-helps small models. Residual branch outputs are initialised with standard deviation
-scaled by 1/√(2L) for L layers, so the residual stream's variance does not grow with
-depth. Get warmup wrong and the loss spikes early; get initialisation wrong and it
-plateaus; get the batch too small and it is noisy for no gain.
+counted in tokens, and half a million tokens per step is normal at scale. Tying the
+input embedding to the output softmax saves vocab × d_model parameters and helps small
+models. Residual branch outputs are initialised with standard deviation scaled by
+1/√(2L) for L layers, so the residual stream's variance does not grow with depth. A
+wrong warmup makes the loss spike early, a wrong initialisation makes it plateau, and
+too small a batch makes it noisy with no benefit.
 
 **Generation is a loop over the model, and the KV cache is what makes it affordable.**
-Greedy decoding takes the argmax each step and repeats itself; sampling with temperature
-τ divides the logits by τ before the softmax, sharpening below one and flattening above;
-top-k restricts to the k most likely tokens and top-p to the smallest set whose mass
-exceeds p, both to cut off the long tail where nonsense lives; a repetition penalty
-down-weights tokens already emitted. Without a cache, generating token n means running the
-whole prefix through every layer again, so the cost of a sequence is quadratic in its
-length. The cache stores each layer's K and V for every previous token, so the new token
-computes its own q, k, v, appends k and v, and attends over the stored ones: O(n) per
-token. The cost moves from compute to memory, 2 × layers × heads × head_dim × 2 bytes per
-token in fp16 (Problem 6), and at long contexts the cache is bigger than the weights.
+Greedy decoding takes the argmax at each step and tends to repeat itself. Sampling with
+temperature τ divides the logits by τ before the softmax, sharpening the distribution
+below one and flattening it above. Top-k restricts sampling to the k most likely tokens
+and top-p to the smallest set whose mass exceeds p, both to cut off the long tail of
+unlikely tokens, and a repetition penalty down-weights tokens already emitted. Without a
+cache, generating token n means running the whole prefix through every layer again, so
+the cost of a sequence is quadratic in its length. The cache stores each layer's K and V
+for every previous token, so the new token computes its own q, k, v, appends k and v,
+and attends over the stored ones: O(n) per token. The cost moves from compute to memory,
+2 × layers × heads × head_dim × 2 bytes per token in fp16 (Problem 6), and at long
+contexts the cache is bigger than the weights.
 
-**The quadratic cost is real, and FlashAttention attacks it without changing the maths.**
-Computing QKᵀ for a sequence of n tokens is O(n²·d) in time and, naively, O(n²) in memory
-to hold the attention matrix. FlashAttention observes that the bottleneck on a GPU is
-memory bandwidth rather than arithmetic, tiles the computation so that blocks of Q, K and
-V stay in fast on-chip memory, computes the softmax incrementally with a running maximum
-and sum, and never writes the n × n matrix to main memory. It is exact attention, two to
-four times faster and linear in memory, and it is why 8k and 32k contexts became
-ordinary. PyTorch exposes it through `torch.nn.functional.scaled_dot_product_attention`,
-which picks a fused kernel where one exists.
+**Attention's cost is quadratic in sequence length, and FlashAttention reduces its
+memory cost without changing the result.** Computing QKᵀ for a sequence of n tokens is
+O(n²·d) in time and, naively, O(n²) in memory to hold the attention matrix.
+FlashAttention observes that the bottleneck on a GPU is memory bandwidth rather than
+arithmetic, tiles the computation so that blocks of Q, K and V stay in fast on-chip
+memory, computes the softmax incrementally with a running maximum and sum, and never
+writes the n × n matrix to main memory. It is exact attention, two to four times faster
+and linear in memory, and it is why 8k and 32k contexts became common. PyTorch exposes
+it through `torch.nn.functional.scaled_dot_product_attention`, which picks a fused
+kernel where one exists.
 
-**Scaling laws turned model sizing from taste into arithmetic.** Kaplan et al. found that
+**Scaling laws let you size a model by calculation.** Kaplan et al. found that
 loss falls as a power law in parameters, data and compute over many orders of magnitude,
 and read it as "make models bigger". Hoffmann et al. reran the experiment with learning
 rate schedules matched to the training length and found the optimum for a fixed compute
@@ -188,16 +190,16 @@ the backward (Problem 5). Inference costs about 2N per token. These are the numb
 use to sanity-check any claim about training cost, and Lab 9.5 fits the power law on a
 laptop.
 
-**Mixture-of-experts and state-space models are the two departures you will hear about.**
-A mixture-of-experts layer replaces the MLP with several MLPs and a router that sends each
-token to one or two of them, so parameters grow with the number of experts while compute
-per token does not; it buys capacity per FLOP at the cost of memory, load balancing and
-serving complexity, and it is how many frontier models are built. State-space models such
-as Mamba return to recurrence with a state that is updated by a learned, input-dependent
-linear map, giving linear time in sequence length and constant memory per step; they match
-transformers at small scale on language and are strong on very long sequences, and hybrid
-architectures interleave both. Know what each trades and you can follow the Oxford LLM
-course's architecture week without notes.
+**Mixture-of-experts and state-space models are the two departures you will hear
+about.** A mixture-of-experts layer replaces the MLP with several MLPs and a router that
+sends each token to one or two of them, so parameters grow with the number of experts
+while compute per token does not; it buys capacity per FLOP at the cost of memory, load
+balancing and serving complexity, and it is how many frontier models are built.
+State-space models such as Mamba return to recurrence with a state that is updated by a
+learned, input-dependent linear map, giving linear time in sequence length and constant
+memory per step. They match transformers at small scale on language and are strong on
+very long sequences, and hybrid architectures interleave both. If you know what each
+trades, you can follow the Oxford LLM course's architecture week without notes.
 
 **Forward links.** Module 10 fine-tunes an encoder for intent classification, applies LoRA
 to the attention projections you wrote here (which is why you need to know their shapes),
@@ -249,7 +251,7 @@ Module 0 under `data/hf`, from which you take the first 20 MB of text. Run `uv s
 
 ### Lab 9.1: Baselines on Tiny Shakespeare
 
-Goal: know the numbers a transformer has to beat, and what an LSTM already achieves.
+Goal: measure the losses a transformer has to beat, including an LSTM's.
 
 1. Split the file into the first 90 percent for training and the last 10 percent for
    validation. In `09-transformers/ngram.py` implement a bigram character model and a
@@ -270,7 +272,7 @@ the notebook with one sentence on what the LSTM gets right that the n-gram canno
 
 ### Lab 9.2: Attention in NumPy
 
-Goal: own the forward pass before PyTorch hides it.
+Goal: implement the attention forward pass yourself before using PyTorch's.
 
 1. In `09-transformers/attention.py` implement `scaled_dot_product_attention(q, k, v,
    mask=None)` and `multi_head_attention(x, w_qkv, b_qkv, w_out, b_out, n_heads,
@@ -359,8 +361,8 @@ while the cached path stays flat.
 
 ### Lab 9.5: A scaling mini-study
 
-Goal: see a power law come out of your own runs, and understand why Chinchilla lands
-where it does.
+Goal: fit a power law to your own runs, and explain where Chinchilla's optimum comes
+from.
 
 1. Define three character-model configs on Tiny Shakespeare of roughly 1M (4 layers,
    d_model 144), 3M (4 layers, d_model 256) and 10M (Lab 9.4) parameters, with heads chosen
@@ -369,7 +371,7 @@ where it does.
    iteration count; batch 64 × 256 is 16,384 tokens per step), with cosine decay matched
    to each run's length. That is nine runs; the small ones take minutes and the largest
    about half an hour on MPS.
-3. Compute compute C = 6ND for each run and plot validation loss against C on log-log axes,
+3. Calculate C = 6ND for each run and plot validation loss against C on log-log axes,
    one line per model size. Fit L(C) = a·C^(−b) + c to the lower envelope by least squares
    and report b.
 4. For each budget, mark which model size gave the lowest loss, and plot the implied
@@ -382,7 +384,7 @@ notebook with the fitted exponent, and the discussion paragraph is written.
 
 ### Lab 9.6: Positional encoding ablation
 
-Goal: test what position information buys, and what a causal model learns without it.
+Goal: measure what position information adds, and what a causal model learns without it.
 
 1. Add a `pos_encoding` option to `GPT`: `none`, `learned` (the default from Lab 9.4),
    `sinusoidal`, and `rope`. Implement RoPE in `09-transformers/rope.py` as a function
@@ -475,5 +477,5 @@ encoding extrapolates best and why.
 Module 10 puts this module's architecture to work: fine-tuning an encoder for intent
 classification on Banking77, adapting a 0.5B decoder with LoRA on the attention projections
 whose shapes you now know, and building a retrieval-augmented system whose context budget
-is the KV cache you just measured. The theory is done; what remains is knowing which
-knob to turn.
+is the KV cache you just measured. The theory is complete at this point, and Module 10
+is about choosing which settings to change.

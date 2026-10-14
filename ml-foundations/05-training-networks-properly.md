@@ -4,26 +4,26 @@
 
 ## Why this module
 
-You know what backpropagation computes and you have built networks that trained. What
-you do not yet have is the craft: the ability to sit down with a fresh architecture and
-a fresh dataset, get a run working in an afternoon, know within ten minutes whether it
-is healthy, and say afterwards what each choice was worth. That is the second gap you
-named, and it is the one that costs people the most time in practice.
+You know what backpropagation computes and you have built networks that trained. You do
+not yet have the craft of training: taking a fresh architecture and a fresh dataset,
+getting a run working in an afternoon, knowing within ten minutes whether it is healthy,
+and saying afterwards what each choice was worth. That is the second gap you named, and
+it costs people more time than any other.
 
 The Oxford Deep Neural Networks week assumes this craft. Its assignment hands you a
 dataset and asks you to train something, report honestly, and explain what you did and
-why; it does not have time to teach you that the loss at initialisation should be ln 10,
-or that Adam with L2 regularisation is not the same as AdamW. This module fixes those
-facts by making you build the tooling every later module runs on. The harness you
-write in `common/` this fortnight trains the VAE in Module 7, the SimCLR encoder in
-Module 8, the GPT in Module 9 and the fine-tunes in Module 10. Every hour spent making
-it solid here is repaid several times over.
+why. It does not have time to teach you that the loss at initialisation should be ln 10,
+or that Adam with L2 regularisation differs from AdamW. This module teaches those facts
+by having you build the tooling every later module runs on. The harness you write in
+`common/` this fortnight trains the VAE in Module 7, the SimCLR encoder in Module 8, the
+GPT in Module 9 and the fine-tunes in Module 10, so time spent making it reliable now
+saves time in each of them.
 
-The structural point is that a training run is an experiment, and experiments need
-instruments. Loss curves, gradient norms, activation statistics, throughput counters,
-seeds and an ablation table are the instruments. Frameworks such as Lightning and fastai
-hide them well enough that you can go years without learning what they measure. You
-write your own once, slowly, so that afterwards you can use anyone's quickly.
+A training run is an experiment, and experiments need instruments: loss curves, gradient
+norms, activation statistics, throughput counters, seeds and an ablation table.
+Frameworks such as Lightning and fastai hide them well enough that you can go years
+without learning what they measure. You write your own here, once and slowly, so that
+you understand what other people's tools measure when you use them later.
 
 ## Skip test
 
@@ -53,9 +53,9 @@ learn what frameworks hide.** The pieces are a config dataclass serialised with 
 run, a data pipeline, a model registry mapping names to constructors, the loop
 (forward, loss, backward, step, schedule tick), evaluation under `torch.no_grad()` in
 `eval()` mode, checkpointing of model, optimiser, scheduler and epoch with resume,
-MLflow logging, and `seed_everything`. None of it is hard; all of it is where bugs
-live. Lab 5.1 builds it in about 400 lines and Lab 5.4 plants bugs in it so you learn
-what each part's failure looks like.
+MLflow logging, and `seed_everything`. None of it is hard, and most training bugs are
+in these parts. Lab 5.1 builds it in about 400 lines and Lab 5.4 plants bugs in it so
+you learn what each part's failure looks like.
 
 **The scale of the initial weights decides whether signal survives depth.** For y = Wx
 with n_in inputs and weight variance σ², Var(y_i) = n_in σ² Var(x). Xavier (Glorot)
@@ -64,19 +64,19 @@ variance through linear or tanh layers near their linear region. A ReLU zeroes h
 its inputs and halves the second moment, so He (Kaiming) init uses σ² = 2/n_in. Use
 Xavier on ReLU and each layer shrinks the activation std by 1/√2: after 20 layers it is
 down by 2^10 ≈ 1,000, and so is the gradient at the bottom. A fixed std of 0.01
-collapses faster; too large a std saturates and gives an initial loss near 20 rather
-than 2.3. PyTorch's default for `nn.Linear` and `nn.Conv2d` is Kaiming-uniform with
-a = √5, which is not He init for ReLU; it is a legacy choice that BatchNorm papers over.
+collapses faster. Too large a std saturates and gives an initial loss near 20 instead
+of 2.3. PyTorch's default for `nn.Linear` and `nn.Conv2d` is Kaiming-uniform with
+a = √5, which is not He init for ReLU. It is a legacy choice whose effect BatchNorm hides.
 
-**BatchNorm makes the activation scale a learned quantity instead of an accident of
+**BatchNorm makes the activation scale a learned quantity that does not depend on
 initialisation.** Per feature it subtracts the batch mean, divides by the batch std
 (plus ε), then applies a learned scale γ and shift β. Because it depends on the other
 examples in the batch it has two modes: `train()` uses batch statistics and updates
-running averages; `eval()` uses the running averages. Forget `model.eval()` at
-validation and predictions become batch-dependent; forget `model.train()` afterwards
-and the statistics freeze. Gradients flow through the mean and variance too (Problem
-4), which is why BatchNorm smooths the loss landscape and allows learning rates
-roughly 10× higher. It fails below a batch of about 8 to 16, where the statistics are
+running averages, and `eval()` uses the running averages. If you forget `model.eval()`
+at validation, predictions depend on the batch; if you forget `model.train()`
+afterwards, the statistics freeze. Gradients flow through the mean and variance too
+(Problem 4), which is why BatchNorm smooths the loss landscape and allows learning
+rates roughly 10× higher. It fails below a batch of about 8 to 16, where the statistics are
 too noisy. LayerNorm normalises across the features of one example and is what
 transformers use; GroupNorm normalises across channel groups of one example and is the
 convnet drop-in when batches must be small.
@@ -84,38 +84,38 @@ convnet drop-in when batches must be small.
 **Residual connections make depth trainable by giving the gradient an identity path.**
 A block computes y = x + F(x), so its Jacobian is I + ∂F/∂x and L blocks give
 Π(I + J_l); the identity terms stop the product shrinking geometrically the way Π J_l
-does (Problem 8). He et al.'s plot of a 56-layer plain convnet training worse than a
-20-layer one, and a 56-layer residual net training better, is the whole argument.
-Zero-initialising the last BatchNorm γ in each block, so every block starts as the
-identity, is a one-line trick that helps. On activations: ReLU is cheap and works, but
-a unit whose pre-activation is negative for every input has zero gradient and never
-recovers (a dead ReLU). GELU and SiLU are smooth with gradient everywhere and are the transformer
-and modern-convnet defaults; on a ResNet at this scale the difference is seed noise.
+does (Problem 8). He et al. showed this with a 56-layer plain convnet that trained
+worse than a 20-layer one, while a 56-layer residual net trained better.
+Zero-initialising the last BatchNorm γ in each block, so that every block starts as the
+identity, is a one-line change that helps. ReLU is cheap and works, but a unit whose
+pre-activation is negative for every input has zero gradient and never recovers (a dead
+ReLU). GELU and SiLU are smooth with gradient everywhere and are the transformer and
+modern-convnet defaults. On a ResNet at this scale the difference from ReLU is within
+seed noise.
 
 **Sanity checks before the first real run save days.** Karpathy's recipe is a sequence
 and the order matters. Fix a seed. Check the loss at init: with K balanced classes and
 small logits it should be ln K, 2.303 for ten; anything far off means large logits,
 wrong labels or the wrong loss. Overfit one batch of 32 to near-zero loss; if you
 cannot, the model or loop is broken and no data will help. Look at a batch after
-augmentation, as images with labels; the wrong normalisation and the channel-order bug
-are found this way and no other. Check the input statistics really are zero-mean and
-unit-variance. Then run a
-learning-rate range test, increasing the rate exponentially over a few hundred steps
-and plotting loss against it; a good peak is a factor of 3 to 10 below where the loss
-blows up. Only then start the real run.
+augmentation, as images with labels. This is the only way to find the wrong
+normalisation and the channel-order bug. Check that the input statistics are zero-mean
+and unit-variance. Then run a learning-rate range test, increasing the rate
+exponentially over a few hundred steps and plotting loss against it; a good peak is a
+factor of 3 to 10 below where the loss blows up. Only then start the real run.
 
 **Optimisers differ in how they scale the step per parameter, and the differences are
 derivable.** SGD with momentum keeps v ← μv + g and steps w ← w − ηv; at μ = 0.9 the
 steady-state step is about 10× one gradient, which is why momentum runs use lower
 rates. Nesterov evaluates the gradient after the momentum step, a look-ahead that damps
-oscillation for free. RMSProp divides by a running RMS of the gradient so every
+oscillation at no extra cost. RMSProp divides by a running RMS of the gradient so every
 parameter moves at a similar rate. Adam combines them: m ← β₁m + (1−β₁)g,
 v ← β₂v + (1−β₂)g², w ← w − η m̂/(√v̂ + ε), with m̂ = m/(1−β₁ᵗ) and v̂ = v/(1−β₂ᵗ). The
 hats correct for m and v starting at zero; without them the first step is
 η(1−β₁)/√(1−β₂) ≈ 3.2η per parameter instead of η, and with β₂ = 0.999 the denominator
 stays too small for over two thousand steps (Problem 2). AdamW applies weight decay
 directly, w ← w − ηλw, rather than adding λw to the gradient. For SGD the two are
-identical; for Adam the coupled version is divided by √v̂ along with everything else,
+identical. For Adam the coupled version is divided by √v̂ along with everything else,
 so parameters with large gradient histories are barely regularised (Problem 3).
 
 **The schedule is worth more than the choice of optimiser.** A constant rate must be
@@ -123,13 +123,14 @@ small enough to converge at the end and is therefore too small at the start. War
 then cosine is the modern default: ramp linearly from near zero over the first few
 percent of training, so adaptive statistics and BatchNorm averages settle before the
 large steps, then decay along a half cosine to near zero. One-cycle (Smith) is the same
-shape with a higher peak; the observation behind it, super-convergence, is that a
-network tolerates a very large rate briefly and trains in far fewer epochs. Rate and
-batch size are coupled through gradient noise: a batch of B has gradient covariance
-proportional to 1/B, and k small steps resemble one large step at k times the rate, so
-the linear scaling rule multiplies the rate by the same factor as the batch, with
-warmup to survive the early steps (Goyal et al., Problem 5). It holds until the batch
-is so large that noise no longer matters, after which bigger batches buy nothing.
+shape with a higher peak. The observation behind it, super-convergence, is that a
+network can briefly train at a much higher rate than usual and then needs far fewer
+epochs. Rate and batch size are coupled through gradient noise. A batch of B has
+gradient covariance proportional to 1/B, and k small steps resemble one large step at k
+times the rate, so the linear scaling rule multiplies the rate by the same factor as
+the batch and adds warmup for the early steps (Goyal et al., Problem 5). It holds until
+the batch is so large that noise no longer matters, after which larger batches do not
+help.
 
 **Regularisation trades training fit for generalisation, and for images augmentation is
 the strongest kind.** Weight decay of 5e-4 is standard for CIFAR ResNets under SGD and
@@ -148,67 +149,68 @@ roughly 100 epochs or more before they help.
 **Loss curves are the primary instrument, and every shape has a short list of causes.**
 Training loss stuck at ln K: the rate is far too high or low, the network is dead,
 labels are shuffled independently of inputs, or gradients never reach the parameters.
-Training loss falling while validation sits flat from epoch one is a data bug, not
-overfitting: wrong normalisation at validation, a transform mismatch, `eval()`
-forgotten. Training falling and validation falling then rising is overfitting; the
-remedies are more data, more augmentation, more regularisation, a smaller model, in
-that order.
-Validation accuracy above what the model should achieve is leakage. Spikes are a bad
-batch at a high rate, an fp16 overflow or a warmup too short; a spike that never
-recovers means NaN weights or a NaN running variance.
+Training loss falling while validation sits flat from epoch one is a data bug (wrong
+normalisation at validation, a transform mismatch, `eval()` forgotten). Training falling
+while validation falls and then rises is overfitting, and the remedies, in order, are
+more data, more augmentation, more regularisation and a smaller model. Validation
+accuracy above what the model should achieve is leakage. Spikes come from a bad batch
+at a high rate, an fp16 overflow or too short a warmup; a spike that never recovers
+means NaN weights or a NaN running variance.
 
 **Gradient pathologies are visible if you instrument them.** After `backward()`, log each
 layer's gradient L2 norm and activation std every 100 steps. Vanishing shows as a
 constant-factor shrinkage per layer towards the input, exploding as the reverse. The
-per-layer ratio of update to weight size, roughly η‖g‖/‖w‖, should sit near 1e-3; 1e-1
-is too hot, 1e-5 too cold, and this one number diagnoses a bad rate faster than the loss
-does. Clipping by global norm (`torch.nn.utils.clip_grad_norm_`; 1.0 is the transformer
-default) bounds what one bad batch can do; if it fires on most steps the rate is wrong.
+per-layer ratio of update to weight size, roughly η‖g‖/‖w‖, should sit near 1e-3. At
+1e-1 the rate is too high and at 1e-5 too low, and this one number diagnoses a bad rate
+faster than the loss does. Clipping by global norm (`torch.nn.utils.clip_grad_norm_`;
+1.0 is the transformer default) bounds what one bad batch can do. If it fires on most
+steps, the rate is wrong.
 
-**Mixed precision is a throughput tool with two failure modes, and the Mac supports half
-of it.** Under `torch.autocast` matmuls and convolutions run in float16, which halves
+**Mixed precision is a throughput tool with two failure modes, and the Mac supports only
+part of it.** Under `torch.autocast` matmuls and convolutions run in float16, which halves
 activation memory and, on tensor-core GPUs, gives a 2 to 4× speedup; reductions, losses
 and BatchNorm statistics stay in float32. Float16's smallest normal value is about 6e-5,
 so small gradients underflow; CUDA uses `torch.amp.GradScaler` to scale the loss up
-before `backward()` and the gradients down after. On MPS autocast to float16 works and
-the smoke test measured it; treat loss scaling as unavailable and watch whether the
-smallest per-layer gradient norms drop to zero under fp16 but not fp32.
-Throughput is measured, not guessed: samples per second rises with batch size until the
-GPU saturates; `DataLoader` workers matter only if transforms are the bottleneck (macOS
-spawns workers, so guard the script with `if __name__ == "__main__"` and keep MPS
-tensors out of them); `torch.profiler` says whether time is in forward, backward, the
-step or waiting for data.
+before `backward()` and the gradients down after. On MPS, autocast to float16 works, and
+the smoke test measured it. Treat loss scaling as unavailable, and watch whether the
+smallest per-layer gradient norms drop to zero under fp16 but not fp32. Measure
+throughput. Samples per second rises with batch size until the GPU saturates.
+`DataLoader` workers matter only if transforms are the bottleneck (macOS spawns workers,
+so guard the script with `if __name__ == "__main__"` and keep MPS tensors out of them).
+`torch.profiler` shows whether time is in forward, backward, the step or waiting for
+data.
 
-**Compute is countable, so count it before you start.** A dense layer costs n_in·n_out
+**Count the compute a run needs before you start it.** A dense layer costs n_in·n_out
 multiply-accumulates per example; a convolution costs H_out·W_out·C_out·C_in·k²
-(Problem 7). Two FLOPs per MAC is the forward cost; backward is about twice forward, so
-a training step is roughly 3× the forward. Multiply by dataset size and epochs, divide
-by measured FLOPs per second, and you have a predicted wall time; achieved over peak
-(utilisation) is typically 20 to 40% for a convnet this size on the Mac. For
+(Problem 7). The forward cost is two FLOPs per MAC, and backward is about twice forward,
+so a training step is roughly 3× the forward. Multiply by dataset size and epochs,
+divide by measured FLOPs per second, and you have a predicted wall time. Achieved over
+peak (utilisation) is typically 20 to 40% for a convnet this size on the Mac. For
 transformers the rule of thumb is 6 FLOPs per parameter per token, which budgets
 Module 9's GPT in Lab 5.6.
 
-**Reproducibility has a floor you set and a ceiling you accept.** `seed_everything`
-seeds `random`, NumPy and PyTorch, and a seeded `torch.Generator` goes to the
-`DataLoader`. On CUDA, `torch.use_deterministic_algorithms(True)` removes most residual
-nondeterminism at a speed cost; MPS has no such switch, and small run-to-run variation
-is normal. So a single run's accuracy is a sample: two seeds of the same CIFAR-10 config
-differ by about 0.1 to 0.3 points, and a claimed improvement smaller than that is noise.
-Report mean ± std over at least two seeds, three when it is close.
+**Seeds remove most run-to-run variation, and some remains.** `seed_everything` seeds
+`random`, NumPy and PyTorch, and a seeded `torch.Generator` goes to the `DataLoader`. On
+CUDA, `torch.use_deterministic_algorithms(True)` removes most residual nondeterminism at
+a speed cost. MPS has no such switch, and small run-to-run variation is normal. A single
+run's accuracy is therefore one sample. Two seeds of the same CIFAR-10 config differ by
+about 0.1 to 0.3 points, and a claimed improvement smaller than that is noise. Report
+mean ± std over at least two seeds, three when it is close.
 
-**Evaluation discipline turns runs into evidence.** Split 5,000 of CIFAR-10's 50,000
-training images off as validation and tune on it; touch the test set once, at the end.
-The unit of evidence is the ablation table: one row per change, everything else fixed,
-mean ± std over seeds, sorted by effect. Write the rows with predicted numbers before
-you run them, then fill in the measured ones; Lab 5.5 makes you do it for seven tricks.
+**Tune on a validation split and report results as an ablation table.** Split 5,000 of
+CIFAR-10's 50,000 training images off as validation and tune on it, and touch the test
+set once, at the end. The unit of evidence is the ablation table: one row per change,
+everything else fixed, mean ± std over seeds, sorted by effect. Write the rows with
+predicted numbers before you run them, then fill in the measured ones; Lab 5.5 makes
+you do it for seven tricks.
 
 **Forward links.** The harness is reused verbatim by Modules 6 to 10. BatchNorm's batch
-dependence is why SimCLR in Module 8 needs large batches and why LayerNorm wins in
-Module 9's transformer, whose residual stream is the identity path of this module at
-scale. AdamW, warmup-cosine and gradient clipping are the Module 9 and 10 defaults;
-the linear scaling rule and gradient accumulation are how you fit a large effective
-batch on a small GPU. The FLOPs accounting returns as the 6ND rule in Module 9 and the
-latency budget in Module 13.
+dependence is why Module 9's transformer uses LayerNorm, and that transformer's residual
+stream is this module's identity path at a larger scale. SimCLR in Module 8 needs large
+batches because its loss takes its negatives from the batch. AdamW, warmup-cosine and
+gradient clipping are the Module 9 and 10 defaults; the linear scaling rule and gradient
+accumulation are how you fit a large effective batch on a small GPU. The FLOPs
+accounting returns as the 6ND rule in Module 9 and the latency budget in Module 13.
 
 ## Reading
 
@@ -238,7 +240,7 @@ latency budget in Module 13.
   Minimization", 2018; Müller, Kornblith, Hinton, "When Does Label Smoothing Help?", 2019.
 - Micikevicius et al., "Mixed Precision Training", 2018.
 - David Page, "How to Train Your ResNet", parts 1 to 8 (myrtle.ai blog, 2018 to 2019).
-  The best account in print of what each trick is worth on CIFAR-10.
+  The best account of what each trick is worth on CIFAR-10.
 - Karpathy, *Neural Networks: Zero to Hero*, the makemore videos on activations,
   gradients and BatchNorm (part 3) and manual backpropagation (part 4).
 
@@ -307,7 +309,7 @@ choice nearly irrelevant.
 
 ### Lab 5.3: Optimiser and schedule study
 
-Goal: know what optimiser, schedule and batch size are each worth under a fixed budget.
+Goal: measure what optimiser, schedule and batch size are each worth under a fixed budget.
 
 1. Write `resnet18_cifar(width)` now (Lab 5.5 finishes it) and use `width=32`, roughly
    2.8M parameters, so a 15-epoch run takes about 5 to 8 minutes on the Mac.
@@ -415,12 +417,13 @@ Goal: know where the time goes and predict a run's wall time before starting it.
 4. Write `count_flops(model, input_shape)` by hand for conv and linear layers and check
    it against `torch.utils.flop_counter.FlopCounterMode` on the CPU at batch 1: about
    0.56 GMACs, 1.1 GFLOPs, per image forward. Multiply by 3 for a training step and by
-   50,000 × 35 for the run; divide by your Lab 5.5 wall time for achieved FLOPs/s, and by
+   45,000 × 35 for the run; divide by your Lab 5.5 wall time for achieved FLOPs/s, and by
    the M2 Pro's peak (roughly 5.7 or 6.8 TFLOPS fp32 for the 16- and 19-core parts) for
    utilisation.
 5. Write the compute budget for Module 9's GPT in one paragraph: 6 FLOPs per parameter
-   per token, a 10M-parameter model, 20M tokens seen, your achieved rate, the predicted
-   minutes and the assumptions. Module 9 checks it.
+   per token, a 10M-parameter model, about 82M tokens seen (Lab 9.4's 5,000 steps of
+   64 × 256), your achieved rate, the predicted minutes and the assumptions. Lab 9.4's run
+   tests it.
 
 Done when: the two throughput plots and the profiler table are in the notebook, the
 analytic FLOP count matches `FlopCounterMode` within 5%, you have a utilisation figure
@@ -498,6 +501,6 @@ for the Mac, and the budget paragraph names a number of minutes and its assumpti
 ## Next
 
 Module 6 uses the harness unchanged on a real, small vision dataset and spends its week
-on the two things this module took as given: what a convolution actually costs, and
-what to do when you have 3,680 labelled images rather than 50,000, which is to start
-from someone else's weights. The ablation-table habit carries straight over.
+on the two things this module took as given: what a convolution costs, and what to do
+when you have 3,680 labelled images rather than 50,000, which is to start from someone
+else's weights. The ablation-table habit carries over.
